@@ -9,7 +9,6 @@ class Subject(models.Model):
         verbose_name_plural = _("Subjects")
 
     name = models.CharField(max_length=512, verbose_name=_("name"))
-    # TODO: Description?
 
     def __str__(self):
         return self.name
@@ -21,7 +20,6 @@ class Goal(models.Model):
         verbose_name_plural = _("Goals")
 
     name = models.CharField(max_length=512, verbose_name=_("name"))
-    # TODO: Description?
 
     def __str__(self):
         return self.name
