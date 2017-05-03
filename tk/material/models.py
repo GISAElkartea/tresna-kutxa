@@ -104,6 +104,6 @@ class Video(Material):
     duration = models.DurationField(verbose_name=_("duration"))
     # TODO: Top-limit to current year in forms
     year = models.PositiveIntegerField(verbose_name=_("year"))
-    audio = models.ForeignKey(Language, verbose_name=_("language"))
-    subtitles = models.ForeignKey(Language, verbose_name=_("language"))
+    audios = models.ManyToMany(Language, null=True, blank=True, verbose_name=_("audio languages"))
+    subtitles = models.ManyToMany(Language, null=True, blank=True, verbose_name=_("subtitle languages"))
     # TODO: Attachments generic relation
