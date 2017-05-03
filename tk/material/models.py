@@ -1,5 +1,8 @@
 from django.db import models
+from django.db.models import Subquery, Q
 
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.utils.translation import ugettext as _
 
 
@@ -50,6 +53,43 @@ class Language(models.Model):
         return self.name
 
 
+class Approval(models.Model):
+    class Meta:
+        unique_together = [('content_type', 'object_id')]
+        verbose_name = _("Approval")
+        verbose_name_plural = _("Approvals")
+
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    # TODO: Hide in forms
+    requested = models.DateTimeField(auto_now_add=True, verbose_name=_("created on"))
+    published = models.DateTimeField(null=True, blank=True, verbose_name=_("published on"))
+    approved = models.BooleanField(default=False, verbose_name=_("is approved"))
+    comment = models.TextField(null=True, verbose_name=_("comment"))
+    email = models.EmailField(blank=True, verbose_name=_("contact email"))
+
+
+A = Approval.objects.filter
+
+
+class ApprovedQuerySet(models.QuerySet):
+    @property
+    def content_type(self):
+        return ContentType.objects.get_for_model(self.model)
+
+    def approved(self):
+        acceptances = A(content_type=self.content_type, approved=True).values('object_id')
+        approvals = A(content_type=self.content_type).values('object_id')
+        qs = Q(id__in=Subquery(acceptances)) | Q(id__in=Subquery(approvals))
+        return self.filter(qs)
+
+    def unapproved(self):
+        rejections = A(content_type=self.content_type, approved=False).values('object_id')
+        return self.filter(id__in=Subquery(rejections))
+
+
 class Material(models.Model):
     class Meta:
         abstract = True
@@ -62,11 +102,17 @@ class Material(models.Model):
     # TODO: Add help text with the warning about copyright
     link = models.URLField(blank=True, verbose_name=_("link"))
 
+    # TODO: Only display approved ones publicly
+    # TODO: Display as link in admin
+    approval = GenericRelation(Approval, verbose_name=_("Approval"))
+
     def __str__(self):
         return self.title
 
 
 class Activity(Material):
+    objects = ApprovedQuerySet.as_manager()
+
     class Meta:
         verbose_name = _("Activity")
         verbose_name_plural = _("Activities")
@@ -85,6 +131,8 @@ class Activity(Material):
 
 
 class Reading(Material):
+    objects = ApprovedQuerySet.as_manager()
+
     class Meta:
         verbose_name = _("Reading")
         verbose_name_plural = _("Reading")
@@ -97,6 +145,8 @@ class Reading(Material):
 
 
 class Video(Material):
+    objects = ApprovedQuerySet.as_manager()
+
     class Meta:
         verbose_name = _("Video")
         verbose_name_plural = _("Videos")
