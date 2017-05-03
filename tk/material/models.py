@@ -82,7 +82,7 @@ class ApprovedQuerySet(models.QuerySet):
     def approved(self):
         acceptances = A(content_type=self.content_type, approved=True).values('object_id')
         approvals = A(content_type=self.content_type).values('object_id')
-        qs = Q(id__in=Subquery(acceptances)) | Q(id__in=Subquery(approvals))
+        qs = Q(id__in=Subquery(acceptances)) | ~Q(id__in=Subquery(approvals))
         return self.filter(qs)
 
     def unapproved(self):
