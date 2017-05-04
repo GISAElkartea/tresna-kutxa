@@ -42,6 +42,17 @@ class GroupFeature(models.Model):
         return self.name
 
 
+class Location(models.Model):
+    class Meta:
+        verbose_name = _("Location")
+        verbose_name_plural = _("Locations")
+
+    name = models.CharField(max_length=512, verbose_name=_("name"))
+
+    def __str__(self):
+        return self.name
+
+
 class Language(models.Model):
     class Meta:
         verbose_name = _("Language")
@@ -124,7 +135,7 @@ class Activity(Material):
     subject = models.ForeignKey(Subject, null=True, blank=True, verbose_name=_("subject"))
     goals = models.ManyToManyField(Goal, verbose_name=_("goals"))
 
-    # TODO: Place?
+    location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_("location"))
     # TODO: Single point duration or range?
     duration = models.DurationField(verbose_name=_("duration"))
     # TODO: Single point num_people or range?
