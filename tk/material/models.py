@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.db.models import Subquery, Q
 from django.contrib.contenttypes.models import ContentType
@@ -132,6 +134,11 @@ class Activity(Material):
     # TODO: Attachments generic relation
 
 
+def validate_year(year):
+    if datetime.date.today().year < year:
+        raise ValidationError(_("That year is still in the future."))
+
+
 class Reading(Material):
     objects = ApprovedQuerySet.as_manager()
 
@@ -140,8 +147,7 @@ class Reading(Material):
         verbose_name_plural = _("Reading")
 
     pages = models.PositiveIntegerField(verbose_name=_("pages"))
-    # TODO: Top-limit to current year in forms
-    year = models.PositiveIntegerField(verbose_name=_("year"))
+    year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
     language = models.ForeignKey(Language, verbose_name=_("language"))
     # TODO: Attachments generic relation
 
@@ -154,8 +160,7 @@ class Video(Material):
         verbose_name_plural = _("Videos")
 
     duration = models.DurationField(verbose_name=_("duration"))
-    # TODO: Top-limit to current year in forms
-    year = models.PositiveIntegerField(verbose_name=_("year"))
+    year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
     audios = models.ManyToManyField(Language, blank=True, related_name='video_audio',
             verbose_name=_("audio languages"))
     subtitles = models.ManyToManyField(Language, blank=True, related_name='video_subtitle',
