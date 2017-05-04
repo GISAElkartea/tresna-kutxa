@@ -122,7 +122,7 @@ class Activity(Material):
         verbose_name_plural = _("Activities")
 
     subject = models.ForeignKey(Subject, null=True, blank=True, verbose_name=_("subject"))
-    goal = models.ForeignKey(Goal, verbose_name=_("goal"))
+    goals = models.ManyToManyField(Goal, verbose_name=_("goals"))
 
     # TODO: Place?
     # TODO: Single point duration or range?
