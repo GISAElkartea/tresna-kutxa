@@ -116,6 +116,8 @@ class Material(models.Model):
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
     # TODO: Add help text with the warning about copyright
     link = models.URLField(blank=True, verbose_name=_("link"))
+    attachment = models.FileField(upload_to='material/attachments', blank=True,
+            verbose_name=_("attachment"))
 
     # TODO: Only display approved ones publicly
     # TODO: Display as link in admin
@@ -141,7 +143,6 @@ class Activity(Material):
     num_people = models.PositiveSmallIntegerField(verbose_name=_("number of people"))
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True, verbose_name=_("group feature"))
     notes = models.TextField(blank=True, verbose_name=_("notes"))
-    # TODO: Attachments generic relation
 
 
 def validate_year(year):
@@ -159,7 +160,6 @@ class Reading(Material):
     pages = models.PositiveIntegerField(verbose_name=_("pages"))
     year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
     language = models.ForeignKey(Language, verbose_name=_("language"))
-    # TODO: Attachments generic relation
 
 
 class Video(Material):
@@ -175,4 +175,3 @@ class Video(Material):
             verbose_name=_("audio languages"))
     subtitles = models.ManyToManyField(Language, blank=True, related_name='video_subtitle',
             verbose_name=_("subtitle languages"))
-    # TODO: Attachments generic relation
