@@ -148,6 +148,10 @@ class Activity(Material):
             verbose_name=_("group feature"))
     notes = models.TextField(blank=True, verbose_name=_("notes"))
 
+    def clean(self):
+        if self.min_people > self.max_people:
+            raise ValidationError(_("The upper bound for the people involved "
+                "in the activity cannot be less than the lower bound."))
 
 def validate_year(year):
     if datetime.date.today().year < year:
