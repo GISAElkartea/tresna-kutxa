@@ -114,8 +114,8 @@ class Material(models.Model):
     subject = models.ForeignKey(Subject, verbose_name=_("subject"))
     brief = models.TextField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
-    # TODO: Add help text with the warning about copyright
-    link = models.URLField(blank=True, verbose_name=_("link"))
+    link = models.URLField(blank=True, verbose_name=_("link"),
+            help_text=_("Link the material if its copyright does not allow sharing it."))
     attachment = models.FileField(upload_to='material/attachments', blank=True,
             verbose_name=_("attachment"))
 
@@ -139,7 +139,6 @@ class Activity(Material):
 
     location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_("location"))
     duration = models.DurationField(verbose_name=_("duration"))
-    # TODO: Validate min <= max
     min_people = models.PositiveSmallIntegerField(default=2,
             verbose_name=_("minimum number of people"))
     max_people = models.PositiveSmallIntegerField(default=30,
