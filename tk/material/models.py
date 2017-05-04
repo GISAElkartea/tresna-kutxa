@@ -139,9 +139,13 @@ class Activity(Material):
 
     location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_("location"))
     duration = models.DurationField(verbose_name=_("duration"))
-    # TODO: Single point num_people or range?
-    num_people = models.PositiveSmallIntegerField(verbose_name=_("number of people"))
-    group_feature = models.ForeignKey(GroupFeature, null=True, blank=True, verbose_name=_("group feature"))
+    # TODO: Validate min <= max
+    min_people = models.PositiveSmallIntegerField(default=2,
+            verbose_name=_("minimum number of people"))
+    max_people = models.PositiveSmallIntegerField(default=30,
+            verbose_name=_("maximum number of people"))
+    group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
+            verbose_name=_("group feature"))
     notes = models.TextField(blank=True, verbose_name=_("notes"))
 
 
