@@ -136,7 +136,6 @@ class Activity(Material):
     goals = models.ManyToManyField(Goal, verbose_name=_("goals"))
 
     location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_("location"))
-    # TODO: Single point duration or range?
     duration = models.DurationField(verbose_name=_("duration"))
     # TODO: Single point num_people or range?
     num_people = models.PositiveSmallIntegerField(verbose_name=_("number of people"))
