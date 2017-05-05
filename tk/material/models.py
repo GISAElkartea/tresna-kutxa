@@ -58,8 +58,8 @@ class Language(models.Model):
         verbose_name = _("Language")
         verbose_name_plural = _("Language")
 
+    code = models.CharField(primary_key=True, max_length=16, verbose_name=_("code"))
     name = models.CharField(max_length=512, verbose_name=_("name"))
-    # TODO: Code?
     # TODO: Prepopulate
     # TODO: Autocomplete search interface
 
