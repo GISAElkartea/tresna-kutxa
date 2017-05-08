@@ -81,8 +81,13 @@ class Approval(models.Model):
     requested = models.DateTimeField(auto_now_add=True, verbose_name=_("created on"))
     published = models.DateTimeField(null=True, blank=True, verbose_name=_("published on"))
     approved = models.BooleanField(default=False, verbose_name=_("is approved"))
-    comment = models.TextField(null=True, verbose_name=_("comment"))
+    comment = models.TextField(blank=True, verbose_name=_("comment"))
     email = models.EmailField(blank=True, verbose_name=_("contact email"))
+
+    def __str__(self):
+        return _("Approval request for {content_type} {content_object}").format(
+                content_type=self.content_type.name,
+                content_object=str(self.content_object))
 
 
 A = Approval.objects.filter
@@ -182,3 +187,6 @@ class Video(Material):
             verbose_name=_("audio languages"))
     subtitles = models.ManyToManyField(Language, blank=True, related_name='video_subtitle',
             verbose_name=_("subtitle languages"))
+
+
+# TODO: Links
