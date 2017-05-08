@@ -121,8 +121,6 @@ class Material(models.Model):
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
     link = models.URLField(blank=True, verbose_name=_("link"),
             help_text=_("Link the material if its copyright does not allow sharing it."))
-    attachment = models.FileField(upload_to='material/attachments', blank=True,
-            verbose_name=_("attachment"))
 
     # TODO: Only display approved ones publicly
     # TODO: Display as link in admin
@@ -151,6 +149,8 @@ class Activity(Material):
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
             verbose_name=_("group feature"))
     notes = models.TextField(blank=True, verbose_name=_("notes"))
+    attachment = models.FileField(upload_to='material/activities/', blank=True,
+            verbose_name=_("attachment"))
 
     def clean(self):
         if self.min_people > self.max_people:
@@ -167,11 +167,13 @@ class Reading(Material):
 
     class Meta:
         verbose_name = _("Reading")
-        verbose_name_plural = _("Reading")
+        verbose_name_plural = _("Readings")
 
     pages = models.PositiveIntegerField(verbose_name=_("pages"))
     year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
     language = models.ForeignKey(Language, verbose_name=_("language"))
+    attachment = models.FileField(upload_to='material/readings/', blank=True,
+            verbose_name=_("attachment"))
 
 
 class Video(Material):
@@ -187,6 +189,15 @@ class Video(Material):
             verbose_name=_("audio languages"))
     subtitles = models.ManyToManyField(Language, blank=True, related_name='video_subtitle',
             verbose_name=_("subtitle languages"))
+    attachment = models.FileField(upload_to='material/videos', blank=True,
+            verbose_name=_("attachment"))
 
 
-# TODO: Links
+class Link(Material):
+    objects = ApprovedQuerySet.as_manager()
+
+    class Meta:
+        verbose_name = _("Link")
+        verbose_name_plural = _("Links")
+
+    link = models.URLField(verbose_name=_("link"))
