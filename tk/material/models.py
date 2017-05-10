@@ -70,7 +70,10 @@ class Approval(models.Model):
         verbose_name = _("Approval")
         verbose_name_plural = _("Approvals")
 
-    resource = models.ForeignKey('ApprovalResource', on_delete=models.CASCADE, verbose_name=_("resource"))
+    activity = models.OneToOneField('Activity', null=True, blank=True, on_delete=models.CASCADE)
+    video = models.OneToOneField('Video', null=True, blank=True, on_delete=models.CASCADE)
+    reading = models.OneToOneField('Reading', null=True, blank=True, on_delete=models.CASCADE)
+    link = models.OneToOneField('Link', null=True, blank=True, on_delete=models.CASCADE)
 
     # TODO: Hide in forms
     requested = models.DateTimeField(auto_now_add=True, verbose_name=_("created on"))
@@ -79,48 +82,35 @@ class Approval(models.Model):
     comment = models.TextField(blank=True, verbose_name=_("comment"))
     email = models.EmailField(blank=True, verbose_name=_("contact email"))
 
-    def __str__(self):
-        return str(self.resource)
+    @property
+    def _union(self):
+        return (self.activity, self.video, self.reading, self.link)
 
-
-class ApprovalResource(models.Model):
-    activity = models.OneToOneField('Activity', null=True, blank=True, on_delete=models.CASCADE)
-    video = models.OneToOneField('Video', null=True, blank=True, on_delete=models.CASCADE)
-    reading = models.OneToOneField('Reading', null=True, blank=True, on_delete=models.CASCADE)
-    link = models.OneToOneField('Link', null=True, blank=True, on_delete=models.CASCADE)
+    def clean(self):
+        if not self._union.count(None) == 3:
+            raise ValidationError(_("Only one of {activity, video, reading, link} can be set."))
 
     @property
     def resource(self):
-        if self.activity is not None:
-            return self.activity
-        if self.video is not None:
-            return self.video
-        if self.reading is not None:
-            return self.reading
-        if self.link is not None:
-            return self.link
+        for r in self._union:
+            if r is not None:
+                return r
         return None
 
     def __str__(self):
-        if self.activity is not None:
-            return _("Activity {}").format(self.activity)
-        if self.video is not None:
-            return _("Video {}").format(self.video)
-        if self.reading is not None:
-            return _("Reading {}").format(self.reading)
-        if self.link is not None:
-            return _("Link {}").format(self.link)
-        return super().__str__()
+        return _("{model} {representation}").format(
+                model=self.resource._meta.model,
+                representation=str(self.resource))
 
 
 class ApprovedQuerySet(models.QuerySet):
     def approved(self):
-        bypassed = Q(approvalresource__isnull=True)
-        approved = Q(approvalresource__approval__approved=True)
+        bypassed = Q(approval__isnull=True)
+        approved = Q(approval__approved=True)
         return self.filter(bypassed | approved)
 
     def unapproved(self):
-        return self.filter(approvalresource__approval__approved=False)
+        return self.filter(approval__approved=False)
 
 
 class Material(models.Model):
@@ -141,9 +131,8 @@ class Material(models.Model):
     # TODO
     @property
     def approval(self):
-        link = 'resource__{}'.format(APPROVAL_RESOURCE_KEY)
         try:
-            return Approval.objects.get(**{link: self})
+            return Approval.objects.get(**{APPROVAL_RESOURCE_KEY: self})
         except Approval.DoesNotExist:
             return None
 

@@ -23,8 +23,7 @@ class ApprovalAdmin(admin.ModelAdmin):
     readonly_fields = ['requested', 'published', 'email', 'material']
 
     def material(self, obj):
-        view = '{}_{}_change'.format(obj.resource.resource.app_label,
-                                     obj.resource.resource.model)
+        view = '{}_{}_change'.format(obj.resource.app_label, obj.resource.model)
         return format_html('<a href="{}">{}</a>', reverse(view), str(obj.resource))
     material.short_description = _("material")
 
