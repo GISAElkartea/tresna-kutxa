@@ -15,19 +15,18 @@ admin.register(Subject, Goal, GroupFeature, Location, Language)(TranslationAdmin
 class ApprovalAdmin(admin.ModelAdmin):
     # TODO: Delete related material action
     # TODO: Approve action or button?
-    # TODO: Limit content types to material subclasses
     # TODO: No add view
-    list_filter = ['content_type', 'requested', 'published', 'approved']
-    list_display = ['__str__', 'content_object', 'requested', 'email',
-                    'approved', 'published']
+    list_filter = ['requested', 'published', 'approved']
+    list_display = ['__str__', 'requested', 'email', 'approved', 'published']
     fields = [('requested', 'email'), ('published', 'approved'),
-              'content_object', 'comment']
-    readonly_fields = ['requested', 'published', 'email', 'content_object']
+              'material', 'comment']
+    readonly_fields = ['requested', 'published', 'email', 'material']
 
-    def content_object(self, obj):
-        view = '{}_{}_change'.format(obj.content_type.app_label, obj.content_type.model)
-        return format_html('<a href="{}">{}</a>', reverse(view), str(obj.content_object))
-    content_object.short_description = _("content object")
+    def material(self, obj):
+        view = '{}_{}_change'.format(obj.resource.resource.app_label,
+                                     obj.resource.resource.model)
+        return format_html('<a href="{}">{}</a>', reverse(view), str(obj.resource))
+    material.short_description = _("material")
 
 
 @admin.register(Activity)

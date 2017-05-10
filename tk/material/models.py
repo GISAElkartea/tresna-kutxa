@@ -2,8 +2,6 @@ import datetime
 
 from django.db import models
 from django.db.models import Subquery, Q
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.utils.translation import ugettext as _
 
 from autoslug import AutoSlugField
@@ -69,13 +67,10 @@ class Language(models.Model):
 
 class Approval(models.Model):
     class Meta:
-        unique_together = [('content_type', 'object_id')]
         verbose_name = _("Approval")
         verbose_name_plural = _("Approvals")
 
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    resource = models.ForeignKey('ApprovalResource', on_delete=models.CASCADE, verbose_name=_("resource"))
 
     # TODO: Hide in forms
     requested = models.DateTimeField(auto_now_add=True, verbose_name=_("created on"))
@@ -85,69 +80,98 @@ class Approval(models.Model):
     email = models.EmailField(blank=True, verbose_name=_("contact email"))
 
     def __str__(self):
-        return _("Approval request for {content_type} {content_object}").format(
-                content_type=self.content_type.name,
-                content_object=str(self.content_object))
+        return str(self.resource)
 
 
-A = Approval.objects.filter
+class ApprovalResource(models.Model):
+    activity = models.OneToOneField('Activity', null=True, blank=True, on_delete=models.CASCADE)
+    video = models.OneToOneField('Video', null=True, blank=True, on_delete=models.CASCADE)
+    reading = models.OneToOneField('Reading', null=True, blank=True, on_delete=models.CASCADE)
+    link = models.OneToOneField('Link', null=True, blank=True, on_delete=models.CASCADE)
+
+    @property
+    def resource(self):
+        if self.activity is not None:
+            return self.activity
+        if self.video is not None:
+            return self.video
+        if self.reading is not None:
+            return self.reading
+        if self.link is not None:
+            return self.link
+        return None
+
+    def __str__(self):
+        if self.activity is not None:
+            return _("Activity {}").format(self.activity)
+        if self.video is not None:
+            return _("Video {}").format(self.video)
+        if self.reading is not None:
+            return _("Reading {}").format(self.reading)
+        if self.link is not None:
+            return _("Link {}").format(self.link)
+        return super().__str__()
 
 
 class ApprovedQuerySet(models.QuerySet):
-    @property
-    def content_type(self):
-        return ContentType.objects.get_for_model(self.model)
-
     def approved(self):
-        acceptances = A(content_type=self.content_type, approved=True).values('object_id')
-        approvals = A(content_type=self.content_type).values('object_id')
-        qs = Q(id__in=Subquery(acceptances)) | ~Q(id__in=Subquery(approvals))
-        return self.filter(qs)
+        bypassed = Q(approvalresource__isnull=True)
+        approved = Q(approvalresource__approval__approved=True)
+        return self.filter(bypassed | approved)
 
     def unapproved(self):
-        rejections = A(content_type=self.content_type, approved=False).values('object_id')
-        return self.filter(id__in=Subquery(rejections))
+        return self.filter(approvalresource__approval__approved=False)
 
 
 class Material(models.Model):
+    APPROVAL_RESOURCE_KEY = ''
+
     class Meta:
         abstract = True
 
     title = models.CharField(max_length=512, verbose_name=_("title"))
     slug = AutoSlugField(populate_from='title', unique=True)
 
-    subject = models.ForeignKey(Subject, verbose_name=_("subject"))
+    subject = models.ForeignKey(Subject, on_delete=models.PROTECT, verbose_name=_("subject"))
     brief = models.TextField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
     link = models.URLField(blank=True, verbose_name=_("link"),
             help_text=_("Link the material if its copyright does not allow sharing it."))
 
-    # TODO: Only display approved ones publicly
-    # TODO: Display as link in admin
-    approval = GenericRelation(Approval, verbose_name=_("Approval"))
+    # TODO
+    @property
+    def approval(self):
+        link = 'resource__{}'.format(APPROVAL_RESOURCE_KEY)
+        try:
+            return Approval.objects.get(**{link: self})
+        except Approval.DoesNotExist:
+            return None
 
     def __str__(self):
         return self.title
 
 
 class Activity(Material):
+    APPROVAL_RESOURCE_KEY = 'activity'
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
         verbose_name = _("Activity")
         verbose_name_plural = _("Activities")
 
-    subject = models.ForeignKey(Subject, null=True, blank=True, verbose_name=_("subject"))
+    subject = models.ForeignKey(Subject, null=True, blank=True,
+            on_delete=models.SET_NULL, verbose_name=_("subject"))
     goals = models.ManyToManyField(Goal, verbose_name=_("goals"))
 
-    location = models.ForeignKey(Location, null=True, blank=True, verbose_name=_("location"))
+    location = models.ForeignKey(Location, null=True, blank=True,
+            on_delete=models.SET_NULL, verbose_name=_("location"))
     duration = models.DurationField(verbose_name=_("duration"))
     min_people = models.PositiveSmallIntegerField(default=2,
             verbose_name=_("minimum number of people"))
     max_people = models.PositiveSmallIntegerField(default=30,
             verbose_name=_("maximum number of people"))
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
-            verbose_name=_("group feature"))
+            on_delete=models.SET_NULL, verbose_name=_("group feature"))
     notes = models.TextField(blank=True, verbose_name=_("notes"))
     attachment = models.FileField(upload_to='material/activities/', blank=True,
             verbose_name=_("attachment"))
@@ -163,6 +187,7 @@ def validate_year(year):
 
 
 class Reading(Material):
+    APPROVAL_RESOURCE_KEY = 'reading'
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
@@ -171,12 +196,13 @@ class Reading(Material):
 
     pages = models.PositiveIntegerField(verbose_name=_("pages"))
     year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
-    language = models.ForeignKey(Language, verbose_name=_("language"))
+    language = models.ForeignKey(Language, on_delete=models.PROTECT, verbose_name=_("language"))
     attachment = models.FileField(upload_to='material/readings/', blank=True,
             verbose_name=_("attachment"))
 
 
 class Video(Material):
+    APPROVAL_RESOURCE_KEY = 'video'
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
@@ -194,6 +220,7 @@ class Video(Material):
 
 
 class Link(Material):
+    APPROVAL_RESOURCE_KEY = 'link'
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
