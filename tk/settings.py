@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'watson',
+
     'tk',
-    'tk.material',
+    'tk.material.apps.MaterialConfig',
 ]
 
 MIDDLEWARE = [
