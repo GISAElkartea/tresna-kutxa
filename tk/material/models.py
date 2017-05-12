@@ -88,7 +88,7 @@ class Approval(models.Model):
 
     def clean(self):
         if not self._union.count(None) == 3:
-            raise ValidationError(_("Only one of {activity, video, reading, link} can be set."))
+            raise ValidationError(_("Exactly one of {activity, video, reading, link} has to be set."))
 
     @property
     def resource(self):
@@ -123,6 +123,7 @@ class Material(models.Model):
     slug = AutoSlugField(populate_from='title', unique=True)
 
     subject = models.ForeignKey(Subject, on_delete=models.PROTECT, verbose_name=_("subject"))
+    # TODO: Rich text
     brief = models.TextField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
     link = models.URLField(blank=True, verbose_name=_("link"),

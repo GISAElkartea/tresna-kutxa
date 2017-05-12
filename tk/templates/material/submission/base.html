@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form action="." method="post">
+  {{ approval_form }}
+  {% block material_form %}
+  {% endblock material_form %}
+  <input type="submit" value="{% trans 'Submit' %}" />
+</form>
+{% endblock content %}

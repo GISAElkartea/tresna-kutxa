@@ -1,0 +1,14 @@
+{% load i18n %}
+<!doctype=html>
+<html>
+  <head>
+  </head>
+  <body>
+    <a href="{% url 'material:create-activity' %}">{% trans 'Submit activity' %}</a>
+    <a href="{% url 'material:create-video' %}">{% trans 'Submit video' %}</a>
+    <a href="{% url 'material:create-reading' %}">{% trans 'Submit reading' %}</a>
+    <a href="{% url 'material:create-link' %}">{% trans 'Submit link' %}</a>
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>
