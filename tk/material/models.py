@@ -74,7 +74,6 @@ class Approval(models.Model):
 
     # TODO: Hide in forms
     requested = models.DateTimeField(auto_now_add=True, verbose_name=_("created on"))
-    published = models.DateTimeField(null=True, blank=True, verbose_name=_("published on"))
     approved = models.BooleanField(default=False, verbose_name=_("is approved"))
     comment = models.TextField(blank=True, verbose_name=_("comment"))
     email = models.EmailField(blank=True, verbose_name=_("contact email"))
