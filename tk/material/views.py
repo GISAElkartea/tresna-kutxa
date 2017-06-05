@@ -1,5 +1,6 @@
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
+from django.core.urlresolvers import reverse
 
 from .models import Activity, Video, Reading, Link
 from .forms import ApprovalEmailForm, ActivityForm, VideoForm, ReadingForm, LinkForm
@@ -22,9 +23,12 @@ class MaterialCreationMixin(ApprovalMixin):
         # Sets self.object
         response = super().form_valid(form)
         approval = self.get_approval()
-        setattr(approval, self.object.APPROVAL_RESOURCE_KEY, self.object)
+        approval.material = self.object.material_ptr
         approval.save()
         return response
+
+    def get_success_url(self):
+        return reverse('frontpage')
 
 
 class CreateActivity(MaterialCreationMixin, CreateView):

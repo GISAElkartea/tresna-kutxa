@@ -4,6 +4,7 @@ from modeltranslation.translator import translator, NotRegistered
 
 from .models import Approval, Activity, Video, Reading, Link
 
+# TODO: Captcha
 
 class TranslatedModelForm(ModelForm):
     def __init__(self, *args, **kwargs):

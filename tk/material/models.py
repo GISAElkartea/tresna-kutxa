@@ -79,7 +79,9 @@ class Approval(models.Model):
     email = models.EmailField(blank=True, verbose_name=_("contact email"))
 
     def __str__(self):
-        return _("Approval for '{}'").format(self.material)
+        if self.approved:
+            return _('Approved: "{}"').format(self.material)
+        return _('Unapproved: "{}"').format(self.material)
 
 
 class ApprovedQuerySet(models.QuerySet):
