@@ -1,7 +1,7 @@
 from modeltranslation.translator import register, TranslationOptions
 
 from .models import (Subject, Goal, GroupFeature, Location, Language,
-                     Approval, Activity, Reading, Video, Link)
+                     Approval, Material, Activity, Reading, Video, Link)
 
 
 @register(Subject)
@@ -29,21 +29,30 @@ class LanguageTranslationOptions(TranslationOptions):
     fields = ['name']
 
 
+@register(Material)
+class MaterialTranslationOptions(TranslationOptions):
+    fields = ['title', 'brief']
+
+
+# These inherit the translated fields from Material.
+# Still, they need to be registered so that the modeltranslation admin wrapper
+# works.
+
 @register(Activity)
 class ActivityTranslationOptions(TranslationOptions):
-    fields = ['title', 'brief', 'notes']
+    fields = ['notes']
 
 
 @register(Reading)
 class ReadingTranslationOptions(TranslationOptions):
-    fields = ['title', 'brief']
+    fields = []
 
 
 @register(Video)
 class ReadingTranslationOptions(TranslationOptions):
-    fields = ['title', 'brief']
+    fields = []
 
 
 @register(Link)
 class LinkTranslationOptions(TranslationOptions):
-    fields = ['title', 'brief']
+    fields = []

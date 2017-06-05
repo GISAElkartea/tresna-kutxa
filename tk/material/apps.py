@@ -55,6 +55,7 @@ class MaterialConfig(AppConfig):
     name = 'tk.material'
 
     def ready(self):
-        for material in ['Activity', 'Video', 'Reading', 'Link']:
-            model = self.get_model(material)
-            watson.register(model.objects.approved(), MaterialSearchAdapter)
+        # All material types related one-to-one to their Material parent.
+        # This parent contains all information which is meaningful to search.
+        Material = self.get_model('Material')
+        watson.register(Material.objects.approved(), MaterialSearchAdapter)

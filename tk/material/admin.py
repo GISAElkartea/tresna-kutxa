@@ -22,11 +22,6 @@ class ApprovalAdmin(admin.ModelAdmin):
               'material', 'comment']
     readonly_fields = ['requested', 'published', 'email', 'material']
 
-    def material(self, obj):
-        view = '{}_{}_change'.format(obj.resource.app_label, obj.resource.model)
-        return format_html('<a href="{}">{}</a>', reverse(view), str(obj.resource))
-    material.short_description = _("material")
-
 
 @admin.register(Activity)
 class ActivityAdmin(TranslationAdmin):
@@ -39,7 +34,7 @@ class ActivityAdmin(TranslationAdmin):
                            'duration',
                            'group_feature']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'link', 'brief', 'notes', 'attachment']})
+                'fields': ['author', 'title', 'url', 'brief', 'notes', 'attachment']})
             ]
     filter_horizontal = ['goals']
     list_filter = ['min_people', 'max_people', 'location', 'duration',
@@ -57,7 +52,7 @@ class ReadingAdmin(TranslationAdmin):
                            'language',
                            'subject']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'link', 'brief', 'attachment']})
+                'fields': ['author', 'title', 'url', 'brief', 'attachment']})
             ]
     list_filter = ['pages', 'year', 'language', 'subject']
     list_display = ['__str__', 'approval']
@@ -74,7 +69,7 @@ class VideoAdmin(TranslationAdmin):
                            'subtitles',
                            'subject']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'link', 'brief', 'attachment']})
+                'fields': ['author', 'title', 'url', 'brief', 'attachment']})
             ]
     filter_horizontal = ['audios', 'subtitles']
     list_filter = ['duration', 'year', 'audios', 'subtitles', 'subject']
@@ -88,7 +83,7 @@ class LinkAdmin(TranslationAdmin):
             (_("Details"), {
                 'fields': ['subject']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'link', 'brief']})
+                'fields': ['author', 'title', 'url', 'brief']})
             ]
     list_filter = ['subject']
     list_display = ['__str__', 'approval']
