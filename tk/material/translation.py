@@ -1,6 +1,6 @@
 from modeltranslation.translator import register, TranslationOptions
 
-from .models import (Subject, Goal, GroupFeature, Location, Language,
+from .models import (Subject, Goal, GroupFeature, Location,
                      Approval, Material, Activity, Reading, Video, Link)
 
 
@@ -21,11 +21,6 @@ class GroupFeatureTranslationOptions(TranslationOptions):
 
 @register(Location)
 class LocationTranslationOptions(TranslationOptions):
-    fields = ['name']
-
-
-@register(Language)
-class LanguageTranslationOptions(TranslationOptions):
     fields = ['name']
 
 

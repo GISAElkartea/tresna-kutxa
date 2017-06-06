@@ -6,6 +6,8 @@ from django.utils.translation import ugettext as _
 
 from autoslug import AutoSlugField
 
+from .fields import LanguageField
+
 
 class Subject(models.Model):
     class Meta:
@@ -46,20 +48,6 @@ class Location(models.Model):
         verbose_name_plural = _("Locations")
 
     name = models.CharField(max_length=512, verbose_name=_("name"))
-
-    def __str__(self):
-        return self.name
-
-
-class Language(models.Model):
-    class Meta:
-        verbose_name = _("Language")
-        verbose_name_plural = _("Language")
-
-    code = models.CharField(primary_key=True, max_length=16, verbose_name=_("code"))
-    name = models.CharField(max_length=512, verbose_name=_("name"))
-    # TODO: Prepopulate
-    # TODO: Autocomplete search interface
 
     def __str__(self):
         return self.name
@@ -158,8 +146,9 @@ class Reading(Material):
         verbose_name_plural = _("Readings")
 
     pages = models.PositiveIntegerField(verbose_name=_("pages"))
+    # TODO: Make optional
     year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
-    language = models.ForeignKey(Language, on_delete=models.PROTECT, verbose_name=_("language"))
+    languages = LanguageField(verbose_name=_("languages"))
     attachment = models.FileField(upload_to='material/readings/', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
@@ -175,10 +164,8 @@ class Video(Material):
 
     duration = models.DurationField(verbose_name=_("duration"))
     year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
-    audios = models.ManyToManyField(Language, blank=True, related_name='video_audio',
-            verbose_name=_("audio languages"))
-    subtitles = models.ManyToManyField(Language, blank=True, related_name='video_subtitle',
-            verbose_name=_("subtitle languages"))
+    audios = LanguageField(blank=True, verbose_name=_("audio languages"))
+    subtitles = LanguageField(blank=True, verbose_name=_("subtitle languages"))
     attachment = models.FileField(upload_to='material/videos', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),

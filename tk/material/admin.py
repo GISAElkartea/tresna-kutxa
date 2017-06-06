@@ -79,7 +79,7 @@ class ReadingAdmin(TranslationAdmin, MaterialTypeMixin):
                 'fields': ['author', 'title', 'url', 'brief', 'attachment']})
             ]
     readonly_fields = ['approval_link']
-    list_filter = ['pages', 'year', 'language', 'subject']
+    list_filter = ['pages', 'year', 'languages', 'subject']
     list_display = ['__str__', 'approval_link']
     search_fields = ['title', 'brief']
 
@@ -100,7 +100,6 @@ class VideoAdmin(TranslationAdmin, MaterialTypeMixin):
                 'fields': ['author', 'title', 'url', 'brief', 'attachment']})
             ]
     readonly_fields = ['approval_link']
-    filter_horizontal = ['audios', 'subtitles']
     list_filter = ['duration', 'year', 'audios', 'subtitles', 'subject']
     list_display = ['__str__', 'approval_link']
     search_fields = ['title', 'brief']
