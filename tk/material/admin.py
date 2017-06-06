@@ -6,23 +6,17 @@ from django.utils.translation import ugettext_lazy as _
 
 from modeltranslation.admin import TranslationAdmin
 
-from .models import (Subject, Goal, GroupFeature, Location, Language,
-                     Approval, Material, Activity, Reading, Video, Link)
 
-
-# TODO: Do not delete related
-admin.register(Subject, Goal, GroupFeature, Location, Language)(TranslationAdmin)
-
-
-@admin.register(Approval)
 class ApprovalAdmin(admin.ModelAdmin):
     # TODO: Delete related material action
     # TODO: Approve action or button?
-    # TODO: No add view
     list_filter = ['requested', 'approved']
     list_display = ['__str__', 'requested', 'email', 'approved']
     fields = [('requested', 'email'), 'approved', 'material_link', 'comment']
     readonly_fields = ['requested', 'email', 'material_link']
+
+    def has_add_permission(self, request, obj=None):
+        return False
 
     def material_link(self, approval_obj):
         for material_type in ['activity', 'video', 'reading', 'link']:
@@ -46,7 +40,6 @@ class MaterialTypeMixin():
     approval_link.short_description = _('Approval')
 
 
-@admin.register(Activity)
 class ActivityAdmin(TranslationAdmin, MaterialTypeMixin):
     fieldsets = [
             (_("State"), {
@@ -71,7 +64,6 @@ class ActivityAdmin(TranslationAdmin, MaterialTypeMixin):
     search_fields = ['title', 'brief', 'notes']
 
 
-@admin.register(Reading)
 class ReadingAdmin(TranslationAdmin, MaterialTypeMixin):
     fieldsets = [
             (_("State"), {
@@ -92,7 +84,6 @@ class ReadingAdmin(TranslationAdmin, MaterialTypeMixin):
     search_fields = ['title', 'brief']
 
 
-@admin.register(Video)
 class VideoAdmin(TranslationAdmin, MaterialTypeMixin):
     fieldsets = [
             (_("State"), {
@@ -115,7 +106,6 @@ class VideoAdmin(TranslationAdmin, MaterialTypeMixin):
     search_fields = ['title', 'brief']
 
 
-@admin.register(Link)
 class LinkAdmin(TranslationAdmin, MaterialTypeMixin):
     fieldsets = [
             (_("State"), {
