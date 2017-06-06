@@ -9,6 +9,7 @@ from tk.material import models as mo
 class TKAdmin(AdminSite):
     site_header = _("TK admin")
     site_title = _("TK admin")
+    index_template = 'admin/tk_index.html'
     grouping = OrderedDict([
             (_("Material"), [
                 'material.Activity',
