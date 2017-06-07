@@ -4,7 +4,7 @@ from django.db import models
 from django.db.models import Subquery, Q
 from django.utils.translation import ugettext as _
 
-from autoslug import AutoSlugField
+from localized_fields.fields import LocalizedField, LocalizedUniqueSlugField
 from markdownx.models import MarkdownxField
 
 from .fields import LanguageField
@@ -15,7 +15,7 @@ class Subject(models.Model):
         verbose_name = _("Subject")
         verbose_name_plural = _("Subjects")
 
-    name = models.CharField(max_length=512, verbose_name=_("name"))
+    name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return self.name
@@ -26,7 +26,7 @@ class Goal(models.Model):
         verbose_name = _("Goal")
         verbose_name_plural = _("Goals")
 
-    name = models.CharField(max_length=512, verbose_name=_("name"))
+    name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return self.name
@@ -37,7 +37,7 @@ class GroupFeature(models.Model):
         verbose_name = _("Group feature")
         verbose_name_plural = _("Group features")
 
-    name = models.CharField(max_length=512, verbose_name=_("name"))
+    name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return self.name
@@ -48,7 +48,7 @@ class Location(models.Model):
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
 
-    name = models.CharField(max_length=512, verbose_name=_("name"))
+    name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return self.name
@@ -90,14 +90,14 @@ class Material(models.Model):
         verbose_name = _("Material")
         verbose_name_plural = _("Materials")
 
-    title = models.CharField(max_length=512, verbose_name=_("title"))
-    slug = AutoSlugField(populate_from='title', unique=True)
+    title = LocalizedField(max_length=512, verbose_name=_("title"))
+    slug = LocalizedUniqueSlugField(populate_from='title')
 
     # TODO: Required in all forms but activity forms
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
     # TODO: Creation date
-    brief = MarkdownxField(blank=True, verbose_name=_("brief"))
+    brief = LocalizedField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
     def __str__(self):
@@ -122,7 +122,7 @@ class Activity(Material):
             verbose_name=_("maximum number of people"))
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("group feature"))
-    notes = models.TextField(blank=True, verbose_name=_("notes"))
+    notes = LocalizedField(blank=True, verbose_name=_("notes"))
     attachment = models.FileField(upload_to='material/activities/', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
@@ -132,6 +132,7 @@ class Activity(Material):
         if self.min_people > self.max_people:
             raise ValidationError(_("The upper bound for the people involved "
                 "in the activity cannot be less than the lower bound."))
+
 
 def validate_year(year):
     if datetime.date.today().year < year:

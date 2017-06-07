@@ -32,9 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # Has to come before admin
-    'modeltranslation',
-
     'django.forms',  # Required for widget template overriding
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,6 +43,8 @@ INSTALLED_APPS = [
     'watson',
     'markdownx',
     'debug_toolbar',
+    'django.contrib.postgres',
+    'localized_fields.apps.LocalizedFieldsConfig',
 
     'tk.material.apps.MaterialConfig',
 ]
@@ -94,7 +93,7 @@ WSGI_APPLICATION = 'tk.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'psqlextra.backend',
         'NAME': 'tk',
         'USER': 'tk',
     }

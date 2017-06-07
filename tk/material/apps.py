@@ -1,6 +1,5 @@
 from django.apps import AppConfig
 
-from modeltranslation.translator import translator, NotRegistered
 from watson import search as watson
 
 

@@ -5,7 +5,11 @@ from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 
 from markdownx.admin import MarkdownxModelAdmin
-from modeltranslation.admin import TranslationAdmin
+from localized_fields.admin import LocalizedFieldsAdminMixin
+
+
+class LocalizedAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
+    pass
 
 
 class ApprovalAdmin(admin.ModelAdmin):
@@ -32,7 +36,7 @@ class ApprovalAdmin(admin.ModelAdmin):
     material_link.short_description = _('Material')
 
 
-class MaterialAdmin(MarkdownxModelAdmin):
+class MaterialAdmin(MarkdownxModelAdmin, LocalizedFieldsAdminMixin, admin.ModelAdmin):
     def approval_link(self, material_obj):
         name = 'admin:material_approval_change'
         return format_html('<a href="{}">{}</a>'.format(
@@ -41,7 +45,7 @@ class MaterialAdmin(MarkdownxModelAdmin):
     approval_link.short_description = _('Approval')
 
 
-class ActivityAdmin(MaterialAdmin, TranslationAdmin):
+class ActivityAdmin(MaterialAdmin):
     fieldsets = [
             (_("State"), {
                 'fields': ['approval_link',
@@ -65,7 +69,7 @@ class ActivityAdmin(MaterialAdmin, TranslationAdmin):
     search_fields = ['title', 'brief', 'notes']
 
 
-class ReadingAdmin(MaterialAdmin, TranslationAdmin):
+class ReadingAdmin(MaterialAdmin):
     fieldsets = [
             (_("State"), {
                 'fields': ['approval_link',
@@ -85,7 +89,7 @@ class ReadingAdmin(MaterialAdmin, TranslationAdmin):
     search_fields = ['title', 'brief']
 
 
-class VideoAdmin(MaterialAdmin, TranslationAdmin):
+class VideoAdmin(MaterialAdmin):
     fieldsets = [
             (_("State"), {
                 'fields': ['approval_link',
@@ -106,7 +110,7 @@ class VideoAdmin(MaterialAdmin, TranslationAdmin):
     search_fields = ['title', 'brief']
 
 
-class LinkAdmin(MaterialAdmin, TranslationAdmin):
+class LinkAdmin(MaterialAdmin):
     fieldsets = [
             (_("State"), {
                 'fields': ['approval_link',

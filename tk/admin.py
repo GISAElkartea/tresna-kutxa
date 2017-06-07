@@ -51,10 +51,10 @@ class TKAdmin(AdminSite):
 
 
 tkadmin = TKAdmin()
-tkadmin.register(mo.Subject, ma.TranslationAdmin)
-tkadmin.register(mo.Goal, ma.TranslationAdmin)
-tkadmin.register(mo.GroupFeature, ma.TranslationAdmin)
-tkadmin.register(mo.Location, ma.TranslationAdmin)
+tkadmin.register(mo.Subject, ma.LocalizedAdmin)
+tkadmin.register(mo.Goal, ma.LocalizedAdmin)
+tkadmin.register(mo.GroupFeature, ma.LocalizedAdmin)
+tkadmin.register(mo.Location, ma.LocalizedAdmin)
 tkadmin.register(mo.Approval, ma.ApprovalAdmin)
 tkadmin.register(mo.Activity, ma.ActivityAdmin)
 tkadmin.register(mo.Reading, ma.ReadingAdmin)
