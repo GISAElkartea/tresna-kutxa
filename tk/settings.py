@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
     # Has to come before admin
     'modeltranslation',
 
+    'django.forms',  # Required for widget template overriding
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,12 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'watson',
+    'markdownx',
+    'debug_toolbar',
 
-    'tk',
     'tk.material.apps.MaterialConfig',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,10 +63,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'tk.urls'
 
+# Required for widget template overriding
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'tk/templates'),
+            # Required for widget template overriding
+            os.path.join(django.__path__[0], 'forms/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -109,3 +120,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+INTERNAL_IPS = ['127.0.0.1']

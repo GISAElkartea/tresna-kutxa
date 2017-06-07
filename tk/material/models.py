@@ -5,6 +5,7 @@ from django.db.models import Subquery, Q
 from django.utils.translation import ugettext as _
 
 from autoslug import AutoSlugField
+from markdownx.models import MarkdownxField
 
 from .fields import LanguageField
 
@@ -96,8 +97,7 @@ class Material(models.Model):
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
     # TODO: Creation date
-    # TODO: Rich text
-    brief = models.TextField(blank=True, verbose_name=_("brief"))
+    brief = MarkdownxField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
     def __str__(self):
