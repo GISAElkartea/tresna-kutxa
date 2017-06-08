@@ -5,6 +5,7 @@ from django.db.models import Subquery, Q
 from django.utils.translation import ugettext as _
 
 from localized_fields.fields import LocalizedField, LocalizedUniqueSlugField
+from localized_fields.models import LocalizedModel
 from markdownx.models import MarkdownxField
 
 from .fields import LanguageField
@@ -83,7 +84,7 @@ class ApprovedQuerySet(models.QuerySet):
         return self.filter(approval__approved=False)
 
 
-class Material(models.Model):
+class Material(LocalizedModel):
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
