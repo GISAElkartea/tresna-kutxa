@@ -147,8 +147,8 @@ class Reading(Material):
         verbose_name_plural = _("Readings")
 
     pages = models.PositiveIntegerField(verbose_name=_("pages"))
-    # TODO: Make optional
-    year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
+    year = models.PositiveIntegerField(blank=True, null=True,
+            validators=[validate_year], verbose_name=_("year"))
     languages = LanguageField(verbose_name=_("languages"))
     attachment = models.FileField(upload_to='material/readings/', blank=True,
             verbose_name=_("attachment"))
