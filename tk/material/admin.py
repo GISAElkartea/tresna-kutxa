@@ -78,7 +78,7 @@ class ReadingAdmin(MaterialAdmin):
             (_("Classification"), {
                 'fields': ['pages',
                            'year',
-                           'language',
+                           'languages',
                            'subject']}),
             (_("Content"), {
                 'fields': ['author', 'title', 'url', 'brief', 'attachment']})
