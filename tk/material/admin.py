@@ -7,6 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from markdownx.admin import MarkdownxModelAdmin
 from localized_fields.admin import LocalizedFieldsAdminMixin
 
+from .fields import LocalizedMarkdownxField
+from .formfields import AdminLocalizedMarkdownxWidget
+
 
 class LocalizedAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
     pass
@@ -43,6 +46,10 @@ class MaterialAdmin(MarkdownxModelAdmin, LocalizedFieldsAdminMixin, admin.ModelA
             reverse(name, args=[material_obj.approval.pk]),
             material_obj.approval))
     approval_link.short_description = _('Approval')
+
+    formfield_overrides = {
+            LocalizedMarkdownxField: {'widget': AdminLocalizedMarkdownxWidget},
+    }
 
 
 class ActivityAdmin(MaterialAdmin):

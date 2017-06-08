@@ -3,6 +3,18 @@ from django.conf import global_settings
 from django.contrib.postgres.fields import ArrayField
 from django.db.models import CharField
 
+from localized_fields.fields import LocalizedField
+
+from .formfields import LocalizedMarkdownxFormField
+
+
+class LocalizedMarkdownxField(LocalizedField):
+    def formfield(self, **kwargs):
+        defaults = {'form_class': LocalizedMarkdownxFormField}
+        defaults.update(kwargs)
+        return super().formfield(**defaults)
+
+
 # Stolen from https://gist.github.com/danni/f55c4ce19598b2b345ef
 
 class LanguageField(ArrayField):

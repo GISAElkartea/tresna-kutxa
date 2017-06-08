@@ -6,9 +6,8 @@ from django.utils.translation import ugettext as _
 
 from localized_fields.fields import LocalizedField, LocalizedUniqueSlugField
 from localized_fields.models import LocalizedModel
-from markdownx.models import MarkdownxField
 
-from .fields import LanguageField
+from .fields import LanguageField, LocalizedMarkdownxField
 
 
 class Subject(models.Model):
@@ -98,7 +97,7 @@ class Material(LocalizedModel):
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
     # TODO: Creation date
-    brief = LocalizedField(blank=True, verbose_name=_("brief"))
+    brief = LocalizedMarkdownxField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
     def __str__(self):

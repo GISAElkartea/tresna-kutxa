@@ -2,6 +2,7 @@ from django.forms import ModelForm
 
 from .models import Approval, Activity, Video, Reading, Link
 
+
 # TODO: Captcha
 
 
