@@ -18,7 +18,7 @@ class Subject(models.Model):
     name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Goal(models.Model):
@@ -29,7 +29,7 @@ class Goal(models.Model):
     name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class GroupFeature(models.Model):
@@ -40,7 +40,7 @@ class GroupFeature(models.Model):
     name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Location(models.Model):
@@ -51,7 +51,7 @@ class Location(models.Model):
     name = LocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Approval(models.Model):
@@ -101,7 +101,7 @@ class Material(models.Model):
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
 
 class Activity(Material):
