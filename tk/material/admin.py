@@ -68,7 +68,6 @@ class ActivityAdmin(MaterialAdmin):
             (_("Content"), {
                 'fields': ['author', 'title', 'url', 'brief', 'notes', 'attachment']})
             ]
-    filter_horizontal = ['goals']
     list_filter = ['min_people', 'max_people', 'location', 'duration',
                    'group_feature', 'goals', 'subject']
     list_display = ['__str__', 'approval_link']
