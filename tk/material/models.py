@@ -1,13 +1,14 @@
 import datetime
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Subquery, Q
 from django.utils.translation import ugettext as _
 
-from localized_fields.fields import LocalizedField, LocalizedUniqueSlugField
 from localized_fields.models import LocalizedModel
 
-from .fields import LanguageField, LocalizedMarkdownxField
+from .fields import (LanguageField, AnyLocalizedField,
+                     AnyLocalizedMarkdownxField, AnyLocalizedUniqueSlugField)
 
 
 class Subject(models.Model):
@@ -15,7 +16,7 @@ class Subject(models.Model):
         verbose_name = _("Subject")
         verbose_name_plural = _("Subjects")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = AnyLocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -26,7 +27,7 @@ class Goal(models.Model):
         verbose_name = _("Goal")
         verbose_name_plural = _("Goals")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = AnyLocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -37,7 +38,7 @@ class GroupFeature(models.Model):
         verbose_name = _("Group feature")
         verbose_name_plural = _("Group features")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = AnyLocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -48,7 +49,7 @@ class Location(models.Model):
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = AnyLocalizedField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -90,14 +91,14 @@ class Material(LocalizedModel):
         verbose_name = _("Material")
         verbose_name_plural = _("Materials")
 
-    title = LocalizedField(max_length=512, verbose_name=_("title"))
-    slug = LocalizedUniqueSlugField(populate_from='title')
+    title = AnyLocalizedField(max_length=512, verbose_name=_("title"))
+    slug = AnyLocalizedUniqueSlugField(populate_from='title')
 
     # TODO: Required in all forms but activity forms
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
     # TODO: Creation date
-    brief = LocalizedMarkdownxField(blank=True, verbose_name=_("brief"))
+    brief = AnyLocalizedMarkdownxField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
     def __str__(self):
@@ -122,7 +123,7 @@ class Activity(Material):
             verbose_name=_("maximum number of people"))
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("group feature"))
-    notes = LocalizedField(blank=True, verbose_name=_("notes"))
+    notes = AnyLocalizedField(blank=True, verbose_name=_("notes"))
     attachment = models.FileField(upload_to='material/activities/', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
@@ -164,7 +165,8 @@ class Video(Material):
         verbose_name_plural = _("Videos")
 
     duration = models.DurationField(verbose_name=_("duration"))
-    year = models.PositiveIntegerField(validators=[validate_year], verbose_name=_("year"))
+    year = models.PositiveIntegerField(null=True, blank=True,
+            validators=[validate_year], verbose_name=_("year"))
     audios = LanguageField(blank=True, verbose_name=_("audio languages"))
     subtitles = LanguageField(blank=True, verbose_name=_("subtitle languages"))
     attachment = models.FileField(upload_to='material/videos', blank=True,
