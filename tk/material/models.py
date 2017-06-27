@@ -116,6 +116,7 @@ class Activity(Material):
 
     location = models.ForeignKey(Location, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("location"))
+    # TODO: Allow null?
     duration = models.DurationField(verbose_name=_("duration"))
     min_people = models.PositiveSmallIntegerField(default=2,
             verbose_name=_("minimum number of people"))
@@ -132,12 +133,14 @@ class Activity(Material):
     def clean(self):
         if self.min_people > self.max_people:
             raise ValidationError(_("The upper bound for the people involved "
-                "in the activity cannot be less than the lower bound."))
+                "in the activity cannot be less than the lower bound."),
+                code='invalid')
 
 
 def validate_year(year):
     if datetime.date.today().year < year:
-        raise ValidationError(_("That year is still in the future."))
+        raise ValidationError(_("That year is still in the future."),
+                code='invalid')
 
 
 class Reading(Material):
