@@ -108,6 +108,10 @@ LANGUAGES = [
         ('eu', 'Euskara'),
         ('es', 'Castellano'),
         ]
+LOCALIZED_FIELDS_FALLBACKS = {
+        'eu': ['es'],
+        'es': ['eu'],
+        }
 
 TIME_ZONE = 'Europe/Paris'
 USE_I18N = True
