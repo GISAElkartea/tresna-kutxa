@@ -3,12 +3,10 @@ from django.conf.urls import url, include
 from .views import *
 
 slug = r'(?P<slug>(\w|-)+)'
+mat_type = r'(?P<type>\w+)'
 
 urlpatterns = [url('', include([
-    url(r'^submit/activity/$', CreateActivity.as_view(), name='create-activity'),
-    url(r'^submit/video/$', CreateVideo.as_view(), name='create-video'),
-    url(r'^submit/reading/$', CreateReading.as_view(), name='create-reading'),
-    url(r'^submit/link/$', CreateLink.as_view(), name='create-link'),
+    url(r'^submit/(?:{}/)?$'.format(mat_type), CreateMaterial.as_view(), name='create-material'),
 
     url(r'^activity/{}/$'.format(slug), DetailActivity.as_view(), name='detail-activity'),
     url(r'^video/{}/$'.format(slug), DetailVideo.as_view(), name='detail-video'),

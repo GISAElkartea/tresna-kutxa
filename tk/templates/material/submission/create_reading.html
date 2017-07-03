@@ -1,9 +1,0 @@
-{% extends 'material/submission/base.html' %}
-
-{% block material_form %}
-{{ form }}{% csrf_token %}
-{% endblock material_form %}
-
-{% block post_form %}
-{{ form.media }}
-{% endblock post_form %}
