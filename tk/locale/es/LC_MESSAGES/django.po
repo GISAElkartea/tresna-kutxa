@@ -20,164 +20,164 @@ msgstr ""
 
 #: tk/admin.py:10 tk/admin.py:11
 msgid "TK admin"
-msgstr "TK kudeaketa"
+msgstr "TK administración"
 
 #: tk/admin.py:14 tk/material/admin.py:38 tk/material/models.py:91
 msgid "Material"
-msgstr "Materiala"
+msgstr "Material"
 
 #: tk/admin.py:20
 msgid "Approval requests"
-msgstr "Onarpen eskaerak"
+msgstr "Solicitudes de revisión"
 
 #: tk/admin.py:23
 msgid "Material classification"
-msgstr "Materialaren sailkapena"
+msgstr "Clasificación del material"
 
 #: tk/material/admin.py:47 tk/material/models.py:60
 msgid "Approval"
-msgstr "Onarpena"
+msgstr "Revisión"
 
 #: tk/material/admin.py:52 tk/material/admin.py:75 tk/material/admin.py:95
 #: tk/material/admin.py:116
 msgid "State"
-msgstr "Egoera"
+msgstr "Estado"
 
 #: tk/material/admin.py:56 tk/material/admin.py:79 tk/material/admin.py:99
 #: tk/material/admin.py:120
 msgid "Classification"
-msgstr "Sailkapena"
+msgstr "Clasificación"
 
 #: tk/material/admin.py:63 tk/material/admin.py:84 tk/material/admin.py:105
 #: tk/material/admin.py:122
 msgid "Content"
-msgstr "Edukia"
+msgstr "Contenido"
 
 #: tk/material/models.py:16
 msgid "Subject"
-msgstr "Gaia"
+msgstr "Tema"
 
 #: tk/material/models.py:17
 msgid "Subjects"
-msgstr "Gaiak"
+msgstr "Temas"
 
 #: tk/material/models.py:19 tk/material/models.py:30 tk/material/models.py:41
 #: tk/material/models.py:52
 msgid "name"
-msgstr "izena"
+msgstr "nombre"
 
 #: tk/material/models.py:27
 msgid "Goal"
-msgstr "Helburua"
+msgstr "Objetivo"
 
 #: tk/material/models.py:28
 msgid "Goals"
-msgstr "Helburuak"
+msgstr "Objectivos"
 
 #: tk/material/models.py:38
 msgid "Group feature"
-msgstr "Talde ezaugarria"
+msgstr "Característica de grupo"
 
 #: tk/material/models.py:39
 msgid "Group features"
-msgstr "Talde ezaugarriak"
+msgstr "Características de grupo"
 
 #: tk/material/models.py:49
 msgid "Location"
-msgstr "Gune"
+msgstr "Ubicación"
 
 #: tk/material/models.py:50
 msgid "Locations"
-msgstr "Guneak"
+msgstr "Ubicación"
 
 #: tk/material/models.py:61
 msgid "Approvals"
-msgstr "Onarpenak"
+msgstr "Revisiones"
 
 #: tk/material/models.py:66
 msgid "created on"
-msgstr "sortua"
+msgstr "creado el"
 
 #: tk/material/models.py:67
 msgid "is approved"
-msgstr "onartua da"
+msgstr "está aprobado"
 
 #: tk/material/models.py:68
 msgid "comment"
-msgstr "iruzkina"
+msgstr "comentario"
 
 #: tk/material/models.py:69
 msgid "contact email"
-msgstr "kontakturako eposta"
+msgstr "correo electrónico de contacto"
 
 #: tk/material/models.py:73
 msgid "Approved: \"{}\""
-msgstr "Baietsia: \"{}\""
+msgstr "Aprobado: \"{}\""
 
 #: tk/material/models.py:74
 msgid "Unapproved: \"{}\""
-msgstr "Ezetsia: \"{}\""
+msgstr "Desaprobado: \"{}\""
 
 #: tk/material/models.py:92
 msgid "Materials"
-msgstr "Materialak"
+msgstr "Materiales"
 
 #: tk/material/models.py:94
 msgid "title"
-msgstr "izenburua"
+msgstr "título"
 
 #: tk/material/models.py:99
 msgid "subject"
-msgstr "gaia"
+msgstr "tema"
 
 #: tk/material/models.py:101
 msgid "brief"
-msgstr "deskribapena"
+msgstr "descripción"
 
 #: tk/material/models.py:102
 msgid "author"
-msgstr "egilea"
+msgstr "autor"
 
 #: tk/material/models.py:112 tk/templates/material/create_material.html:7
 msgid "Activity"
-msgstr "Dinamika"
+msgstr "Dinámica"
 
 #: tk/material/models.py:113
 msgid "Activities"
-msgstr "Dinamikak"
+msgstr "Dinámicas"
 
 #: tk/material/models.py:115
 msgid "goals"
-msgstr "helburuak"
+msgstr "objetivos"
 
 #: tk/material/models.py:118
 msgid "location"
-msgstr "gunea"
+msgstr "ubicación"
 
 #: tk/material/models.py:120 tk/material/models.py:170
 msgid "duration"
-msgstr "iraupena"
+msgstr "duración"
 
 #: tk/material/models.py:122
 msgid "minimum number of people"
-msgstr "gutxieneko pertsona kopurua"
+msgstr "mínimo número de personas"
 
 #: tk/material/models.py:124
 msgid "maximum number of people"
-msgstr "gehienezko pertsona kopurua"
+msgstr "máximo número de personas"
 
 #: tk/material/models.py:126
 msgid "group feature"
-msgstr "talde ezaugarria"
+msgstr "característica de grupo"
 
 #: tk/material/models.py:127
 msgid "notes"
-msgstr "oharrak"
+msgstr "notas"
 
 #: tk/material/models.py:129 tk/material/models.py:158
 #: tk/material/models.py:176
 msgid "attachment"
-msgstr "erantsia"
+msgstr "adjunto"
 
 #: tk/material/models.py:130 tk/material/models.py:159
 #: tk/material/models.py:177 tk/material/models.py:188
@@ -187,87 +187,87 @@ msgstr "URL"
 #: tk/material/models.py:131 tk/material/models.py:160
 #: tk/material/models.py:178
 msgid "Link the material if its copyright does not allow sharing it."
-msgstr "Materiala estekatu bere copyright-ak ez badu partekatzea baimentzen."
+msgstr "Enlaza el material si su copyright no permite compartirlo."
 
 #: tk/material/models.py:135
 msgid ""
 "The upper bound for the people involved in the activity cannot be less than "
 "the lower bound."
 msgstr ""
-"Dinamikan parte hartzen duten pertsonen gehienezko kopurua ezin da "
-"gutxienezkoa baina gutxiago izan."
+"El número máximo de personas que participan en la actividad no puede ser "
+"menos que el número mínimo."
 
 #: tk/material/models.py:142
 msgid "That year is still in the future."
-msgstr "Urte hori oraindik etorkizuna da."
+msgstr "Ese año todavía está en el futuro."
 
 #: tk/material/models.py:150 tk/templates/material/create_material.html:29
 msgid "Reading"
-msgstr "Irakurgarria"
+msgstr "Lectura"
 
 #: tk/material/models.py:151
 msgid "Readings"
-msgstr "Irakurgarriak"
+msgstr "Lecturas"
 
 #: tk/material/models.py:153
 msgid "pages"
-msgstr "orrialdeak"
+msgstr "páginas"
 
 #: tk/material/models.py:155 tk/material/models.py:172
 msgid "year"
-msgstr "urtea"
+msgstr "año"
 
 #: tk/material/models.py:156
 msgid "languages"
-msgstr "hizkuntzak"
+msgstr "idiomas"
 
 #: tk/material/models.py:167 tk/templates/material/create_material.html:18
 msgid "Video"
-msgstr "Bideoa"
+msgstr "Video"
 
 #: tk/material/models.py:168
 msgid "Videos"
-msgstr "Bideoak"
+msgstr "Videos"
 
 #: tk/material/models.py:173
 msgid "audio languages"
-msgstr "audioen hizkuntzak"
+msgstr "idiomas de los audios"
 
 #: tk/material/models.py:174
 msgid "subtitle languages"
-msgstr "azpitituloen hizkuntzak"
+msgstr "idiomas de los subtítulos"
 
 #: tk/material/models.py:185 tk/templates/material/create_material.html:40
 msgid "Link"
-msgstr "Esteka"
+msgstr "Enlace"
 
 #: tk/material/models.py:186
 msgid "Links"
-msgstr "Estekak"
+msgstr "Enlaces"
 
 #: tk/templates/admin/tk_index.html:23
 msgid "Add"
-msgstr "Gehitu"
+msgstr "Añadir"
 
 #: tk/templates/admin/tk_index.html:29
 msgid "Change"
-msgstr "Aldatu"
+msgstr "Cambiar"
 
 #: tk/templates/admin/tk_index.html:39
 msgid "You don't have permission to edit anything."
-msgstr "Ez duzu ezer aldatzeko baimenik."
+msgstr "No tienes permiso para editar nada."
 
 #: tk/templates/admin/tk_index.html:47
 msgid "Help"
-msgstr "Laguntza"
+msgstr "Ayuda"
 
 #: tk/templates/admin/tk_index.html:50
 msgid "Developer contact"
-msgstr "Garatzaileen kontaktua"
+msgstr "Contacta el equipo de desarrollo"
 
 #: tk/templates/base.html:12
 msgid "Submit material"
-msgstr "Materiala igorri"
+msgstr "Enviar material"
 
 #: tk/templates/markdownx/widget2.html:2
 msgid ""
@@ -276,12 +276,12 @@ msgid ""
 "You can add images by dropping them within the box.\n"
 msgstr ""
 "\n"
-"<a href=\"http://commonmark.org/help/\">Markdown</a> erabiliz formateatua.\n"
-"Irudiak kaxara eramanez gehitu ditzazkezu.\n"
+"Formateado usando <a href=\"http://commonmark.org/help/\">Markdown</a>.\n"
+"Puedes añadir imágenes arrastrándolas a la caja.\n"
 
 #: tk/templates/material/create_material.html:14
 #: tk/templates/material/create_material.html:25
 #: tk/templates/material/create_material.html:36
 #: tk/templates/material/create_material.html:47
 msgid "Submit"
-msgstr "Bidali"
+msgstr "Enviar"
