@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
 from django.db.models import CharField
-from django.utils.translation import ugettext as _
 
 from localized_fields.fields import LocalizedField, LocalizedUniqueSlugField
 
