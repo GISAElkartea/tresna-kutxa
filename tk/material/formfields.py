@@ -15,21 +15,5 @@ class AdminLocalizedMarkdownxWidget(AdminLocalizedFieldWidget):
     widget = AdminMarkdownxWidget
 
 
-class AnyLocalizedFormField(LocalizedFieldForm):
-    def __init__(self, *args, **kwargs):
-        fields = []
-
-        for lang_code, _ in settings.LANGUAGES:
-            field_options = {'required': False, 'label': lang_code}
-            fields.append(forms.fields.CharField(**field_options))
-
-        # Shortcircuit LocalizedFieldForm.__init__
-        super(LocalizedFieldForm, self).__init__(fields, *args, **kwargs)
-
-        # Set 'required' attribute for each widget separately
-        for f, w in zip(self.fields, self.widget.widgets):
-            w.is_required = f.required
-
-
-class AnyLocalizedMarkdownxFormField(AnyLocalizedFormField):
+class LocalizedMarkdownxFormField(LocalizedFieldForm):
     widget = LocalizedMarkdownxWidget
