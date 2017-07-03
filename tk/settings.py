@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django.contrib.postgres',
     'localized_fields.apps.LocalizedFieldsConfig',
+    'captcha',
 
     'tk.material.apps.MaterialConfig',
 ]

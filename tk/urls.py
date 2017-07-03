@@ -15,6 +15,7 @@ localized = [
 
 
 urlpatterns = i18n_patterns(*localized) + [
+    url(r'^captcha/', include('captcha.urls')),
     url(r'^admin/', tkadmin.urls),
     url(r'^markdownx/', include('markdownx.urls')),
 ]
