@@ -4,7 +4,13 @@
   <head>
   </head>
   <body>
+    {% get_available_languages as languages %}
+    {% for lang_code, lang_name in languages %}
+    <a href="{% translate_url lang_code %}">{{ lang_code }}</a>
+    {% endfor %}
+
     <a href="{% url 'material:create-material' %}">{% trans 'Submit material' %}</a>
+
     {% block content %}
     {% endblock content %}
   </body>
