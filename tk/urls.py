@@ -1,18 +1,22 @@
 from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 
 from .admin import tkadmin
 
-urlpatterns = [
-        url(r'^$', TemplateView.as_view(template_name='base.html'), name='frontpage'),
 
-        url(r'^material/', include('tk.material.urls')),
+localized = [
+    url(r'^$', TemplateView.as_view(template_name='base.html'), name='frontpage'),
+    url(r'^material/', include('tk.material.urls')),
+]
 
-        url(r'^admin/', tkadmin.urls),
-        url(r'^markdownx/', include('markdownx.urls')),
+
+urlpatterns = i18n_patterns(*localized) + [
+    url(r'^admin/', tkadmin.urls),
+    url(r'^markdownx/', include('markdownx.urls')),
 ]
 
 
