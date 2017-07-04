@@ -13,6 +13,7 @@ from .fields import LanguageField, LocalizedField, LocalizedMarkdownxField
 
 class Subject(models.Model):
     class Meta:
+        ordering = ['name']
         verbose_name = _("Subject")
         verbose_name_plural = _("Subjects")
 
@@ -24,6 +25,7 @@ class Subject(models.Model):
 
 class Goal(models.Model):
     class Meta:
+        ordering = ['name']
         verbose_name = _("Goal")
         verbose_name_plural = _("Goals")
 
@@ -35,6 +37,7 @@ class Goal(models.Model):
 
 class GroupFeature(models.Model):
     class Meta:
+        ordering = ['name']
         verbose_name = _("Group feature")
         verbose_name_plural = _("Group features")
 
@@ -46,6 +49,7 @@ class GroupFeature(models.Model):
 
 class Location(models.Model):
     class Meta:
+        ordering = ['name']
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
 
@@ -57,6 +61,7 @@ class Location(models.Model):
 
 class Approval(models.Model):
     class Meta:
+        ordering = ['-requested']
         verbose_name = _("Approval")
         verbose_name_plural = _("Approvals")
 
