@@ -129,7 +129,7 @@ class Activity(Material):
             verbose_name=_("maximum number of people"))
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("group feature"))
-    notes = LocalizedField(blank=True, verbose_name=_("notes"))
+    notes = LocalizedField(null=True, blank=True, verbose_name=_("notes"))
     attachment = models.FileField(upload_to='material/activities/', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
