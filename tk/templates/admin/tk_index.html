@@ -44,7 +44,31 @@
 {% block sidebar %}
 <div id="content-related">
   <div class="module">
-    <h2>{% trans 'Help' %}</h1>
+    <h2>{% trans 'Approval requests' %}</h2>
+    <p>
+      {% with since=request.user.last_login|date:"Y-m-d" %}
+      <a href="{% url 'admin:material_approval_changelist' %}?requested__gte={{ since }}">
+        {% blocktrans count counter=approvals_new.count %}
+          {{ counter }} new approval request.
+          {% plural %}
+          {{ counter }} new approval requests.
+          {% endblocktrans %}
+      </a>
+      {% endwith %}
+    </p>
+    <p>
+      <a href="{% url 'admin:material_approval_changelist' %}?approved__exact=0">
+        {% blocktrans count counter=approvals_unapproved.count %}
+          {{ counter }} unapproved approval request.
+          {% plural %}
+          {{ counter }} unapproved approval requests.
+          {% endblocktrans %}
+      </a>
+    </p>
+  </div>
+
+  <div class="module">
+    <h2>{% trans 'Help' %}</h2>
     <ul>
       <li>
         <a href="mailto:unai@gisa-elkartea.org">{% trans 'Developer contact' %}</a>

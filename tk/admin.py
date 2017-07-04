@@ -1,7 +1,10 @@
 from collections import OrderedDict
 
-from django.utils.translation import ugettext_lazy as _
+from django.apps import apps
 from django.contrib.admin import AdminSite
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.utils.translation import ugettext_lazy as _
 
 from tk.material import admin as ma
 from tk.material import models as mo
@@ -16,9 +19,6 @@ class TKAdmin(AdminSite):
                 'material.Video',
                 'material.Reading',
                 'material.Link',
-            ]),
-            (_("Approval requests"), [
-                'material.Approval',
             ]),
             (_("Material classification"), [
                 'material.Subject',
@@ -48,6 +48,24 @@ class TKAdmin(AdminSite):
                 for m in a['models']:
                     if m['object_name'] == model_name:
                         return m
+
+    def index(self, request, extra_context=None):
+        if extra_context is None:
+            extra_context = {}
+
+        # Add notifications about pending approval requests
+        Approval = apps.get_model('material', 'Approval')
+        extra_context['approvals_new'] = Approval.objects.filter(
+                requested__gte=request.user.last_login)
+        extra_context['approvals_unapproved'] = Approval.objects.filter(
+                approved=False)
+
+        return super().index(request, extra_context)
+
+    def app_index(self, request, app_label, extra_context=None):
+        # Disallow app indices: redirect to main index
+        index_path = reverse('admin:index', current_app=self.name)
+        return HttpResponseRedirect(index_path)
 
 
 tkadmin = TKAdmin()
