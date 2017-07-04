@@ -94,4 +94,4 @@ ENV/
 .ropeproject
 
 # Django
-media
+.media
