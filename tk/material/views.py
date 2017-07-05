@@ -1,6 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotAllowed
-from django.views.generic.detail import DetailView
+from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 
@@ -77,17 +77,26 @@ class ListMaterial(ListView):
     queryset = Material.objects.approved()
 
 
-class DetailActivity(DetailView):
+class LocalizedSlugMixin(SingleObjectMixin):
+    def get_slug_field(self):
+        slug_field = super().get_slug_field()
+        lang_code = getattr(self.request, 'LANGUAGE_CODE', None)
+        if lang_code is not None:
+            return '{}__{}'.format(slug_field, lang_code)
+        return slug_field
+
+
+class DetailActivity(LocalizedSlugMixin, DetailView):
     queryset = Activity.objects.approved()
 
 
-class DetailVideo(DetailView):
+class DetailVideo(LocalizedSlugMixin, DetailView):
     queryset = Video.objects.approved()
 
 
-class DetailReading(DetailView):
+class DetailReading(LocalizedSlugMixin, DetailView):
     queryset = Reading.objects.approved()
 
 
-class DetailLink(DetailView):
+class DetailLink(LocalizedSlugMixin, DetailView):
     queryset = Link.objects.approved()
