@@ -1,6 +1,7 @@
 import datetime
 
 from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import Subquery, Q
 from django.utils.translation import ugettext_lazy as _
@@ -108,6 +109,11 @@ class Material(LocalizedModel):
     def __str__(self):
         return str(self.title)
 
+    def get_absolute_url(self):
+        for related in ['activity', 'reading', 'video', 'link']:
+            if hasattr(self, related):
+                return getattr(self, related).get_absolute_url()
+
 
 class Activity(Material):
     objects = ApprovedQuerySet.as_manager()
@@ -140,6 +146,9 @@ class Activity(Material):
                 "in the activity cannot be less than the lower bound."),
                 code='invalid')
 
+    def get_absolute_url(self):
+        return reverse('material:detail-activity', kwargs={'slug': self.slug})
+
 
 def validate_year(year):
     if datetime.date.today().year < year:
@@ -163,6 +172,9 @@ class Reading(Material):
     url = models.URLField(blank=True, verbose_name=_("URL"),
             help_text=_("Link the material if its copyright does not allow sharing it."))
 
+    def get_absolute_url(self):
+        return reverse('material:detail-reading', kwargs={'slug': self.slug})
+
 
 class Video(Material):
     objects = ApprovedQuerySet.as_manager()
@@ -181,6 +193,9 @@ class Video(Material):
     url = models.URLField(blank=True, verbose_name=_("URL"),
             help_text=_("Link the material if its copyright does not allow sharing it."))
 
+    def get_absolute_url(self):
+        return reverse('material:detail-video', kwargs={'slug': self.slug})
+
 
 class Link(Material):
     objects = ApprovedQuerySet.as_manager()
@@ -190,3 +205,6 @@ class Link(Material):
         verbose_name_plural = _("Links")
 
     url = models.URLField(verbose_name=_("URL"))
+
+    def get_absolute_url(self):
+        return reverse('material:detail-link', kwargs={'slug': self.slug})
