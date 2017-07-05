@@ -47,7 +47,7 @@
     <h2>{% trans 'Approval requests' %}</h2>
     <p>
       {% with since=request.user.last_login|date:"Y-m-d" %}
-      <a href="{% url 'admin:material_approval_changelist' %}?requested__gte={{ since }}">
+      <a href="{% url 'admin:material_approval_changelist' %}?approved__exact=0&requested__gte={{ since }}">
         {% blocktrans count counter=approvals_new.count %}
           {{ counter }} new approval request.
           {% plural %}
@@ -63,6 +63,11 @@
           {% plural %}
           {{ counter }} unapproved approval requests.
           {% endblocktrans %}
+      </a>
+    </p>
+    <p>
+      <a href="{% url 'admin:material_approval_changelist' %}">
+        {% trans 'All approval requests.' %}
       </a>
     </p>
   </div>
