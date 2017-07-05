@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-04 21:46+0200\n"
+"POT-Creation-Date: 2017-07-05 20:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "TK admin"
 msgstr "TK kudeaketa"
 
-#: tk/admin.py:17 tk/material/admin.py:38 tk/material/models.py:96
+#: tk/admin.py:17 tk/material/admin.py:38 tk/material/models.py:98
 msgid "Material"
 msgstr "Materiala"
 
@@ -30,7 +30,7 @@ msgstr "Materiala"
 msgid "Material classification"
 msgstr "Materialaren sailkapena"
 
-#: tk/material/admin.py:47 tk/material/models.py:65
+#: tk/material/admin.py:47 tk/material/models.py:67
 msgid "Approval"
 msgstr "Onarpena"
 
@@ -49,143 +49,143 @@ msgstr "Sailkapena"
 msgid "Content"
 msgstr "Edukia"
 
-#: tk/material/models.py:17
+#: tk/material/models.py:19
 msgid "Subject"
 msgstr "Gaia"
 
-#: tk/material/models.py:18
+#: tk/material/models.py:20
 msgid "Subjects"
 msgstr "Gaiak"
 
-#: tk/material/models.py:20 tk/material/models.py:32 tk/material/models.py:44
-#: tk/material/models.py:56
+#: tk/material/models.py:22 tk/material/models.py:34 tk/material/models.py:46
+#: tk/material/models.py:58
 msgid "name"
 msgstr "izena"
 
-#: tk/material/models.py:29
+#: tk/material/models.py:31
 msgid "Goal"
 msgstr "Helburua"
 
-#: tk/material/models.py:30
+#: tk/material/models.py:32
 msgid "Goals"
 msgstr "Helburuak"
 
-#: tk/material/models.py:41
+#: tk/material/models.py:43
 msgid "Group feature"
 msgstr "Talde ezaugarria"
 
-#: tk/material/models.py:42
+#: tk/material/models.py:44
 msgid "Group features"
 msgstr "Talde ezaugarriak"
 
-#: tk/material/models.py:53
+#: tk/material/models.py:55
 msgid "Location"
 msgstr "Gune"
 
-#: tk/material/models.py:54
+#: tk/material/models.py:56
 msgid "Locations"
 msgstr "Guneak"
 
-#: tk/material/models.py:66
+#: tk/material/models.py:68
 msgid "Approvals"
 msgstr "Onarpenak"
 
-#: tk/material/models.py:71
+#: tk/material/models.py:73
 msgid "created on"
 msgstr "sortua"
 
-#: tk/material/models.py:72
+#: tk/material/models.py:74
 msgid "is approved"
 msgstr "onartua da"
 
-#: tk/material/models.py:73
+#: tk/material/models.py:75
 msgid "comment"
 msgstr "iruzkina"
 
-#: tk/material/models.py:74
+#: tk/material/models.py:76
 msgid "contact email"
 msgstr "kontakturako eposta"
 
-#: tk/material/models.py:78
+#: tk/material/models.py:80
 msgid "Approved: \"{}\""
 msgstr "Baietsia: \"{}\""
 
-#: tk/material/models.py:79
+#: tk/material/models.py:81
 msgid "Unapproved: \"{}\""
 msgstr "Ezetsia: \"{}\""
 
-#: tk/material/models.py:97
+#: tk/material/models.py:99
 msgid "Materials"
 msgstr "Materialak"
 
-#: tk/material/models.py:99
+#: tk/material/models.py:101
 msgid "title"
 msgstr "izenburua"
 
-#: tk/material/models.py:104
+#: tk/material/models.py:105
 msgid "subject"
 msgstr "gaia"
 
-#: tk/material/models.py:106
+#: tk/material/models.py:107
 msgid "brief"
 msgstr "deskribapena"
 
-#: tk/material/models.py:107
+#: tk/material/models.py:108
 msgid "author"
 msgstr "egilea"
 
-#: tk/material/models.py:117 tk/templates/material/create_material.html:7
+#: tk/material/models.py:123 tk/templates/material/create_material.html:7
 msgid "Activity"
 msgstr "Dinamika"
 
-#: tk/material/models.py:118
+#: tk/material/models.py:124
 msgid "Activities"
 msgstr "Dinamikak"
 
-#: tk/material/models.py:120
+#: tk/material/models.py:126
 msgid "goals"
 msgstr "helburuak"
 
-#: tk/material/models.py:123
+#: tk/material/models.py:129
 msgid "location"
 msgstr "gunea"
 
-#: tk/material/models.py:125 tk/material/models.py:175
+#: tk/material/models.py:131 tk/material/models.py:187
 msgid "duration"
 msgstr "iraupena"
 
-#: tk/material/models.py:127
+#: tk/material/models.py:133
 msgid "minimum number of people"
 msgstr "gutxieneko pertsona kopurua"
 
-#: tk/material/models.py:129
+#: tk/material/models.py:135
 msgid "maximum number of people"
 msgstr "gehienezko pertsona kopurua"
 
-#: tk/material/models.py:131
+#: tk/material/models.py:137
 msgid "group feature"
 msgstr "talde ezaugarria"
 
-#: tk/material/models.py:132
+#: tk/material/models.py:138
 msgid "notes"
 msgstr "oharrak"
 
-#: tk/material/models.py:134 tk/material/models.py:163
-#: tk/material/models.py:181
+#: tk/material/models.py:140 tk/material/models.py:172
+#: tk/material/models.py:193
 msgid "attachment"
 msgstr "erantsia"
 
-#: tk/material/models.py:135 tk/material/models.py:164
-#: tk/material/models.py:182 tk/material/models.py:193
+#: tk/material/models.py:141 tk/material/models.py:173
+#: tk/material/models.py:194 tk/material/models.py:208
 msgid "URL"
 msgstr "URL"
 
-#: tk/material/models.py:136 tk/material/models.py:165
-#: tk/material/models.py:183
+#: tk/material/models.py:142 tk/material/models.py:174
+#: tk/material/models.py:195
 msgid "Link the material if its copyright does not allow sharing it."
 msgstr "Materiala estekatu bere copyright-ak ez badu partekatzea baimentzen."
 
-#: tk/material/models.py:140
+#: tk/material/models.py:146
 msgid ""
 "The upper bound for the people involved in the activity cannot be less than "
 "the lower bound."
@@ -193,51 +193,51 @@ msgstr ""
 "Dinamikan parte hartzen duten pertsonen gehienezko kopurua ezin da "
 "gutxienezkoa baina gutxiago izan."
 
-#: tk/material/models.py:147
+#: tk/material/models.py:156
 msgid "That year is still in the future."
 msgstr "Urte hori oraindik etorkizuna da."
 
-#: tk/material/models.py:155 tk/templates/material/create_material.html:29
+#: tk/material/models.py:164 tk/templates/material/create_material.html:29
 msgid "Reading"
 msgstr "Irakurgarria"
 
-#: tk/material/models.py:156
+#: tk/material/models.py:165
 msgid "Readings"
 msgstr "Irakurgarriak"
 
-#: tk/material/models.py:158
+#: tk/material/models.py:167
 msgid "pages"
 msgstr "orrialdeak"
 
-#: tk/material/models.py:160 tk/material/models.py:177
+#: tk/material/models.py:169 tk/material/models.py:189
 msgid "year"
 msgstr "urtea"
 
-#: tk/material/models.py:161
+#: tk/material/models.py:170
 msgid "languages"
 msgstr "hizkuntzak"
 
-#: tk/material/models.py:172 tk/templates/material/create_material.html:18
+#: tk/material/models.py:184 tk/templates/material/create_material.html:18
 msgid "Video"
 msgstr "Bideoa"
 
-#: tk/material/models.py:173
+#: tk/material/models.py:185
 msgid "Videos"
 msgstr "Bideoak"
 
-#: tk/material/models.py:178
+#: tk/material/models.py:190
 msgid "audio languages"
 msgstr "audioen hizkuntzak"
 
-#: tk/material/models.py:179
+#: tk/material/models.py:191
 msgid "subtitle languages"
 msgstr "azpitituloen hizkuntzak"
 
-#: tk/material/models.py:190 tk/templates/material/create_material.html:40
+#: tk/material/models.py:205 tk/templates/material/create_material.html:40
 msgid "Link"
 msgstr "Esteka"
 
-#: tk/material/models.py:191
+#: tk/material/models.py:206
 msgid "Links"
 msgstr "Estekak"
 
@@ -295,15 +295,23 @@ msgstr[1] ""
 "          %(counter)s ezetsitako onarpen eskari.\n"
 "          "
 
-#: tk/templates/admin/tk_index.html:71
+#: tk/templates/admin/tk_index.html:70
+msgid "All approval requests."
+msgstr "Onarpen eskaera guztiak"
+
+#: tk/templates/admin/tk_index.html:76
 msgid "Help"
 msgstr "Laguntza"
 
-#: tk/templates/admin/tk_index.html:74
+#: tk/templates/admin/tk_index.html:79
 msgid "Developer contact"
 msgstr "Garatzaileen kontaktua"
 
-#: tk/templates/base.html:12
+#: tk/templates/base.html:16
+msgid "List material"
+msgstr "Materiala zerrendatu"
+
+#: tk/templates/base.html:17
 msgid "Submit material"
 msgstr "Materiala igorri"
 
