@@ -7,9 +7,10 @@ from django.db.models import Subquery, Q
 from django.utils.translation import ugettext_lazy as _
 
 from localized_fields.models import LocalizedModel
-from localized_fields.fields import LocalizedUniqueSlugField
+from localized_fields.fields import (
+        LocalizedCharField, LocalizedTextField, LocalizedUniqueSlugField)
 
-from .fields import LanguageField, LocalizedField, LocalizedMarkdownxField
+from .fields import LanguageField, LocalizedMarkdownxTextField
 
 
 class Subject(models.Model):
@@ -18,7 +19,7 @@ class Subject(models.Model):
         verbose_name = _("Subject")
         verbose_name_plural = _("Subjects")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -30,7 +31,7 @@ class Goal(models.Model):
         verbose_name = _("Goal")
         verbose_name_plural = _("Goals")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -42,7 +43,7 @@ class GroupFeature(models.Model):
         verbose_name = _("Group feature")
         verbose_name_plural = _("Group features")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -54,7 +55,7 @@ class Location(models.Model):
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
 
-    name = LocalizedField(max_length=512, verbose_name=_("name"))
+    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
 
     def __str__(self):
         return str(self.name)
@@ -97,13 +98,13 @@ class Material(LocalizedModel):
         verbose_name = _("Material")
         verbose_name_plural = _("Materials")
 
-    title = LocalizedField(max_length=512, verbose_name=_("title"))
+    title = LocalizedCharField(max_length=512, verbose_name=_("title"))
     slug = LocalizedUniqueSlugField(populate_from='title')
 
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
     # TODO: Creation date
-    brief = LocalizedMarkdownxField(blank=True, verbose_name=_("brief"))
+    brief = LocalizedMarkdownxTextField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
     def __str__(self):
@@ -134,7 +135,7 @@ class Activity(Material):
             verbose_name=_("maximum number of people"))
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("group feature"))
-    notes = LocalizedField(null=True, blank=True, verbose_name=_("notes"))
+    notes = LocalizedTextField(null=True, blank=True, verbose_name=_("notes"))
     attachment = models.FileField(upload_to='material/activities/', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),

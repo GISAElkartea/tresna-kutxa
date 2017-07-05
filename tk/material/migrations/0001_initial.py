@@ -10,6 +10,11 @@ import localized_fields.mixins
 import tk.material.fields
 import tk.material.models
 
+try:
+    from tk.material.fields import LocalizedMarkdownxTextField
+except ImportError:
+    from tk.material.fields import LocalizedMarkdownxField as LocalizedMarkdownxTextField
+
 
 class Migration(migrations.Migration):
 
@@ -72,7 +77,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', localized_fields.fields.field.LocalizedField(max_length=512, required=[], uniqueness=[], verbose_name='title')),
                 ('slug', localized_fields.fields.uniqueslug_field.LocalizedUniqueSlugField(include_time=False, populate_from='title', required=[], uniqueness=['eu', 'es'])),
-                ('brief', tk.material.fields.LocalizedMarkdownxField(blank=True, required=[], uniqueness=[], verbose_name='brief')),
+                ('brief', LocalizedMarkdownxTextField(blank=True, required=[], uniqueness=[], verbose_name='brief')),
                 ('author', models.CharField(blank=True, max_length=512, verbose_name='author')),
             ],
             options={

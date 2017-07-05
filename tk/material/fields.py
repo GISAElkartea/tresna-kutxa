@@ -5,12 +5,12 @@ from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
 from django.db.models import CharField
 
-from localized_fields.fields import LocalizedField, LocalizedUniqueSlugField
+from localized_fields.fields import LocalizedTextField, LocalizedUniqueSlugField
 
 from .formfields import LocalizedMarkdownxFormField
 
 
-class LocalizedMarkdownxField(LocalizedField):
+class LocalizedMarkdownxTextField(LocalizedTextField):
     def formfield(self, **kwargs):
         defaults = {'form_class': LocalizedMarkdownxFormField}
         defaults.update(kwargs)
