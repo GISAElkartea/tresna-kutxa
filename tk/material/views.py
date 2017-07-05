@@ -1,9 +1,10 @@
-from django.views.generic.edit import FormView
-from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotAllowed
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
 
-from .models import Activity, Video, Reading, Link
+from .models import Material, Activity, Video, Reading, Link
 from .forms import ApprovalEmailForm, ActivityForm, VideoForm, ReadingForm, LinkForm
 
 
@@ -70,6 +71,10 @@ class CreateMaterial(FormView):
 
     def get_success_url(self):
         return reverse('frontpage')
+
+
+class ListMaterial(ListView):
+    queryset = Material.objects.approved()
 
 
 class DetailActivity(DetailView):

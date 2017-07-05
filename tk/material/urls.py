@@ -6,6 +6,7 @@ slug = r'(?P<slug>(\w|-)+)'
 mat_type = r'(?P<type>\w+)'
 
 urlpatterns = [url('', include([
+    url(r'^$', ListMaterial.as_view(), name='list-material'),
     url(r'^submit/(?:{}/)?$'.format(mat_type), CreateMaterial.as_view(), name='create-material'),
 
     url(r'^activity/{}/$'.format(slug), DetailActivity.as_view(), name='detail-activity'),
