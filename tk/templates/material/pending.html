@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+  {% blocktrans with slug=object.slug%}
+  <p>The unique identifier for your submission is: <code>{{ slug }}</code></p>
+  <p>Thanks for your addition. We will review it as soon as possible.</p>
+  <p>In case you provided us with your email addresss we will use it if we need
+  to discuss any changes we may need to make to your submission.</p>
+  {% endblocktrans %}
+{% endblock content %}

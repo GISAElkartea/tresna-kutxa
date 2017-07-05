@@ -1,5 +1,5 @@
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseNotAllowed
+from django.http import HttpResponseNotAllowed, HttpResponseRedirect
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
@@ -70,7 +70,7 @@ class CreateMaterial(FormView):
         return super().get_context_data(**ctxt)
 
     def get_success_url(self):
-        return reverse('frontpage')
+        return self.object.get_absolute_url()
 
 
 class ListMaterial(ListView):
@@ -86,17 +86,25 @@ class LocalizedSlugMixin(SingleObjectMixin):
         return slug_field
 
 
-class DetailActivity(LocalizedSlugMixin, DetailView):
-    queryset = Activity.objects.approved()
+class PendingApprovalMixin():
+    def get_template_names(self):
+        # No longer pending approval
+        if getattr(self.object.approval, 'approved', True):
+            return super().get_template_names()
+        return ['material/pending.html']
 
 
-class DetailVideo(LocalizedSlugMixin, DetailView):
-    queryset = Video.objects.approved()
+class DetailActivity(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Activity
 
 
-class DetailReading(LocalizedSlugMixin, DetailView):
-    queryset = Reading.objects.approved()
+class DetailVideo(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Video
 
 
-class DetailLink(LocalizedSlugMixin, DetailView):
-    queryset = Link.objects.approved()
+class DetailReading(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Reading
+
+
+class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Link
