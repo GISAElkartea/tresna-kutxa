@@ -99,7 +99,6 @@ class Material(LocalizedModel):
     title = LocalizedField(max_length=512, verbose_name=_("title"))
     slug = LocalizedUniqueSlugField(populate_from='title')
 
-    # TODO: Required in all forms but activity forms
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
     # TODO: Creation date

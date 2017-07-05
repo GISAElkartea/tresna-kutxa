@@ -19,6 +19,10 @@ class ActivityForm(ModelForm):
         localized_fields = ['duration']  # TODO: Check
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['subject'].required = False
+
 
 class VideoForm(ModelForm):
     captcha = CaptchaField()
