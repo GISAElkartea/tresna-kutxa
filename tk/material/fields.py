@@ -1,3 +1,4 @@
+from itertools import tee, filterfalse
 from operator import itemgetter
 
 from django import forms
@@ -24,13 +25,22 @@ class LocalizedMarkdownxTextField(LocalizedTextField):
 
 class LanguageField(ArrayField):
     def __init__(self, *args, **kwargs):
+        self.limit_to = kwargs.pop('limit_to', [])
+        self.prioritize = kwargs.pop('prioritize', [])
         defaults = {'base_field': CharField(max_length=7)}
         defaults.update(kwargs)
         return super().__init__(*args, **defaults)
 
     def get_languages(self):
-        ls = [(lc, _(ln)) for (lc, ln) in global_settings.LANGUAGES]
-        return sorted(ls, key=itemgetter(1))
+        ls = ((c, _(n)) for (c, n) in global_settings.LANGUAGES)
+        if self.limit_to:
+            ls = ((c, n) for (c, n) in ls if c in self.limit_to)
+        ls = sorted(ls, key=itemgetter(1))
+        if self.prioritize:
+            pred = lambda l: l[0] in self.prioritize
+            lst, lsf = tee(ls)
+            ls = list(filter(pred, lst)) + list(filterfalse(pred, lsf))
+        return ls
 
     def formfield(self, **kwargs):
         defaults = {

@@ -13,6 +13,9 @@ from localized_fields.fields import (
 from .fields import LanguageField, LocalizedMarkdownxTextField
 
 
+COMMON_LANGUAGES = ['eu', 'es', 'fr', 'en']
+
+
 class Subject(models.Model):
     class Meta:
         ordering = ['name']
@@ -167,7 +170,7 @@ class Reading(Material):
     pages = models.PositiveIntegerField(null=True, blank=True, verbose_name=_("pages"))
     year = models.PositiveIntegerField(blank=True, null=True,
             validators=[validate_year], verbose_name=_("year"))
-    languages = LanguageField(verbose_name=_("languages"))
+    languages = LanguageField(limit_to=COMMON_LANGUAGES, verbose_name=_("languages"))
     attachment = models.FileField(upload_to='material/readings/', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
@@ -187,8 +190,10 @@ class Video(Material):
     duration = models.DurationField(null=True, blank=True, verbose_name=_("duration"))
     year = models.PositiveIntegerField(null=True, blank=True,
             validators=[validate_year], verbose_name=_("year"))
-    audios = LanguageField(blank=True, verbose_name=_("audio languages"))
-    subtitles = LanguageField(blank=True, verbose_name=_("subtitle languages"))
+    audios = LanguageField(blank=True, prioritize=COMMON_LANGUAGES,
+            verbose_name=_("audio languages"))
+    subtitles = LanguageField(blank=True, limit_to=COMMON_LANGUAGES,
+            verbose_name=_("subtitle languages"))
     attachment = models.FileField(upload_to='material/videos', blank=True,
             verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
