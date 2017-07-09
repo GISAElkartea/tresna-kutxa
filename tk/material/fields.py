@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
 from django.db.models import CharField
+from django.utils.translation import ugettext_lazy as _
 
 from localized_fields.fields import LocalizedTextField, LocalizedUniqueSlugField
 
@@ -25,10 +26,14 @@ class LanguageField(ArrayField):
         defaults.update(kwargs)
         return super().__init__(*args, **defaults)
 
+    def get_languages(self):
+        for (lang_code, lang_func) in global_settings.LANGUAGES:
+            yield lang_code, _(lang_func)
+
     def formfield(self, **kwargs):
         defaults = {
             'form_class': forms.MultipleChoiceField,
-            'choices': global_settings.LANGUAGES,
+            'choices': self.get_languages()
         }
         defaults.update(kwargs)
         # Skip our parent's formfield implementation completely as we don't care for it.
