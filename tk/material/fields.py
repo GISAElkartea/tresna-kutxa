@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 from django import forms
 from django.conf import global_settings
 from django.conf import settings
@@ -27,8 +29,8 @@ class LanguageField(ArrayField):
         return super().__init__(*args, **defaults)
 
     def get_languages(self):
-        for (lang_code, lang_func) in global_settings.LANGUAGES:
-            yield lang_code, _(lang_func)
+        ls = [(lc, _(ln)) for (lc, ln) in global_settings.LANGUAGES]
+        return sorted(ls, key=itemgetter(1))
 
     def formfield(self, **kwargs):
         defaults = {
