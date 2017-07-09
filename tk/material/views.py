@@ -88,10 +88,9 @@ class LocalizedSlugMixin(SingleObjectMixin):
 
 class PendingApprovalMixin():
     def get_template_names(self):
-        # No longer pending approval
-        if getattr(self.object.approval, 'approved', True):
-            return super().get_template_names()
-        return ['material/pending.html']
+        if hasattr(self.object, 'approval') and not self.object.approval.approved:
+            return ['material/pending.html']
+        return super().get_template_names()
 
 
 class DetailActivity(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
