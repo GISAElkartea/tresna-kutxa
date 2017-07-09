@@ -6,9 +6,12 @@ from django.templatetags.i18n import register
 
 @register.simple_tag(takes_context=True)
 def translate_url(context, language):
+    if hasattr(context.get('object', None), 'get_absolute_url'):
+        with translation.override(language):
+            return context['object'].get_absolute_url()
+
     view = resolve(context['request'].path)
     args = [a for a in view.args if a is not None]
     kwargs = {k:v for k,v in view.kwargs.items() if v is not None}
     with translation.override(language):
-        url = reverse(view.view_name, args=args, kwargs=kwargs)
-    return url
+        return reverse(view.view_name, args=args, kwargs=kwargs)
