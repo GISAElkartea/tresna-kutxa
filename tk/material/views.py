@@ -4,6 +4,8 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 
+from watson import search as watson
+
 from .models import Material, Activity, Video, Reading, Link
 from .forms import ApprovalEmailForm, ActivityForm, VideoForm, ReadingForm, LinkForm
 
@@ -73,10 +75,6 @@ class CreateMaterial(FormView):
         return self.object.get_absolute_url()
 
 
-class ListMaterial(ListView):
-    queryset = Material.objects.approved()
-
-
 class LocalizedSlugMixin(SingleObjectMixin):
     def get_slug_field(self):
         slug_field = super().get_slug_field()
@@ -107,3 +105,14 @@ class DetailReading(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
 
 class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
+
+
+class SearchMaterial(ListView):
+    template_name = 'material/material_search.html'
+    query_param = 'q'
+
+    def get_query(self):
+        return self.request.GET.get(self.query_param, '').strip()
+
+    def get_queryset(self):
+        return watson.filter(Material.objects.approved(), self.get_query())
