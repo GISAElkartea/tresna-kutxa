@@ -17,10 +17,10 @@ class LocalizedAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
 class ApprovalAdmin(admin.ModelAdmin):
     # TODO: Delete related material action
     # TODO: Approve action or button?
-    list_filter = ['requested', 'approved']
-    list_display = ['__str__', 'requested', 'email', 'approved']
-    fields = [('requested', 'email'), 'approved', 'material_link', 'comment']
-    readonly_fields = ['requested', 'email', 'material_link']
+    list_filter = ['timestamp', 'approved']
+    list_display = ['__str__', 'timestamp', 'email', 'approved']
+    fields = [('timestamp', 'email'), 'approved', 'material_link', 'comment']
+    readonly_fields = ['timestamp', 'email', 'material_link']
 
     def has_add_permission(self, request, obj=None):
         return False
@@ -65,7 +65,7 @@ class ActivityAdmin(MaterialAdmin):
             ]
     list_filter = ['min_people', 'max_people', 'location', 'duration',
                    'group_feature', 'goals', 'subject']
-    list_display = ['__str__', 'approval_link']
+    list_display = ['__str__', 'timestamp', 'approval_link']
     readonly_fields = ['approval_link']
     search_fields = ['title', 'brief', 'notes']
 
@@ -86,7 +86,7 @@ class ReadingAdmin(MaterialAdmin):
             ]
     readonly_fields = ['approval_link']
     list_filter = ['pages', 'year', 'languages', 'subject']
-    list_display = ['__str__', 'approval_link']
+    list_display = ['__str__', 'timestamp', 'approval_link']
     search_fields = ['title', 'brief']
 
 
@@ -107,7 +107,7 @@ class VideoAdmin(MaterialAdmin):
             ]
     readonly_fields = ['approval_link']
     list_filter = ['duration', 'year', 'audios', 'subtitles', 'subject']
-    list_display = ['__str__', 'approval_link']
+    list_display = ['__str__', 'timestamp', 'approval_link']
     search_fields = ['title', 'brief']
 
 
@@ -124,5 +124,5 @@ class LinkAdmin(MaterialAdmin):
             ]
     readonly_fields = ['approval_link']
     list_filter = ['subject']
-    list_display = ['__str__', 'approval_link']
+    list_display = ['__str__', 'timestamp', 'approval_link']
     search_fields = ['title', 'brief']

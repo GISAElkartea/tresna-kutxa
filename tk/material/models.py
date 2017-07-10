@@ -66,14 +66,14 @@ class Location(models.Model):
 
 class Approval(models.Model):
     class Meta:
-        ordering = ['-requested']
+        ordering = ['-timestamp']
         verbose_name = _("Approval")
         verbose_name_plural = _("Approvals")
 
     material = models.OneToOneField('Material', on_delete=models.CASCADE)
 
-    # TODO: Hide in forms
-    requested = models.DateTimeField(auto_now_add=True, verbose_name=_("created on"))
+    timestamp = models.DateTimeField(auto_now_add=True,
+            verbose_name=_("creation timestamp"))
     approved = models.BooleanField(default=False, verbose_name=_("is approved"))
     comment = models.TextField(blank=True, verbose_name=_("comment"))
     email = models.EmailField(blank=True, verbose_name=_("contact email"))
@@ -98,15 +98,17 @@ class Material(LocalizedModel):
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
+        ordering = ['-timestamp']
         verbose_name = _("Material")
         verbose_name_plural = _("Materials")
 
     title = LocalizedCharField(max_length=512, verbose_name=_("title"))
     slug = LocalizedUniqueSlugField(populate_from='title')
+    timestamp = models.DateTimeField(auto_now_add=True,
+            verbose_name=_("creation timestamp"))
 
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
-    # TODO: Creation date
     brief = LocalizedMarkdownxTextField(blank=True, verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
@@ -123,6 +125,7 @@ class Activity(Material):
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
+        ordering = ['-timestamp']
         verbose_name = _("Activity")
         verbose_name_plural = _("Activities")
 
@@ -163,6 +166,7 @@ class Reading(Material):
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
+        ordering = ['-timestamp']
         verbose_name = _("Reading")
         verbose_name_plural = _("Readings")
 
@@ -183,6 +187,7 @@ class Video(Material):
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
+        ordering = ['-timestamp']
         verbose_name = _("Video")
         verbose_name_plural = _("Videos")
 
@@ -206,6 +211,7 @@ class Link(Material):
     objects = ApprovedQuerySet.as_manager()
 
     class Meta:
+        ordering = ['-timestamp']
         verbose_name = _("Link")
         verbose_name_plural = _("Links")
 
