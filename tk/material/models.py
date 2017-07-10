@@ -130,8 +130,7 @@ class Activity(Material):
 
     location = models.ForeignKey(Location, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("location"))
-    # TODO: Allow null?
-    duration = models.DurationField(verbose_name=_("duration"))
+    duration = models.DurationField(null=True, blank=True, verbose_name=_("duration"))
     min_people = models.PositiveSmallIntegerField(default=2,
             verbose_name=_("minimum number of people"))
     max_people = models.PositiveSmallIntegerField(default=30,
@@ -187,7 +186,7 @@ class Video(Material):
         verbose_name = _("Video")
         verbose_name_plural = _("Videos")
 
-    duration = models.DurationField(null=True, blank=True, verbose_name=_("duration"))
+    duration = models.DurationField(verbose_name=_("duration"))
     year = models.PositiveIntegerField(null=True, blank=True,
             validators=[validate_year], verbose_name=_("year"))
     audios = LanguageField(blank=True, prioritize=COMMON_LANGUAGES,
