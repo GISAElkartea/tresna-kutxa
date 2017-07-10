@@ -6,70 +6,88 @@ from django.views.generic.list import ListView
 
 from watson import search as watson
 
-from .models import Material, Activity, Video, Reading, Link
+from .models import Approval, Material, Activity, Video, Reading, Link
 from .forms import ApprovalEmailForm, ActivityForm, VideoForm, ReadingForm, LinkForm
 
 
-class CreateMaterial(FormView):
-    template_name = 'material/create_material.html'
+class SubtypeFormMixin(object):
 
-    FORM_CLASSES = {
-        'approval': ApprovalEmailForm,
-        'activity': ActivityForm,
-        'video': VideoForm,
-        'reading': ReadingForm,
-        'link': LinkForm,
-    }
+    named_subtypes = {}
+
+    def get_named_subtypes(self):
+        return self.named_subtypes
+
+    def get_subtype_instance(self, name):
+        return self.get_named_subtypes()[name]()
+
+    def get_named_subtype_instances(self):
+        return {name: self.get_subtype_instance(name)
+                for name in self.get_named_subtypes()}
+
+    def get_context_data(self, **kwargs):
+        ctxt = self.get_named_subtype_instances()
+        ctxt.update(kwargs)
+        return super().get_context_data(**ctxt)
+
+    def get_subtype(self, *args, **kwargs):
+        return self.kwargs.get('type', '')
 
     def get(self, *args, **kwargs):
-        if self.kwargs.get('type') is None:
-            return super().get(*args, **kwargs)
-        return HttpResponseNotAllowed(['POST'])
-
-    def get_form_name(self, mat_type):
-        return '{}_form'.format(mat_type)
+        if self.get_subtype(*args, **kwargs):
+            return HttpResponseNotAllowed(['POST'])
+        return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        if self.kwargs['type'] not in self.FORM_CLASSES.keys():
+        subtype = self.get_subtype(*args, **kwargs)
+        if subtype not in self.get_named_subtypes():
             return HttpResponseNotAllowed(['GET'])
+        return self.subtype_post(subtype, *args, **kwargs)
 
-        forms = self.get_named_forms()
-        approval_form = forms[self.get_form_name('approval')]
-        if approval_form.is_valid():
-            approval = approval_form.save(commit=False)
-        else:
-            approval = Approval()
-        material_form_name = self.get_form_name(self.kwargs['type'])
 
-        if forms[material_form_name].is_valid():
-            return self.form_valid(forms[material_form_name], approval)
-        else:
-            return self.form_invalid(**{
-                material_form_name: forms[material_form_name]})
+class CreateMaterial(SubtypeFormMixin, FormView):
+    template_name = 'material/create_material.html'
+    named_subtypes = {
+        'approval_form': ApprovalEmailForm,
+        'activity_form': ActivityForm,
+        'video_form': VideoForm,
+        'reading_form': ReadingForm,
+        'link_form': LinkForm,
+    }
 
-    def get_named_forms(self):
-        forms = {}
-        for mat_type, form_class in self.FORM_CLASSES.items():
-            form_kwargs = self.get_form_kwargs()
-            form_kwargs['prefix'] = mat_type
-            forms[self.get_form_name(mat_type)] = form_class(**form_kwargs)
-        return forms
+    def get_subtype(self, *args, **kwargs):
+        t = self.kwargs.get('type', '')
+        return '{}_form'.format(t) if t else None
 
-    def form_valid(self, form, approval):
+    def get_subtype_instance(self, name):
+        kwargs = self.get_form_kwargs()
+        kwargs['prefix'] = name
+        return self.get_named_subtypes()[name](**kwargs)
+
+    def subtype_post(self, subtype, *args, **kwargs):
+        forms = self.get_named_subtype_instances()
+
+        approval = Approval()
+        if forms['approval_form'].is_valid():
+            approval = forms['approval_form'].save(commit=False)
+
+        if forms[subtype].is_valid():
+            return self.form_valid(subtype, forms[subtype], approval)
+        return self.form_invalid(subtype, forms[subtype], approval)
+
+    def form_valid(self, subtype, form, approval):
         self.object = form.save()
         approval.material = self.object.material_ptr
         approval.save()
         return super().form_valid(form)
 
-    def form_invalid(self, **kwargs):
-        return self.render_to_response(self.get_context_data(**kwargs))
+    def form_invalid(self, subtype, form, approval):
+        ctxt = {subtype: form}
+        return self.render_to_response(self.get_context_data(**ctxt))
 
     def get_context_data(self, **kwargs):
         # Shortcircuit FormMixin logic
         kwargs['form'] = None
-        ctxt = self.get_named_forms()
-        ctxt.update(kwargs)
-        return super().get_context_data(**ctxt)
+        return super().get_context_data(**kwargs)
 
     def get_success_url(self):
         return self.object.get_absolute_url()
