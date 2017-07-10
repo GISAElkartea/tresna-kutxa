@@ -56,7 +56,7 @@ class TKAdmin(AdminSite):
         # Add notifications about pending approval requests
         Approval = apps.get_model('material', 'Approval')
         extra_context['approvals_new'] = Approval.objects.filter(
-                requested__gte=request.user.last_login, approved=False)
+                timestamp__gte=request.user.last_login, approved=False)
         extra_context['approvals_unapproved'] = Approval.objects.filter(
                 approved=False)
 
