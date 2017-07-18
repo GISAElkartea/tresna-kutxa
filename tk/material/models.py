@@ -102,14 +102,16 @@ class Material(LocalizedModel):
         verbose_name = _("Material")
         verbose_name_plural = _("Materials")
 
-    title = LocalizedCharField(max_length=512, verbose_name=_("title"))
+    title = LocalizedCharField(blank=False, null=False, required=False,
+            max_length=512, verbose_name=_("title"))
     slug = LocalizedUniqueSlugField(populate_from='title')
     timestamp = models.DateTimeField(auto_now_add=True,
             verbose_name=_("creation timestamp"))
 
     subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
             verbose_name=_("subject"))
-    brief = LocalizedMarkdownxTextField(blank=True, verbose_name=_("brief"))
+    brief = LocalizedMarkdownxTextField(blank=False, null=False, required=False,
+            verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 
     def __str__(self):
