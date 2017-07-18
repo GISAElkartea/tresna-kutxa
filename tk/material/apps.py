@@ -16,7 +16,7 @@ class MaterialSearchAdapter(search.SearchAdapter):
         return ['title', 'brief']
 
     def _join_translations(self, field: LocalizedField) -> str:
-        return ' '.join(field.values())
+        return ' '.join([v for v in field.values() if v is not None])
 
     def get_title(self, obj):
         return self._join_translations(getattr(obj, 'title'))
