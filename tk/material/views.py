@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseNotAllowed, HttpResponseRedirect
 from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import FormView

@@ -5,7 +5,8 @@ from .views import *
 slug = r'(?P<slug>(\w|-)+)'
 mat_type = r'(?P<type>\w+)'
 
-urlpatterns = [url('', include([
+app_name = 'material'
+urlpatterns = [
     url(r'^search/$', SearchMaterial.as_view(), name='search-material'),
     url(r'^submit/(?:{}/)?$'.format(mat_type), CreateMaterial.as_view(), name='create-material'),
 
@@ -13,6 +14,4 @@ urlpatterns = [url('', include([
     url(r'^video/{}/$'.format(slug), DetailVideo.as_view(), name='detail-video'),
     url(r'^reading/{}/$'.format(slug), DetailReading.as_view(), name='detail-reading'),
     url(r'^link/{}/$'.format(slug), DetailLink.as_view(), name='detail-link'),
-
-    ], namespace='material')),
 ]
