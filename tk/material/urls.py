@@ -7,7 +7,7 @@ mat_type = r'(?P<type>\w+)'
 
 app_name = 'material'
 urlpatterns = [
-    url(r'^search/$', SearchMaterial.as_view(), name='search-material'),
+    url(r'^search/(?:{}/)?$'.format(mat_type), SearchMaterial.as_view(), name='search-material'),
     url(r'^submit/(?:{}/)?$'.format(mat_type), CreateMaterial.as_view(), name='create-material'),
 
     url(r'^activity/{}/$'.format(slug), DetailActivity.as_view(), name='detail-activity'),

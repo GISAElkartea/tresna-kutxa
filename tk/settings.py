@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'localized_fields.apps.LocalizedFieldsConfig',
     'captcha',
+    'django_filters',
 
     'tk.material.apps.MaterialConfig',
 ]

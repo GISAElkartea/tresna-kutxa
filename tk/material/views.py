@@ -6,8 +6,9 @@ from django.views.generic.list import ListView
 
 from watson import search as watson
 
-from .models import Approval, Material, Activity, Video, Reading, Link
+from . import filters
 from .forms import ApprovalEmailForm, ActivityForm, VideoForm, ReadingForm, LinkForm
+from .models import Approval, Material, Activity, Video, Reading, Link
 
 
 class SubtypeFormMixin(object):
@@ -17,31 +18,20 @@ class SubtypeFormMixin(object):
     def get_named_subtypes(self):
         return self.named_subtypes
 
-    def get_subtype_instance(self, name):
-        return self.get_named_subtypes()[name]()
+    def get_subtype_instance(self, name, klass):
+        return klass()
 
     def get_named_subtype_instances(self):
-        return {name: self.get_subtype_instance(name)
-                for name in self.get_named_subtypes()}
+        return {name: self.get_subtype_instance(name, klass)
+                for name, klass in self.get_named_subtypes().items()}
 
     def get_context_data(self, **kwargs):
         ctxt = self.get_named_subtype_instances()
         ctxt.update(kwargs)
         return super().get_context_data(**ctxt)
 
-    def get_subtype(self, *args, **kwargs):
+    def get_subtype(self):
         return self.kwargs.get('type', '')
-
-    def get(self, *args, **kwargs):
-        if self.get_subtype(*args, **kwargs):
-            return HttpResponseNotAllowed(['POST'])
-        return super().get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        subtype = self.get_subtype(*args, **kwargs)
-        if subtype not in self.get_named_subtypes():
-            return HttpResponseNotAllowed(['GET'])
-        return self.subtype_post(subtype, *args, **kwargs)
 
 
 class CreateMaterial(SubtypeFormMixin, FormView):
@@ -54,23 +44,30 @@ class CreateMaterial(SubtypeFormMixin, FormView):
         'link_form': LinkForm,
     }
 
-    def get_subtype(self, *args, **kwargs):
-        t = self.kwargs.get('type', '')
-        return '{}_form'.format(t) if t else None
+    def get_subtype(self):
+        t = super().get_subtype()
+        return None if t is None else t + '_form'
 
-    def get_subtype_instance(self, name):
+    def get_subtype_instance(self, name, klass):
         kwargs = self.get_form_kwargs()
         kwargs['prefix'] = name
-        return self.get_named_subtypes()[name](**kwargs)
+        return klass(**kwargs)
 
-    def subtype_post(self, subtype, *args, **kwargs):
+    def get(self, *args, **kwargs):
+        if self.get_subtype():
+            return HttpResponseNotAllowed(['POST'])
+        return super().get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        subtype = self.get_subtype()
+        if subtype not in self.get_named_subtypes():
+            return HttpResponseNotAllowed(['GET'])
+
         forms = self.get_named_subtype_instances()
 
         approval = Approval()
-        if forms['approval_form'].is_valid():
+        if forms['approval_form'].is_valid() and forms[subtype].is_valid():
             approval = forms['approval_form'].save(commit=False)
-
-        if forms[subtype].is_valid():
             return self.form_valid(subtype, forms[subtype], approval)
         return self.form_invalid(subtype, forms[subtype], approval)
 
@@ -104,7 +101,7 @@ class LocalizedSlugMixin(SingleObjectMixin):
 
 class PendingApprovalMixin():
     def get_template_names(self):
-        if hasattr(self.object, 'approval') and not self.object.approval.approved:
+        if not self.object.approval.approved:
             return ['material/pending.html']
         return super().get_template_names()
 
@@ -125,12 +122,32 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-class SearchMaterial(ListView):
+class SearchMaterial(SubtypeFormMixin, ListView):
     template_name = 'material/material_search.html'
     query_param = 'q'
+    named_subtypes = {
+            'activity_filter': filters.ActivityFilter,
+            'reading_filter': filters.ReadingFilter,
+            'video_filter': filters.VideoFilter,
+            'link_filter': filters.LinkFilter,
+            }
+
+    def get_subtype(self):
+        t = super().get_subtype()
+        return None if t is None else t + '_filter'
+
+    def get_subtype_instance(self, name, klass):
+        return klass(self.request.GET, queryset=self.get_query_queryset())
 
     def get_query(self):
         return self.request.GET.get(self.query_param, '').strip()
 
-    def get_queryset(self):
+    def get_query_queryset(self):
         return watson.filter(Material.objects.approved(), self.get_query())
+
+    def get_queryset(self):
+        subtype = self.get_subtype()
+        if subtype:
+            filterset = self.get_named_subtype_instances()[subtype]
+            return filterset.qs
+        return self.get_query_queryset()
