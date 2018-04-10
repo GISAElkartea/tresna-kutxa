@@ -23,6 +23,17 @@ class LocalizedMarkdownxTextField(LocalizedTextField):
 
 # Stolen from https://gist.github.com/danni/f55c4ce19598b2b345ef
 
+def get_languages(limit_to=None, prioritize=None):
+    ls = ((c, _(n)) for (c, n) in global_settings.LANGUAGES)
+    if limit_to:
+        ls = ((c, n) for (c, n) in ls if c in limit_to)
+    ls = sorted(ls, key=itemgetter(1))
+    if prioritize:
+        pred = lambda l: l[0] in prioritize
+        lst, lsf = tee(ls)
+        ls = list(filter(pred, lst)) + list(filterfalse(pred, lsf))
+    return ls
+
 class LanguageField(ArrayField):
     def __init__(self, *args, **kwargs):
         self.limit_to = kwargs.pop('limit_to', [])
@@ -31,21 +42,10 @@ class LanguageField(ArrayField):
         defaults.update(kwargs)
         return super().__init__(*args, **defaults)
 
-    def get_languages(self):
-        ls = ((c, _(n)) for (c, n) in global_settings.LANGUAGES)
-        if self.limit_to:
-            ls = ((c, n) for (c, n) in ls if c in self.limit_to)
-        ls = sorted(ls, key=itemgetter(1))
-        if self.prioritize:
-            pred = lambda l: l[0] in self.prioritize
-            lst, lsf = tee(ls)
-            ls = list(filter(pred, lst)) + list(filterfalse(pred, lsf))
-        return ls
-
     def formfield(self, **kwargs):
         defaults = {
             'form_class': forms.MultipleChoiceField,
-            'choices': self.get_languages()
+            'choices': get_languages(self.limit_to, self.prioritize)
         }
         defaults.update(kwargs)
         # Skip our parent's formfield implementation completely as we don't care for it.
