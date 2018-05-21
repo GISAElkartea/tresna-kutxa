@@ -21,7 +21,7 @@ class ActivityForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['subject'].required = False
+        self.fields['subjects'].required = False
 
 
 class VideoForm(ModelForm):

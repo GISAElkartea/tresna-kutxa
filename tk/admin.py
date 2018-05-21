@@ -22,7 +22,6 @@ class TKAdmin(AdminSite):
             ]),
             (_("Material classification"), [
                 'material.Subject',
-                'material.Goal',
                 'material.GroupFeature',
                 'material.Location',
             ]),
@@ -70,7 +69,6 @@ class TKAdmin(AdminSite):
 
 tkadmin = TKAdmin()
 tkadmin.register(mo.Subject, ma.LocalizedAdmin)
-tkadmin.register(mo.Goal, ma.LocalizedAdmin)
 tkadmin.register(mo.GroupFeature, ma.LocalizedAdmin)
 tkadmin.register(mo.Location, ma.LocalizedAdmin)
 tkadmin.register(mo.Approval, ma.ApprovalAdmin)

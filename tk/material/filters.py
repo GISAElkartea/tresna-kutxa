@@ -10,7 +10,7 @@ from .models import Activity, Reading, Video, Link, COMMON_LANGUAGES
 class ActivityFilter(FilterSet):
     class Meta:
         model = Activity
-        fields = ['subject', 'goals', 'location', 'duration', 'min_people',
+        fields = ['subjects', 'location', 'duration', 'min_people',
                 'max_people', 'group_feature']
 
 
@@ -19,7 +19,7 @@ class ReadingFilter(FilterSet):
 
     class Meta:
         model = Reading
-        fields = ['subject', 'pages', 'year', 'languages']
+        fields = ['subjects', 'pages', 'year', 'languages']
 
 
 class VideoFilter(FilterSet):
@@ -28,10 +28,10 @@ class VideoFilter(FilterSet):
 
     class Meta:
         model = Video
-        fields = ['subject', 'duration', 'year', 'audios', 'subtitles']
+        fields = ['subjects', 'duration', 'year', 'audios', 'subtitles']
 
 
 class LinkFilter(FilterSet):
     class Meta:
         model = Link
-        fields = ['subject']
+        fields = ['subjects']

@@ -54,8 +54,8 @@ class ActivityAdmin(MaterialAdmin):
                            # TODO: Creation time
                            ]}),
             (_("Classification"), {
-                'fields': ['goals',
-                           'subject',
+                'fields': ['goal',
+                           'subjects',
                            ('min_people', 'max_people'),
                            'location',
                            'duration',
@@ -64,7 +64,7 @@ class ActivityAdmin(MaterialAdmin):
                 'fields': ['author', 'title', 'url', 'brief', 'notes', 'attachment']})
             ]
     list_filter = ['min_people', 'max_people', 'location', 'duration',
-                   'group_feature', 'goals', 'subject']
+                   'group_feature', 'subjects']
     list_display = ['__str__', 'timestamp', 'approval_link']
     readonly_fields = ['approval_link']
     search_fields = ['title', 'brief', 'notes']
@@ -80,12 +80,13 @@ class ReadingAdmin(MaterialAdmin):
                 'fields': ['pages',
                            'year',
                            'languages',
-                           'subject']}),
+                           'goal'
+                           'subjects']}),
             (_("Content"), {
                 'fields': ['author', 'title', 'url', 'brief', 'attachment']})
             ]
     readonly_fields = ['approval_link']
-    list_filter = ['pages', 'year', 'languages', 'subject']
+    list_filter = ['pages', 'year', 'languages', 'subjects']
     list_display = ['__str__', 'timestamp', 'approval_link']
     search_fields = ['title', 'brief']
 
@@ -101,12 +102,13 @@ class VideoAdmin(MaterialAdmin):
                            'year',
                            'audios',
                            'subtitles',
-                           'subject']}),
+                           'goal',
+                           'subjects']}),
             (_("Content"), {
                 'fields': ['author', 'title', 'url', 'brief', 'attachment']})
             ]
     readonly_fields = ['approval_link']
-    list_filter = ['duration', 'year', 'audios', 'subtitles', 'subject']
+    list_filter = ['duration', 'year', 'audios', 'subtitles', 'subjects']
     list_display = ['__str__', 'timestamp', 'approval_link']
     search_fields = ['title', 'brief']
 
@@ -118,11 +120,11 @@ class LinkAdmin(MaterialAdmin):
                            # TODO: Creation time
                            ]}),
             (_("Classification"), {
-                'fields': ['subject']}),
+                'fields': ['goal', 'subjects']}),
             (_("Content"), {
                 'fields': ['author', 'title', 'url', 'brief']})
             ]
     readonly_fields = ['approval_link']
-    list_filter = ['subject']
+    list_filter = ['subjects']
     list_display = ['__str__', 'timestamp', 'approval_link']
     search_fields = ['title', 'brief']

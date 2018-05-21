@@ -28,18 +28,6 @@ class Subject(models.Model):
         return str(self.name)
 
 
-class Goal(models.Model):
-    class Meta:
-        ordering = ['name']
-        verbose_name = _("Goal")
-        verbose_name_plural = _("Goals")
-
-    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
-
-    def __str__(self):
-        return str(self.name)
-
-
 class GroupFeature(models.Model):
     class Meta:
         ordering = ['name']
@@ -108,8 +96,9 @@ class Material(LocalizedModel):
     timestamp = models.DateTimeField(auto_now_add=True,
             verbose_name=_("creation timestamp"))
 
-    subject = models.ForeignKey(Subject, null=True, on_delete=models.PROTECT,
-            verbose_name=_("subject"))
+    subjects = models.ManyToManyField(Subject, verbose_name=_("subject"))
+    goal = LocalizedMarkdownxTextField(blank=True, null=True, required=False,
+            verbose_name=_("goal"))
     brief = LocalizedMarkdownxTextField(blank=False, null=False, required=False,
             verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
@@ -130,8 +119,6 @@ class Activity(Material):
         ordering = ['-timestamp']
         verbose_name = _("Activity")
         verbose_name_plural = _("Activities")
-
-    goals = models.ManyToManyField(Goal, verbose_name=_("goals"))
 
     location = models.ForeignKey(Location, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("location"))
