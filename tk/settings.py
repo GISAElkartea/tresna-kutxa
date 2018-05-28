@@ -97,8 +97,8 @@ WSGI_APPLICATION = 'tk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'psqlextra.backend',
-        'NAME': 'tk',
-        'USER': 'tk',
+        'NAME': 'biltokia',
+        'USER': 'biltokia',
     }
 }
 
