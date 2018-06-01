@@ -36,9 +36,10 @@ class TKAdmin(AdminSite):
         # Build the original app list so that we take into account user perms
         app_list = super().get_app_list(request)
         for g in self.grouping:
-            yield {'name': g,
-                   'models': [ self._get_model(m, app_list) for m in
-                               self.grouping[g] ]}
+            models = [ self._get_model(m, app_list) for m in self.grouping[g] ]
+            models = [ m for m in models if m is not None ]
+            if models:
+                yield {'name': g, 'models': models}
 
     def _get_model(self, model, app_list):
         app_name, model_name = model.split('.')
