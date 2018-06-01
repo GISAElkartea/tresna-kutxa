@@ -2,7 +2,7 @@
 # See more at: https://github.com/garbas/pypi2nix
 #
 # COMMAND:
-#   pypi2nix -r ../requirements.txt -V 3.6 -E postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses
+#   pypi2nix -r ../requirements.txt -V 3.6 -E postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses gettext
 #
 
 { pkgs ? import <nixpkgs> {}
@@ -29,7 +29,7 @@ let
       };
   };
 
-  commonBuildInputs = with pkgs; [ postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses ];
+  commonBuildInputs = with pkgs; [ postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses gettext ];
   commonDoCheck = false;
 
   withPackages = pkgs':
