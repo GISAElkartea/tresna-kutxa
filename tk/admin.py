@@ -1,5 +1,6 @@
 from collections import OrderedDict
 
+from django.contrib.auth.models import User, Group
 from django.apps import apps
 from django.contrib.admin import AdminSite
 from django.http import HttpResponseRedirect
@@ -25,20 +26,19 @@ class TKAdmin(AdminSite):
                 'material.GroupFeature',
                 'material.Location',
             ]),
-            # TODO: Users and groups
+            (_("Auth"), [
+                'auth.User',
+                'auth.Group',
+            ]),
     ])
 
     def get_app_list(self, request):
         # Build the original app list so that we take into account user perms
         app_list = super().get_app_list(request)
-        return self.group_models(app_list)
-
-    def group_models(self, app_list):
         for g in self.grouping:
-            group = {'name': g, 'models': []}
-            for m in self.grouping[g]:
-                group['models'].append(self._get_model(m, app_list))
-            yield group
+            yield {'name': g,
+                   'models': [ self._get_model(m, app_list) for m in
+                               self.grouping[g] ]}
 
     def _get_model(self, model, app_list):
         app_name, model_name = model.split('.')
@@ -76,5 +76,5 @@ tkadmin.register(mo.Activity, ma.ActivityAdmin)
 tkadmin.register(mo.Reading, ma.ReadingAdmin)
 tkadmin.register(mo.Video, ma.VideoAdmin)
 tkadmin.register(mo.Link, ma.LinkAdmin)
-
-# TODO: Users and groups
+tkadmin.register(User)
+tkadmin.register(Group)
