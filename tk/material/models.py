@@ -10,7 +10,7 @@ from localized_fields.models import LocalizedModel
 from localized_fields.fields import (
         LocalizedCharField, LocalizedTextField, LocalizedUniqueSlugField)
 
-from .fields import LanguageField, LocalizedMarkdownxTextField
+from .fields import LanguageField
 
 
 COMMON_LANGUAGES = ['eu', 'es', 'fr', 'en']
@@ -97,9 +97,9 @@ class Material(LocalizedModel):
             verbose_name=_("creation timestamp"))
 
     subjects = models.ManyToManyField(Subject, verbose_name=_("subject"))
-    goal = LocalizedMarkdownxTextField(blank=True, null=True, required=False,
+    goal = LocalizedTextField(blank=True, null=True, required=False,
             verbose_name=_("goal"))
-    brief = LocalizedMarkdownxTextField(blank=False, null=False, required=False,
+    brief = LocalizedTextField(blank=False, null=False, required=False,
             verbose_name=_("brief"))
     author = models.CharField(max_length=512, blank=True, verbose_name=_("author"))
 

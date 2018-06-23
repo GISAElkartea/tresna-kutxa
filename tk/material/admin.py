@@ -4,10 +4,10 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 
-from markdownx.admin import MarkdownxModelAdmin
 from localized_fields.admin import LocalizedFieldsAdminMixin
+from localized_fields.fields import LocalizedTextField
 
-from .formfields import AdminLocalizedMarkdownxWidget
+from .widgets import AdminLocalizedMarkdownxWidget
 
 
 class LocalizedAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
@@ -38,7 +38,11 @@ class ApprovalAdmin(admin.ModelAdmin):
     material_link.short_description = _('Material')
 
 
-class MaterialAdmin(MarkdownxModelAdmin, LocalizedFieldsAdminMixin, admin.ModelAdmin):
+class MaterialAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
+    formfield_overrides = {
+            LocalizedTextField: {'widget': AdminLocalizedMarkdownxWidget},
+            }
+
     def approval_link(self, material_obj):
         name = 'admin:material_approval_change'
         return format_html('<a href="{}">{}</a>'.format(
