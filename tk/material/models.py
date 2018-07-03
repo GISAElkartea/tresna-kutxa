@@ -163,10 +163,8 @@ class Reading(Material):
     year = models.PositiveIntegerField(blank=True, null=True,
             validators=[validate_year], verbose_name=_("year"))
     languages = LanguageField(limit_to=COMMON_LANGUAGES, verbose_name=_("languages"))
-    attachment = models.FileField(upload_to='material/readings/', blank=True,
-            verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
-            help_text=_("Link the material if its copyright does not allow sharing it."))
+            help_text=_("Link to the reading."))
 
     def get_absolute_url(self):
         return reverse('material:detail-reading', kwargs={'slug': self.slug})
@@ -187,10 +185,8 @@ class Video(Material):
             verbose_name=_("audio languages"))
     subtitles = LanguageField(blank=True, limit_to=COMMON_LANGUAGES,
             verbose_name=_("subtitle languages"))
-    attachment = models.FileField(upload_to='material/videos', blank=True,
-            verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
-            help_text=_("Link the material if its copyright does not allow sharing it."))
+            help_text=_("Link to the video."))
 
     def get_absolute_url(self):
         return reverse('material:detail-video', kwargs={'slug': self.slug})
