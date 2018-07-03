@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+{{ approval_form.media }}
+
+{% for tab, endpoint, form in tabs %}
+<h2>{{ tab }}</h2>
+<form action="{{ endpoint }}" method="post">
+  {% csrf_token %}
+  <table>
+    {{ approval_form.as_table }}
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="{% trans 'Submit' %}" />
+</form>
+{% endfor %}
+{{ tab_media }}
+
+{% endblock content %}

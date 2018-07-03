@@ -1,93 +1,70 @@
+from functools import reduce
+from operator import add
+
 from django.urls import reverse
-from django.http import HttpResponseNotAllowed, HttpResponseRedirect
+from django.http import HttpResponseNotAllowed
 from django.views.generic.detail import DetailView, SingleObjectMixin
-from django.views.generic.edit import FormView
+from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
+from django.utils.translation import ugettext as _
 
-from watson import search as watson
+from watson import search
+from watson.views import SearchMixin as WatsonSearchView
 
-from . import filters
-from .forms import ApprovalEmailForm, ActivityForm, VideoForm, ReadingForm, LinkForm
-from .models import Approval, Material, Activity, Video, Reading, Link
-
-
-class SubtypeFormMixin(object):
-
-    named_subtypes = {}
-
-    def get_named_subtypes(self):
-        return self.named_subtypes
-
-    def get_subtype_instance(self, name, klass):
-        return klass()
-
-    def get_named_subtype_instances(self):
-        return {name: self.get_subtype_instance(name, klass)
-                for name, klass in self.get_named_subtypes().items()}
-
-    def get_context_data(self, **kwargs):
-        ctxt = self.get_named_subtype_instances()
-        ctxt.update(kwargs)
-        return super().get_context_data(**ctxt)
-
-    def get_subtype(self):
-        return self.kwargs.get('type', '')
+from .filtersets import *
+from .forms import ActivityForm, VideoForm, ReadingForm, LinkForm
+from .models import Material, Activity, Video, Reading, Link
 
 
-class CreateMaterial(SubtypeFormMixin, FormView):
-    template_name = 'material/create_material.html'
-    named_subtypes = {
-        'approval_form': ApprovalEmailForm,
-        'activity_form': ActivityForm,
-        'video_form': VideoForm,
-        'reading_form': ReadingForm,
-        'link_form': LinkForm,
-    }
+class BaseSubmitMaterial(CreateView):
+    template_name = 'material/submit.html'
 
-    def get_subtype(self):
-        t = super().get_subtype()
-        return None if t is None else t + '_form'
-
-    def get_subtype_instance(self, name, klass):
-        kwargs = self.get_form_kwargs()
-        kwargs['prefix'] = name
-        return klass(**kwargs)
-
-    def get(self, *args, **kwargs):
-        if self.get_subtype():
-            return HttpResponseNotAllowed(['POST'])
-        return super().get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        subtype = self.get_subtype()
-        if subtype not in self.get_named_subtypes():
-            return HttpResponseNotAllowed(['GET'])
-
-        forms = self.get_named_subtype_instances()
-
-        approval = Approval()
-        if forms['approval_form'].is_valid() and forms[subtype].is_valid():
-            approval = forms['approval_form'].save(commit=False)
-            return self.form_valid(subtype, forms[subtype], approval)
-        return self.form_invalid(subtype, forms[subtype], approval)
-
-    def form_valid(self, subtype, form, approval):
-        self.object = form.save()
-        approval.material = self.object.material_ptr
-        approval.save()
-        return super().form_valid(form)
-
-    def form_invalid(self, subtype, form, approval):
-        ctxt = {subtype: form}
-        return self.render_to_response(self.get_context_data(**ctxt))
+    def get_tabs(self):
+        return [
+            (_('Activity'), reverse('material:submit-activity'),
+                ActivityForm(prefix='activity')),
+            (_('Reading'), reverse('material:submit-reading'),
+                ReadingForm(prefix='reading')),
+            (_('Video'), reverse('material:submit-video'),
+                VideoForm(prefix='video')),
+            (_('Link'), reverse('material:submit-link'),
+                LinkForm(prefix='link')),
+        ]
 
     def get_context_data(self, **kwargs):
-        # Shortcircuit FormMixin logic
-        kwargs['form'] = None
+        tabs = self.get_tabs()
+        kwargs['tabs'] = tabs
+        # Union of all media files
+        kwargs['tab_media'] = reduce(add, [ form.media
+                                            for name, url, form in tabs
+                                            if form is not None ])
         return super().get_context_data(**kwargs)
 
-    def get_success_url(self):
-        return self.object.get_absolute_url()
+
+class SubmitMaterial(BaseSubmitMaterial):
+    def post(self, *args, **kwargs):
+        return HttpResponseNotAllowed(['GET'])
+
+
+class SubmitActivity(BaseSubmitMaterial):
+    prefix = 'activity'
+    model = Activity
+    form_class = ActivityForm
+
+
+class SubmitReading(BaseSubmitMaterial):
+    prefix = 'reading'
+    form_class = ReadingForm
+
+
+class SubmitVideo(BaseSubmitMaterial):
+    prefix = 'video'
+    form_class = VideoForm
+
+
+class SubmitLink(BaseSubmitMaterial):
+    prefix = 'link'
+    form_class = LinkForm
 
 
 class LocalizedSlugMixin(SingleObjectMixin):
@@ -122,32 +99,62 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-class SearchMaterial(SubtypeFormMixin, ListView):
-    template_name = 'material/material_search.html'
-    query_param = 'q'
-    named_subtypes = {
-            'activity_filter': filters.ActivityFilter,
-            'reading_filter': filters.ReadingFilter,
-            'video_filter': filters.VideoFilter,
-            'link_filter': filters.LinkFilter,
-            }
+class SearchMaterial(WatsonSearchView, ListView):
+    template_name = 'material/search.html'
 
-    def get_subtype(self):
-        t = super().get_subtype()
-        return None if t is None else t + '_filter'
+    def get_tabs(self):
+        activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
+        reading_filter = ReadingFilterSet(self.request.GET, prefix='reading')
+        video_filter = VideoFilterSet(self.request.GET, prefix='video')
+        link_filter = LinkFilterSet(self.request.GET, prefix='link')
+        return [
+            (_('All material'), reverse('material:search-material'), None),
+            (_('Activities'), reverse('material:search-activity'), activity_filter.form),
+            (_('Readings'), reverse('material:search-reading'), reading_filter.form),
+            (_('Videos'), reverse('material:search-video'), video_filter.form),
+            (_('Links'), reverse('material:search-link'), link_filter.form),
+        ]
 
-    def get_subtype_instance(self, name, klass):
-        return klass(self.request.GET, queryset=self.get_query_queryset())
+    def get_context_data(self, **kwargs):
+        tabs = self.get_tabs()
+        kwargs['tabs'] = tabs
+        # Union of all media files
+        kwargs['tab_media'] = reduce(add, [form.media for name, url, form in tabs if form is not None])
+        return super().get_context_data(**kwargs)
 
-    def get_query(self):
-        return self.request.GET.get(self.query_param, '').strip()
 
-    def get_query_queryset(self):
-        return watson.filter(Material.objects.approved(), self.get_query())
+class SingleModelSearch(SearchMaterial):
+    prefix = None
+    filterset_class = None
+
+    def get_context_data(self, *args, **kwargs):
+        kwargs['form'] = self.filterset_class(self.request.GET).form
+        return super().get_context_data(*args, **kwargs)
 
     def get_queryset(self):
-        subtype = self.get_subtype()
-        if subtype:
-            filterset = self.get_named_subtype_instances()[subtype]
-            return filterset.qs
-        return self.get_query_queryset()
+        filterset = self.filterset_class(
+                self.request.GET,
+                queryset=self.queryset,
+                prefix=self.prefix)
+        return search.filter(filterset.qs, self.query)
+
+
+class SearchActivity(SingleModelSearch):
+    queryset = Activity.objects.all()
+    filterset_class = ActivityFilterSet
+    prefix = 'activity'
+
+class SearchVideo(SingleModelSearch):
+    queryset = Video.objects.all()
+    filterset_class = VideoFilterSet
+    prefix = 'video'
+
+class SearchLink(SingleModelSearch):
+    queryset = Link.objects.all()
+    filterset_class = LinkFilterSet
+    prefix = 'link'
+
+class SearchReading(SingleModelSearch):
+    queryset = Reading.objects.all()
+    filterset_class = ReadingFilterSet
+    prefix = 'reading'

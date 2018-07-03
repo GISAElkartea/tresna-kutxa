@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, EmailField
 
 from captcha.fields import CaptchaField
 
@@ -6,54 +6,40 @@ from .models import Approval, Activity, Video, Reading, Link
 from .widgets import LocalizedMarkdownxWidget
 
 
-class ApprovalEmailForm(ModelForm):
-    class Meta:
-        model = Approval
-        fields = ['email']
-
-
-material_widgets = {
-        'goal': LocalizedMarkdownxWidget,
-        'brief': LocalizedMarkdownxWidget,
-        }
-
-class ActivityForm(ModelForm):
+class MaterialForm(ModelForm):
     captcha = CaptchaField()
+    email = EmailField()
 
     class Meta:
+        widgets = {'goal': LocalizedMarkdownxWidget,
+                   'brief': LocalizedMarkdownxWidget,}
+
+    def save(self, commit=True, *args, **kwargs):
+        super().save()
+        Approval(email=self.cleaned_data['email'], material=self.instance).save()
+        
+
+class ActivityForm(MaterialForm):
+    class Meta(MaterialForm.Meta):
         model = Activity
         localized_fields = ['duration']  # TODO: Check
         fields = '__all__'
-        widgets = material_widgets
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['subjects'].required = False
 
 
-class VideoForm(ModelForm):
-    captcha = CaptchaField()
-
-    class Meta:
+class VideoForm(MaterialForm):
+    class Meta(MaterialForm.Meta):
         model = Video
         localized_fields = ['duration']  # TODO: Check
         fields = '__all__'
-        widgets = material_widgets
 
 
-class ReadingForm(ModelForm):
-    captcha = CaptchaField()
-
-    class Meta:
+class ReadingForm(MaterialForm):
+    class Meta(MaterialForm.Meta):
         model = Reading
         fields = '__all__'
-        widgets = material_widgets
 
 
-class LinkForm(ModelForm):
-    captcha = CaptchaField()
-
-    class Meta:
+class LinkForm(MaterialForm):
+    class Meta(MaterialForm.Meta):
         model = Link
         fields = '__all__'
-        widgets = material_widgets

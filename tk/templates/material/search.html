@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+{% for tab, endpoint, form in tabs %}
+<h2>{{ tab }}</h2>
+<form method="get" action="{{ endpoint }}">
+  <input name="q" type="text" placeholder="{% trans 'Search' %}" />
+  {% if form %}
+  <table>
+    {{ form }}
+  </table>
+  {% endif %}
+  <input type="submit" value="{% trans 'Search' %}" />
+</form>
+{% endfor %}
+
+{{ tab_media }}
+
+<ul>
+  {% for object in object_list %}
+  <li>
+    <a href="{{ object.get_absolute_url }}">{{ object }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
