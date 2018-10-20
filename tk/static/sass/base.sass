@@ -1,0 +1,16 @@
+body
+  margin: 0
+  font-size: 0
+  display: flex
+  flex-flow: row wrap
+  align-items: stretch
+  min-height: 100vh
+  > *
+    flex: 1 100%
+
+@media all and (min-width: 600px)
+  nav
+    flex: 1 25%
+  main
+    font-size: 1rem
+    flex: 2 75%
