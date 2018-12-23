@@ -18,9 +18,9 @@
 {{ tab_media }}
 
 <ul>
-  {% for object in object_list %}
+  {% for s in object_list %}
   <li>
-    <a href="{{ object.get_absolute_url }}">{{ object }}</a>
+    <a href="{{ s.object.get_absolute_url }}">{{ s.object.title }}</a>
   </li>
   {% endfor %}
 </ul>
