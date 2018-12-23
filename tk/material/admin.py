@@ -58,14 +58,13 @@ class ActivityAdmin(MaterialAdmin):
                            # TODO: Creation time
                            ]}),
             (_("Classification"), {
-                'fields': ['goal',
-                           'subjects',
+                'fields': ['subjects',
                            ('min_people', 'max_people'),
                            'location',
                            'duration',
                            'group_feature']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'url', 'brief', 'notes', 'attachment']})
+                'fields': ['author', 'title', 'goal', 'url', 'brief', 'notes', 'attachment']})
             ]
     list_filter = ['min_people', 'max_people', 'location', 'duration',
                    'group_feature', 'subjects']
@@ -84,10 +83,9 @@ class ReadingAdmin(MaterialAdmin):
                 'fields': ['pages',
                            'year',
                            'languages',
-                           'goal'
                            'subjects']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'url', 'brief', 'attachment']})
+                'fields': ['author', 'title', 'goal', 'url', 'brief', 'attachment']})
             ]
     readonly_fields = ['approval_link']
     list_filter = ['pages', 'year', 'languages', 'subjects']
@@ -106,10 +104,9 @@ class VideoAdmin(MaterialAdmin):
                            'year',
                            'audios',
                            'subtitles',
-                           'goal',
                            'subjects']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'url', 'brief', 'attachment']})
+                'fields': ['author', 'title', 'goal', 'url', 'brief', 'attachment']})
             ]
     readonly_fields = ['approval_link']
     list_filter = ['duration', 'year', 'audios', 'subtitles', 'subjects']
@@ -124,9 +121,9 @@ class LinkAdmin(MaterialAdmin):
                            # TODO: Creation time
                            ]}),
             (_("Classification"), {
-                'fields': ['goal', 'subjects']}),
+                'fields': ['subjects']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'url', 'brief']})
+                'fields': ['author', 'title', 'goal', 'url', 'brief']})
             ]
     readonly_fields = ['approval_link']
     list_filter = ['subjects']
