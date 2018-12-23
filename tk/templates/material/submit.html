@@ -2,8 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-{{ approval_form.media }}
-
 {% for tab, endpoint, form in tabs %}
 <h2>{{ tab }}</h2>
 <form action="{{ endpoint }}" method="post">
@@ -15,6 +13,7 @@
   <input type="submit" value="{% trans 'Submit' %}" />
 </form>
 {% endfor %}
-{{ tab_media }}
 
+{{ tab_media }}
+{{ approval_form.media }}
 {% endblock content %}

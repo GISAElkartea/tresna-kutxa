@@ -17,6 +17,7 @@ class MaterialForm(ModelForm):
     def save(self, commit=True, *args, **kwargs):
         super().save()
         Approval(email=self.cleaned_data['email'], material=self.instance).save()
+        return self.instance
         
 
 class ActivityForm(MaterialForm):

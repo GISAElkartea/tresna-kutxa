@@ -16,10 +16,23 @@ from .forms import ActivityForm, VideoForm, ReadingForm, LinkForm
 from .models import Material, Activity, Video, Reading, Link
 
 
-class BaseSubmitMaterial(CreateView):
+class TabbedMixin:
+    def get_tabs(self):
+        return []
+
+    def get_context_data(self, **kwargs):
+        tabs = self.get_tabs()
+        kwargs['tabs'] = tabs
+        # Union of all media files
+        kwargs['tab_media'] = reduce(add, [ form.media
+                                            for name, url, form in tabs
+                                            if form is not None ])
+        return super().get_context_data(**kwargs)
+
+class BaseSubmitMaterial(TabbedMixin, CreateView):
     template_name = 'material/submit.html'
 
-    def get_tabs(self):
+    def get_base_tabs(self):
         return [
             (_('Activity'), reverse('material:submit-activity'),
                 ActivityForm(prefix='activity')),
@@ -31,14 +44,10 @@ class BaseSubmitMaterial(CreateView):
                 LinkForm(prefix='link')),
         ]
 
-    def get_context_data(self, **kwargs):
-        tabs = self.get_tabs()
-        kwargs['tabs'] = tabs
-        # Union of all media files
-        kwargs['tab_media'] = reduce(add, [ form.media
-                                            for name, url, form in tabs
-                                            if form is not None ])
-        return super().get_context_data(**kwargs)
+    def get_tabs(self):
+        current = self.get_form()
+        return [ (name, url, current if current.prefix == form.prefix else form)
+                 for name, url, form in self.get_base_tabs() ]
 
 
 class SubmitMaterial(BaseSubmitMaterial):
@@ -54,16 +63,19 @@ class SubmitActivity(BaseSubmitMaterial):
 
 class SubmitReading(BaseSubmitMaterial):
     prefix = 'reading'
+    model = Reading
     form_class = ReadingForm
 
 
 class SubmitVideo(BaseSubmitMaterial):
     prefix = 'video'
+    model = Video
     form_class = VideoForm
 
 
 class SubmitLink(BaseSubmitMaterial):
     prefix = 'link'
+    model = Link
     form_class = LinkForm
 
 
@@ -99,7 +111,7 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-class SearchMaterial(WatsonSearchView, ListView):
+class SearchMaterial(TabbedMixin, WatsonSearchView, ListView):
     template_name = 'material/search.html'
 
     def get_tabs(self):
@@ -114,13 +126,6 @@ class SearchMaterial(WatsonSearchView, ListView):
             (_('Videos'), reverse('material:search-video'), video_filter.form),
             (_('Links'), reverse('material:search-link'), link_filter.form),
         ]
-
-    def get_context_data(self, **kwargs):
-        tabs = self.get_tabs()
-        kwargs['tabs'] = tabs
-        # Union of all media files
-        kwargs['tab_media'] = reduce(add, [form.media for name, url, form in tabs if form is not None])
-        return super().get_context_data(**kwargs)
 
 
 class SingleModelSearch(SearchMaterial):
