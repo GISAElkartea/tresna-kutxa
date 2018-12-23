@@ -143,23 +143,27 @@ class SingleModelSearch(SearchMaterial):
                 prefix=self.prefix)
         return search.filter(filterset.qs, self.query)
 
+    def get_queryset(self):
+        if not self.get_query(self.request):
+            return self.queryset
+        return super().get_queryset()
 
 class SearchActivity(SingleModelSearch):
-    queryset = Activity.objects.all()
+    queryset = Activity.objects.approved()
     filterset_class = ActivityFilterSet
     prefix = 'activity'
 
 class SearchVideo(SingleModelSearch):
-    queryset = Video.objects.all()
+    queryset = Video.objects.approved()
     filterset_class = VideoFilterSet
     prefix = 'video'
 
 class SearchLink(SingleModelSearch):
-    queryset = Link.objects.all()
+    queryset = Link.objects.approved()
     filterset_class = LinkFilterSet
     prefix = 'link'
 
 class SearchReading(SingleModelSearch):
-    queryset = Reading.objects.all()
+    queryset = Reading.objects.approved()
     filterset_class = ReadingFilterSet
     prefix = 'reading'
