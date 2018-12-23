@@ -1,3 +1,4 @@
+setuptools
 uwsgi == 2.0.17.1
 django == 2.1.4
 django-localized-fields == 4.6a3
