@@ -208,6 +208,23 @@ let
 
 
 
+    "django-sass-processor" = python.mkDerivation {
+      name = "django-sass-processor-0.7.2";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/93/2d/0f50d7414d59131e5365a869c1092996ad3c6b112b6409f5c80576cae101/django-sass-processor-0.7.2.tar.gz"; sha256 = "0381585a23c0f31a387cb53cf38f744e4d97d8ac3b9b19ec423dd6bfa714ecff"; };
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs;
+      propagatedBuildInputs = [
+      self."libsass"
+    ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "https://github.com/jrief/django-sass-processor";
+        license = licenses.mit;
+        description = "SASS processor to compile SCSS files into *.css, while rendering, or offline.";
+      };
+    };
+
+
+
     "django-simple-captcha" = python.mkDerivation {
       name = "django-simple-captcha-0.5.9";
       src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/d7/f4/ea95b04ed3abc7bf225716f17e35c5a185f6100db4d7541a46696ce40351/django-simple-captcha-0.5.9.zip"; sha256 = "0c30a14f02502119fd1a4d308dd5d2b899d0f4284825a396bbb010afd904754a"; };
@@ -238,6 +255,23 @@ let
         homepage = "http://github.com/etianen/django-watson";
         license = licenses.bsdOriginal;
         description = "Full-text multi-table search application for Django. Easy to install and use, with good performance.";
+      };
+    };
+
+
+
+    "libsass" = python.mkDerivation {
+      name = "libsass-0.16.1";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/9d/00/cee3eae997e9d423f874a5d45a05e62965d0bea1c83c7aa8e8f9f8bd5c79/libsass-0.16.1.tar.gz"; sha256 = "5043f64d37254a6cfff8f1d2adcf13efecfda7e31ea09eb809269e117c8d8736"; };
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs;
+      propagatedBuildInputs = [
+      self."six"
+    ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "https://sass.github.io/libsass-python/";
+        license = licenses.mit;
+        description = "Sass for Python: A straightforward binding of libsass for Python.";
       };
     };
 
