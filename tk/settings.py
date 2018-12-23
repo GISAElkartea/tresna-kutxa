@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'watson',
     'markdownx',
-    'debug_toolbar',
     'django.contrib.postgres',
     'localized_fields.apps.LocalizedFieldsConfig',
     'captcha',
@@ -52,7 +51,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',

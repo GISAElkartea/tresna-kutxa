@@ -76,8 +76,8 @@ let
   generated = self: {
 
     "Django" = python.mkDerivation {
-      name = "Django-2.0";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/87/9f/4ec8b197d83666fddd2398842024c5341ee7d40bbec6aee9705d1ad22f13/Django-2.0.tar.gz"; sha256 = "9614851d4a7ff8cbd32b73c6076441f377c45a5bbff7e771798fb02c43c31f47"; };
+      name = "Django-2.1.4";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/83/f7/4939b60c4127d5f49ccb570e34f4c59ecc222949220234a88e4f363f1456/Django-2.1.4.tar.gz"; sha256 = "068d51054083d06ceb32ce02b7203f1854256047a0d58682677dd4f81bceabd7"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [
@@ -93,8 +93,8 @@ let
 
 
     "Markdown" = python.mkDerivation {
-      name = "Markdown-2.6.11";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/b3/73/fc5c850f44af5889192dff783b7b0d8f3fe8d30b65c8e3f78f8f0265fecf/Markdown-2.6.11.tar.gz"; sha256 = "a856869c7ff079ad84a3e19cd87a64998350c2b94e9e08e44270faef33400f81"; };
+      name = "Markdown-3.0.1";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/3c/52/7bae9e99a7a4be6af4a713fe9b692777e6468d28991c54c273dfb6ec9fb2/Markdown-3.0.1.tar.gz"; sha256 = "d02e0f9b04c500cde6637c11ad7c72671f359b87b9fe924b2383649d8841db7c"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [ ];
@@ -108,13 +108,13 @@ let
 
 
     "Pillow" = python.mkDerivation {
-      name = "Pillow-5.1.0";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/89/b8/2f49bf71cbd0e9485bb36f72d438421b69b7356180695ae10bd4fd3066f5/Pillow-5.1.0.tar.gz"; sha256 = "cee9bc75bff455d317b6947081df0824a8f118de2786dc3d74a3503fd631f4ef"; };
+      name = "Pillow-5.3.0";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/1b/e1/1118d60e9946e4e77872b69c58bc2f28448ec02c99a2ce456cd1a272c5fd/Pillow-5.3.0.tar.gz"; sha256 = "2ea3517cd5779843de8a759c2349a3cd8d3893e03ab47053b66d5ec6f8bc4f93"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
-        homepage = "https://python-pillow.org";
+        homepage = "http://python-pillow.org";
         license = "License :: Other/Proprietary License";
         description = "Python Imaging Library (Fork)";
       };
@@ -122,30 +122,14 @@ let
 
 
 
-    "django-debug-toolbar" = python.mkDerivation {
-      name = "django-debug-toolbar-1.9.1";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/50/95/e3d04d645f596b32320b88ade97571416d0520c083e4172f9fca808af62f/django-debug-toolbar-1.9.1.tar.gz"; sha256 = "d9ea75659f76d8f1e3eb8f390b47fc5bad0908d949c34a8a3c4c87978eb40a0f"; };
+    "django-filter" = python.mkDerivation {
+      name = "django-filter-2.0.0";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/6b/a4/b1ef813e7dd74ef193ae45849f592141cdfbd93bac206347ab5ded149335/django-filter-2.0.0.tar.gz"; sha256 = "6f4e4bc1a11151178520567b50320e5c32f8edb552139d93ea3e30613b886f56"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [
       self."Django"
-      self."sqlparse"
     ];
-      meta = with pkgs.stdenv.lib; {
-        homepage = "https://github.com/jazzband/django-debug-toolbar";
-        license = licenses.bsdOriginal;
-        description = "A configurable set of panels that display various debug information about the current request/response.";
-      };
-    };
-
-
-
-    "django-filter" = python.mkDerivation {
-      name = "django-filter-1.1.0";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/db/12/491d519f5bee93709083c726b020ff9f09b95f32de36ae9023fbc89a21e4/django-filter-1.1.0.tar.gz"; sha256 = "ec0ef1ba23ef95b1620f5d481334413700fb33f45cd76d56a63f4b0b1d76976a"; };
-      doCheck = commonDoCheck;
-      buildInputs = commonBuildInputs;
-      propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
         homepage = "https://github.com/carltongibson/django-filter/tree/master";
         license = licenses.bsdOriginal;
@@ -225,8 +209,8 @@ let
 
 
     "django-simple-captcha" = python.mkDerivation {
-      name = "django-simple-captcha-0.5.6";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/4d/46/44aff307e370e873ebb44dd8e9a1bcde10ddd1e55779361a5654d273d939/django-simple-captcha-0.5.6.zip"; sha256 = "d6fd36e8ba4215908f8698ae0ee40ed2591f7ce544f6eb1a2c84a84ea55e4b0b"; };
+      name = "django-simple-captcha-0.5.9";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/d7/f4/ea95b04ed3abc7bf225716f17e35c5a185f6100db4d7541a46696ce40351/django-simple-captcha-0.5.9.zip"; sha256 = "0c30a14f02502119fd1a4d308dd5d2b899d0f4284825a396bbb010afd904754a"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [
@@ -260,8 +244,8 @@ let
 
 
     "psycopg2" = python.mkDerivation {
-      name = "psycopg2-2.7.4";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/74/83/51580322ed0e82cba7ad8e0af590b8fb2cf11bd5aaa1ed872661bd36f462/psycopg2-2.7.4.tar.gz"; sha256 = "8bf51191d60f6987482ef0cfe8511bbf4877a5aa7f313d7b488b53189cf26209"; };
+      name = "psycopg2-2.7.6.1";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/c0/07/93573b97ed61b6fb907c8439bf58f09957564cf7c39612cef36c547e68c6/psycopg2-2.7.6.1.tar.gz"; sha256 = "27959abe64ca1fc6d8cd11a71a1f421d8287831a3262bd4cacd43bbf43cc3c82"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [ ];
@@ -275,8 +259,8 @@ let
 
 
     "pytz" = python.mkDerivation {
-      name = "pytz-2018.4";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/10/76/52efda4ef98e7544321fd8d5d512e11739c1df18b0649551aeccfb1c8376/pytz-2018.4.tar.gz"; sha256 = "c06425302f2cf668f1bba7a0a03f3c1d34d4ebeef2c72003da308b3947c7f749"; };
+      name = "pytz-2018.7";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/cd/71/ae99fc3df1b1c5267d37ef2c51b7d79c44ba8a5e37b48e3ca93b4d74d98b/pytz-2018.7.tar.gz"; sha256 = "31cb35c89bd7d333cd32c5f278fca91b523b0834369e757f4c5641ea252236ca"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [ ];
@@ -290,13 +274,13 @@ let
 
 
     "six" = python.mkDerivation {
-      name = "six-1.11.0";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/16/d8/bc6316cf98419719bd59c91742194c111b6f2e85abac88e496adefaf7afe/six-1.11.0.tar.gz"; sha256 = "70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"; };
+      name = "six-1.12.0";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/dd/bf/4138e7bfb757de47d1f4b6994648ec67a51efe58fa907c1e11e350cddfca/six-1.12.0.tar.gz"; sha256 = "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
-        homepage = "http://pypi.python.org/pypi/six/";
+        homepage = "https://github.com/benjaminp/six";
         license = licenses.mit;
         description = "Python 2 and 3 compatibility utilities";
       };
@@ -304,30 +288,15 @@ let
 
 
 
-    "sqlparse" = python.mkDerivation {
-      name = "sqlparse-0.2.4";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/79/3c/2ad76ba49f9e3d88d2b58e135b7821d93741856d1fe49970171f73529303/sqlparse-0.2.4.tar.gz"; sha256 = "ce028444cfab83be538752a2ffdb56bc417b7784ff35bb9a3062413717807dec"; };
-      doCheck = commonDoCheck;
-      buildInputs = commonBuildInputs;
-      propagatedBuildInputs = [ ];
-      meta = with pkgs.stdenv.lib; {
-        homepage = "https://github.com/andialbrecht/sqlparse";
-        license = licenses.bsdOriginal;
-        description = "Non-validating SQL parser";
-      };
-    };
-
-
-
     "uWSGI" = python.mkDerivation {
-      name = "uWSGI-2.0.17";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/98/b2/19b34b20662d111f7d2f926cdf10e13381761dd7dbd10666b9076cbdcd22/uwsgi-2.0.17.tar.gz"; sha256 = "3dc2e9b48db92b67bfec1badec0d3fdcc0771316486c5efa3217569da3528bf2"; };
+      name = "uWSGI-2.0.17.1";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/a2/c9/a2d5737f63cd9df4317a4acc15d1ddf4952e28398601d8d7d706c16381e0/uwsgi-2.0.17.1.tar.gz"; sha256 = "d2318235c74665a60021a4fc7770e9c2756f9fc07de7b8c22805efe85b5ab277"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
         homepage = "https://uwsgi-docs.readthedocs.io/en/latest/";
-        license = "GPL2";
+        license = licenses.gpl2Plus;
         description = "The uWSGI server";
       };
     };
