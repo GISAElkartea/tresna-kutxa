@@ -7,9 +7,11 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.utils.translation import ugettext as _
+from django.contrib.contenttypes.models import ContentType
 
 from watson import search
 from watson.views import SearchMixin as WatsonSearchView
+from watson.models import SearchEntry
 
 from .filtersets import *
 from .forms import ActivityForm, VideoForm, ReadingForm, LinkForm
@@ -111,6 +113,11 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
+material_se_for_ids = lambda ids: SearchEntry.objects.filter(
+        content_type_id=ContentType.objects.get_for_model(Material),
+        object_id_int__in=ids)
+
+
 class SearchMaterial(TabbedMixin, WatsonSearchView, ListView):
     template_name = 'material/search.html'
 
@@ -127,6 +134,10 @@ class SearchMaterial(TabbedMixin, WatsonSearchView, ListView):
             (_('Links'), reverse('material:search-link'), link_filter.form),
         ]
 
+    def get_queryset(self):
+        if not self.get_query(self.request):
+            return material_se_for_ids(Material.objects.approved())
+        return super().get_queryset()
 
 class SingleModelSearch(SearchMaterial):
     prefix = None
@@ -141,12 +152,9 @@ class SingleModelSearch(SearchMaterial):
                 self.request.GET,
                 queryset=self.queryset,
                 prefix=self.prefix)
-        return search.filter(filterset.qs, self.query)
-
-    def get_queryset(self):
         if not self.get_query(self.request):
-            return self.queryset
-        return super().get_queryset()
+            return material_se_for_ids(filterset.qs.values_list('material_ptr_id'))
+        return search.filter(filterset.qs, self.query)
 
 class SearchActivity(SingleModelSearch):
     queryset = Activity.objects.approved()
