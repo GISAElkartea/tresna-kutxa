@@ -1,4 +1,3 @@
-setuptools
 uwsgi == 2.0.17.1
 django == 2.1.4
 django-localized-fields == 4.6a3
@@ -9,3 +8,8 @@ django-simple-captcha == 0.5.9
 django-filter == 2.0.0
 libsass == 0.16.1
 django-sass-processor == 0.7.2
+
+# Markdown 3 and later import pkg_resources
+# This works fine in the interpreter
+# For some reason it breaks when done from UWSGI
+markdown < 3
