@@ -92,8 +92,11 @@ class LocalizedSlugMixin(SingleObjectMixin):
 
 class PendingApprovalMixin():
     def get_template_names(self):
-        if not self.object.approval.approved:
-            return ['material/pending.html']
+        try:
+            if not self.object.approval.approved:
+                return ['material/pending.html']
+        except Material.approval.RelatedObjectDoesNotExist:
+            pass
         return super().get_template_names()
 
 
