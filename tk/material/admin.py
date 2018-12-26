@@ -85,7 +85,7 @@ class ReadingAdmin(MaterialAdmin):
                            'languages',
                            'subjects']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'goal', 'url', 'brief', 'attachment']})
+                'fields': ['author', 'title', 'goal', 'url', 'brief']})
             ]
     readonly_fields = ['approval_link']
     list_filter = ['pages', 'year', 'languages', 'subjects']
@@ -106,7 +106,7 @@ class VideoAdmin(MaterialAdmin):
                            'subtitles',
                            'subjects']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'goal', 'url', 'brief', 'attachment']})
+                'fields': ['author', 'title', 'goal', 'url', 'brief']})
             ]
     readonly_fields = ['approval_link']
     list_filter = ['duration', 'year', 'audios', 'subtitles', 'subjects']
