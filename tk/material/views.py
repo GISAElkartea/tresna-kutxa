@@ -116,11 +116,6 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-material_se_for_ids = lambda ids: SearchEntry.objects.filter(
-        content_type_id=ContentType.objects.get_for_model(Material),
-        object_id_int__in=ids)
-
-
 class SearchMaterial(TabbedMixin, WatsonSearchView, ListView):
     template_name = 'material/search.html'
 
@@ -139,7 +134,7 @@ class SearchMaterial(TabbedMixin, WatsonSearchView, ListView):
 
     def get_queryset(self):
         if not self.get_query(self.request):
-            return material_se_for_ids(Material.objects.approved())
+            return SearchEntry.objects.all()
         return super().get_queryset()
 
 class SingleModelSearch(SearchMaterial):
@@ -155,8 +150,6 @@ class SingleModelSearch(SearchMaterial):
                 self.request.GET,
                 queryset=self.queryset,
                 prefix=self.prefix)
-        if not self.get_query(self.request):
-            return material_se_for_ids(filterset.qs.values_list('material_ptr_id'))
         return search.filter(filterset.qs, self.query)
 
 class SearchActivity(SingleModelSearch):

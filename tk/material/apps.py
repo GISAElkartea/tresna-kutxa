@@ -25,18 +25,10 @@ class MaterialSearchAdapter(search.SearchAdapter):
         return self._join_translations(getattr(obj, 'brief'))
 
 
-def update_material_index(sender, instance, **kwargs):
-    search.default_search_engine.update_obj_index(instance.material_ptr)
-
-
 class MaterialConfig(AppConfig):
     name = 'tk.material'
 
     def ready(self):
-        # All material types related one-to-one to their Material parent.
-        # This parent contains all information that is meaningful to search.
-        Material = self.get_model('Material')
-        search.register(Material.objects.approved(), MaterialSearchAdapter)
-
-        for m in ['Activity', 'Reading', 'Video', 'Link']:
-            post_save.connect(update_material_index, sender=self.get_model(m))
+        for mn in ['Activity', 'Reading', 'Video', 'Link']:
+            m = self.get_model(mn)
+            search.register(m.objects.approved(), MaterialSearchAdapter)
