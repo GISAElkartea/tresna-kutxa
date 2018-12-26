@@ -10,7 +10,7 @@ from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.models import ContentType
 
 from watson import search
-from watson.views import SearchMixin as WatsonSearchView
+from watson.views import SearchView
 from watson.models import SearchEntry
 
 from .filtersets import *
@@ -116,8 +116,9 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-class SearchMaterial(TabbedMixin, WatsonSearchView, ListView):
+class SearchMaterial(TabbedMixin, SearchView):
     template_name = 'material/search.html'
+    context_object_name = 'search_entries'
 
     def get_tabs(self):
         activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
@@ -138,6 +139,7 @@ class SearchMaterial(TabbedMixin, WatsonSearchView, ListView):
         return super().get_queryset()
 
 class SingleModelSearch(SearchMaterial):
+    context_object_name = 'object_list'
     prefix = None
     filterset_class = None
 

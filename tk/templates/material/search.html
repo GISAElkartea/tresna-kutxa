@@ -17,11 +17,22 @@
 
 {{ tab_media }}
 
+{% if search_entries %}
 <ul>
-  {% for s in object_list %}
+  {% for entry in search_entries %}
   <li>
-    <a href="{{ s.object.get_absolute_url }}">{{ s.object.title }}</a>
+    <a href="{{ entry.object.get_absolute_url }}">{{ entry.object.title }}</a>
   </li>
   {% endfor %}
 </ul>
+{% else %}
+<ul>
+  {% for obj in object_list %}
+  <li>
+    <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 {% endblock content %}
