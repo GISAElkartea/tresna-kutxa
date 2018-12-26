@@ -23,14 +23,12 @@ class MaterialForm(ModelForm):
 class ActivityForm(MaterialForm):
     class Meta(MaterialForm.Meta):
         model = Activity
-        localized_fields = ['duration']  # TODO: Check
         fields = '__all__'
 
 
 class VideoForm(MaterialForm):
     class Meta(MaterialForm.Meta):
         model = Video
-        localized_fields = ['duration']  # TODO: Check
         fields = '__all__'
 
 
