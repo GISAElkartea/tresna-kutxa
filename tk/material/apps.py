@@ -29,8 +29,8 @@ class MaterialSearchAdapter(search.SearchAdapter):
     def urls(self, obj):
         urls = {}
         for lang, _ in settings.LANGUAGES:
-            translation.activate(lang)
-            urls[lang] = obj.get_absolute_url()
+            with translation.override(lang):
+                urls[lang] = obj.get_absolute_url()
         return urls
 
     def get_url(self, obj):
