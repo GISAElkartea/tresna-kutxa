@@ -7,7 +7,6 @@
 <form action="{{ endpoint }}" method="post">
   {% csrf_token %}
   <table>
-    {{ approval_form.as_table }}
     {{ form.as_table }}
   </table>
   <input type="submit" value="{% trans 'Submit' %}" />
@@ -15,5 +14,4 @@
 {% endfor %}
 
 {{ tab_media }}
-{{ approval_form.media }}
 {% endblock content %}
