@@ -1,5 +1,7 @@
 from django.apps import AppConfig
 from django.db.models.signals import post_save
+from django.utils import translation
+from django.conf import settings
 
 from watson import search
 from localized_fields.fields import LocalizedField
@@ -13,7 +15,7 @@ class MaterialSearchAdapter(search.SearchAdapter):
 
     @property
     def store(self):
-        return ['title', 'brief']
+        return ['title', 'urls', 'brief']
 
     def _join_translations(self, field: LocalizedField) -> str:
         return ' '.join([v for v in field.values() if v is not None])
@@ -23,6 +25,17 @@ class MaterialSearchAdapter(search.SearchAdapter):
 
     def get_description(self, obj):
         return self._join_translations(getattr(obj, 'brief'))
+
+    def urls(self, obj):
+        urls = {}
+        for lang, _ in settings.LANGUAGES:
+            translation.activate(lang)
+            urls[lang] = obj.get_absolute_url()
+        return urls
+
+    def get_url(self, obj):
+        # URLs are localized, cannot store in a text field
+        return ''
 
 
 class MaterialConfig(AppConfig):
