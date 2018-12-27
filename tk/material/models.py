@@ -16,40 +16,38 @@ from .fields import LanguageField
 COMMON_LANGUAGES = ['eu', 'es', 'fr', 'en']
 
 
-class Subject(models.Model):
+class OnlyLocalizedName(models.Model):
+    class Meta:
+        abstract = True
+
+    name = LocalizedCharField(
+            max_length=512,
+            required=False,
+            verbose_name=_("name"))
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Subject(OnlyLocalizedName):
     class Meta:
         ordering = ['name']
         verbose_name = _("Subject")
         verbose_name_plural = _("Subjects")
 
-    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
 
-    def __str__(self):
-        return str(self.name)
-
-
-class GroupFeature(models.Model):
+class GroupFeature(OnlyLocalizedName):
     class Meta:
         ordering = ['name']
         verbose_name = _("Group feature")
         verbose_name_plural = _("Group features")
 
-    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
 
-    def __str__(self):
-        return str(self.name)
-
-
-class Location(models.Model):
+class Location(OnlyLocalizedName):
     class Meta:
         ordering = ['name']
         verbose_name = _("Location")
         verbose_name_plural = _("Locations")
-
-    name = LocalizedCharField(max_length=512, verbose_name=_("name"))
-
-    def __str__(self):
-        return str(self.name)
 
 
 class Approval(models.Model):
