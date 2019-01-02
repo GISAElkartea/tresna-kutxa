@@ -2,22 +2,51 @@
 <!doctype=html>
 <html>
   <head>
+<<<<<<< Updated upstream
     <link rel="stylesheet" type="text/css" href="{% sass_src 'sass/main.sass' %}"/>
+=======
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
+>>>>>>> Stashed changes
   </head>
   <body>
-    <div>
-      {% get_available_languages as languages %}
-      {% for lang_code, lang_name in languages %}
-      <a href="{% translate_url lang_code %}">{{ lang_code }}</a>
-      {% endfor %}
-    </div>
 
     <nav>
-      <ul>
-        <li><a href="{% url 'material:search-material' %}">{% trans 'Search material' %}</a></li>
-        <li><a href="{% url 'material:submit-material' %}">{% trans 'Submit material' %}</a></li>
+      <header>
+        <img src="../static/images/biltokia.svg" />
+        <h1>Biltokia</h1>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+      </header>
+      <ul id="lang">
+        {% get_available_languages as languages %}
+        {% for lang_code, lang_name in languages %}
+        <li><a href="{% translate_url lang_code %}">{{ lang_code }}</a></li>
+        {% endfor %}
+        <li><a>by-sa</a></li>
+      </ul>
+      <ul id="filters">
+        <li>Material mota
+            <ul>
+              <li>Dinamikak</li>
+              <li>Irakurketak</li>
+              <li>Bideoak</li>
+            </ul>
+        </li>
+        <li>Gaia
+          <ul>
+            <li>Gai bat</li>
+            <li>Gai bat</li>
+            <li>Gai bat</li>
+            <li>Gai bat</li>
+            <li>Gai bat</li>
+            <li>Gai bat</li>
+          </ul>
+        </li>
       </ul>
     </nav>
+    <main>
+        <a href="{% url 'material:search-material' %}">{% trans 'Search material' %}</a>
+        <a href="{% url 'material:submit-material' %}">{% trans 'Submit material' %}</a>
+    </main>
 
     {% block content %}
     {% endblock content %}
