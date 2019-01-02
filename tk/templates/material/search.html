@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block content %}
+{% block filters %}
 {% for tab, endpoint, form in tabs %}
 <h2>{{ tab }}</h2>
 <form method="get" action="{{ endpoint }}">
@@ -16,7 +16,9 @@
 {% endfor %}
 
 {{ tab_media }}
+{% endblock filters %}
 
+{% block content %}
 {% if search_entries %}
 <ul>
   {% for entry in search_entries %}

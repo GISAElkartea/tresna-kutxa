@@ -19,25 +19,8 @@
         {% endfor %}
         <li><a>by-sa</a></li>
       </ul>
-      <ul id="filters">
-        <li>Material mota
-            <ul>
-              <li>Dinamikak</li>
-              <li>Irakurketak</li>
-              <li>Bideoak</li>
-            </ul>
-        </li>
-        <li>Gaia
-          <ul>
-            <li>Gai bat</li>
-            <li>Gai bat</li>
-            <li>Gai bat</li>
-            <li>Gai bat</li>
-            <li>Gai bat</li>
-            <li>Gai bat</li>
-          </ul>
-        </li>
-      </ul>
+      {% block filters %}
+      {% endblock filters %}
     </nav>
     <main>
         <a href="{% url 'material:search-material' %}">{% trans 'Search material' %}</a>
