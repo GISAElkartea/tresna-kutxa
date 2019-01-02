@@ -7,5 +7,5 @@ sudo nixos-rebuild switch
 for command in 'collectstatic --noinput' migrate compilemessages buildwatson; do
      nix-shell nix --run "python manage.py ${command} --settings=tk.production"
 done
-# systemctl restart uwsgi
+sudo ../restart-uwsgi.sh
 END
