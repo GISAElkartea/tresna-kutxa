@@ -31,7 +31,7 @@ Using Nix:
 
 If you want to use Python 3's virtual envs, you will first have to create one:
 
-    venv .
+    python3 -m venv .
 
 Then activate it:
 
