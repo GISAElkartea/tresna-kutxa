@@ -1,4 +1,4 @@
-{% load i18n sass_tags %}
+{% load static i18n sass_tags %}
 <!doctype=html>
 <html>
   <head>
@@ -8,7 +8,7 @@
 
     <nav>
       <header>
-        <img src="../static/images/biltokia.svg" />
+        <img src="{% static 'images/biltokia.svg' %}" />
         <h1>Biltokia</h1>
         <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
       </header>
