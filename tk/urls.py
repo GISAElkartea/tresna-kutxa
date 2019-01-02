@@ -9,8 +9,7 @@ from .admin import tkadmin
 
 
 localized = [
-    url(r'^$', TemplateView.as_view(template_name='base.html'), name='frontpage'),
-    url(r'^material/', include('tk.material.urls')),
+    url(r'^', include('tk.material.urls')),
 ]
 
 

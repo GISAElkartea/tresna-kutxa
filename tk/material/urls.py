@@ -7,11 +7,11 @@ mat_type = r'(?P<type>\w+)'
 
 app_name = 'material'
 urlpatterns = [
-    url(r'^search/material/$', SearchMaterial.as_view(), name='search-material'),
-    url(r'^search/activity/$', SearchActivity.as_view(), name='search-activity'),
-    url(r'^search/video/$', SearchVideo.as_view(), name='search-video'),
-    url(r'^search/reading/$', SearchReading.as_view(), name='search-reading'),
-    url(r'^search/link/$', SearchLink.as_view(), name='search-link'),
+    url(r'^$', SearchMaterial.as_view(), name='search-material'),
+    url(r'^activity/$', SearchActivity.as_view(), name='search-activity'),
+    url(r'^video/$', SearchVideo.as_view(), name='search-video'),
+    url(r'^reading/$', SearchReading.as_view(), name='search-reading'),
+    url(r'^link/$', SearchLink.as_view(), name='search-link'),
 
     url(r'^submit/material/$', SubmitActivity.as_view(), name='submit-material'),
     url(r'^submit/activity/$', SubmitActivity.as_view(), name='submit-activity'),
@@ -19,8 +19,8 @@ urlpatterns = [
     url(r'^submit/reading/$', SubmitReading.as_view(), name='submit-reading'),
     url(r'^submit/link/$', SubmitLink.as_view(), name='submit-link'),
 
-    url(r'^activity/{}/$'.format(slug), DetailActivity.as_view(), name='detail-activity'),
-    url(r'^video/{}/$'.format(slug), DetailVideo.as_view(), name='detail-video'),
-    url(r'^reading/{}/$'.format(slug), DetailReading.as_view(), name='detail-reading'),
-    url(r'^link/{}/$'.format(slug), DetailLink.as_view(), name='detail-link'),
+    url(r'^detail/activity/{}/$'.format(slug), DetailActivity.as_view(), name='detail-activity'),
+    url(r'^detail/video/{}/$'.format(slug), DetailVideo.as_view(), name='detail-video'),
+    url(r'^detail/reading/{}/$'.format(slug), DetailReading.as_view(), name='detail-reading'),
+    url(r'^detail/link/{}/$'.format(slug), DetailLink.as_view(), name='detail-link'),
 ]
