@@ -7,7 +7,8 @@ from django.views.generic.detail import DetailView, SingleObjectMixin
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.utils.translation import ugettext as _
-from django.contrib.contenttypes.models import ContentType
+from django.utils.decorators import method_decorator
+from django.views.decorators.vary import vary_on_headers
 
 from .filtersets import *
 from .forms import ActivityForm, VideoForm, ReadingForm, LinkForm
@@ -113,9 +114,17 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
 
 
 class SingleModelSearch(TabbedMixin, ListView):
-    template_name = 'material/search.html'
     prefix = None
     filterset_class = None
+
+    @method_decorator(vary_on_headers('X-Requested-With'))
+    def __call__(self, request, **kwargs):
+        super().__call__(request, **kwargs)
+
+    def get_template_names(self):
+        if self.request.is_ajax():
+            return ['material/search_ajax.html']
+        return ['material/search.html']
 
     def get_tabs(self):
         material_filter = MaterialFilterSet(self.request.GET, prefix='material')
