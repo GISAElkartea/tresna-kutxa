@@ -4,7 +4,13 @@ import django_filters
 from django_filters.filters import ChoiceFilter
 
 from .fields import get_languages
-from .models import Activity, Reading, Video, Link, COMMON_LANGUAGES
+from .models import Material, Activity, Reading, Video, Link, COMMON_LANGUAGES
+
+
+class MaterialFilterSet(FilterSet):
+    class Meta:
+        model = Material
+        fields = ['subjects']
 
 
 class ActivityFilterSet(FilterSet):

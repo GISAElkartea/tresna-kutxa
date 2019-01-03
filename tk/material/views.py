@@ -112,36 +112,24 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-class SearchMaterial(TabbedMixin, ListView):
+class SingleModelSearch(TabbedMixin, ListView):
     template_name = 'material/search.html'
-    context_object_name = 'search_entries'
-    queryset = Material.objects.approved()
+    prefix = None
+    filterset_class = None
 
     def get_tabs(self):
+        material_filter = MaterialFilterSet(self.request.GET, prefix='material')
         activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
         reading_filter = ReadingFilterSet(self.request.GET, prefix='reading')
         video_filter = VideoFilterSet(self.request.GET, prefix='video')
         link_filter = LinkFilterSet(self.request.GET, prefix='link')
         return [
-            (_('All material'), reverse('material:search-material'), None),
+            (_('All material'), reverse('material:search-material'), material_filter.form),
             (_('Activities'), reverse('material:search-activity'), activity_filter.form),
             (_('Readings'), reverse('material:search-reading'), reading_filter.form),
             (_('Videos'), reverse('material:search-video'), video_filter.form),
             (_('Links'), reverse('material:search-link'), link_filter.form),
         ]
-
-    def get_queryset(self, queryset=None):
-        query = self.request.GET.get('q')
-        qs = self.queryset if queryset is None else queryset
-        if not query:
-            return qs
-        return qs.search(query)
-
-
-class SingleModelSearch(SearchMaterial):
-    context_object_name = 'object_list'
-    prefix = None
-    filterset_class = None
 
     def get_context_data(self, *args, **kwargs):
         kwargs['form'] = self.filterset_class(self.request.GET).form
@@ -152,7 +140,16 @@ class SingleModelSearch(SearchMaterial):
                 self.request.GET,
                 queryset=self.queryset,
                 prefix=self.prefix)
-        return super().get_queryset(filterset.qs)
+        query = self.request.GET.get('q')
+        if not query:
+            return filterset.qs
+        return filterset.qs.search(query)
+
+
+class SearchMaterial(SingleModelSearch):
+    queryset = Material.objects.approved()
+    filterset_class = MaterialFilterSet
+    prefix = 'material'
 
 class SearchActivity(SingleModelSearch):
     queryset = Activity.objects.approved()
