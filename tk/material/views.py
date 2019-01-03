@@ -9,10 +9,6 @@ from django.views.generic.list import ListView
 from django.utils.translation import ugettext as _
 from django.contrib.contenttypes.models import ContentType
 
-from watson import search
-from watson.views import SearchView
-from watson.models import SearchEntry
-
 from .filtersets import *
 from .forms import ActivityForm, VideoForm, ReadingForm, LinkForm
 from .models import Material, Activity, Video, Reading, Link
@@ -116,7 +112,7 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-class SearchMaterial(TabbedMixin, SearchView):
+class SearchMaterial(TabbedMixin, ObjectList):
     template_name = 'material/search.html'
     context_object_name = 'search_entries'
 
@@ -135,7 +131,7 @@ class SearchMaterial(TabbedMixin, SearchView):
 
     def get_queryset(self):
         if not self.get_query(self.request):
-            return SearchEntry.objects.all()
+            return Material.objects.approved()
         return super().get_queryset()
 
 class SingleModelSearch(SearchMaterial):
@@ -152,7 +148,7 @@ class SingleModelSearch(SearchMaterial):
                 self.request.GET,
                 queryset=self.queryset,
                 prefix=self.prefix)
-        return search.filter(filterset.qs, self.query)
+        return filterset.qs
 
 class SearchActivity(SingleModelSearch):
     queryset = Activity.objects.approved()

@@ -245,21 +245,6 @@ let
 
 
 
-    "django-watson" = python.mkDerivation {
-      name = "django-watson-1.5.2";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/eb/9f/dd7b624de57eae649d4768b91aa27d617805ec0fbabbf3bc374c5c8cfd91/django-watson-1.5.2.tar.gz"; sha256 = "2697c8acf77fd8f0f957d4b71bd9f07f359bb3954a3516a339cac87b3c9f1c9f"; };
-      doCheck = commonDoCheck;
-      buildInputs = commonBuildInputs;
-      propagatedBuildInputs = [ ];
-      meta = with pkgs.stdenv.lib; {
-        homepage = "http://github.com/etianen/django-watson";
-        license = licenses.bsdOriginal;
-        description = "Full-text multi-table search application for Django. Easy to install and use, with good performance.";
-      };
-    };
-
-
-
     "libsass" = python.mkDerivation {
       name = "libsass-0.16.1";
       src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/9d/00/cee3eae997e9d423f874a5d45a05e62965d0bea1c83c7aa8e8f9f8bd5c79/libsass-0.16.1.tar.gz"; sha256 = "5043f64d37254a6cfff8f1d2adcf13efecfda7e31ea09eb809269e117c8d8736"; };

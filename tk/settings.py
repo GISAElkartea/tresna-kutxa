@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'watson',
     'markdownx',
     'django.contrib.postgres',
     'localized_fields.apps.LocalizedFieldsConfig',
@@ -136,5 +135,3 @@ STATICFILES_FINDERS = [
 ]
 
 INTERNAL_IPS = ['127.0.0.1']
-
-WATSON_POSTGRES_SEARCH_CONFIG = "pg_catalog.spanish"
