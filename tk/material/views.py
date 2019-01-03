@@ -112,9 +112,10 @@ class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
     model = Link
 
 
-class SearchMaterial(TabbedMixin, ObjectList):
+class SearchMaterial(TabbedMixin, ListView):
     template_name = 'material/search.html'
     context_object_name = 'search_entries'
+    queryset = Material.objects.approved()
 
     def get_tabs(self):
         activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
@@ -129,10 +130,13 @@ class SearchMaterial(TabbedMixin, ObjectList):
             (_('Links'), reverse('material:search-link'), link_filter.form),
         ]
 
-    def get_queryset(self):
-        if not self.get_query(self.request):
-            return Material.objects.approved()
-        return super().get_queryset()
+    def get_queryset(self, queryset=None):
+        query = self.request.GET.get('q')
+        qs = self.queryset if queryset is None else queryset
+        if not query:
+            return qs
+        return qs.search(query)
+
 
 class SingleModelSearch(SearchMaterial):
     context_object_name = 'object_list'
@@ -148,7 +152,7 @@ class SingleModelSearch(SearchMaterial):
                 self.request.GET,
                 queryset=self.queryset,
                 prefix=self.prefix)
-        return filterset.qs
+        return super().get_queryset(filterset.qs)
 
 class SearchActivity(SingleModelSearch):
     queryset = Activity.objects.approved()
