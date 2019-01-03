@@ -23,11 +23,8 @@
       {% endblock filters %}
     </nav>
     <main>
-        <a href="{% url 'material:search-material' %}">{% trans 'Search material' %}</a>
-        <a href="{% url 'material:submit-material' %}">{% trans 'Submit material' %}</a>
+      {% block content %}
+      {% endblock content %}
     </main>
-
-    {% block content %}
-    {% endblock content %}
   </body>
 </html>
