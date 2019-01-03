@@ -3,8 +3,9 @@ import datetime
 from django.core.exceptions import ValidationError
 from django.urls import reverse
 from django.db import models
-from django.db.models import Subquery, Q
+from django.db.models import Subquery, Q, F, Func
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.postgres.search import SearchVector, SearchRank
 
 from localized_fields.models import LocalizedModel
 from localized_fields.fields import (
@@ -70,7 +71,30 @@ class Approval(models.Model):
         return _('Unapproved: "{}"').format(self.material)
 
 
-class ApprovedQuerySet(models.QuerySet):
+class AVals(Func):
+    function = 'avals'
+
+
+class JoinArray(Func):
+    function = 'array_to_string'
+    template = "%(function)s(%(expressions)s, ' ')"
+
+
+ConcatValues = lambda f : JoinArray(AVals(F(f)))
+
+
+class MaterialQuerySet(models.QuerySet):
+    SEARCH_VECTOR = SearchVector(ConcatValues('title'), weight='A')\
+                  + SearchVector(ConcatValues('goal'), weight='B')\
+                  + SearchVector(ConcatValues('brief'), weight='C')
+
+    def search(self, query):
+        return self\
+            .approved()\
+            .annotate(rank=SearchRank(MaterialQuerySet.SEARCH_VECTOR, query))\
+            .order_by('-rank')\
+            .filter(rank__gte=0.2)
+
     def approved(self):
         bypassed = Q(approval__isnull=True)
         approved = Q(approval__approved=True)
@@ -81,7 +105,7 @@ class ApprovedQuerySet(models.QuerySet):
 
 
 class Material(LocalizedModel):
-    objects = ApprovedQuerySet.as_manager()
+    objects = MaterialQuerySet.as_manager()
 
     class Meta:
         ordering = ['-timestamp']
@@ -111,7 +135,7 @@ class Material(LocalizedModel):
 
 
 class Activity(Material):
-    objects = ApprovedQuerySet.as_manager()
+    objects = MaterialQuerySet.as_manager()
 
     class Meta:
         ordering = ['-timestamp']
@@ -157,7 +181,7 @@ def validate_year(year):
 
 
 class Reading(Material):
-    objects = ApprovedQuerySet.as_manager()
+    objects = MaterialQuerySet.as_manager()
 
     class Meta:
         ordering = ['-timestamp']
@@ -176,7 +200,7 @@ class Reading(Material):
 
 
 class Video(Material):
-    objects = ApprovedQuerySet.as_manager()
+    objects = MaterialQuerySet.as_manager()
 
     class Meta:
         ordering = ['-timestamp']
@@ -202,7 +226,7 @@ class Video(Material):
 
 
 class Link(Material):
-    objects = ApprovedQuerySet.as_manager()
+    objects = MaterialQuerySet.as_manager()
 
     class Meta:
         ordering = ['-timestamp']
