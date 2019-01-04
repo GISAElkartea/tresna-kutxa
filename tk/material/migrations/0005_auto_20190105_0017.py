@@ -17,7 +17,9 @@ class Migration(migrations.Migration):
             name='num_people',
             field=django.contrib.postgres.fields.ranges.IntegerRangeField(default=NumericRange(2, 30), verbose_name='number of people'),
         ),
+        migrations.RunSQL('commit;'),
         migrations.RunSQL('update material_activity set num_people = int4range(min_people, max_people);'),
+        migrations.RunSQL('commit;'),
         migrations.RemoveField(
             model_name='activity',
             name='max_people',
