@@ -122,6 +122,40 @@ let
 
 
 
+    "django-appconf" = python.mkDerivation {
+      name = "django-appconf-1.0.2";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/34/b9/d07195652ab494b026f7cb0341dd6e5f2e6e39be177abe05e2cec8bd46e4/django-appconf-1.0.2.tar.gz"; sha256 = "6a4d9aea683b4c224d97ab8ee11ad2d29a37072c0c6c509896dd9857466fb261"; };
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs;
+      propagatedBuildInputs = [ ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "http://django-appconf.readthedocs.org/";
+        license = licenses.bsdOriginal;
+        description = "A helper class for handling configuration defaults of packaged apps gracefully.";
+      };
+    };
+
+
+
+    "django-compressor" = python.mkDerivation {
+      name = "django-compressor-2.2";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/82/76/1355459f90714517c52f264aa7245b52e59a273ec16e8f8d505fa6c342f8/django_compressor-2.2.tar.gz"; sha256 = "9616570e5b08e92fa9eadc7a1b1b49639cce07ef392fc27c74230ab08075b30f"; };
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs;
+      propagatedBuildInputs = [
+      self."django-appconf"
+      self."rcssmin"
+      self."rjsmin"
+    ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "https://django-compressor.readthedocs.io/en/latest/";
+        license = licenses.mit;
+        description = "Compresses linked and inline JavaScript or CSS into single cached files.";
+      };
+    };
+
+
+
     "django-filter" = python.mkDerivation {
       name = "django-filter-2.0.0";
       src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/6b/a4/b1ef813e7dd74ef193ae45849f592141cdfbd93bac206347ab5ded149335/django-filter-2.0.0.tar.gz"; sha256 = "6f4e4bc1a11151178520567b50320e5c32f8edb552139d93ea3e30613b886f56"; };
@@ -287,6 +321,40 @@ let
         homepage = "http://pythonhosted.org/pytz";
         license = licenses.mit;
         description = "World timezone definitions, modern and historical";
+      };
+    };
+
+
+
+    "rcssmin" = python.mkDerivation {
+      name = "rcssmin-1.0.6";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/e2/5f/852be8aa80d1c24de9b030cdb6532bc7e7a1c8461554f6edbe14335ba890/rcssmin-1.0.6.tar.gz"; sha256 = "ca87b695d3d7864157773a61263e5abb96006e9ff0e021eff90cbe0e1ba18270"; };
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs;
+      propagatedBuildInputs = [ ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "http://opensource.perlig.de/rcssmin/";
+        license = "Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/";
+        description = "CSS Minifier";
+      };
+    };
+
+
+
+    "rjsmin" = python.mkDerivation {
+      name = "rjsmin-1.0.12";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/10/9c/2c45f57d43258b05bf33cf8f6c8161ea5abf8b4776a5c59d12646727cd98/rjsmin-1.0.12.tar.gz"; sha256 = "dd9591aa73500b08b7db24367f8d32c6470021f39d5ab4e50c7c02e4401386f1"; };
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs;
+      propagatedBuildInputs = [ ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "http://opensource.perlig.de/rjsmin/";
+        license = "Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/";
+        description = "Javascript Minifier";
       };
     };
 

@@ -7,6 +7,7 @@ django-simple-captcha == 0.5.9
 django-filter == 2.0.0
 libsass == 0.16.1
 django-sass-processor == 0.7.2
+django-compressor == 2.2
 
 # Markdown 3 and later import pkg_resources
 # This works fine in the interpreter
