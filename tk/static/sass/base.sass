@@ -2,20 +2,18 @@ body
   font-family: Lato
   margin: 0
   font-size: 0
-  display: flex
-  flex-flow: row wrap
-  align-items: stretch
-  min-height: 100vh
-  > *
-    flex: 1 100%
 
 $red: #861818
 $darkgrey: #4a4a4a
 $grey: #ccc
 
 @media all and (min-width: 600px)
+  nav, main
+    display: inline-block
+    min-height: 100vh
+    vertical-align: top
   nav
-    flex: 1 25%
+    width: 25%
   main
     font-size: 1rem
-    flex: 2 75%
+    width: 75%
