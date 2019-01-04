@@ -1,7 +1,6 @@
+from django.contrib.postgres.fields import IntegerRangeField
 from django_filters import FilterSet
-
-import django_filters
-from django_filters.filters import ChoiceFilter
+from django_filters.filters import ChoiceFilter, NumericRangeFilter
 
 from .fields import get_languages
 from .models import Material, Activity, Reading, Video, Link, COMMON_LANGUAGES
@@ -20,10 +19,13 @@ class ActivityFilterSet(FilterSet):
                 'subjects': ['exact'],
                 'location': ['exact'],
                 'duration': ['exact'],
-                'min_people': ['gte'],
-                'max_people': ['lte'],
+                'num_people': ['contains'],
                 'group_feature': ['exact'],
                 }
+        filter_overrides = {
+            IntegerRangeField: {'filter_class': NumericRangeFilter}
+        }
+
 
 
 class ReadingFilterSet(FilterSet):

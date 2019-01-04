@@ -1,4 +1,5 @@
 import datetime
+from psycopg2.extras import NumericRange
 
 from django.core.exceptions import ValidationError
 from django.urls import reverse
@@ -6,6 +7,7 @@ from django.db import models
 from django.db.models import Subquery, Q, F, Func
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.postgres.search import SearchVector, SearchRank
+from django.contrib.postgres.fields import IntegerRangeField
 
 from localized_fields.models import LocalizedModel
 from localized_fields.fields import (
@@ -152,10 +154,10 @@ class Activity(Material):
             help_text=_("Duration in minutes."),
     )
 
-    min_people = models.PositiveSmallIntegerField(default=2,
-            verbose_name=_("minimum number of people"))
-    max_people = models.PositiveSmallIntegerField(default=30,
-            verbose_name=_("maximum number of people"))
+    num_people = IntegerRangeField(
+            default=NumericRange(2, 30),
+            verbose_name=_("number of people"))
+
     group_feature = models.ForeignKey(GroupFeature, null=True, blank=True,
             on_delete=models.SET_NULL, verbose_name=_("group feature"))
     notes = LocalizedTextField(null=True, blank=True, verbose_name=_("notes"))
@@ -164,14 +166,12 @@ class Activity(Material):
     url = models.URLField(blank=True, verbose_name=_("URL"),
             help_text=_("Link the material if its copyright does not allow sharing it."))
 
-    def clean(self):
-        if self.min_people > self.max_people:
-            raise ValidationError(_("The upper bound for the people involved "
-                "in the activity cannot be less than the lower bound."),
-                code='invalid')
-
     def get_absolute_url(self):
         return reverse('material:detail-activity', kwargs={'slug': self.slug})
+
+    def clean(self):
+        if self.num_people.lower < 1:
+            raise ValidationError(_("The lower bound must be at least 1."), code='invalid')
 
 
 def validate_year(year):

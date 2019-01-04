@@ -59,15 +59,14 @@ class ActivityAdmin(MaterialAdmin):
                            ]}),
             (_("Classification"), {
                 'fields': ['subjects',
-                           ('min_people', 'max_people'),
+                           'num_people',
                            'location',
                            'duration',
                            'group_feature']}),
             (_("Content"), {
                 'fields': ['author', 'title', 'goal', 'url', 'brief', 'notes', 'attachment']})
             ]
-    list_filter = ['min_people', 'max_people', 'location', 'duration',
-                   'group_feature', 'subjects']
+    list_filter = ['num_people', 'location', 'duration', 'group_feature', 'subjects']
     list_display = ['__str__', 'timestamp', 'approval_link']
     readonly_fields = ['approval_link']
     search_fields = ['title', 'brief', 'notes']

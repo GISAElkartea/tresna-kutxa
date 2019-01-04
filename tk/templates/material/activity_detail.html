@@ -27,10 +27,10 @@
   <a href="{{ search_url }}?activity-duration={{ object.duration }}">{{ object.duration }}</a>
 
   <dt>{% trans 'Minimum number of people' %}</dt>
-  <a href="{{ search_url }}?activity-min_people__gte={{ object.min_people }}">{{ object.min_people }}</a>
+  <a href="{{ search_url }}?activity-num_people__contains_min={{ object.num_people.lower }}">{{ object.num_people.lower }}</a>
 
   <dt>{% trans 'Maximum number of people' %}</dt>
-  <a href="{{ search_url }}?activity-max_people__lte={{ object.max_people }}">{{ object.max_people }}</a>
+  <a href="{{ search_url }}?activity-num_people__contains_max={{ object.num_people.upper }}">{{ object.num_people.upper }}</a>
 
   <dt>{% trans 'Group feature' %}</dt>
   <a href="{{ search_url }}?activity-group_feature={{ object.group_feature.pk }}">{{ object.group_feature }}</a>
