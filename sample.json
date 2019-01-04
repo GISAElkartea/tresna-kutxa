@@ -1,0 +1,1897 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "watson",
+        "model": "searchentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "captcha",
+        "model": "captchastore"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "material",
+        "model": "approval"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "material",
+        "model": "groupfeature"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "material",
+        "model": "location"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "material",
+        "model": "material"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "material",
+        "model": "subject"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+        "app_label": "material",
+        "model": "activity"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+        "app_label": "material",
+        "model": "link"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+        "app_label": "material",
+        "model": "reading"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+        "app_label": "material",
+        "model": "video"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "1qqvkensscg9whirzcbrkyrjw8eva2p7",
+    "fields": {
+        "session_data": "YTBkZTkyODE1MjNhOTY5MzBmNjU5NjgyNTY5MjVjYjA1MjI5OThhMjp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4MDNjMTdmM2RiZTU3ZGNlODlkYzRiN2MyZDllYzNhZThlM2U1Y2YwIn0=",
+        "expire_date": "2018-11-27T16:14:19.170Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "1v341be21qoe5w0r4ovi99oh02n9jqhm",
+    "fields": {
+        "session_data": "OTlhOTgzNTRhYTllNmI1YzQ5MDM2Mjg3YmYzY2U5ZDMyYzIyNDZhOTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1M2UyNDJhNDMwMTU0YWFhYzcyYjM2MjdkZmNlNTk3ZTNlNDc4ZGQ4In0=",
+        "expire_date": "2018-10-11T09:09:01.937Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "2kke4gny2mcxdrksnmsa2wezjx9ok1yz",
+    "fields": {
+        "session_data": "MmYyOGQ2NTlmYzJkZmUyYjNmYjYzYmExNzdlZWJhMDRkMjA5ODQzYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4NjUzMTRkYmU0MzUxYjY0MjgxY2NhOTViN2MyYjZiMTkzMjZhOTQ0In0=",
+        "expire_date": "2018-06-13T15:11:06.999Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "31wc3z7aqq9hzh1qoyq2z4y4mwm0xmyx",
+    "fields": {
+        "session_data": "MmYyOGQ2NTlmYzJkZmUyYjNmYjYzYmExNzdlZWJhMDRkMjA5ODQzYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4NjUzMTRkYmU0MzUxYjY0MjgxY2NhOTViN2MyYjZiMTkzMjZhOTQ0In0=",
+        "expire_date": "2018-06-15T22:41:21.014Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "cg0x11ja06ihf8m9w7kl8uz8agru44co",
+    "fields": {
+        "session_data": "ZWE5OWM0NjgzY2YxZjZkNzY2MzAwNDRlYmMyZmNhYjg1MTVjMTJhNzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJiNTZjNTE3NTZkNzJlMjFlMDQ5NmQ1NTUzMTEwMzVkNzIxMDM0YWEzIn0=",
+        "expire_date": "2019-01-08T22:49:32.666Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "dnrjij41rmieshr9v6jqc2qdty7xgnm0",
+    "fields": {
+        "session_data": "OTlhOTgzNTRhYTllNmI1YzQ5MDM2Mjg3YmYzY2U5ZDMyYzIyNDZhOTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1M2UyNDJhNDMwMTU0YWFhYzcyYjM2MjdkZmNlNTk3ZTNlNDc4ZGQ4In0=",
+        "expire_date": "2018-07-23T10:44:43.076Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "i4pjvzizp1cyxy0j9wuhx6zktnjppd18",
+    "fields": {
+        "session_data": "OTlhOTgzNTRhYTllNmI1YzQ5MDM2Mjg3YmYzY2U5ZDMyYzIyNDZhOTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1M2UyNDJhNDMwMTU0YWFhYzcyYjM2MjdkZmNlNTk3ZTNlNDc4ZGQ4In0=",
+        "expire_date": "2018-06-20T10:12:16.211Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ijqy6yvcq0hfb5d78u30ejm950dqsnj8",
+    "fields": {
+        "session_data": "OTlhOTgzNTRhYTllNmI1YzQ5MDM2Mjg3YmYzY2U5ZDMyYzIyNDZhOTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1M2UyNDJhNDMwMTU0YWFhYzcyYjM2MjdkZmNlNTk3ZTNlNDc4ZGQ4In0=",
+        "expire_date": "2018-10-09T19:36:10.620Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "le456k1qtsztfnr0rrib0cl6kyclqa21",
+    "fields": {
+        "session_data": "OTlhOTgzNTRhYTllNmI1YzQ5MDM2Mjg3YmYzY2U5ZDMyYzIyNDZhOTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1M2UyNDJhNDMwMTU0YWFhYzcyYjM2MjdkZmNlNTk3ZTNlNDc4ZGQ4In0=",
+        "expire_date": "2018-06-15T14:10:51.190Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "mxz1c6bcb210foq883tqf5mfvgzhguw1",
+    "fields": {
+        "session_data": "OTlhOTgzNTRhYTllNmI1YzQ5MDM2Mjg3YmYzY2U5ZDMyYzIyNDZhOTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1M2UyNDJhNDMwMTU0YWFhYzcyYjM2MjdkZmNlNTk3ZTNlNDc4ZGQ4In0=",
+        "expire_date": "2018-06-15T12:52:22.013Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "pk45qw6u6feegr8k58j3l2jm2nbqvtjl",
+    "fields": {
+        "session_data": "YTBkZTkyODE1MjNhOTY5MzBmNjU5NjgyNTY5MjVjYjA1MjI5OThhMjp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4MDNjMTdmM2RiZTU3ZGNlODlkYzRiN2MyZDllYzNhZThlM2U1Y2YwIn0=",
+        "expire_date": "2018-11-27T16:13:07.127Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "skc6xx9cgeke11r4rnpqtazxqxuoc4hu",
+    "fields": {
+        "session_data": "MmYyOGQ2NTlmYzJkZmUyYjNmYjYzYmExNzdlZWJhMDRkMjA5ODQzYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4NjUzMTRkYmU0MzUxYjY0MjgxY2NhOTViN2MyYjZiMTkzMjZhOTQ0In0=",
+        "expire_date": "2018-06-15T12:04:36.952Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "t33qw4ykb0qdzmi1f8gogf759nbs17rh",
+    "fields": {
+        "session_data": "MmYyOGQ2NTlmYzJkZmUyYjNmYjYzYmExNzdlZWJhMDRkMjA5ODQzYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4NjUzMTRkYmU0MzUxYjY0MjgxY2NhOTViN2MyYjZiMTkzMjZhOTQ0In0=",
+        "expire_date": "2018-07-23T10:16:00.004Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "u1p92ixo43dyxpnpuclsszpy10b3xugj",
+    "fields": {
+        "session_data": "YTBkZTkyODE1MjNhOTY5MzBmNjU5NjgyNTY5MjVjYjA1MjI5OThhMjp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4MDNjMTdmM2RiZTU3ZGNlODlkYzRiN2MyZDllYzNhZThlM2U1Y2YwIn0=",
+        "expire_date": "2018-12-18T17:39:29.684Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "wnf08gc2npubxqw4w0wwovl0vro3dj5d",
+    "fields": {
+        "session_data": "MmYyOGQ2NTlmYzJkZmUyYjNmYjYzYmExNzdlZWJhMDRkMjA5ODQzYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4NjUzMTRkYmU0MzUxYjY0MjgxY2NhOTViN2MyYjZiMTkzMjZhOTQ0In0=",
+        "expire_date": "2018-07-07T18:26:05.100Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ydeqirw6iz9n1m0141g6wtpajvdgvpi4",
+    "fields": {
+        "session_data": "OTlhOTgzNTRhYTllNmI1YzQ5MDM2Mjg3YmYzY2U5ZDMyYzIyNDZhOTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI1M2UyNDJhNDMwMTU0YWFhYzcyYjM2MjdkZmNlNTk3ZTNlNDc4ZGQ4In0=",
+        "expire_date": "2018-10-19T07:54:24.785Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "yrrxvk6zuoerg703n0nyzf3h1rgdeezp",
+    "fields": {
+        "session_data": "YTBkZTkyODE1MjNhOTY5MzBmNjU5NjgyNTY5MjVjYjA1MjI5OThhMjp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4MDNjMTdmM2RiZTU3ZGNlODlkYzRiN2MyZDllYzNhZThlM2U1Y2YwIn0=",
+        "expire_date": "2018-11-27T16:11:52.514Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 73,
+    "fields": {
+        "challenge": "ZNSM",
+        "response": "znsm",
+        "hashkey": "a65683e38789deaa675e6acf57d0859903958d33",
+        "expiration": "2018-10-26T10:43:04.032Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 74,
+    "fields": {
+        "challenge": "AQQT",
+        "response": "aqqt",
+        "hashkey": "09aa8bf4a16f02b4e29fe1cc03a1e4e54c4cde32",
+        "expiration": "2018-10-26T10:43:04.060Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 75,
+    "fields": {
+        "challenge": "CGDI",
+        "response": "cgdi",
+        "hashkey": "8a42ad3f6e5a7104f9e78655428128e74d1d00f7",
+        "expiration": "2018-10-26T10:43:04.110Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 76,
+    "fields": {
+        "challenge": "QINQ",
+        "response": "qinq",
+        "hashkey": "d147e7ffde3d5c53e1367237bd3c8fde0c7c31e5",
+        "expiration": "2018-10-26T10:43:04.148Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 77,
+    "fields": {
+        "challenge": "ONQH",
+        "response": "onqh",
+        "hashkey": "d9e75baf28a859efdd0e8c060c37f1501e7a2298",
+        "expiration": "2018-10-26T10:47:43.896Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 78,
+    "fields": {
+        "challenge": "QVWC",
+        "response": "qvwc",
+        "hashkey": "2eeeecc4fe22ea66767e223a53512087090d0c5a",
+        "expiration": "2018-10-26T10:47:43.927Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 79,
+    "fields": {
+        "challenge": "KYFU",
+        "response": "kyfu",
+        "hashkey": "14f218cb40b2a539de9569b4d38a61c3e38af80e",
+        "expiration": "2018-10-26T10:47:43.984Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 80,
+    "fields": {
+        "challenge": "BEBD",
+        "response": "bebd",
+        "hashkey": "b98e72643d8e3eacc74a724b6515e7084496f77b",
+        "expiration": "2018-10-26T10:47:44.011Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 81,
+    "fields": {
+        "challenge": "IIRK",
+        "response": "iirk",
+        "hashkey": "f6d2d477e8f6117fa8dfc3ef256cb4d39d93e653",
+        "expiration": "2018-10-26T10:47:48.671Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 82,
+    "fields": {
+        "challenge": "LNXW",
+        "response": "lnxw",
+        "hashkey": "dece287f2502bbfff5fb3432988321a567dd5cb1",
+        "expiration": "2018-10-26T10:47:48.696Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 83,
+    "fields": {
+        "challenge": "IIPX",
+        "response": "iipx",
+        "hashkey": "d56971036240437d4b35abf1f212838e08f64c7f",
+        "expiration": "2018-10-26T10:47:48.745Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 84,
+    "fields": {
+        "challenge": "FNXB",
+        "response": "fnxb",
+        "hashkey": "0fc244892b6c8f4ecb87e5d226721868ffc5e9e9",
+        "expiration": "2018-10-26T10:47:48.767Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 85,
+    "fields": {
+        "challenge": "EQYU",
+        "response": "eqyu",
+        "hashkey": "7abb5c2d4e5cdceefe64b76a2974bc12eb28203a",
+        "expiration": "2018-10-26T10:47:50.214Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 86,
+    "fields": {
+        "challenge": "MCXC",
+        "response": "mcxc",
+        "hashkey": "145f431318b1a9f73775dc169688f3781fa87187",
+        "expiration": "2018-10-26T10:47:50.243Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 87,
+    "fields": {
+        "challenge": "HHFC",
+        "response": "hhfc",
+        "hashkey": "6ed852ce73b9dd23141caa42b76ce5764091fced",
+        "expiration": "2018-10-26T10:47:50.297Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 88,
+    "fields": {
+        "challenge": "NGUQ",
+        "response": "nguq",
+        "hashkey": "2666d1b6c3c7dd93c8ef72871da2353cec64fff9",
+        "expiration": "2018-10-26T10:47:50.331Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 89,
+    "fields": {
+        "challenge": "AMBB",
+        "response": "ambb",
+        "hashkey": "8b700d05cf549867ade4de067a2b0a400af84224",
+        "expiration": "2018-10-26T10:47:51.091Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 90,
+    "fields": {
+        "challenge": "LSVN",
+        "response": "lsvn",
+        "hashkey": "6143fc72095a84909f1872901e2c573ac4f8a8ab",
+        "expiration": "2018-10-26T10:47:51.124Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 91,
+    "fields": {
+        "challenge": "THAQ",
+        "response": "thaq",
+        "hashkey": "6fc7dfebc27ed4d4884d412ddc91ca9a8568356f",
+        "expiration": "2018-10-26T10:47:51.178Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 92,
+    "fields": {
+        "challenge": "HKUW",
+        "response": "hkuw",
+        "hashkey": "714b035fdf0acee90d4b5fb5bb9146715a016850",
+        "expiration": "2018-10-26T10:47:51.210Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 93,
+    "fields": {
+        "challenge": "YSWX",
+        "response": "yswx",
+        "hashkey": "3792c763e5bf1dad1bda4476751e5b7c4a1c4ac2",
+        "expiration": "2018-10-26T10:47:52.399Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 94,
+    "fields": {
+        "challenge": "QTQX",
+        "response": "qtqx",
+        "hashkey": "52c4ef242b7979c9500a206e9cc95ac75786f36f",
+        "expiration": "2018-10-26T10:47:52.425Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 95,
+    "fields": {
+        "challenge": "NWVJ",
+        "response": "nwvj",
+        "hashkey": "d2c1fa7659d4787042795dafb960b4b4dafc04ab",
+        "expiration": "2018-10-26T10:47:52.470Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 96,
+    "fields": {
+        "challenge": "UPYK",
+        "response": "upyk",
+        "hashkey": "22ce8ba0a627a5d98cade7fc5c2c6bc7c573c961",
+        "expiration": "2018-10-26T10:47:52.493Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 97,
+    "fields": {
+        "challenge": "GTVF",
+        "response": "gtvf",
+        "hashkey": "b4984586df11b61581d227d119db1c5b6d51114c",
+        "expiration": "2018-10-26T10:47:53.208Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 98,
+    "fields": {
+        "challenge": "DRDR",
+        "response": "drdr",
+        "hashkey": "191e7b5b1a79010bc03815d82d51693272ab5996",
+        "expiration": "2018-10-26T10:47:53.232Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 99,
+    "fields": {
+        "challenge": "RMPC",
+        "response": "rmpc",
+        "hashkey": "74b3d2f69589b5898755c728c626afa01f89b021",
+        "expiration": "2018-10-26T10:47:53.279Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 100,
+    "fields": {
+        "challenge": "OUBM",
+        "response": "oubm",
+        "hashkey": "c4896be31b5e3a8c428659527c7eba9e195b267e",
+        "expiration": "2018-10-26T10:47:53.308Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 101,
+    "fields": {
+        "challenge": "COGQ",
+        "response": "cogq",
+        "hashkey": "7cca9ff8c2a2b96244811d2082790a7d3ca7385f",
+        "expiration": "2018-12-05T10:57:28.631Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 102,
+    "fields": {
+        "challenge": "ZVKP",
+        "response": "zvkp",
+        "hashkey": "4e463e821780215d6e05a6593bc7cfcebc483139",
+        "expiration": "2018-12-05T10:57:28.667Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 103,
+    "fields": {
+        "challenge": "IEME",
+        "response": "ieme",
+        "hashkey": "3d85d062c575131f91145ecb7a3c007a9d683582",
+        "expiration": "2018-12-05T10:57:28.734Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 104,
+    "fields": {
+        "challenge": "HNHQ",
+        "response": "hnhq",
+        "hashkey": "1d4ab160113fa3e2b0721134147afabcef62e0fd",
+        "expiration": "2018-12-05T10:57:28.760Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 105,
+    "fields": {
+        "challenge": "LPKN",
+        "response": "lpkn",
+        "hashkey": "0b94cf42512900af6c0d6f33b73643f624a77d33",
+        "expiration": "2018-12-07T22:07:53.021Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 106,
+    "fields": {
+        "challenge": "JIGN",
+        "response": "jign",
+        "hashkey": "89988d306f6ac7e32b274c1b8d8e65b30248b4e1",
+        "expiration": "2018-12-07T22:07:53.056Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 107,
+    "fields": {
+        "challenge": "XACO",
+        "response": "xaco",
+        "hashkey": "028c4a3f54965eec6aa03a6936b7bb516300f307",
+        "expiration": "2018-12-07T22:07:53.113Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 108,
+    "fields": {
+        "challenge": "EMVG",
+        "response": "emvg",
+        "hashkey": "dab1e595253efead8b816ba5dd17d65c717b9437",
+        "expiration": "2018-12-07T22:07:53.135Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 109,
+    "fields": {
+        "challenge": "BYGD",
+        "response": "bygd",
+        "hashkey": "d4923bf04282df6b35b1ebe5d6c55401685dd291",
+        "expiration": "2018-12-25T21:04:16.357Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 110,
+    "fields": {
+        "challenge": "OLZN",
+        "response": "olzn",
+        "hashkey": "88a329576937c47f2675fbd5872be8bdd9451092",
+        "expiration": "2018-12-25T21:04:16.395Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 111,
+    "fields": {
+        "challenge": "FIHJ",
+        "response": "fihj",
+        "hashkey": "8df1d417f9071c46a43893eb95364c103ac93516",
+        "expiration": "2018-12-25T21:04:16.452Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 112,
+    "fields": {
+        "challenge": "FCFQ",
+        "response": "fcfq",
+        "hashkey": "19324ca3565c8224c5237773db39c9be5d70bb9a",
+        "expiration": "2018-12-25T21:04:16.482Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 113,
+    "fields": {
+        "challenge": "NUBI",
+        "response": "nubi",
+        "hashkey": "5c94f036d83e8595bf6440ad2699a46e9b4d9a78",
+        "expiration": "2018-12-25T21:05:30.046Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 114,
+    "fields": {
+        "challenge": "FQQG",
+        "response": "fqqg",
+        "hashkey": "ed163e526582016024961b94f6d022379861617b",
+        "expiration": "2018-12-25T21:05:30.079Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 115,
+    "fields": {
+        "challenge": "KQEG",
+        "response": "kqeg",
+        "hashkey": "5f41ba27fced4fa33d02d578cc61f18aca5470e9",
+        "expiration": "2018-12-25T21:05:30.144Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 116,
+    "fields": {
+        "challenge": "LIED",
+        "response": "lied",
+        "hashkey": "57bc3c418955ca5074817196d4e6a677a88a1d05",
+        "expiration": "2018-12-25T21:05:30.173Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 117,
+    "fields": {
+        "challenge": "HYTB",
+        "response": "hytb",
+        "hashkey": "186059772f6232a9cccc924a9425e3ed5ef864c5",
+        "expiration": "2018-12-25T21:06:17.433Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 118,
+    "fields": {
+        "challenge": "UXZQ",
+        "response": "uxzq",
+        "hashkey": "7973ff6c2c382ff54d7a82e779dd2aa27e2962ae",
+        "expiration": "2018-12-25T21:06:17.488Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 119,
+    "fields": {
+        "challenge": "WDAI",
+        "response": "wdai",
+        "hashkey": "3dde1818d0ab4ea4bc9457dbeab4208a14ef71ca",
+        "expiration": "2018-12-25T21:06:17.558Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 120,
+    "fields": {
+        "challenge": "PLLM",
+        "response": "pllm",
+        "hashkey": "b73ad74ff18b73689b8a514622e9f87b051b6ddd",
+        "expiration": "2018-12-25T21:06:17.588Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 121,
+    "fields": {
+        "challenge": "DWMS",
+        "response": "dwms",
+        "hashkey": "f41ed4758e36b206b5886a2b8a44b606ba0bbc32",
+        "expiration": "2018-12-25T21:09:08.351Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 122,
+    "fields": {
+        "challenge": "BCMG",
+        "response": "bcmg",
+        "hashkey": "caa771bee46a48515f2d70f3faaa9b31e3eaa0f0",
+        "expiration": "2018-12-25T21:09:08.393Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 123,
+    "fields": {
+        "challenge": "GCGR",
+        "response": "gcgr",
+        "hashkey": "5a86181ebf37637a240ebe97b25103d7e1986ff6",
+        "expiration": "2018-12-25T21:09:08.458Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 124,
+    "fields": {
+        "challenge": "CSYE",
+        "response": "csye",
+        "hashkey": "64db2025acfc9881d25d4d0f8b024f16e38639fc",
+        "expiration": "2018-12-25T21:09:08.484Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 125,
+    "fields": {
+        "challenge": "HPYF",
+        "response": "hpyf",
+        "hashkey": "8ac81c58b06c52b047663b47bd533ef17f0b4ca0",
+        "expiration": "2018-12-25T21:09:11.238Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 126,
+    "fields": {
+        "challenge": "MHDN",
+        "response": "mhdn",
+        "hashkey": "f1a0b9be9bfea13992d96549840509b57a096f15",
+        "expiration": "2018-12-25T21:09:11.267Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 127,
+    "fields": {
+        "challenge": "AZQW",
+        "response": "azqw",
+        "hashkey": "2a8c982226422781abb2af1b7e8693b53138df54",
+        "expiration": "2018-12-25T21:09:11.324Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 128,
+    "fields": {
+        "challenge": "LXYX",
+        "response": "lxyx",
+        "hashkey": "63e72bb8f9231d57df53b6ad62a2316666098d72",
+        "expiration": "2018-12-25T21:09:11.351Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 129,
+    "fields": {
+        "challenge": "TWCV",
+        "response": "twcv",
+        "hashkey": "ee52b19a344391598c290945173c70ff00a0128a",
+        "expiration": "2018-12-26T17:10:21.046Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 130,
+    "fields": {
+        "challenge": "FQRK",
+        "response": "fqrk",
+        "hashkey": "2611f440c4d965831f866af5c7bf3ef818316069",
+        "expiration": "2018-12-26T17:10:21.088Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 131,
+    "fields": {
+        "challenge": "SRHK",
+        "response": "srhk",
+        "hashkey": "5bf0f50c0e8485f0ee43c97e88e97944beecc549",
+        "expiration": "2018-12-26T17:10:21.147Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 132,
+    "fields": {
+        "challenge": "EQCP",
+        "response": "eqcp",
+        "hashkey": "7e1c41bec5ec728450ad12036ee5e3b2e8564902",
+        "expiration": "2018-12-26T17:10:21.173Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 133,
+    "fields": {
+        "challenge": "OAXZ",
+        "response": "oaxz",
+        "hashkey": "1489d27ace8f796fbd1cebbf1e0b666cfc781729",
+        "expiration": "2018-12-26T21:56:43.998Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 134,
+    "fields": {
+        "challenge": "TLXK",
+        "response": "tlxk",
+        "hashkey": "bf6c881ba88ff359478af1142eaee54eb681822e",
+        "expiration": "2018-12-26T21:56:44.049Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 135,
+    "fields": {
+        "challenge": "ZLJA",
+        "response": "zlja",
+        "hashkey": "8549e2cd0928b46ef51e39bea69d0e82e5cd32b0",
+        "expiration": "2018-12-26T21:56:44.127Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 136,
+    "fields": {
+        "challenge": "IGOU",
+        "response": "igou",
+        "hashkey": "1a0fe2f8dbcf453e5af08ec1a7440e45d0f07d5d",
+        "expiration": "2018-12-26T21:56:44.158Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 137,
+    "fields": {
+        "challenge": "DRFJ",
+        "response": "drfj",
+        "hashkey": "bed13df0b8330b44e40912298f83fde40378abaa",
+        "expiration": "2018-12-26T23:15:41.555Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 138,
+    "fields": {
+        "challenge": "DTNR",
+        "response": "dtnr",
+        "hashkey": "952c40b12f30e2db1fe4eae7c11b8a9df0896d85",
+        "expiration": "2018-12-26T23:15:41.593Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 139,
+    "fields": {
+        "challenge": "KPHI",
+        "response": "kphi",
+        "hashkey": "9f90cbd0603058995fd63bbb05e7682f7a5ad659",
+        "expiration": "2018-12-26T23:15:41.648Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 140,
+    "fields": {
+        "challenge": "ZZYB",
+        "response": "zzyb",
+        "hashkey": "5c2043f9a9f9a7d0b5810432cf3d0eb15a6578ca",
+        "expiration": "2018-12-26T23:15:41.676Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 141,
+    "fields": {
+        "challenge": "IBHZ",
+        "response": "ibhz",
+        "hashkey": "0508c1f8aaca1dcfeee96d027335d82a5de2fae8",
+        "expiration": "2018-12-28T14:01:27.070Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 142,
+    "fields": {
+        "challenge": "SSZV",
+        "response": "sszv",
+        "hashkey": "dde3fd3bd18bab27a82600e1137d456cefd2ac29",
+        "expiration": "2018-12-28T14:01:27.115Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 143,
+    "fields": {
+        "challenge": "DJPP",
+        "response": "djpp",
+        "hashkey": "51686cdc85a164a7ea231cfcd9f4b16f644284c1",
+        "expiration": "2018-12-28T14:01:27.171Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 144,
+    "fields": {
+        "challenge": "GFGP",
+        "response": "gfgp",
+        "hashkey": "493c9a29f8a68032912c71216e1989119cf6371f",
+        "expiration": "2018-12-28T14:01:27.194Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 145,
+    "fields": {
+        "challenge": "AEHZ",
+        "response": "aehz",
+        "hashkey": "cfbe2141799e740e5bb123c91fd831bd2f2e8dfb",
+        "expiration": "2018-12-28T14:02:11.378Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 146,
+    "fields": {
+        "challenge": "OLOT",
+        "response": "olot",
+        "hashkey": "1b6a6f9722dc5aec4a4556e9647a00edc8148ad5",
+        "expiration": "2018-12-28T14:02:11.422Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 147,
+    "fields": {
+        "challenge": "UPPK",
+        "response": "uppk",
+        "hashkey": "64d4e9898684afae315e66aad35a31ecf1f1a6d6",
+        "expiration": "2018-12-28T14:02:11.475Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 148,
+    "fields": {
+        "challenge": "FMXV",
+        "response": "fmxv",
+        "hashkey": "163d5ef25e46c77acc34a131854a8470b8f05fc7",
+        "expiration": "2018-12-28T14:02:11.502Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 149,
+    "fields": {
+        "challenge": "TDYU",
+        "response": "tdyu",
+        "hashkey": "f6d53c246005e431bd1e24b11f49a0c25522c812",
+        "expiration": "2018-12-28T14:02:37.738Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 150,
+    "fields": {
+        "challenge": "ZMXT",
+        "response": "zmxt",
+        "hashkey": "6f8e16528a88673fdc6046a6f6ce7a122ddf47ec",
+        "expiration": "2018-12-28T14:02:37.771Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 151,
+    "fields": {
+        "challenge": "MXDL",
+        "response": "mxdl",
+        "hashkey": "cf34f495d23d8a5cd70d94d9fd8be51967f1cb6b",
+        "expiration": "2018-12-28T14:02:37.832Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 152,
+    "fields": {
+        "challenge": "MGHP",
+        "response": "mghp",
+        "hashkey": "80f052c909dec94177aa7cd3d69ed8c50fce88fd",
+        "expiration": "2018-12-28T14:02:37.857Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 153,
+    "fields": {
+        "challenge": "JDOV",
+        "response": "jdov",
+        "hashkey": "2684b6113d3966477dd861d8bf89959a13dc02ed",
+        "expiration": "2018-12-28T16:46:01.794Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 154,
+    "fields": {
+        "challenge": "TDTO",
+        "response": "tdto",
+        "hashkey": "d1f4d16f9fb83fd5bb444246190940f3313d7eeb",
+        "expiration": "2018-12-28T16:46:01.847Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 155,
+    "fields": {
+        "challenge": "MWVH",
+        "response": "mwvh",
+        "hashkey": "2e7a39ba46743b2d3d69cb5e58b061b35832835c",
+        "expiration": "2018-12-28T16:46:01.919Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 156,
+    "fields": {
+        "challenge": "VGWK",
+        "response": "vgwk",
+        "hashkey": "e2e29f815e8610626aba0a5de92abded5a84c7f9",
+        "expiration": "2018-12-28T16:46:01.946Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 157,
+    "fields": {
+        "challenge": "FYLD",
+        "response": "fyld",
+        "hashkey": "1fd0504b20ef6ff5bd1bf757af79530b9a66381b",
+        "expiration": "2019-01-02T14:12:53.950Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 158,
+    "fields": {
+        "challenge": "XNHK",
+        "response": "xnhk",
+        "hashkey": "593ab8102becdea1ee32c1bd8e494886396f0f2f",
+        "expiration": "2019-01-02T14:12:53.978Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 159,
+    "fields": {
+        "challenge": "HIOX",
+        "response": "hiox",
+        "hashkey": "846635aa31c25b9909eea8cc9e4c54eec7dc2055",
+        "expiration": "2019-01-02T14:12:54.019Z"
+    }
+},
+{
+    "model": "captcha.captchastore",
+    "pk": 160,
+    "fields": {
+        "challenge": "QLXP",
+        "response": "qlxp",
+        "hashkey": "5daf8eba3262878498884be6da075c293dbf13a6",
+        "expiration": "2019-01-02T14:12:54.037Z"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 1,
+    "fields": {
+        "name": "{\"eu\": \"Barne funtzionamendua eta horizontaltasuna\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 2,
+    "fields": {
+        "name": "{\"eu\": \"feminismoak\", \"es\": \"feminismos\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 3,
+    "fields": {
+        "name": "{\"eu\": \"Diagnostikoak\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 4,
+    "fields": {
+        "name": "{\"eu\": \"Gatazkak\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 5,
+    "fields": {
+        "name": "{\"eu\": \"Barne funtzionamendua eta horizontaltasuna\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 6,
+    "fields": {
+        "name": "{\"eu\": \"Ebaluazioa\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 7,
+    "fields": {
+        "name": "{\"eu\": \"Itxiera\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 8,
+    "fields": {
+        "name": "{\"eu\": \"sormena lantzeko\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.subject",
+    "pk": 9,
+    "fields": {
+        "name": "{\"eu\": \"Erabakiak\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.groupfeature",
+    "pk": 1,
+    "fields": {
+        "name": "{\"eu\": \"Ezezagun zein ezagunen artean\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.groupfeature",
+    "pk": 2,
+    "fields": {
+        "name": "{\"eu\": \"Bakarka edo bikoteka\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.location",
+    "pk": 1,
+    "fields": {
+        "name": "{\"eu\": \"Presentziala\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.location",
+    "pk": 2,
+    "fields": {
+        "name": "{\"eu\": \"Presentziala zein ez-presentziala\", \"es\": \"\"}"
+    }
+},
+{
+    "model": "material.material",
+    "pk": 1,
+    "fields": {
+        "title": "{\"eu\": \"Inklusio erradikala gure espazioetan\", \"es\": \"La frontera\"}",
+        "slug": "{\"eu\": \"inklusio-erradikala-gure-espazioetan\", \"es\": \"la-frontera\"}",
+        "timestamp": "2018-07-09T10:52:05.579Z",
+        "goal": "{\"eu\": \"-Inklusio erradikal edo errealaren inguruan kolektiboki gogoetatzea.\\r\\n\\r\\n-Gure barne eraldaketa prozesuen eraginkortasuna baloratzea.\", \"es\": \"Adentrarse en un tema usando elementos simb\\u00f3licos, como la imagen de la l\\u00ednea de la frontera,\\r\\ndel l\\u00edmite, del lugar donde estamos paradas en el mundo en el momento actual de la vida\\r\\nde cada mujer. Esta t\\u00e9cnica busca mostrar la igualdad en la discriminaci\\u00f3n por razones de\\r\\ng\\u00e9nero que caracteriza a las mujeres, pero tambi\\u00e9n las desigualdades y brechas existentes entre\\r\\nmujeres por razones de edad, etnia, raza, orientaci\\u00f3n sexual, pertenencia religiosa, clase y\\r\\notras formas de discriminaci\\u00f3n.\"}",
+        "brief": "{\"eu\": \"1)Aurrez, 4 kartulina eta 3 koloretako gometsak prest utziko ditugu:\\r\\n\\r\\nsarbidea: 1, 2, 3, 4, 5 inklusioa/bazterketa: 1, 2, 3, 4, 5 parte-hartzea: 1, 2, 3, 4, 5 gatazkak: 1, 2, 3, 4, 5, 6\\r\\n\\r\\n2)Bakarka taula irakurri eta honako galdera hauek planteatu: Parte-hartzea eta horizontaltasunari dagokionean, zeintzuk dira gure taldean nagusitzen diren kezkak? Argi dago, milaka adar hartu al ditugula gure funtzionamendua hobetzeari begira. Baina, zeintzuk dira gure lehentasunak eta hutsuneak? Honako ariketa honen bidez, lanketa gutxien egin diren adarretatik, gehixeago landu diren gaietaz hitz egin dezakegu.\\r\\n\\r\\nPuntu berdea ondo doala edo lantzen ari garela, puntu urdina zalantzan eta puntu beltza lantzeke dagoela izanda. Puntuak banan-banan baloratu beharko ditugu.\\r\\n\\r\\nBakarka taula aztertu eta gometsak jartzen joango gara.\\r\\n\\r\\n3)Behin gometsak jarrita, kolektiboki aztertuko dugu zer jarri dugun. Jende kopuruaren arabera erronda egin daiteke, bakoitzak apuntatu duena aipatuz.\", \"es\": \"Se marca una raya en el suelo que divida el espacio en dos. Se puede usar tambi\\u00e9n cinta\\r\\nadhesiva o una cuerda. Se elabora una serie de preguntas e indicaciones, que est\\u00e9n relacionadas\\r\\ncon los temas centrales del taller. Pueden ser unas 20 preguntas. Pero eso depender\\u00e1 del tema\\r\\ny de lo que se desee profundizar.\\r\\n\\r\\nTodo el grupo de mujeres participantes se coloca a un mismo lado de la frontera \\u2013\\r\\nla l\\u00ednea divisoria- y se empiezan a dar las indicaciones y a formular las preguntas.\\r\\nPor ejemplo, que se coloquen al otro lado de la frontera las mujeres que tienen\\r\\nfamiliares trabajando en Estados Unidos.\\r\\nSe va tomando nota en papel\\u00f3grafo o en una matriz en computadora de la\\r\\ncantidad de mujeres que comparten una misma situaci\\u00f3n, porque quedan en un\\r\\nmismo lado de la frontera. De un lado siempre van a quedar las que comparten\\r\\nuna determinada caracter\\u00edstica, situaci\\u00f3n o condici\\u00f3n y del otro, las que no. Se\\r\\ncuentan el total que hay en cada lado.\\r\\nEn la medida que se va desarrollando el ejercicio, las facilitadoras estimulan\\r\\nuna mejor comprensi\\u00f3n de las situaciones que van quedando representadas por\\r\\nmedio de preguntas. Por ejemplo, si se colocan de un lado las mujeres casadas\\r\\ny del otro lado las solteras, se pregunta a las casadas cuanto tiempo tienen de\\r\\nestar en esa situaci\\u00f3n. Se va haciendo lo mismo con cada indicaci\\u00f3n, con el fin\\r\\nde evidenciar todav\\u00eda m\\u00e1s la diversidad de situaciones que nos caracterizan a las\\r\\nmujeres.\\r\\n\\r\\nUna vez concluido el ejercicio, las facilitadoras hacen una devoluci\\u00f3n cr\\u00edtica con\\r\\nreflexiones en torno a:\\r\\n\\r\\n\\u2022\\t Situaciones o caracter\\u00edsticas en las que coinciden la mayor\\u00eda. Por ejemplo:\\r\\nla mayor\\u00eda o todas las presentes realizamos trabajo dom\\u00e9stico no pagado.\\r\\nLa mayor\\u00eda cuidan mucho y reciben poco cuidado.\\r\\n\\r\\n\\u2022\\t Las brechas en el grupo: en la escolaridad, en el acceso a servicios de salud.\\r\\n\\r\\n\\u2022\\t Las vulnerabilidades que presenta el grupo. Por ejemplo el poco o nulo\\r\\nacceso a la seguridad social y a la jubilaci\\u00f3n. El descuido con la realizaci\\u00f3n\\r\\nperi\\u00f3dica de controles como la mamograf\\u00eda, el papanicolau, la revisi\\u00f3n\\r\\nodontol\\u00f3gica, el uso de lentes adecuados.\\r\\n\\r\\n\\u2022\\t Los d\\u00e9ficits. Por ejemplo, el d\\u00e9ficit de cuidado por parte de la familia, de\\r\\nlas empresas y del Estado.\\r\\n\\r\\nSi el tiempo y la disposici\\u00f3n de las participantes lo permite, se abre un per\\u00edodo\\r\\npara el di\\u00e1logo, iniciando con una descodificaci\\u00f3n de la t\\u00e9cnica. Para esto se\\r\\nformulan preguntas para provocar el di\\u00e1logo, como las siguientes:\\r\\n\\r\\n\\u2022\\u00bfQu\\u00e9 sintieron?\\r\\n\\u00bfQu\\u00e9 pas\\u00f3?\\r\\n\\u00bfQu\\u00e9 significa la l\\u00ednea divisoria en la vida de las mujeres?\\r\\n\\u00bfCu\\u00e1les son las fronteras que existen entre las mujeres?\\r\\n\\u00bfQui\\u00e9n da las indicaciones en la vida de las mujeres?\\r\\n\\r\\nSe abre un per\\u00edodo para comentarios y preguntas de las participantes.\"}",
+        "author": "Joxemi Zumalabe Fundazioa",
+        "subjects": [
+            2
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 2,
+    "fields": {
+        "title": "{\"eu\": \"Militantziaren gazi-gozoak\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"militantziaren-gazi-gozoak\", \"es\": \"militantziaren-gazi-gozoak\"}",
+        "timestamp": "2018-07-09T11:39:35.688Z",
+        "goal": "{\"eu\": \"Norberaren militantziaren inguruko gogoeta pertsonal zein kolektiboa\\r\\njorratzea, militantziaren alde positiboak eta negatiboak aztertzearen bidez.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"- a) Kohesio jolasa eta gogoetarako galdera pizgarriak: elkar ezagutzen edo konfidantza asko ez\\r\\ndagoen   taldeetan,   horrelako   gogoeta   kolektiboak   egin   aurretik   giro   atsegin,   seguru   eta\\r\\nkonfidantzazkoa sortzea egokia izaten da. Horretarako:\\r\\n\\r\\nBata bestearen barnean kokatuta egongo diren bi borobil osatuko ditugu. Barruko kideak kanpokoak bergiratuko dituzte eta alderantziz.\\r\\nMusika jarri eta borobil bakoitza norantza batean hasiko da mugitzen. Musika gelditzean, aurrean topatu duzun pertsonarekin solastu beharko dugu:\\r\\n\\u25e6 Nor zara eta nondik zatoz?\\r\\n\\u25e6 Nola zatoz gaurko tailerrera?\\r\\nOndoen musika berriro ipiniko da eta borobilak berriz mugitzen hasiko dira. Musika etengo\\r\\nda oraingoan ere eta parean dugun pertsonarekin berriz solastuko dugu:\\r\\n\\u25e6 Zer da militantziatik gehien gustoko duzuna?\\r\\n\\u25e6 Zer ematen dizu militantziak oro har?\\r\\nOndoren musika berriro ipiniko da eta borobilak lehen bezala mugitzen hasiko dira. Musika\\r\\nberriro etengo da eta parean dugun pertsonarekin berriz solastuko dugu:\\r\\n\\u25e6 Zein   da   zuretzat    militantziaren   gazia?   Eta   gozoa?   Zer   da   aldatu   nahiko\\r\\nzenukeena?\\r\\nOndoren talde handian atera diren ideiak jasoko dira. Ideia guzti horiek horma paper batean\\r\\nidazten saiatuko gara tailer guztian zehar presente izateko.\\r\\n\\r\\nb) \\u201cDabilen Harriari Goroldiorik ez\\u201d gogoetaren baitan sortutako dokumentala ikusi:\\r\\nhttps://vimeo.com/124941656 \\r\\n\\r\\nd) Talde txikitako eztabaida \\r\\nZuen   bizi   esperietzia   oinarri   hartuta   eta   dokumentala   behin   ikusita,   orokorrean,   militantziari lotutako gazi\\u00adgozoak zeintzuk diren argiago izango ditugu. Gozen beraz, alderdi gozoak indartzeko eta gaziak sahiestu edo eraldatzeko neurrien inguruan gogoetatzera. \\r\\nGalderak pizgarriak:\\r\\n- Dokumentaleko kideek esan dutenetik zerk harritu zaitu?\\r\\n-Eta zer azpimarratuko zenuke?\\r\\n- Militatzen duzun taldeko ahulgune eta indarguneak kontutan izanik, zein mekanismo\\u00adtresna\\u00ad\\r\\nerabaki hartuko zenituzkete egoera hori eraldatzeko?\\r\\n\\r\\ne) Ebaluazioa\\r\\nRonda pasa itxia:  Zein giro egon da? Nolakoan izan da parte hartzea? Eta metodologia?\\r\\nAsetu dira espektatibak? Zertaz jarraitu behar dugu gogoetatzen?\", \"es\": \"\"}",
+        "author": "Joxemi Zumalabe Fundazioa",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 3,
+    "fields": {
+        "title": "{\"eu\": \"Militantziaren gazi-gozoak (2)\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"militantziaren-gazi-gozoak-2\", \"es\": \"militantziaren-gazi-gozoak-2\"}",
+        "timestamp": "2018-07-09T13:22:54.320Z",
+        "goal": "{\"eu\": \"Norberaren militantziaren inguruko gogoeta pertsonal zein kolektiboa\\r\\njorratzea, militantziaren alde positiboak eta negatiboak aztertzearen bidez.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"a) Sarrera\\r\\nAurkezpen jolas bat egin\\r\\nTailerraren helburuak azaldu\\r\\n\\r\\n  - b) Bakarkako ariketa\\r\\n\\r\\nBakoitzak orri batean bere kolektiboan txarto,  deserosoa, gutxietsituta, mexprezatuta...\\r\\nnoiz sentitu egin den idatzi, eta baita zergatia ere. Ondoren, guztiak anonimoki jaso eta kide\\r\\nbakoitzari aldtuan irakurtzeko bat banatuko zaio.\\r\\n\\r\\nd) Talde txikiko ariketa \\r\\n1. Galdera pizgarriak botako ditugu ronda ireki baten denon ekarpenak jasotzeko\\r\\n\\u25e6 Nolakoa da orokorrean Ernaiko militante bat? Zein ezaugarri ditu? \\r\\n\\u25e6 Ba  al  dago militante  eredu  idealik?  Zein  ezaugarri  ditu  militante  ideal  horrek?  Zein\\r\\nezaugarri baloratzen dira militantzia eredu horretan?\\r\\n2. Pensatu zerrendatu diren ezaugarri horiek orokorrean nori egokitzen zaizkien.\\r\\n3. Nolakoak izan beharko lirateke orokorrean Ernaiko militanteak? Lehenengo galderan aipatu\\r\\nden gaur egungo eredu horrekin alderatuta zein ezaugarri indartu, gehitu edo saihestu behar\\r\\nditugu?\\r\\n\\r\\nOstean guztia plenarioan komunean jarriko dugu eta horma paper batean jasotzen joango\\r\\ngara.\\r\\n\\r\\ne) Talde handiko gogoeta \\r\\n\\r\\nAtera diren gogoeta guzti horiek zein lotura dute ZAINTZArekin? Zer da  kidea  zaintzea?\\r\\nEta  taldea  zaintzea?   Zer   da  proiektua  zaintzea?   Nola   orekatzen   da   hiru   eremu   horien\\r\\nzaintza?\\r\\n\\r\\nNola   ekidin   ditzakegu   identifikatu   ditugun   desorekak?   Zein   dinamika,   tresna   edo\\r\\nmekanismo behar ditugu egoera horiek ekiditeko edo kudeatzeko?\\r\\n\\r\\nf) Ebaluazioa\\r\\n\\r\\nRonda pasa itxia:  Zein giro egon da? Nolakoan izan da parte hartzea? Eta metodologia?\\r\\nAsetu dira espektatibak? Zertaz jarraitu behar dugu gogoetatzen?\", \"es\": \"\"}",
+        "author": "Joxemi Zumalabe Fundazioa",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 5,
+    "fields": {
+        "title": "{\"eu\": \"\", \"es\": \"La frontera\"}",
+        "slug": "{\"eu\": \"la-frontera-1\", \"es\": \"la-frontera-1\"}",
+        "timestamp": "2018-07-09T13:51:16.885Z",
+        "goal": "{\"eu\": \"Adentrarse en un tema usando elementos simb\\u00f3licos, como la imagen de la l\\u00ednea de la frontera, del l\\u00edmite, del lugar donde estamos paradas en el mundo en el momento actual de la vida\\r\\nde cada mujer. \\r\\n\\r\\nEsta t\\u00e9cnica busca mostrar la igualdad en la discriminaci\\u00f3n por razones de g\\u00e9nero que caracteriza a las mujeres, pero tambi\\u00e9n las desigualdades y brechas existentes entre\\r\\nmujeres por razones de edad, etnia, raza, orientaci\\u00f3n sexual, pertenencia religiosa, clase y\\r\\notras formas de discriminaci\\u00f3n.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"\", \"es\": \"Se marca una raya en el suelo que divida el espacio en dos. Se puede usar tambi\\u00e9n cinta\\r\\nadhesiva o una cuerda. Se elabora una serie de preguntas e indicaciones, que est\\u00e9n relacionadas\\r\\ncon los temas centrales del taller. Pueden ser unas 20 preguntas. Pero eso depender\\u00e1 del tema\\r\\ny de lo que se desee profundizar.\\r\\n\\r\\nTodo el grupo de mujeres participantes se coloca a un mismo lado de la frontera \\u2013\\r\\nla l\\u00ednea divisoria- y se empiezan a dar las indicaciones y a formular las preguntas.\\r\\nPor ejemplo, que se coloquen al otro lado de la frontera las mujeres que tienen\\r\\nfamiliares trabajando en Estados Unidos.\\r\\n\\r\\nSe va tomando nota en papel\\u00f3grafo o en una matriz en computadora de la\\r\\ncantidad de mujeres que comparten una misma situaci\\u00f3n, porque quedan en un\\r\\nmismo lado de la frontera. De un lado siempre van a quedar las que comparten\\r\\nuna determinada caracter\\u00edstica, situaci\\u00f3n o condici\\u00f3n y del otro, las que no. Se\\r\\ncuentan el total que hay en cada lado.\\r\\n\\r\\nEn la medida que se va desarrollando el ejercicio, las facilitadoras estimulan\\r\\nuna mejor comprensi\\u00f3n de las situaciones que van quedando representadas por\\r\\nmedio de preguntas. Por ejemplo, si se colocan de un lado las mujeres casadas\\r\\ny del otro lado las solteras, se pregunta a las casadas cuanto tiempo tienen de\\r\\nestar en esa situaci\\u00f3n. Se va haciendo lo mismo con cada indicaci\\u00f3n, con el fin\\r\\nde evidenciar todav\\u00eda m\\u00e1s la diversidad de situaciones que nos caracterizan a las\\r\\nmujeres.\\r\\n\\r\\nUna vez concluido el ejercicio, las facilitadoras hacen una devoluci\\u00f3n cr\\u00edtica con\\r\\nreflexiones en torno a:\\r\\n\\r\\n\\u2022\\t Situaciones o caracter\\u00edsticas en las que coinciden la mayor\\u00eda. Por ejemplo:\\r\\nla mayor\\u00eda o todas las presentes realizamos trabajo dom\\u00e9stico no pagado.\\r\\nLa mayor\\u00eda cuidan mucho y reciben poco cuidado.\\r\\n\\r\\n\\u2022\\t Las brechas en el grupo: en la escolaridad, en el acceso a servicios de salud.\\r\\n\\r\\n\\u2022\\t Las vulnerabilidades que presenta el grupo. Por ejemplo el poco o nulo\\r\\nacceso a la seguridad social y a la jubilaci\\u00f3n. El descuido con la realizaci\\u00f3n\\r\\nperi\\u00f3dica de controles como la mamograf\\u00eda, el papanicolau, la revisi\\u00f3n\\r\\nodontol\\u00f3gica, el uso de lentes adecuados.\\r\\n\\r\\n\\u2022\\t Los d\\u00e9ficits. Por ejemplo, el d\\u00e9ficit de cuidado por parte de la familia, de\\r\\nlas empresas y del Estado.\\r\\nSi el tiempo y la disposici\\u00f3n de las participantes lo permite, se abre un per\\u00edodo\\r\\npara el di\\u00e1logo, iniciando con una descodificaci\\u00f3n de la t\\u00e9cnica. Para esto se\\r\\nformulan preguntas para provocar el di\\u00e1logo, como las siguientes:\\r\\n\\r\\n\\u2022\\u00bfQu\\u00e9 sintieron?\\r\\n\\r\\n\\u00bfQu\\u00e9 pas\\u00f3?\\r\\n\\r\\n\\u00bfQu\\u00e9 significa la l\\u00ednea divisoria en la vida de las mujeres?\\r\\n\\r\\n\\u00bfCu\\u00e1les son las fronteras que existen entre las mujeres?\\r\\n\\r\\n\\u00bfQui\\u00e9n da las indicaciones en la vida de las mujeres?\\r\\n\\r\\nSe abre un per\\u00edodo para comentarios y preguntas de las participantes.\"}",
+        "author": "Asociaci\u00f3n la cuerda (Guatemala)",
+        "subjects": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 6,
+    "fields": {
+        "title": "{\"eu\": \"Erreka gurutzatuz\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"erreka-gurutzatuz\", \"es\": \"erreka-gurutzatuz\"}",
+        "timestamp": "2018-07-09T15:22:50.437Z",
+        "goal": "{\"eu\": \"Pertsonala, taldea eta helburu kolektiboa (proiektu politikoa) nola harremantzen diren aztertu. \\r\\n\\r\\nLerro horretan hausnarketa bat ireki. Talde barruan hartzen diren rol ezberdinak behatu.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Ariketa honekin, erronka bat planteatuko dugu. Erreka bat gurutzatzea. Horretarako material ezberdinak izango ditugu eta horretaz gaindi errekan bertan dauden Errekamariren lagunek, testuingurua aldatzen joango dira.\\r\\n\\r\\nDinamikaren garapena:\\r\\n\\r\\n Taldetan banatuta, errekaren ertz batean kokatuko gara. Erronka, erreka gurutzatzea da, eskura ditugun bitartekoak erabiliz (aulkiak, esterilak\\u2026) inor uretara erori ez dadin ahaleginduz.\\r\\nBeste ertzerako bidaia luzea da eta testuingurua zein taldea aldatzen joango da. Horretarako Errekamariren lagunak bihurrikeriatan ariko dira, plisti\\u2010plasta. \\r\\nOztopo berriak taldearen bidean ezarriz, taldekideen gaitasunak painelu eta zinten bitartez aldatuz (begiak estali, eskuak lotu\\u2026).\\r\\n\\r\\nAriketa borobiltzeko zenbait konklusio\\u2010edo ateratzen saiatuko gara: Nola joan den jolasa galdetu, behatzaileek zer ikusi duten. Norbanako edo testuingurua aldatzen denean taldean eragiten du eta taldea da hori kudeatu eta helburura iristeko bidetik tiratzen duena.\", \"es\": \"\"}",
+        "author": "Educaci\u00f3n popular (moldatua)",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 7,
+    "fields": {
+        "title": "{\"eu\": \"Arazoen zirkuluan bueltaka\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"arazoen-zirkuluan-bueltaka\", \"es\": \"arazoen-zirkuluan-bueltaka\"}",
+        "timestamp": "2018-07-09T15:29:28.892Z",
+        "goal": "{\"eu\": \"Herri mugimenduko kideen aniztasunaz hausnartuz, botere asimetriak eragiten dituen faktoreak identifikatu eta asimetria horiek lantzeko orientabideak zehaztea.\\r\\n\\r\\n Esperientziak: nola jokatzen dugu? nola jokatu beharko genuke? Nola eztabaidatzen dugu? nola iristen gara adostasunetara? Zeintzuk dira erabakia hartzeko behar ditugun pausoak?\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"5 talde egingo dira (bakoitzean 5\\u20106 pertsona) eta talde bakoitza mahai baten inguruan eseriko da. Mahai horretako bakoitzean dinamizatzaile bat egongo da, militantzia esparruren batean bizitako esperientzia/egoera zehatz bat kontatzen.\\r\\n\\r\\n Esperientzia/egoera/arazo horietatik hiru kolektiboen barnean gertatutakoak izango dira eta bi kolektiboak inguruarekiko duen erlazioan.\\r\\n\\r\\nSarrera bezala egoera kontatu (2 minutu) eta mahaiko kideek egoera horretako arazoa identifikatu beharko dute. Arazoa planteatuta, egoera hori aldatzeko proposamena garatuko dute ondorengo bitartekoak kontuan hartuta: materialak, ideologikoak, emozionalak, humanoak, tenporalak eta espazialak (mahai gainetan hauen zerrenda egongo da). 15 minutu pasatzerakoan taldea mahaiz aldatuko da eta hurrengo mahaiko esperientzia entzutera joango da, bertan ariketa berdina egiteko. Modu horretan talde bakoitza bi mahaietatik pasatuko da.\\r\\nMahai horietako bakoitzean papera, boligrafoa eta praktika militantearekin lotura duten objektuak egongo dira. Mahai bakoitzeko arazo-kontalari bat egoteaz gain, mugitzen diren taldeetan behatzaile bana egongo dira (azalpena+2 mahaietatik pasa= 40minutu).\\r\\n\\r\\nOndoren, talde barruetatik behatzen ibili diren 5 kideak sartuko dira bakoitza bere taldea dinamizatzen. Helburua talde bakoitzak eztabaida nola eman duen aztertzea da. Horretarako 5 kide horiek galdera batzuk planteatu ditzakete laguntza gisa: Zein rol hartu du bakoitzak (iritzi emailea, aktalaria\\u2026)? Arazoaren identifikazioaren adostasunera iritsi gara? nola eman da eztabaida? nork bota du ideia nagusia? beste ideia ezberdinak baloratu dira? erantzun aniztasunerako espazioa egon da? Zein parametroak hartu du garrantzia soluzioa planteatzerako orduan? Ze erabilpen eman diogu objektuari?\", \"es\": \"\"}",
+        "author": "Educaci\u00f3n popular (moldatua)",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 8,
+    "fields": {
+        "title": "{\"eu\": \"Bilera eta Asanbladen auto-behaketa\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"bilera-eta-asanbladen-auto-behaketa\", \"es\": \"bilera-eta-asanbladen-auto-behaketa\"}",
+        "timestamp": "2018-07-09T15:38:21.314Z",
+        "goal": "{\"eu\": \"\\u2013Etengabe hobetzen joatea ahalbidetzen duen talde auto-ezagutza erraztea.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Zertan lagun gaitzake momentu formalen behaketak?\\r\\n\\r\\n\\u2013 Taldetik distantzia hartzeak batzuetan gainontzeko pertsonen arrazoiak hobeto\\r\\nbaloratzeko eta iritzi haztatuagoak emateko balio dezake.\\r\\n\\u2013 Taldeak, pertsona baten bitartez, auto-behaketa egiteko modu bat da (hobe\\r\\ntxandaka egiten bada). Honela, taldeak nola eztabaidatzen duen, nola\\r\\nharremantzen den eta pertsona bakoitzak zer esaten eta egiten duen hobeto\\r\\nezagutuko du.\\r\\n\\u2013 Eguneroko harremanetan eta eztabaida edo bilera zehatzetan, elkar-aberaste eta\\r\\nkonbentzimendu arrazoitua nahasten duten \\u201coztopo\\u201d ezezagunak agertzen\\r\\nzaizkigu. Hortaz, taldearen auto-behaketatik eratorritako ikaskuntzak hesi horiek\\r\\nikusgarri egin eta elkarrekin kudeatzea sustatu dezake.\\r\\n\\r\\nBaina, zer behatuko dugu?\\r\\n\\r\\n\\u2013 Behaketaren erabilgarritasuna ezagutu ostean, ondorengo galdera erantzun\\r\\nbeharko dugu: zer behatuko dugu?. Bost alderdiri erreparatuko diegu: pertsonak,\\r\\nharremanak, arrazoiak, keinuak eta elkarren artean gertatzen direnak. Guzti horiek\\r\\ntaldearen bizitza orokorrean edo eztabaida edo bilera zehatz batean gertatzen ari\\r\\ndiren unean.\\r\\n\\u2013 Talde bileren prozesua, optika ezberdinetatik behatu daitekeen talde dinamika\\r\\nberezi bat da. Aipatu bost alderditean arreta jarriz, agertzen diren Rolei\\r\\nerreparatzea analisi optika posible bat izan daiteke. Hiru Rol mota behatu\\r\\nditzakegu:\\r\\n\\u2013 Edukizko Rolak: bileraren dinamizazioa dute helburu, zehaztutako egitekoak\\r\\nbetetzeari begira batez ere.\\r\\n\\u2013 Forma-Harreman Rolak: taldearen dinamizazioa dute helburu, eztabaida eta lan\\r\\ngiroan harreman onuragarriak mantentzeari begira batez ere.\\r\\n\\u2013 Zarata Rolak: interes kolektiboaren gainetik, botere estrategia indibidual edo\\r\\ninter-indibidualen bitartez, eginkizunen garatzea eta giroa negatiboki\\r\\noztopatzen dituzten rolak.\", \"es\": \"\"}",
+        "author": "Joxemi Zumalabe Fundazioa",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 9,
+    "fields": {
+        "title": "{\"eu\": \"Denbora linea\", \"es\": \"La linea del tiempo\"}",
+        "slug": "{\"eu\": \"denbora-linea\", \"es\": \"la-linea-del-tiempo\"}",
+        "timestamp": "2018-07-09T16:14:46.417Z",
+        "goal": "{\"eu\": \"- Taldearen historia/kronika bat egiteko.\\r\\n  - Taldeak izan ditun momentu esanguratsuak (positibo zein negatiboak) identifikatzeko.\\r\\n  - Taldekide berriei taldearen ibilbidea trasmititzeko.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"- Marra bat marraztuko dugu eta bertan gure kolektiboan jazo diren gertakari garrantzitsuak kokatuko ditugu. Modu honetan, hasieratik gaur arte gure kolektiboan eragin duten gertakariak presente izango ditugu (positibo zein negatiboak), aurrera joan ahal izateko hainbat momentu ikusgarri eginez. \\r\\n- Modu askotan planteatu dezakegu, adibidez:\\r\\n\\r\\n\\t*Alde positiboak goian eta negatiboak behean\\r\\n\\r\\n\\t*Modu irekian utzi eta etorkizuneko ardatza egunean zehar betetzen joan.\", \"es\": \"- Consiste en dibujar una l\\u00ednea y colocar en ella de manera cronol\\u00f3gica los acontecimientos relevantes para el colectivo. Se trata con esto de tener presentes todos los acontecimientos que han marcado al colectivo (tanto positivos como negativos) desde que comenz\\u00f3 hasta ahora a la vez que visibiliza aquellos momentos cumbre, para tenerlos en cuenta a la hora de seguir creciendo.\\r\\n  - Se puede hacer de m\\u00faltiples maneras, por ejemplo :\\r\\n    - Se pueden poner los aspectos positivos arriba y los negativos abajo.\\r\\n    - Se puede dejar abierta para ir completando a lo largo del d\\u00eda \\u2013> Opci\\u00f3n de dejar abierta la parte \\u201ca futuro\\u201d para rellenarla al finalizar el Plenario\"}",
+        "author": "\"Herramientas para plenarios\". BVODH",
+        "subjects": [
+            3
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 10,
+    "fields": {
+        "title": "{\"eu\": \"Memoria eskola\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"memoria-eskola\", \"es\": \"memoria-eskola\"}",
+        "timestamp": "2018-07-11T08:54:43.973Z",
+        "goal": "{\"eu\": \"Gure mugimenduaren historian sakontzeko dinamika.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Historia lerro batean pertsona bakoitzak indibidualki bere bizitzan izandako gertaera nagusi edo garrantzitsuak kokatu behar ditu. Gero taldeka mugimenduak izan dituen hito nagusiak kokatzen ditugu. Guztion artean herrialdeko politikak izan dituen gertaerak ere jarriko ditugu.\\r\\n\\r\\nHori egiteaz gain, mugimenduko kide esperientziadunek beraien historiak kontatuko dizkigute, pertsonal zein militantziazkoak.\\r\\n\\r\\nHausnarketen ostean, onena ekintza batekin amaitzea litzateke, guk ere historia nola sortzen dugun argi gera dadin.\", \"es\": \"\"}",
+        "author": "Educaci\u00f3n popular (moldatua)",
+        "subjects": [
+            5,
+            3
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 11,
+    "fields": {
+        "title": "{\"eu\": \"Buztinarekin sentituz\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"buztinarekin-sentituz\", \"es\": \"buztinarekin-sentituz\"}",
+        "timestamp": "2018-07-11T09:07:44.302Z",
+        "goal": "{\"eu\": \"Saio baten itxiera sortzailea egitea.\\r\\nNorberaren emozioekin konektatzea.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Begiak itxita ditugula, pertsona bakoitzari buztin zati bat emango diogu, handi samarra. Ondoren, musika\\r\\njarrita, begiak itxita eta isilik, buztinarekin bururatzen zaiguna egingo dugu. Musika bukatutakoan, begiak ireki\\r\\neta egindakoa ikusiko dugu.\\r\\n\\r\\nMusika bukatu ondoren, begiak zabaldu eta hausnarketa egin dezakegu: Zer sentitu dut? Zer egin dut\\r\\nbuztinarekin? Zergatik egin ote dut hori? Beste zerbait?...\", \"es\": \"\"}",
+        "author": "Euskal girotze barnetegiak",
+        "subjects": [
+            6,
+            7,
+            8
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 12,
+    "fields": {
+        "title": "{\"eu\": \"Marra\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"marra\", \"es\": \"marra\"}",
+        "timestamp": "2018-07-11T09:27:08.633Z",
+        "goal": "{\"eu\": \"Erabakiak hartzea, aukerak mahai gainean jarriz.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Esaldiak bota eta ados bagaude alde batera eta ez bagaude bestaldera mugituko gara. Behin bakoitza bere lekuan, eztabaida sortuko da. Pilota bat erabili daiteke errespetua mantentzeko.\", \"es\": \"\"}",
+        "author": "Educaci\u00f3n popular (moldatua)",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 13,
+    "fields": {
+        "title": "{\"eu\": \"Pausuak aurrera\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"pausuak-aurrera\", \"es\": \"pausuak-aurrera\"}",
+        "timestamp": "2018-07-11T09:29:24.026Z",
+        "goal": "{\"eu\": \"Erabakiak hartzea, mugimenduan jarriz.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Esaldiak botako ditugu eta ados bagaude aurrerapauso bat emango dugu, 10 esaldi izango dira, amaitzean, non gaude gu, non daude besteak ikusiko dugu eta eztabaidatu.\", \"es\": \"\"}",
+        "author": "Educaci\u00f3n popular (moldatua)",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 14,
+    "fields": {
+        "title": "{\"eu\": \"Liburua eskuan\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"liburua-eskuan\", \"es\": \"liburua-eskuan\"}",
+        "timestamp": "2018-07-11T09:33:44.215Z",
+        "goal": "{\"eu\": \"Erabakiak hartzea testu edo irakurgaiak abiapuntu moduan izanda.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Irakurgaiak mahai-inguruan eztabaidatzeko, partaide guztiek testua eskuartean dute. \\r\\nEztabaida bideratzeko gaiari/hausnarketari dagokion pasartearen erreferentzia zehatza ematea beharrezkoa da (zer iradoki dion pasarteak, zer gaineratu, zeintzuk diren adostasun/desadostasunak nagusiak,...)\", \"es\": \"\"}",
+        "author": "Educaci\u00f3n popular (moldatua)",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 15,
+    "fields": {
+        "title": "{\"eu\": \"Munduko kafea\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"munduko-kafea\", \"es\": \"munduko-kafea\"}",
+        "timestamp": "2018-07-11T10:04:11.973Z",
+        "goal": "{\"eu\": \"- Taldearen intereseko gaien eztabaidarako espazioak irekitzea\\r\\n - Gai baten inguruan erabakiak hartzeko pertsona askoren iritziak jasotzea.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"-Landuko diren gai ezberdinak aztertzen dira, bakoitzarentzat mahai bat prestatuz (denbora jakin batean bertan eztabaidatzeko). Parte-hartzaileak taldeka antolatuko dira  (4-10 pertsona bitartean) eta mahai bakoitzean bakoitzak bere iritzia helarazi al izateko.  \\r\\nMahai bakoitzean dinamizatzaile bat egongo da, bere funtzioa aurreko taldeak esandakoaren laburpentxoa egitea eta talde bakoitzean egon diren eztabaidak eta oharrak jasotzea da. Modu honetan ideien polinizazio gurutzatu egingo dugu, ezagutza berriak sortuz. \\r\\n-Elkarrizketak lotu ahala, ikuspegiak berritzeko eta ezagutza kolektiboa sortzeko aukerak sortuko dira. Hainbat mahai-erronda egin ostean, hainbat kezka eta galdera sortuko dira (dinamizazaileak jasoko dute) eta parte-hartzaileek plenarioan ikaspenak eta ekintzarako aukerak partekatuko dituzte.\", \"es\": \"- se exploran las cuestiones a tratar y se destina una\\r\\nmesa para cada una de esas cuestiones, en las que se debatir\\u00e1\\r\\ndurante un tiempo determinado. Los participantes se sientan alre-\\r\\ndedor de las diferentes mesas en grupos de entre cuatro y diez\\r\\npersonas, para que todos puedan dar su opini\\u00f3n.\\r\\nEn intervalos regulares, un anfitri\\u00f3n se queda en la mesa para\\r\\ncompartir lo m\\u00e1s destacado de la conversaci\\u00f3n de la ronda pre-\\r\\nvia mientras que las dem\\u00e1s personas se dirigen a otras mesas,\\r\\nrealizando as\\u00ed una polinizaci\\u00f3n cruzada de ideas y nuevo cono-\\r\\ncimiento.\\r\\nConforme las conversaciones se conectan entre s\\u00ed, se van ge-\\r\\nnerando nuevos descubrimientos, comienzan a surgir oportunida-\\r\\ndes de innovaci\\u00f3n y el conocimiento colectivo crece y evoluciona\\r\\ngracias a la lideranza conversacional creada. Despu\\u00e9s de varias\\r\\nrondas de conversaci\\u00f3n en torno a una o m\\u00e1s preguntas, los parti-\\r\\ncipantes hacen una puesta en com\\u00fan para compartir sus hallazgos,\\r\\naprendizajes y oportunidades para la acci\\u00f3n.\"}",
+        "author": "MANUAL DE METODOLOGIAS PARTICIPATIVAS PARA INICIATIVAS AGROECOLOGICAS",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 16,
+    "fields": {
+        "title": "{\"eu\": \"Herri Mugimenduen fauna txikia\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"herri-mugimenduen-fauna-txikia\", \"es\": \"herri-mugimenduen-fauna-txikia\"}",
+        "timestamp": "2018-07-11T14:25:36.393Z",
+        "goal": "{\"eu\": \"Eragile ezberdinak elkarren berri izatea eta\\r\\ngure arteko ezagutza eta elkarlanaz gogoetatzea.\\r\\n\\r\\n1) Jendarte-eredu honen zapalkuntza ezberdinen\\r\\noinarrizko kritika egin eta bere eraldaketa orokorra\\r\\nsustatzea eta\\r\\n\\r\\n 2) Egunerokotasuneko kontraesan eta\\r\\nkoherentzien kudeaketen gaineko hausnarketa/eztabaida\\r\\nzabaltzea\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Dinamika aurkeztu 10 min.\\r\\n\\r\\n2. Guztiok batera bakoitzak bere HM a irudikatu herrian, horretarako bere eragilea\\r\\nirudikatuko du mu\\u00f1ekitoekin, plastilina, material anitzekin eta herriko lekuren\\r\\nbatean kokatuko du. 20 min\\r\\n\\r\\n3. Bakoitzak azalduko du nor den bera, zein HMtik datorren, zer irudikatu duen,\\r\\nnon dagoen kokatuta. 60 min.\\r\\nHonetarako pertsona bakoitzak gehienez 2 minutu izango ditu. Hau mozteko\\r\\nmodu bat pentsatu. Artaziekin?\\r\\n\\r\\n4. Bi koloretako hariak eramango dira. Kolore bateko hariarekin irudikatuko da\\r\\negun norekin dituzten aliantzak, mapan ez baldin badago eragile/talde hori\\r\\nsortuz. Eta beste kolorearekin norekin gustatuko litzaiekeen aliantzak eratzea.\\r\\nDenok batera hau. 10-15 min.\\r\\n\\r\\n5. Talde handian eztabaida: 15-20 min.\\r\\n- Zergatik da garrantzitsua aliantzak egitea edo izatea?\\r\\n- Zein etekin uste duzu ateratzen duela bakoitzak? Elkarlanean dauden\\r\\ntaldeek?\", \"es\": \"\"}",
+        "author": "Joxemi Zumalabe Fundazioa",
+        "subjects": [
+            5,
+            3,
+            8
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 17,
+    "fields": {
+        "title": "{\"eu\": \"Herri Mugimenduen eta erakunde publikoen arteko gatazka eta aliantzak\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"herri-mugimenduen-eta-erakunde-publikoen-arteko-gatazka-eta-aliantzak\", \"es\": \"herri-mugimenduen-eta-erakunde-publikoen-arteko-gatazka-eta-aliantzak\"}",
+        "timestamp": "2018-07-11T15:34:46.277Z",
+        "goal": "{\"eu\": \"Herri mugimendu eta administrazioaren arteko harremanek aukerak eta arriskuak\\r\\nidentifikatzea eta hausnartzea.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Paretan paper handi bat egongo da eta bertan erakunde publiko ezberdinen (aukera egongo da identifikatu ez den erakunderen bat gehitzeko) borobil batzuk egongo dira marraztuta. Borobil bakoitza bi zatitan egongo da banatuta: gatazkak eta aliantzak.\\r\\nErakundeak hurrengoak izango dira:\\r\\n\\t-Eskola\\r\\n\\t- Osasun zerbitzuak\\r\\n\\t- Polizia/Ejerzitoa/Epaileak/Kartzela\\r\\n\\t-Udala\\r\\n\\t-Jaurlaritza/Nafar Gobernua\\r\\n\\t- Espainiako Gobernua/Frantziako Gobernua\\r\\n\\t-Zerbitzu sozialak, Berdintasun teknikariak, Euskara teknikariak...\\r\\n\\r\\nBeste txoko baten kolore ezberdinetako gometsak egongo dira, borroka ardatzak irudikatuko dituztenak. Borroka ardatz bat, kolore bat (borroka ardatzen bat kanpo geratu bada, kolore zuriko gometsa erabiliko da):\\r\\n\\t-Feminismoa/Disidentzia sexuala (Morea)\\r\\n\\t- Antikapitalismoa/Langile borroka (Gorria)\\r\\n\\t-Naziogintza/Hizkuntza (Arrosa)\\r\\n\\r\\nIkasle/Hezkuntza borroka (Beltza)\\r\\n\\t- Ekologismoa/Okupazioa (Berdea)\\r\\n\\t-Antikolonialismoa (Horia)\\r\\n\\r\\nPartaide guztiak erakunde publikoak marraztuta dauden paper handiari begira jarriko gara. Erakunde bakoitzarekin izan ditugun gatazka eta aliantzen inguruan galdetuko da eta pertsonalki edo kolektiboki izandako esperientzia hori nolabait plasmatuko dugu paper handian. Horretarako, izandako gatazka edo aliantza hori ze borroka ardatzetik izan den identifikatu eta kolore horretako (borroka ardatza) gometsa aipatutako erakundearen borobilean itsatsiko dugu. Gatazkaren inguruan bagabiltza gatazkaren aldean eta aliantzez bagabiltza berriz aliantzen aldean. Izan daiteke borroka ildo batetik baino gehiagotik izatea bai gatazkak zein aliantzak, beraz gomets bat baino gehiago hartzea posible izango da, beti ere kolore ezberdinetakoak. Gometsak itsasteko tartea era librean egitea ikusten da.\\r\\n (\\u231bAzalpenak+gometsak itsatsi 20\\u2019 inguru)\\r\\n\\r\\nBehin gometsak itsatsita, bi taldetan banatuko gara eta aukera egongo da norbaitek nahi badu bizitako gatazka edo aliantza komentatzeko eta horren inguruan aritzeko. Bestalde,erakunde publiko guztiekin izandako gatazka eta aliantzen inguruan arituta, paper handian parte-hartzaileen artean dauden borroken eta erakunde publikoen arteko harremanek argazki bat izango dugu. Argazkia denon artean komentatzea eta debatitzea izango litzateke hurrengo pausua.\\r\\n (\\u231bBi taldetan debatitzeko 40\\u2019 inguru)\\r\\n\\r\\nBi taldetan ateratako argazkia komentatu ondoren, talde handian batuko gara berriz eta talde txikitan gehien komentatu diren erakundeak landuko ditugu. \\r\\n(\\u231bTalde handian komentatzeko 25\\u2019 inguru)\\r\\nAzken bost minutuak dinamika ixteko erabiliko ditugu, atera nahi izan diren gakoak irten ez badira ateratzeko.\", \"es\": \"\"}",
+        "author": "Joxemi Zumalabe Fundazioa",
+        "subjects": [
+            4
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 18,
+    "fields": {
+        "title": "{\"eu\": \"Hark esan du\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"hark-esan-du\", \"es\": \"hark-esan-du\"}",
+        "timestamp": "2018-10-11T15:36:14.043Z",
+        "goal": "{\"eu\": \"Arazoak kolektiboak (eta ez aldiz pertsonalak) direla ikustaraztea, denon artean arazoei konponbidek bilatzea eta entzuketa aktiboa lantzea.\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Norbaitek arazo bat aurkezten dio taldeari (adibidez, puntualitate ezarena\\r\\nedo erretzaearena). Taldeak elkarlanean arazoa konpontzeko konpromezua\\r\\nhartuko du, arazo hori talde-arazoa dela aitortuz. Auzia azaldu duen\\r\\npertsonaren ondoan dagoen kideak, Adib: Ainhoak, dituen zalantzak\\r\\nargitzeko nahi beste galdera egin ditzake. Ondoren, arazoa zein den\\r\\nerrepikatuko du (horretarako denbora osoan singularreko bigarren pertsona\\r\\nerabiliz, \\u201cPili, zuk esan duzu..\\u201d).\\r\\nEta lehenengo pertsonak, Pilik, Ainhoak esan duenarekin bat datorrela\\r\\nadierazi beharko du, hots, arazoa zertan datzan ondo jaso duela. Jarraian,\\r\\nzirkuloan dagoen hurrengo pertsonak hartuko du hitza, eta singularreko\\r\\npertsona erabiliz egin ere, adib:\\u201c talde honetako partaide batek nabaritzen\\r\\ndu....\\u201d, modu honetan auzia taldearena bilakatuz.\\r\\nLaugarren pertsona batek taldearen beharra, hots, konponbidearen beharra,\\r\\nazpimarratuko du. Esate baterako \\u201cegoera honi konponbidea bilatu behar\\r\\ndiogu\\u201d modukoak plazaratuz . Kide honen parte hartzeak taldearen\\r\\nonespena du helburu, arazoa egon badagoela eta taldeak aurre egin nahi\\r\\ndiola ebaztea alegia.\\r\\nBostgarren pertsona batek arazoa konpontzeko bideren bat aipatu beharko\\r\\ndu eta, hortik aurrera, edonork hitz egin dezake, beti ere aurreko pertsonak esan duena jasoz. Eta horrela, denon gustoko irtenbidea topa arte.\", \"es\": \"\"}",
+        "author": "Ezezaguna",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 19,
+    "fields": {
+        "title": "{\"eu\": \"Erabakiak puntuatuz\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"erabakiak-puntuatuz\", \"es\": \"erabakiak-puntuatuz\"}",
+        "timestamp": "2018-10-11T16:00:42.932Z",
+        "goal": "{\"eu\": \"Erabakiak sakontasunez hartzea, elkarrekin eraikiz\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"Osoko bileran, talde osoa elkarrekin arituko da lanean. Landutako edo erabaki beharreko gaiak, atalak edo puntuak paretan itsatsiko ditugu. \\r\\nOndoren, taldekideek gai (proposamen, aukera, arlo...) bakoitzari puntuazioa emango diote, 1etik 5era. Gai edo proposamen bakoitzari emandako puntuazioan dagoen adostasun-maila aztertuko da ondoren, eta azterketan jasotzen den hori erabakia hartzeko erabiliko da. \\r\\nNahi izanez gero, puntuazioa jartzeko garaian subjektu edo eragile bakoitzak kode edo kolore ezberdinak erabil ditzake, subjektuaren ezaugarriek puntuazioan eragiten ote duten jasotzeko.\", \"es\": \"\"}",
+        "author": "Nicola Foroni \u2013 Elhuyar aholkularitza",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 20,
+    "fields": {
+        "title": "{\"eu\": \"\", \"es\": \"TELEGRAMA\"}",
+        "slug": "{\"eu\": \"telegrama\", \"es\": \"telegrama\"}",
+        "timestamp": "2018-11-03T14:53:44.433Z",
+        "goal": "{\"eu\": \"\", \"es\": \"Resaltar lo que m\\u00e1s ha llamado la atenci\\u00f3n dentro del grupo, ya sea para bien o para mal\\r\\nVer como ha sido el proceso grupal.\"}",
+        "brief": "{\"eu\": \"\", \"es\": \"El animador reparte la hoja para rellenar el telegrama, en la cual se debe poner: fecha, dirigido a, n\\u00famero de palabras, nombre y apellidos del expedidor, y , por \\u00faltimo, el texto en el cual se tendr\\u00e1 que poner lo que m\\u00e1s me ha llamado la atenci\\u00f3n del proceso grupal.\"}",
+        "author": "PAHO",
+        "subjects": [
+            6
+        ]
+    }
+},
+{
+    "model": "material.material",
+    "pk": 21,
+    "fields": {
+        "title": "{\"eu\": \"ERASO MATXISTEN AURKAKO PROTOKOLOA\", \"es\": \"\"}",
+        "slug": "{\"eu\": \"eraso-matxisten-aurkako-protokoloa\", \"es\": \"eraso-matxisten-aurkako-protokoloa\"}",
+        "timestamp": "2018-12-04T17:41:36.099Z",
+        "goal": "{\"eu\": \"\", \"es\": \"\"}",
+        "brief": "{\"eu\": \"ERASO MATXISTEN AURKAKO PROTOKOLOA\", \"es\": \"\"}",
+        "author": "Joxemi Zumalabe Fundazioa",
+        "subjects": [
+            2
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 21,
+    "fields": {
+        "location": null,
+        "duration": null,
+        "min_people": 2,
+        "max_people": 30,
+        "group_feature": null,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "material/activities/Erasomatxistenprotokoloa_JMZ_behinbetikoa.pdf",
+        "url": "",
+        "subjects": [
+            2
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 20,
+    "fields": {
+        "location": 1,
+        "duration": 15,
+        "min_people": 2,
+        "max_people": 30,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"Material: Una hoja que dar\\u00e1 el animador (Hoja para rellenar un telegrama) y un bol\\u00edgrafo.\"}",
+        "attachment": "",
+        "url": "https://www.paho.org/hq/index.php?option=com_content&view=article&id=10910:2015-tecnicas-de-cierre-y-evaluacion&Itemid=42210&lang=en",
+        "subjects": [
+            6
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 19,
+    "fields": {
+        "location": 1,
+        "duration": 30,
+        "min_people": 3,
+        "max_people": 30,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 18,
+    "fields": {
+        "location": 1,
+        "duration": 60,
+        "min_people": 5,
+        "max_people": 15,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 17,
+    "fields": {
+        "location": 1,
+        "duration": 90,
+        "min_people": 10,
+        "max_people": 35,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"DINAMIKATIK ATERA NAHI DIREN GAKOAK\\r\\n\\r\\n-Borroka ardatzaren arabera aliantza eta gatazken kopuru naiz nolakotasuna\\r\\naldatzen da.\\r\\n-Erakunde guztiak ez dira berdinak. Batzuk baliagarriagoak zaizkigu edo ez.\\r\\n- Koiuntura politiko eta une bakoitzean dauden pertsonek erakundearen\\r\\nnolakotasuna/jokatzeko modua aldatzen dute.\\r\\n-Ezkerraren subjektua gizon zuri, langile, heterosexual, gorputz normatiboduna da.\\r\\nBeraz, horren baitan eraiki dira zapalkuntza ardatzak eta erakundeak ulertzeko\\r\\nmodua. Herria-boterea dikotomia, subjektu horrekin lotua dago.\\r\\n-Geroz eta urrunago gobernua eta bertan hartuko diren erabakiek gatazka sortuko\\r\\ndute, baina gatazka hurbileko instituzioarekin.\\r\\nErakunde batzuetan eraldaketarako une zehatz batean erresistentzia gehiago\\r\\nizango dituzte edo gutxiago. Botere gehien dauden lekuetan zailtasun gehiago.\\r\\n\\r\\nMATERIALAK:\\r\\n\\r\\n- Paper txuri handia\\r\\n\\r\\n- Kolore ezberdinetako gometsak (Morea, Gorria, Arrosa, Beltza, Berdea, Horia, Zuria)\\r\\n- Zeloa\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            4
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 16,
+    "fields": {
+        "location": 1,
+        "duration": 120,
+        "min_people": 10,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"Materialak:\\r\\n\\r\\n-Papelotea edo paperezko mahai-zapia. Aurrez herria irudikatuko dugu papelote haundi batean elementu ezberdinak errotulki baten bidez marraztuz (plaza, kalea, merkatua, baserria, gaztetxea, jolastokia, taberna, lantegia, eskola...).\\r\\n\\r\\n-Koloretako errotulkiak eta plastilina\\r\\n\\r\\n-Panpintxo txikiak (Lego edo playmobil tankerakoak...). Aukerakoa, ez badituzue eskura, plastilinaz egin daitezke. \\r\\n\\r\\n-Artilea edo haria\\r\\n\\r\\n(ikus irudia)\", \"es\": \"\"}",
+        "attachment": "material/activities/26202743121_eb92fe05ea_k.jpg",
+        "url": "",
+        "subjects": [
+            5,
+            3,
+            8
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 15,
+    "fields": {
+        "location": 1,
+        "duration": 90,
+        "min_people": 15,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"LEKUA:\\r\\n  - Leku lasai eta zabala. Mahai eta aulkiak kafea hartzeko moduan jarrita.\\r\\n\\r\\nMATERIALA:\\r\\n\\r\\n  - Orriak/kartulinak\\r\\n\\r\\n  - Aulkiak eta mahaiak (gai bakoitzeko mahai bat)\\r\\n\\r\\n  - Errotulki edo boligrafoak\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 14,
+    "fields": {
+        "location": 2,
+        "duration": null,
+        "min_people": 6,
+        "max_people": 30,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 13,
+    "fields": {
+        "location": 1,
+        "duration": 20,
+        "min_people": 2,
+        "max_people": 30,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 12,
+    "fields": {
+        "location": null,
+        "duration": null,
+        "min_people": 2,
+        "max_people": 30,
+        "group_feature": null,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            9
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 11,
+    "fields": {
+        "location": 1,
+        "duration": 20,
+        "min_people": 1,
+        "max_people": 30,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"Taldearentzat zer musika den egokia denon artean erabaki dezakegu. Hitzik gabeko melodia izan daiteke\\r\\naproposa, adibidez musika klasikoa.\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "http://www.barnetegiak.eus/dinamikabilduma/",
+        "subjects": [
+            6,
+            7,
+            8
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 10,
+    "fields": {
+        "location": 1,
+        "duration": 60,
+        "min_people": 10,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"Materiala:\\r\\nPapelotea, errotulkiak eta guretako erreferentzialak izan diren irudi edo elementuak.\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            5,
+            3
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 9,
+    "fields": {
+        "location": 1,
+        "duration": 20,
+        "min_people": 2,
+        "max_people": 30,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"MATERIALA:\\r\\n\\r\\n  - Papelografo edo arbel handi bat eta errotulagailuak.\\r\\n\\r\\n  - Post-itak\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            3
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 8,
+    "fields": {
+        "location": 2,
+        "duration": 2700,
+        "min_people": 1,
+        "max_people": 2,
+        "group_feature": 2,
+        "notes": "{\"eu\": \"IRAKURRI BEHAKETA FITXA\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 7,
+    "fields": {
+        "location": 1,
+        "duration": 80,
+        "min_people": 25,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 6,
+    "fields": {
+        "location": 1,
+        "duration": 30,
+        "min_people": 10,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 5,
+    "fields": {
+        "location": 1,
+        "duration": 90,
+        "min_people": 7,
+        "max_people": 30,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"MATERIALES: una cuerda o cinta adhesiva, la lista de indicaciones, papel\\u00f3grafos\\r\\npara tomar nota o computadora y pantalla.\\r\\n\\r\\nLEER LISTA DE INDICACIONES (adecuadas al tema y las caracter\\u00edsticas del grupo)\"}",
+        "attachment": "material/activities/Lafrontera_indicaciones_lacuerda_oWWKIrz.odt",
+        "url": "https://www.eda.admin.ch/dam/countries/countries-content/nicaragua/es/Modulo%201%20Educaci%C3%B3n%20polular.pdf",
+        "subjects": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 3,
+    "fields": {
+        "location": 1,
+        "duration": 90,
+        "min_people": 10,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 2,
+    "fields": {
+        "location": 1,
+        "duration": 60,
+        "min_people": 10,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"\", \"es\": \"\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            1
+        ]
+    }
+},
+{
+    "model": "material.activity",
+    "pk": 1,
+    "fields": {
+        "location": 1,
+        "duration": 90,
+        "min_people": 10,
+        "max_people": 40,
+        "group_feature": 1,
+        "notes": "{\"eu\": \"Ariketa hau bakarka ere egin al da, inkesta moduan.\\r\\n\\r\\nTaula euskaraz eta gazteleraz dago.\", \"es\": \"Materiales:\\r\\n\\r\\nUna cuerda o cinta adhesiva, la lista de indicaciones, papel\\u00f3grafos\\r\\npara tomar nota o computadora y pantalla.\\r\\n\\r\\nVer indicaciones (adjuntos)\"}",
+        "attachment": "",
+        "url": "",
+        "subjects": [
+            2
+        ]
+    }
+}
+]
