@@ -12,3 +12,8 @@ django-sass-processor == 0.7.2
 # This works fine in the interpreter
 # For some reason it breaks when done from UWSGI
 markdown < 3
+
+# https://github.com/python-pillow/Pillow/commit/9f6c708aa3961f9bc768d3bd5b95c1821d5ec6d1
+# https://github.com/python-pillow/Pillow/issues/3526
+# Will be fixed in 5.4.1
+pillow < 5.4.0
