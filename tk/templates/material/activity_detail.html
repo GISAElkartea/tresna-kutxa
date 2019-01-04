@@ -5,18 +5,35 @@
 <h2>{{ object }}</h2>
 
 <dl>
+  {% url 'material:search-activity' as search_url %}
+
   <dt>{% trans 'Created' %}</dt>
   {{ object.timestamp }}
 
   <dt>{% trans 'Subjects' %}</dt>
   <ul>
     {% for subject in object.subjects.all %}
-    <li><a href="{{ subject.get_absolute_url }}">{{ subject }}</a></li>
+    <li><a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a></li>
     {% endfor %}
   </ul>
 
   <dt>{% trans 'Goal' %}</dt>
   {{ object.goal }}
+
+  <dt>{% trans 'Location' %}</dt>
+  <a href="{{ search_url }}?activity-location={{ object.location.pk }}">{{ object.location }}</a>
+
+  <dt>{% trans 'Duration (in minutes)' %}</dt>
+  <a href="{{ search_url }}?activity-duration={{ object.duration }}">{{ object.duration }}</a>
+
+  <dt>{% trans 'Minimum number of people' %}</dt>
+  <a href="{{ search_url }}?activity-min_people={{ object.min_people }}">{{ object.min_people }}</a>
+
+  <dt>{% trans 'Maximum number of people' %}</dt>
+  <a href="{{ search_url }}?activity-max_people={{ object.max_people }}">{{ object.max_people }}</a>
+
+  <dt>{% trans 'Group feature' %}</dt>
+  <a href="{{ search_url }}?activity-group_feature={{ object.group_feature.pk }}">{{ object.group_feature }}</a>
 
   <dt>{% trans 'Brief' %}</dt>
   {{ object.brief }}

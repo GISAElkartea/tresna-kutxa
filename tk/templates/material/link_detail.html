@@ -8,7 +8,9 @@
   <dt>{% trans 'Created' %}</dt>
   {{ object.timestamp }}
 
+  {% if object.url %}
   <dt>{% trans 'Link' %}</dt>
   {{ object.url }}
+  {% endif %}
 </dl>
 {% endblock content %}

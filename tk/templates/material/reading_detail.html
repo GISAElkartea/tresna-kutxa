@@ -5,21 +5,29 @@
 <h2>{{ object }}</h2>
 
 <dl>
+  {% url 'material:search-reading' as search_url %}
+
   <dt>{% trans 'Created' %}</dt>
   {{ object.timestamp }}
 
+  {% if object.pages %}
   <dt>{% trans 'Pages' %}</dt>
-  {{ object.pages }}
+  <a href="{{ search_url }}?reading-pages={{ object.pages }}">{{ object.pages }}</a>
+  {% endif %}
 
+  {% if object.year %}
   <dt>{% trans 'Year' %}</dt>
-  {{ object.year }}
+  <a href="{{ search_url }}?reading-year={{ object.year }}">{{ object.year }}</a>
+  {% endif %}
 
   <dt>{% trans 'Languages' %}</dt>
   {% for lang in object.languages %}
-  {{ lang }}
+  <a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a>
   {% endfor %}
 
+  {% if object.url %}
   <dt>{% trans 'Link' %}</dt>
   {{ object.url }}
+  {% endif %}
 </dl>
 {% endblock content %}

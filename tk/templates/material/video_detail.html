@@ -5,26 +5,32 @@
 <h2>{{ object }}</h2>
 
 <dl>
+  {% url 'material:search-video' as search_url %}
+
   <dt>{% trans 'Created' %}</dt>
   {{ object.timestamp }}
 
-  <dt>{% trans 'Duration (minutes)' %}</dt>
-  {{ object.duration }}
+  <dt>{% trans 'Duration (in minutes)' %}</dt>
+  <a href="{{ search_url }}?video-duration={{ object.duration }}">{{ object.duration }}</a>
 
+  {% if object.year %}
   <dt>{% trans 'Year' %}</dt>
-  {{ object.year }}
+  <a href="{{ search_url }}?reading-year={{ object.year }}">{{ object.year }}</a>
+  {% endif %}
 
-  <dt>{% trans 'Audio languages' %}</dt>
+  <dt>{% trans 'Audio languges' %}</dt>
   {% for lang in object.audios %}
-  {{ lang }}
+  <a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a>
   {% endfor %}
 
-  <dt>{% trans 'Subtitle languages' %}</dt>
+  <dt>{% trans 'Subtitle languges' %}</dt>
   {% for lang in object.subtitles %}
-  {{ lang }}
+  <a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a>
   {% endfor %}
 
+  {% if object.url %}
   <dt>{% trans 'Link' %}</dt>
   {{ object.url }}
+  {% endif %}
 </dl>
 {% endblock content %}
