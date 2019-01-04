@@ -16,8 +16,14 @@ class MaterialFilterSet(FilterSet):
 class ActivityFilterSet(FilterSet):
     class Meta:
         model = Activity
-        fields = ['subjects', 'location', 'duration', 'min_people',
-                'max_people', 'group_feature']
+        fields = {
+                'subjects': ['exact'],
+                'location': ['exact'],
+                'duration': ['exact'],
+                'min_people': ['gte'],
+                'max_people': ['lte'],
+                'group_feature': ['exact'],
+                }
 
 
 class ReadingFilterSet(FilterSet):
