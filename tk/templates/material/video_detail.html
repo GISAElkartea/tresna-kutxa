@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <h2>{{ object }}</h2>
+
+<dl>
+  <dt>{% trans 'Created' %}</dt>
+  {{ object.timestamp }}
+
+  <dt>{% trans 'Duration (minutes)' %}</dt>
+  {{ object.duration }}
+
+  <dt>{% trans 'Year' %}</dt>
+  {{ object.year }}
+
+  <dt>{% trans 'Audio languages' %}</dt>
+  {% for lang in object.audios %}
+  {{ lang }}
+  {% endfor %}
+
+  <dt>{% trans 'Subtitle languages' %}</dt>
+  {% for lang in object.subtitles %}
+  {{ lang }}
+  {% endfor %}
+
+  <dt>{% trans 'Link' %}</dt>
+  {{ object.url }}
+</dl>
 {% endblock content %}
