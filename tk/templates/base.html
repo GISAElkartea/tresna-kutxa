@@ -14,8 +14,11 @@
       </header>
       <ul id="lang">
         {% get_available_languages as languages %}
+        {% get_current_language as current %}
         {% for lang_code, lang_name in languages %}
+        {% if current != lang_code %}
         <li><a href="{% translate_url lang_code %}">{{ lang_code }}</a></li>
+        {% endif %}
         {% endfor %}
         <li><a>by-sa</a></li>
       </ul>
