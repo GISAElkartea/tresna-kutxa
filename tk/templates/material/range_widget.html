@@ -10,8 +10,8 @@
 <script type="text/javascript" src="{% static 'js/range_widget.js' %}"><</script>
 
 <script>
-  const a = document.getElementById('{{ widget.subwidgets.0.attrs.id }}');
-  const b = document.getElementById('{{ widget.subwidgets.1.attrs.id }}');
-  const o = document.querySelector('#{{ widget.attrs.id }} output');
-  range_widget(a, b, o);
+  range_widget(
+    document.getElementById('{{ widget.subwidgets.0.attrs.id }}'),
+    document.getElementById('{{ widget.subwidgets.1.attrs.id }}'),
+    document.querySelector('#{{ widget.attrs.id }} output'))
 </script>
