@@ -28,7 +28,12 @@ class RangeWidget(MultiWidget):
         # JS loaded from within the template
 
     def __init__(self, attrs=None):
-        super().__init__([NumberRangeInput(), NumberRangeInput()], attrs)
+        if attrs is None:
+            attrs = {}
+        super().__init__([
+            NumberRangeInput(attrs={'min': attrs.pop('min', None)}),
+            NumberRangeInput(attrs={'max': attrs.pop('max', None)}),
+        ], attrs)
 
     def decompress(self, value):
         if value:

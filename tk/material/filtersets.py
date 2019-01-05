@@ -24,8 +24,13 @@ class IncludeNullNumericRangeFilter(IncludeNullMixin, NumericRangeFilter):
 
 
 class ActivityFilterSet(FilterSet):
-    num_people = NumericRangeFilter(widget=RangeWidget(), lookup_expr='overlap')
-    duration = IncludeNullNumericRangeFilter(widget=RangeWidget(), lookup_expr='range')
+    num_people = NumericRangeFilter(
+            widget=RangeWidget(attrs={'min': 0, 'max': 40}),
+            lookup_expr='overlap')
+
+    duration = IncludeNullNumericRangeFilter(
+            widget=RangeWidget(attrs={'min': 0, 'max': 360}),
+            lookup_expr='range')
 
     class Meta:
         model = Activity

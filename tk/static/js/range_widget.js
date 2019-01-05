@@ -8,18 +8,12 @@ range_widget = function(a, b, o) {
   // 'mousedown' because otherwise you can "lock" the other slider in place at min=max=value
   on('input', 'mousedown')(a, b)(update);
 
-  a.min = 0;
-  b.max = 40;
-
   if (!a.hasAttribute('value')) {
     a.value = a.min;
   }
   if (!b.hasAttribute('value')) {
     b.value = b.max;
   }
-
-  a.max = a.valueAsNumber;
-  b.min = a.valueAsNumber + 1;
 
   update(); // 1x
 
