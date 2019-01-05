@@ -53,7 +53,10 @@ class MaterialAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
 
 
 class ActivityAdmin(MaterialAdmin):
-    formfield_overrides = {IntegerRangeField: {'widget': RangeWidget}}
+    formfield_overrides = {
+            LocalizedTextField: {'widget': AdminLocalizedMarkdownxWidget},
+            IntegerRangeField: {'widget': RangeWidget},
+            }
 
     fieldsets = [
             (_("State"), {
