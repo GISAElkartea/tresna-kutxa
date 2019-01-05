@@ -14,25 +14,22 @@ class MaterialFilterSet(FilterSet):
         fields = ['subjects']
 
 
+class IncludeNullMixin:
+    def filter(self, qs, value):
+        return super().filter(qs, value) | self.get_method(qs)(**{self.field_name: None})
+
+
+class IncludeNullNumericRangeFilter(IncludeNullMixin, NumericRangeFilter):
+    pass
+
+
 class ActivityFilterSet(FilterSet):
+    num_people = NumericRangeFilter(widget=RangeWidget(), lookup_expr='overlap')
+    duration = IncludeNullNumericRangeFilter(widget=RangeWidget(), lookup_expr='range')
+
     class Meta:
         model = Activity
-        fields = {
-                'subjects': ['exact'],
-                'location': ['exact'],
-                'duration': ['exact'],
-                'num_people': ['contains'],
-                'group_feature': ['exact'],
-                }
-        filter_overrides = {
-            IntegerRangeField: {
-                'filter_class': NumericRangeFilter,
-                'extra': lambda f: {
-                    'widget': RangeWidget()
-                },
-            }
-        }
-
+        fields = ['subjects', 'location', 'group_feature', 'num_people', 'duration']
 
 
 class ReadingFilterSet(FilterSet):
