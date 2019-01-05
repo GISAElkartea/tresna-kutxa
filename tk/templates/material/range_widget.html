@@ -1,0 +1,17 @@
+{% load static %}
+
+<div id="{{ widget.attrs.id }}" class="range-widget">
+  <div class="range-inputs">
+    {% include 'django/forms/widgets/multiwidget.html' %}
+  </div>
+  <output></output>
+</div>
+
+<script type="text/javascript" src="{% static 'js/range_widget.js' %}"><</script>
+
+<script>
+  const a = document.getElementById('{{ widget.subwidgets.0.attrs.id }}');
+  const b = document.getElementById('{{ widget.subwidgets.1.attrs.id }}');
+  const o = document.querySelector('#{{ widget.attrs.id }} output');
+  range_widget(a, b, o);
+</script>

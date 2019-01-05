@@ -3,7 +3,7 @@ from django.forms import ModelForm, EmailField
 from captcha.fields import CaptchaField
 
 from .models import Approval, Activity, Video, Reading, Link
-from .widgets import LocalizedMarkdownxWidget
+from .widgets import LocalizedMarkdownxWidget, RangeWidget
 
 
 class MaterialForm(ModelForm):
@@ -27,6 +27,7 @@ class ActivityForm(MaterialForm):
     class Meta(MaterialForm.Meta):
         model = Activity
         fields = '__all__'
+        widgets = {'num_people': RangeWidget()}
 
 
 class VideoForm(MaterialForm):

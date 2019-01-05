@@ -3,11 +3,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.postgres.fields import IntegerRangeField
 
 from localized_fields.admin import LocalizedFieldsAdminMixin
 from localized_fields.fields import LocalizedTextField
 
-from .widgets import AdminLocalizedMarkdownxWidget
+from .widgets import AdminLocalizedMarkdownxWidget, RangeWidget
 
 
 class LocalizedAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
@@ -52,6 +53,8 @@ class MaterialAdmin(LocalizedFieldsAdminMixin, admin.ModelAdmin):
 
 
 class ActivityAdmin(MaterialAdmin):
+    formfield_overrides = {IntegerRangeField: {'widget': RangeWidget}}
+
     fieldsets = [
             (_("State"), {
                 'fields': ['approval_link',

@@ -1,9 +1,11 @@
 from django.contrib.postgres.fields import IntegerRangeField
+
 from django_filters import FilterSet
 from django_filters.filters import ChoiceFilter, NumericRangeFilter
 
 from .fields import get_languages
 from .models import Material, Activity, Reading, Video, Link, COMMON_LANGUAGES
+from .widgets import RangeWidget
 
 
 class MaterialFilterSet(FilterSet):
@@ -23,7 +25,12 @@ class ActivityFilterSet(FilterSet):
                 'group_feature': ['exact'],
                 }
         filter_overrides = {
-            IntegerRangeField: {'filter_class': NumericRangeFilter}
+            IntegerRangeField: {
+                'filter_class': NumericRangeFilter,
+                'extra': lambda f: {
+                    'widget': RangeWidget()
+                },
+            }
         }
 
 

@@ -1,7 +1,9 @@
 from django.conf import settings
+from django.forms.widgets import NumberInput, MultiWidget
 
 from localized_fields.widgets import LocalizedFieldWidget, AdminLocalizedFieldWidget
 from markdownx.widgets import MarkdownxWidget, AdminMarkdownxWidget
+from sass_processor.processor import sass_processor
 
 
 class LocalizedMarkdownxWidget(LocalizedFieldWidget):
@@ -11,3 +13,24 @@ class LocalizedMarkdownxWidget(LocalizedFieldWidget):
 
 class AdminLocalizedMarkdownxWidget(AdminLocalizedFieldWidget):
     widget = AdminMarkdownxWidget
+
+
+class NumberRangeInput(NumberInput):
+    input_type = 'range'
+
+
+# https://jsfiddle.net/simplgy/z93s82xL/
+class RangeWidget(MultiWidget):
+    template_name = 'material/range_widget.html'
+
+    class Media:
+        css = {'all': [sass_processor('sass/range_widget.sass')]}
+        # JS loaded from within the template
+
+    def __init__(self, attrs=None):
+        super().__init__([NumberRangeInput(), NumberRangeInput()], attrs)
+
+    def decompress(self, value):
+        if value:
+            return (value.lower, value.upper)
+        return (None, None)
