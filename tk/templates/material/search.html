@@ -5,7 +5,7 @@
 {% for tab, endpoint, form in tabs %}
 <h2 class="filters">{{ tab }}</h2>
 <form method="get" action="{{ endpoint }}">
-  <input name="q" type="text" placeholder="{% trans 'Search' %}" />
+  <input class="search" name="q" type="text" placeholder="{% trans 'Search' %}" />
   {% if form %}
   <ul>
     {{ form.as_ul }}
