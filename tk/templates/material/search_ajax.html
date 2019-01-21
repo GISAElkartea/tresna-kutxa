@@ -1,7 +1,17 @@
+{% load i18n %}
+
 <ul id="search_results">
   {% for obj in object_list %}
   <li>
-    <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
+    <a class="result" href="{{ obj.get_absolute_url }}"><i class="fas fa-book"></i>{{ obj.title }}</a>
+    <p>{{ obj.goal }}</p>
+    <dl>
+      <dt>{% trans 'Subjects' %}:
+        {% for subject in obj.subjects.all %}
+        <a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a>
+        {% endfor %}
+      </dt>
+    </dl>
   </li>
   {% endfor %}
 </ul>
