@@ -76,8 +76,8 @@ let
   generated = self: {
 
     "Django" = python.mkDerivation {
-      name = "Django-2.1.4";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/83/f7/4939b60c4127d5f49ccb570e34f4c59ecc222949220234a88e4f363f1456/Django-2.1.4.tar.gz"; sha256 = "068d51054083d06ceb32ce02b7203f1854256047a0d58682677dd4f81bceabd7"; };
+      name = "Django-2.1.5";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/5c/7f/4c750e09b246621e5e90fa08f93dec1b991f5c203b0ff615d62a891c8f41/Django-2.1.5.tar.gz"; sha256 = "d6393918da830530a9516bbbcbf7f1214c3d733738779f06b0f649f49cc698c3"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [
@@ -312,8 +312,8 @@ let
 
 
     "pytz" = python.mkDerivation {
-      name = "pytz-2018.7";
-      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/cd/71/ae99fc3df1b1c5267d37ef2c51b7d79c44ba8a5e37b48e3ca93b4d74d98b/pytz-2018.7.tar.gz"; sha256 = "31cb35c89bd7d333cd32c5f278fca91b523b0834369e757f4c5641ea252236ca"; };
+      name = "pytz-2018.9";
+      src = pkgs.fetchurl { url = "https://files.pythonhosted.org/packages/af/be/6c59e30e208a5f28da85751b93ec7b97e4612268bb054d0dff396e758a90/pytz-2018.9.tar.gz"; sha256 = "d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"; };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs;
       propagatedBuildInputs = [ ];

@@ -1,5 +1,5 @@
 uwsgi == 2.0.17.1
-django == 2.1.4
+django == 2.1.5
 django-localized-fields == 4.6a3
 psycopg2 == 2.7.6.1
 https://github.com/neutronX/django-markdownx/archive/bd06b48.zip#egg=django-markdownx
