@@ -14,32 +14,35 @@ class TKAdmin(AdminSite):
     site_header = _("TK admin")
     site_title = _("TK admin")
     index_template = 'admin/tk_index.html'
-    grouping = OrderedDict([
-            (_("Material"), [
-                'material.Activity',
-                'material.Video',
-                'material.Reading',
-                'material.Link',
-            ]),
-            (_("Material classification"), [
-                'material.Subject',
-                'material.GroupFeature',
-                'material.Location',
-            ]),
-            (_("Auth"), [
-                'auth.User',
-                'auth.Group',
-            ]),
-    ])
+    grouping = [{
+        'name': _("Material"),
+        'models': [
+            'material.Activity',
+            'material.Video',
+            'material.Reading',
+            'material.Link',
+            ]}, {
+        'name': _("Material classification"),
+        'models': [
+            'material.Subject',
+            'material.GroupFeature',
+            'material.Location',
+            ]}, {
+        'name': _("Auth"),
+        'models': [
+            'auth.User',
+            'auth.Group',
+            ]}
+        ]
 
     def get_app_list(self, request):
         # Build the original app list so that we take into account user perms
         app_list = super().get_app_list(request)
         for g in self.grouping:
-            models = [ self._get_model(m, app_list) for m in self.grouping[g] ]
+            models = [ self._get_model(m, app_list) for m in g['models'] ]
             models = [ m for m in models if m is not None ]
             if models:
-                yield {'name': g, 'models': models}
+                yield {'name': g['name'], 'models': models}
 
     def _get_model(self, model, app_list):
         app_name, model_name = model.split('.')
