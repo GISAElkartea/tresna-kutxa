@@ -1,0 +1,38 @@
+Antzeman ditugun akatsak:
+	
+
+		* Línea del Tiempo (Denbora Lerroa gazteleraz) igo dot baina gero ez naz gai bilatzailean aurkitzeko. Seguruenik Administratzaileak ez duelako onartu izango da. Ez dut lortzen administrazio panelera sartzea.
+		Orain bilaketetan agertzen da. (Diseinuarekin arazo batzuk daude, eta nahiz eta bilaketetaren emaitzak hor dauden, ez dira ikusten.)Arrazoia, testu bilatzaileak oraindik ez ditu emaitzak erakusten, baina hor badaude ondo!
+
+		* Bilatzailea ez dabil
+
+		* "Orrialdeak is in range" zuzendu
+		* Audioen hizkuntzak overlaps
+	
+	
+	
+	
+	DISEINU BERRIARI EKARPENAK edo ZALANTZAK
+	
+	* Itxura orokorra: Sarrerako testua jartzea
+	*  esteka jartzeko aukeraz gain, pdf-a igotzeko aukera ere jartzea (gauza batzuk guk sortutakoak baitira...) edo nola egin daiteke? Archive.org?
+	* Dinamikak igotzeko: iraupenean (taldearen arabera kasillatxoa). Deskribapenean jarriko dugu (taldearen araberakoa) 
+	* Bideoak igotzeko: Ondo dagoela iruditzen zait. Agian bideoak igotzeko irizpide batzuk? Helburuak jartzen duen atalean agian beste zerbait jarriko nuke. Deskribapena eta helburuak egotea ez du zentzurik.... 
+		* Argituta
+	* Agian botoitxo bat falta da aukeratutako ezarpenak ezabatzeko edo zerora bueltatzeko.
+		* Formularioan reset bat jartzea (aukera badago)
+	* Bestalde, aukera bat klikatu ondoren ezin da desaktibatu, aukera guztiak aktibatu behar dira "desaktibatzeko". "Guztiak" izeneko aukera bat jarri daiteke zerrenden gainean.
+		* Konponbidea: resetarekin eta tickarekin. Filtroak jartzeko tick moduan jartzea egokiagoa ikusten dut aukeratzea baino.... bestela ematen du aukera bakarra sakatu al dela 
+	* Dinamiika batean sartzean, irakurterrazagoa izatea. Formatua....
+	* Oharrak detailetan ez dira agertzen eta adjuntuak erez
+	* Fitxa moduan inprimitzeko aukera ematea
+	* Minuskulak eta maiuskulak estandarizatu
+	* Estekak dropboxetik ez.
+	* Aukera ematea destakatu al izateko (igotzen denean)
+	* Azken materiala lehendabizi + destakatuak
+	* Gaien inguruko itzulpenak egin behar dira ondo
+	* Diseinuari beste bielta bat ematea
+	* EU/ES: hizkuntzaren gainean arratoia pasatzen duzunean, azalpentxoa gehitzea (gauza batzuk hizkuntza bakarrean daude).
+	* Plangintzari heldu diogu, kontu teknikoak eta diseinuari dagokion gauzak konpontzeko aste hauetan geldituko dira Iune eta Uma. 
+	* Tresnaren sozializazioari dagokion etxekolanak udara bitartean egingo ditugu eta hurrengo ikasturte hasieran proiektua aurkeztu. 
+	* Zumalabeko webgunean biltokiaren ikonitoa jarri (modu pribatuan)
