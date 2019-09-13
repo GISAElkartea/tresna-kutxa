@@ -6,5 +6,5 @@ self: super: {
     preConfigure = ''
         export LANG=en_US.UTF-8
     '';
-   });
+    });
 }
