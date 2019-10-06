@@ -1,0 +1,55 @@
+.detailIcon
+  width: 10%
+  display: inline-block
+  vertical-align: top
+  margin-top: 4%
+
+.detailText
+  width: 80%
+  display: inline-block
+  margin-left: 4%
+  margin-top: 4%
+  h2
+    margin-top: 0
+    font-size: 1.8em
+  dl
+    padding: 2em 0
+    margin: 2em 0
+  dt
+    font-weight: bold
+    font-size: 1.1em
+    display: inline
+    &:before
+      display: block
+      content: ""
+  dd
+    display: inline
+    margin: .5em
+  a
+    text-decoration: none
+    color: #666
+
+  &.reading
+    dl
+      border-top: $reading .1em solid
+      border-bottom: $reading .1em solid
+    dt
+      color: $reading
+  &.activity
+    dl
+      border-top: $activity .1em solid
+      border-bottom: $activity .1em solid
+    dt
+      color: $activity
+  &.video
+    dl
+      border-top: $video .1em solid
+      border-bottom: $video .1em solid
+    dt
+      color: $video
+  &.link
+    dl
+      border-top: $link .1em solid
+      border-bottom: $link .1em solid
+    dt
+      color: $link

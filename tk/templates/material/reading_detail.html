@@ -1,33 +1,37 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load static i18n %}
 
 {% block content %}
-<h2>{{ object }}</h2>
+<img class="detailIcon" src="{% static 'images/reading.png' %}" />
+<div class="detailText reading">
+  <h2>{{ object }}</h2>
 
-<dl>
-  {% url 'material:search-reading' as search_url %}
+  <dl>
+    {% url 'material:search-reading' as search_url %}
 
-  <dt>{% trans 'Created' %}</dt>
-  {{ object.timestamp }}
+    <dt>{% trans 'Created' %}:</dt>
+    <dd>{{ object.timestamp }}</dd>
 
-  {% if object.pages %}
-  <dt>{% trans 'Pages' %}</dt>
-  <a href="{{ search_url }}?reading-pages={{ object.pages }}">{{ object.pages }}</a>
-  {% endif %}
+    {% if object.pages %}
+    <dt>{% trans 'Pages' %}:</dt>
+    <dd><a href="{{ search_url }}?reading-pages={{ object.pages }}">{{ object.pages }}</a></dd>
+    {% endif %}
 
-  {% if object.year %}
-  <dt>{% trans 'Year' %}</dt>
-  <a href="{{ search_url }}?reading-year={{ object.year }}">{{ object.year }}</a>
-  {% endif %}
+    {% if object.year %}
+    <dt>{% trans 'Year' %}:</dt>
+    <dd><a href="{{ search_url }}?reading-year={{ object.year }}">{{ object.year }}</a></dd>
+    {% endif %}
 
-  <dt>{% trans 'Languages' %}</dt>
-  {% for lang in object.languages %}
-  <a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a>
-  {% endfor %}
+    <dt>{% trans 'Languages' %}:</dt>
+    {% for lang in object.languages %}
+    <dd><a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a></dd>
+    {% endfor %}
 
-  {% if object.url %}
-  <dt>{% trans 'Link' %}</dt>
-  {{ object.url }}
-  {% endif %}
-</dl>
+    {% if object.url %}
+    <dt>{% trans 'Link' %}:</dt>
+    <dd><a href="{{ object.url }}">{{ object.url }}</a></dd>
+    {% endif %}
+  </dl>
+  {{ object.brief }}
+</div>
 {% endblock content %}

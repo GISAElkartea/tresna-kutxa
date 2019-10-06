@@ -1,36 +1,40 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load static i18n %}
 
 {% block content %}
-<h2>{{ object }}</h2>
+<img class="detailIcon" src="{% static 'images/video.png' %}" />
+<div class="detailText video">
+  <h2>{{ object }}</h2>
 
-<dl>
-  {% url 'material:search-video' as search_url %}
+  <dl>
+    {% url 'material:search-video' as search_url %}
 
-  <dt>{% trans 'Created' %}</dt>
-  {{ object.timestamp }}
+    <dt>{% trans 'Created' %}</dt>
+    <dd>{{ object.timestamp }}</dd>
 
-  <dt>{% trans 'Duration (in minutes)' %}</dt>
-  <a href="{{ search_url }}?video-duration={{ object.duration }}">{{ object.duration }}</a>
+    <dt>{% trans 'Duration (in minutes)' %}</dt>
+    <dd><a href="{{ search_url }}?video-duration={{ object.duration }}">{{ object.duration }}</a></dd>
 
-  {% if object.year %}
-  <dt>{% trans 'Year' %}</dt>
-  <a href="{{ search_url }}?reading-year={{ object.year }}">{{ object.year }}</a>
-  {% endif %}
+    {% if object.year %}
+    <dt>{% trans 'Year' %}</dt>
+    <dd><a href="{{ search_url }}?reading-year={{ object.year }}">{{ object.year }}</a></dd>
+    {% endif %}
 
-  <dt>{% trans 'Audio languges' %}</dt>
-  {% for lang in object.audios %}
-  <a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a>
-  {% endfor %}
+    <dt>{% trans 'Audio languges' %}</dt>
+    {% for lang in object.audios %}
+    <dd><a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a></dd>
+    {% endfor %}
 
-  <dt>{% trans 'Subtitle languges' %}</dt>
-  {% for lang in object.subtitles %}
-  <a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a>
-  {% endfor %}
+    <dt>{% trans 'Subtitle languges' %}</dt>
+    {% for lang in object.subtitles %}
+    <dd><a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a></dd>
+    {% endfor %}
 
-  {% if object.url %}
-  <dt>{% trans 'Link' %}</dt>
-  {{ object.url }}
-  {% endif %}
-</dl>
+    {% if object.url %}
+    <dt>{% trans 'Link' %}</dt>
+    <dd><a href="{{ object.url }}">{{ object.url }}</a></dd>
+    {% endif %}
+  </dl>
+  {{ object.brief }}
+</div>
 {% endblock content %}
