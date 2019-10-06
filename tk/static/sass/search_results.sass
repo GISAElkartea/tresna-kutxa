@@ -8,6 +8,13 @@ ul#search_results
     a
       text-decoration: none
       color: $darkgrey
+      &.resultImage
+        width: 3rem
+        height: 3rem
+        background-size: cover
+        display: inline-block
+        vertical-align: middle
+        margin-right: 1em
       &.result
         font-weight: bold
         font-size: 1.3em
@@ -22,10 +29,33 @@ ul#search_results
       font-size: .9em
       font-weight: bold
       a
-        color: $red
         text-transform: none
         font-size: 1rem
         border-right: solid .15em $darkgrey
         padding: 0 .5em
         &:last-child
           border: none
+    &.activity
+      a.resultImage
+        background-image: url('../images/activity.png')
+      dt
+        a
+          color: $activity
+    &.reading
+      a.resultImage
+        background-image: url('../images/reading.png')
+      dt
+        a
+          color: $reading
+    &.video
+      a.resultImage
+        background-image: url('../images/video.png')
+      dt
+        a
+          color: $video
+    &.link
+      a.resultImage
+        background-image: url('../images/link.png')
+      dt
+        a
+          color: $link
