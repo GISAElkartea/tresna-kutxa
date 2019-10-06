@@ -10,14 +10,8 @@
   </head>
   <body>
 
-    <nav>
-      <header>
-        <a href="/"><img src="{% static 'images/biltokia.png' %}" /></a>
-        <h1><a href="/">Biltokia</a></h1>
-        <h2>Herri mugimenduen gogoeta, ekintza eta dinamizazioa prozesuak
-          indartzeko material eta baliabideak biltzen dituen tresna kutxa
-          birtuala</h2>
-      </header>
+    <header>
+      <a href="/"><img src="{% static 'images/biltokia1.png' %}" /></a>
       <ul id="lang">
         {% get_available_languages as languages %}
         {% get_current_language as current %}
@@ -28,6 +22,8 @@
         {% endfor %}
         <li><a>by-sa</a></li>
       </ul>
+    </header>
+    <nav>
       {% block filters %}
       {% endblock filters %}
     </nav>
