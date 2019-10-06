@@ -3,7 +3,7 @@
 
 {% block filters %}
 {% for tab, endpoint, form in tabs %}
-<h2 class="tabs">{{ tab }}</h2>
+<hgroup><h2 class="tabs">{{ tab }}</h2><i class="fas fa-angle-down"></i></hgroup>
 <form method="get" action="{{ endpoint }}">
   {% if form %}
   <ul class="filters">
