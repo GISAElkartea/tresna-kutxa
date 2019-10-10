@@ -19,20 +19,6 @@ let
     inherit pkgs;
     inherit (pkgs) stdenv;
     python = pkgs.python37;
-    # patching pip so it does not try to remove files when running nix-shell
-    overrides =
-      self: super: {
-        bootstrapped-pip = super.bootstrapped-pip.overrideDerivation (old: {
-          patchPhase = (if builtins.hasAttr "patchPhase" old then old.patchPhase else "") + ''
-            if [ -e $out/${pkgs.python37.sitePackages}/pip/req/req_install.py ]; then
-              sed -i \
-                -e "s|paths_to_remove.remove(auto_confirm)|#paths_to_remove.remove(auto_confirm)|"  \
-                -e "s|self.uninstalled = paths_to_remove|#self.uninstalled = paths_to_remove|"  \
-                $out/${pkgs.python37.sitePackages}/pip/req/req_install.py
-            fi
-          '';
-        });
-      };
   };
 
   commonBuildInputs = with pkgs; [ postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses ];
@@ -90,22 +76,6 @@ let
   python = withPackages {};
 
   generated = self: {
-    "attrs" = python.mkDerivation {
-      name = "attrs-19.1.0";
-      src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/cc/d9/931a24cc5394f19383fbbe3e1147a0291276afa43a0dc3ed0d6cd9fda813/attrs-19.1.0.tar.gz";
-        sha256 = "f0b870f674851ecbfbbbd364d6b5cbdff9dcedbc7f3f5e18a6891057f21fe399";
-};
-      doCheck = commonDoCheck;
-      buildInputs = commonBuildInputs ++ [ ];
-      propagatedBuildInputs = [ ];
-      meta = with pkgs.stdenv.lib; {
-        homepage = "https://www.attrs.org/";
-        license = licenses.mit;
-        description = "Classes Without Boilerplate";
-      };
-    };
-
     "deprecation" = python.mkDerivation {
       name = "deprecation-2.0.7";
       src = pkgs.fetchurl {
@@ -125,10 +95,10 @@ let
     };
 
     "django" = python.mkDerivation {
-      name = "django-2.2.5";
+      name = "django-2.2.6";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/1d/06/79ddea0bfd4e7cd1f9fa4700c8e524820a5263c6fd8bb91db14f1812c17d/Django-2.2.5.tar.gz";
-        sha256 = "deb70aa038e59b58593673b15e9a711d1e5ccd941b5973b30750d5d026abfd56";
+        url = "https://files.pythonhosted.org/packages/c7/2c/bbd0fddf6a08456c3100b8e8b230f3288d4511985aa4e2368b0d115b5aae/Django-2.2.6.tar.gz";
+        sha256 = "a8ca1033acac9f33995eb2209a6bf18a4681c3e5269a878e9a7e0b7384ed1ca3";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -312,10 +282,10 @@ let
     };
 
     "libsass" = python.mkDerivation {
-      name = "libsass-0.19.2";
+      name = "libsass-0.19.3";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/bb/25/56fbd361b36b449457f19beaf616abf8cdfb8e037ea8f3f8300b7c2950a8/libsass-0.19.2.tar.gz";
-        sha256 = "cb50f385117535f7671ac7ff3144c1ef0b8e088778c58d269ce6f31b87bfad72";
+        url = "https://files.pythonhosted.org/packages/1b/d6/4b2b8c789420c1040a4a597825c82722acb790c9f717ea7d8f6062adb6d9/libsass-0.19.3.tar.gz";
+        sha256 = "b15a0e61bd54764e658bc6931015453fa34d954f87c3b6fd35624e13bcacf69d";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -346,15 +316,14 @@ let
     };
 
     "packaging" = python.mkDerivation {
-      name = "packaging-19.1";
+      name = "packaging-19.2";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/8b/3a/5bfe64c319be5775ed7ea3bc1a8e5667e0d57a740cc0498ce03e032eaf93/packaging-19.1.tar.gz";
-        sha256 = "c491ca87294da7cc01902edbe30a5bc6c4c28172b5138ab4e4aa1b9d7bfaeafe";
+        url = "https://files.pythonhosted.org/packages/5a/2f/449ded84226d0e2fda8da9252e5ee7731bdf14cd338f622dfcd9934e0377/packaging-19.2.tar.gz";
+        sha256 = "28b924174df7a2fa32c1953825ff29c61e2f5e082343165438812f00d3a7fc47";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
       propagatedBuildInputs = [
-        self."attrs"
         self."pyparsing"
         self."six"
       ];
@@ -366,17 +335,17 @@ let
     };
 
     "pillow" = python.mkDerivation {
-      name = "pillow-6.1.0";
+      name = "pillow-6.2.0";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/51/fe/18125dc680720e4c3086dd3f5f95d80057c41ab98326877fc7d3ff6d0ee5/Pillow-6.1.0.tar.gz";
-        sha256 = "0804f77cb1e9b6dbd37601cee11283bba39a8d44b9ddb053400c58e0c0d7d9de";
+        url = "https://files.pythonhosted.org/packages/87/dc/7597336c48796d4a836007460148b7baf7f278ad42b73d49047eb0e8194c/Pillow-6.2.0.tar.gz";
+        sha256 = "4548236844327a718ce3bb182ab32a16fa2050c61e334e959f554cac052fb0df";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
       propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
         homepage = "http://python-pillow.org";
-        license = "UNKNOWN";
+        license = "HPND";
         description = "Python Imaging Library (Fork)";
       };
     };
