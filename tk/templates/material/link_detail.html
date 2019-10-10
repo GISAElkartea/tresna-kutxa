@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load static i18n %}
 
 {% block content %}
-<h2>{{ object }}</h2>
+<img class="detailIcon" src="{% static 'images/link.png' %}" />
+<div class="detailText link">
+  <h2>{{ object }}</h2>
 
-<dl>
-  <dt>{% trans 'Created' %}</dt>
-  {{ object.timestamp }}
+  <dl>
+    <dt>{% trans 'Created' %}</dt>
+    <dd>{{ object.timestamp }}</dd>
 
-  {% if object.url %}
-  <dt>{% trans 'Link' %}</dt>
-  {{ object.url }}
-  {% endif %}
-</dl>
+    {% if object.url %}
+    <dt>{% trans 'Link' %}</dt>
+    <dd>{{ object.url }}</dd>
+    {% endif %}
+  </dl>
+  {{ object.brief }}
+</div>
 {% endblock content %}

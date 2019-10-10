@@ -1,43 +1,44 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load static i18n %}
 
 {% block content %}
-<h2>{{ object }}</h2>
 
-<dl>
-  {% url 'material:search-activity' as search_url %}
+<img class="detailIcon" src="{% static 'images/activity.png' %}" />
+<div class="detailText activity">
+  <h2>{{ object }}</h2>
+  <dl>
+    {% url 'material:search-activity' as search_url %}
 
-  <dt>{% trans 'Created' %}</dt>
-  {{ object.timestamp }}
+    <dt>{% trans 'Created' %}</dt>
+    <dd>{{ object.timestamp }}</dd>
 
-  <dt>{% trans 'Subjects' %}</dt>
-  <ul>
+    <dt>{% trans 'Subjects' %}</dt>
     {% for subject in object.subjects.all %}
-    <li><a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a></li>
+    <dd><a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a></dd>
     {% endfor %}
-  </ul>
 
-  <dt>{% trans 'Goal' %}</dt>
-  {{ object.goal }}
+    <dt>{% trans 'Goal' %}</dt>
+    <dd>{{ object.goal }}</dd>
 
-  <dt>{% trans 'Location' %}</dt>
-  <a href="{{ search_url }}?activity-location={{ object.location.pk }}">{{ object.location }}</a>
+    <dt>{% trans 'Location' %}</dt>
+    <dd><a href="{{ search_url }}?activity-location={{ object.location.pk }}">{{ object.location }}</a></dd>
 
-  <dt>{% trans 'Duration (in minutes)' %}</dt>
-  <a href="{{ search_url }}?activity-duration={{ object.duration }}">{{ object.duration }}</a>
+    <dt>{% trans 'Duration (in minutes)' %}</dt>
+    <dd><a href="{{ search_url }}?activity-duration={{ object.duration }}">{{ object.duration }}</a></dd>
 
-  <dt>{% trans 'Minimum number of people' %}</dt>
-  <a href="{{ search_url }}?activity-num_people__contains_min={{ object.num_people.lower }}">{{ object.num_people.lower }}</a>
+    <dt>{% trans 'Minimum number of people' %}</dt>
+    <dd><a href="{{ search_url }}?activity-num_people__contains_min={{ object.num_people.lower }}">{{ object.num_people.lower }}</a></dd>
 
-  <dt>{% trans 'Maximum number of people' %}</dt>
-  <a href="{{ search_url }}?activity-num_people__contains_max={{ object.num_people.upper }}">{{ object.num_people.upper }}</a>
+    <dt>{% trans 'Maximum number of people' %}</dt>
+    <dd><a href="{{ search_url }}?activity-num_people__contains_max={{ object.num_people.upper }}">{{ object.num_people.upper }}</a></dd>
 
-  <dt>{% trans 'Group feature' %}</dt>
-  <a href="{{ search_url }}?activity-group_feature={{ object.group_feature.pk }}">{{ object.group_feature }}</a>
+    <dt>{% trans 'Group feature' %}</dt>
+    <dd><a href="{{ search_url }}?activity-group_feature={{ object.group_feature.pk }}">{{ object.group_feature }}</a></dd>
 
-  <dt>{% trans 'Brief' %}</dt>
-  {{ object.brief }}
+    <dt>{% trans 'Author' %}</dt>
+    <dd>{{ object.author }}</dd>
+  </dl>
+    {{ object.brief }}
+</div>
 
-  <dt>{% trans 'Author' %}</dt>
-  {{ object.author }}
 {% endblock content %}

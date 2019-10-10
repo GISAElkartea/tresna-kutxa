@@ -3,15 +3,15 @@
 
 {% block filters %}
 {% for tab, endpoint, form in tabs %}
-<h2 class="tabs">{{ tab }}</h2>
+<hgroup><h2 class="tabs">{{ tab }}</h2><i class="fas fa-angle-down"></i></hgroup>
 <form method="get" action="{{ endpoint }}">
-  <input class="search" name="q" type="text" placeholder="{% trans 'Search' %}" />
   {% if form %}
   <ul class="filters">
     {{ form.as_ul }}
   </ul>
   {% endif %}
   <input type="submit" value="{% trans 'Search' %}" />
+  <input class="delete" type="submit" value="{% trans 'Delete' %}" />
 </form>
 {% endfor %}
 

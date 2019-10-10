@@ -2,8 +2,11 @@
 
 <ul id="search_results">
   {% for obj in object_list %}
-  <li>
-    <a class="result" href="{{ obj.get_absolute_url }}"><i class="fas fa-book"></i>{{ obj.title }}</a>
+  <li {% if obj.class == activities %}class="activity"{% endif %}
+    {% if obj.class == videos %}class="video"{% endif %} {% if obj.class == readings %}class="reading"{% endif %}
+    {% if obj.class == links %}class="link"{% endif %}>
+    <a class="resultImage" href="{{ obj.get_absolute_url }}"></a>
+    <a class="result" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
     <p>{{ obj.goal }}</p>
     <dl>
       <dt>{% trans 'Subjects' %}:
