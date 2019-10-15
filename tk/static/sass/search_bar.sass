@@ -1,11 +1,13 @@
 #searchBar
   width: 100%
-  top: 3rem
-  left: 7%
-  margin-right: 0
+  margin: 0 0 30% 0
+  position: relative
   input
-    width: 80%
-    height: 2rem
+    position: absolute
+    top: 0
+    left: 0
+    width: 85%
+    height: 2.5rem
     border-radius: none
     border: none
     background: #f7f7f7
@@ -15,14 +17,26 @@
     &:focus
       border: $red .1em solid
   button
-    height: 2rem
+    height: 2.5rem
     background: $red
     border: none
     cursor: pointer
     padding: 0 .7em
     margin-left: -.3em
     border: $red .1em solid
+    position: absolute
+    top: 0
+    right: 0
+    width: 15%
     i
       color: white
       display: block
 
+@media all and (min-width: 600px)
+  #searchBar
+    width: 100%
+    margin: 0 0 10% 0
+    input
+      width: 96%
+    button
+      width: 4%
