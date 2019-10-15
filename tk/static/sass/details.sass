@@ -1,14 +1,14 @@
 .detailIcon
-  width: 10%
-  display: inline-block
+  width: 30%
+  display: block
   vertical-align: top
-  margin-top: 4%
+  margin: 3% 0
 
 .detailText
-  width: 80%
+  width: 100%
   display: inline-block
-  margin-left: 4%
   margin-top: 4%
+  margin: 0
   h2
     margin-top: 0
     font-size: 1.8em
@@ -53,3 +53,10 @@
       border-bottom: $link .1em solid
     dt
       color: $link
+
+@media all and (min-width: 600px)
+  .detailIcon
+    display: inline-block
+  .detailText
+    width: 80%
+    margin-left: 4%

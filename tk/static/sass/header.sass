@@ -11,23 +11,34 @@ header
     text-align: center
     font-weight: normal
     margin: 0 0 1em 0
-    color: $red
+    color: $darkgrey
 
 ul#lang
-  text-align: right
-  position: absolute
-  right: 1em
-  top: 1em
-  width: 10%
+  text-align: center
+  width: 100%
   z-index: 1
+  background: $grey
+  padding: 0
   li
     display: inline-block
-    margin: 5% 10%
     font-size: 1rem
+    margin: 0 5%
     a
       text-decoration: none
       text-align: center
       font-size: 1.1em
-      color: $darkgrey
+      color: white
 
+@media all and (min-width: 600px)
+  ul#lang
+    text-align: right
+    position: absolute
+    right: 1em
+    top: 1em
+    width: 10%
+    background: none
+    li
+      margin: 5% 10%
+      a
+        color: $darkgrey
 

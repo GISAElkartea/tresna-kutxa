@@ -1,5 +1,5 @@
 ul#search_results
-  padding-top: 5%
+  padding: 0
   li
     list-style: none
     margin-bottom: 3em
@@ -9,11 +9,11 @@ ul#search_results
       text-decoration: none
       color: $darkgrey
       &.resultImage
-        width: 3rem
-        height: 3rem
+        width: 2.5rem
+        height: 2.5rem
         background-size: cover
         display: inline-block
-        vertical-align: middle
+        vertical-align: bottom
         margin-right: 1em
       &.result
         font-weight: bold
@@ -59,3 +59,9 @@ ul#search_results
       dt
         a
           color: $link
+
+@media all and (min-width: 600px)
+  a.resultImage
+    width: 3rem
+    height: 3rem
+    vertical-align: middle
