@@ -97,35 +97,7 @@ class PendingApprovalMixin():
         return super().get_template_names()
 
 
-class DetailActivity(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
-    model = Activity
-
-
-class DetailVideo(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
-    model = Video
-
-
-class DetailReading(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
-    model = Reading
-
-
-class DetailLink(LocalizedSlugMixin, PendingApprovalMixin, DetailView):
-    model = Link
-
-
-class SingleModelSearch(TabbedMixin, ListView):
-    prefix = None
-    filterset_class = None
-
-    @method_decorator(vary_on_headers('X-Requested-With'))
-    def __call__(self, request, **kwargs):
-        super().__call__(request, **kwargs)
-
-    def get_template_names(self):
-        if self.request.is_ajax():
-            return ['material/search_ajax.html']
-        return ['material/search.html']
-
+class SearchFiltersMixin(TabbedMixin):
     def get_tabs(self):
         material_filter = MaterialFilterSet(self.request.GET, prefix='material')
         activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
@@ -139,6 +111,35 @@ class SingleModelSearch(TabbedMixin, ListView):
             (_('Videos'), reverse('material:search-video'), video_filter.form),
             (_('Links'), reverse('material:search-link'), link_filter.form),
         ]
+
+class DetailActivity(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Activity
+
+
+class DetailVideo(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Video
+
+
+class DetailReading(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Reading
+
+
+class DetailLink(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+    model = Link
+
+
+class SingleModelSearch(SearchFiltersMixin, ListView):
+    prefix = None
+    filterset_class = None
+
+    @method_decorator(vary_on_headers('X-Requested-With'))
+    def __call__(self, request, **kwargs):
+        super().__call__(request, **kwargs)
+
+    def get_template_names(self):
+        if self.request.is_ajax():
+            return ['material/search_ajax.html']
+        return ['material/search.html']
 
     def get_context_data(self, *args, **kwargs):
         kwargs['form'] = self.filterset_class(self.request.GET).form
