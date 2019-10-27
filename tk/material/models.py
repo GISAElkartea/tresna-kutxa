@@ -139,7 +139,7 @@ class Material(LocalizedModel):
         return self.get_related()._meta.model_name
 
     def get_absolute_url(self):
-        self.get_related().get_absolute_url()
+        return self.get_related().get_absolute_url()
 
 
 class Activity(Material):
