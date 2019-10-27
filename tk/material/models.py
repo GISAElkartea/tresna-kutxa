@@ -130,10 +130,16 @@ class Material(LocalizedModel):
     def __str__(self):
         return str(self.title)
 
-    def get_absolute_url(self):
+    def get_related(self):
         for related in ['activity', 'reading', 'video', 'link']:
             if hasattr(self, related):
-                return getattr(self, related).get_absolute_url()
+                return getattr(self, related)
+
+    def get_model_name(self):
+        return self.get_related()._meta.model_name
+
+    def get_absolute_url(self):
+        self.get_related().get_absolute_url()
 
 
 class Activity(Material):
