@@ -1,10 +1,12 @@
+from django.forms import CheckboxSelectMultiple
 from django.contrib.postgres.fields import IntegerRangeField
+from django.db import models
 
 from django_filters import FilterSet
-from django_filters.filters import MultipleChoiceFilter, NumericRangeFilter
+from django_filters.filters import ModelMultipleChoiceFilter, MultipleChoiceFilter, NumericRangeFilter
 
 from .fields import get_languages
-from .models import Material, Activity, Reading, Video, Link, COMMON_LANGUAGES
+from .models import Subject, Material, Activity, Reading, Video, Link, COMMON_LANGUAGES
 from .widgets import RangeWidget
 
 
@@ -12,6 +14,10 @@ class MaterialFilterSet(FilterSet):
     class Meta:
         model = Material
         fields = ['subjects']
+
+    subjects = ModelMultipleChoiceFilter(
+            queryset=Subject.objects.all(),
+            widget=CheckboxSelectMultiple())
 
 
 class IncludeNullMixin:
@@ -48,6 +54,10 @@ class ActivityFilterSet(FilterSet):
             widget=RangeWidget(attrs={'min': 0, 'max': 360}),
             lookup_expr='range')
 
+    subjects = ModelMultipleChoiceFilter(
+            queryset=Subject.objects.all(),
+            widget=CheckboxSelectMultiple())
+
     class Meta:
         model = Activity
         fields = ['subjects', 'location', 'group_feature', 'num_people', 'duration']
@@ -61,6 +71,10 @@ class ReadingFilterSet(FilterSet):
     pages = IncludeNullNumericRangeFilter(
             widget=RangeWidget(attrs={'min': 0, 'max': 3000}),
             lookup_expr='range')
+
+    subjects = ModelMultipleChoiceFilter(
+            queryset=Subject.objects.all(),
+            widget=CheckboxSelectMultiple())
 
     class Meta:
         model = Reading
@@ -80,6 +94,10 @@ class VideoFilterSet(FilterSet):
             widget=RangeWidget(attrs={'min': 0, 'max': 360}),
             lookup_expr='range')
 
+    subjects = ModelMultipleChoiceFilter(
+            queryset=Subject.objects.all(),
+            widget=CheckboxSelectMultiple())
+
     class Meta:
         model = Video
         fields = ['subjects', 'duration', 'year', 'audios', 'subtitles']
@@ -89,3 +107,7 @@ class LinkFilterSet(FilterSet):
     class Meta:
         model = Link
         fields = ['subjects']
+
+    subjects = ModelMultipleChoiceFilter(
+            queryset=Subject.objects.all(),
+            widget=CheckboxSelectMultiple())
