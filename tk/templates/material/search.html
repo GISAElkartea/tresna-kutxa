@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block filters %}
 {% for tab, endpoint, form in tabs %}
-<hgroup><h2 class="tabs">{{ tab }}</h2><i class="fas fa-angle-down"></i></hgroup>
-<form method="get" action="{{ endpoint }}">
-  {% if form %}
-  <ul class="filters">
-    {{ form.as_ul }}
-  </ul>
-  {% endif %}
-  <input type="submit" value="{% trans 'Search' %}" />
-  <input class="delete" type="submit" value="{% trans 'Delete' %}" />
-</form>
+<button class="accordion">{{ tab }}</button>
+<div class="panel">
+  <form method="get" action="{{ endpoint }}">
+    {% if form %}
+    <ul class="filters">
+      {{ form.as_ul }}
+    </ul>
+    {% endif %}
+    <input type="submit" value="{% trans 'Search' %}" />
+    <input class="delete" type="submit" value="{% trans 'Delete' %}" />
+  </form>
+</div>
 {% endfor %}
 
 {{ tab_media }}
