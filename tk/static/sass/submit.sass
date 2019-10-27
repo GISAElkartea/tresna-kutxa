@@ -1,31 +1,67 @@
 .tab
   overflow: hidden
-  border: 1px solid #ccc
+  border: none
   background-color: #f1f1f1
   margin-top: 5%
-
-.tab button
-  background-color: inherit
-  float: left
-  border: none
-  outline: none
-  cursor: pointer
-  padding: 14px 16px
-  transition: 0.3s
-
-.tab button:hover
-  background-color: #ddd
-
-.tab button.active
-  background-color: #ccc
+  font-weight: bold
+  button
+    background-color: inherit
+    float: left
+    border: none
+    outline: none
+    cursor: pointer
+    padding: 14px 16px
+    transition: 0.3s
+    font-family: "Exo 2"
+    font-weight: bold
+    font-size: 1.1em
+    &:hover
+      background-color: #ddd
+    &.active
+      background-color: $red
+      color: #f1f1f1
+    &::after
+      display: none
+    &::-moz-focus-inner
+      border: none
 
 .tabcontent
   display: none
-  padding: 6px 12px
+  padding: 32px 12px
   border: 1px solid #ccc
   border-top: none
 
 img.help
   display: block
-  margin: 5% auto 0 auto
+  margin: 0 auto
   width: 70%
+
+table
+  padding: 0
+  width: 100%
+  th, td
+    padding-bottom: 1rem
+    width: 100%
+    display: block
+    text-align: left
+  td
+    width: 100%
+    label, textarea, input#id_activity-title_0, input#id_activity-title_1
+      width: 100% !important
+      display: block
+    select, input
+      max-width: 100% !important
+      display: block
+    select, textarea, input
+      border: $darkgrey solid .2em
+  th
+    label
+      color: $link
+div.markdownx
+  div
+    width: 100% !important
+
+@media all and (max-width: 600px)
+  button.tablinks
+    width: 100%
+    display: block
