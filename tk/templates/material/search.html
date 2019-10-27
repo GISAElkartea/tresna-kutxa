@@ -1,28 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block filters %}
-{% for tab, endpoint, form in tabs %}
-<button
-  class="accordion tablinks {% if forloop.first %}active{%endif%}"
-  onclick="openTab(event, '{{ tab }}')">{{ tab }}</button>
-
-<div id="{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
-  <form method="get" action="{{ endpoint }}">
-    {% if form %}
-    <ul class="filters">
-      {{ form.as_ul }}
-    </ul>
-    {% endif %}
-    <input type="submit" value="{% trans 'Search' %}" />
-    <input class="delete" type="submit" value="{% trans 'Delete' %}" />
-  </form>
-</div>
-{% endfor %}
-
-{{ tab_media }}
-{% endblock filters %}
-
 {% block content %}
 {% include 'material/search_ajax.html' %}
 {% endblock content %}
