@@ -36,7 +36,7 @@
 
       <div id="{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
         <form method="get" action="{{ endpoint }}">
-          <input class="searchBar" name="q" type="text" placeholder="{% trans 'Search' %}" />
+          <input class="searchBar" name="q" type="text" placeholder="&#xF002;  {% trans 'Search' %}" />
           {% if form %}
           <ul class="filters">
             {{ form.as_ul }}
