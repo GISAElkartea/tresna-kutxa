@@ -28,8 +28,8 @@
         <h1>Biltokia</h1>
       </header>
 
+      {% block searchbar %}
       {% for tab, endpoint, form in tabs %}
-
       <button
         class="accordion tablinks {% if forloop.first %}active{% endif %}"
         onclick="openTab(event, '{{ tab }}')">{{ tab }}</button>
@@ -47,8 +47,8 @@
         </form>
       </div>
       {% endfor %}
-
       {{ tab_media }}
+      {% endblock searchbar %}
     </sidebar>
 
     <main>
