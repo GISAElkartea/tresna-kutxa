@@ -25,13 +25,13 @@
         <h1>Biltokia</h1>
       </header>
       {% for tab, endpoint, form in tabs %}
-      <input name="q" type="text" placeholder="{% trans 'Search' %}" />
 
       <button
         class="accordion tablinks {% if forloop.first %}active{% endif %}"
         onclick="openTab(event, '{{ tab }}')">{{ tab }}</button>
 
       <div id="{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
+        <input name="q" type="text" placeholder="{% trans 'Search' %}" />
         <form method="get" action="{{ endpoint }}">
           {% if form %}
           <ul class="filters">
