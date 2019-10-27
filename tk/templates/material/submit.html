@@ -5,7 +5,7 @@
 <img class="help" src="{% static 'images/lagundu.svg'%}" alt="Lagundu gaitzazu biltokia betetzen"/>
 <div class="tab">
   {% for tab, endpoint, form in tabs %}
-  <button class="tablinks" onclick="openCity(event, '{{ tab }}')">{{ tab }}</button>
+  <button class="tablinks" onclick="openTab(event, '{{ tab }}')">{{ tab }}</button>
   {% endfor %}
 </div>
 {% for tab, endpoint, form in tabs %}
