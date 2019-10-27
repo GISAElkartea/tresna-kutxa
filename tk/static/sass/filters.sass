@@ -8,15 +8,13 @@
   border: none
   outline: none
   transition: 0.4s
+  font-family: "Exo 2"
+  font-weight: bold
+  font-size: 1.1rem
+  color: $darkgrey
 
 .active, .accordion:hover
   background-color: #ccc
-
-.panel
-  padding: 0 18px
-  background-color: white
-  display: none
-  overflow: hidden
 
 .accordion:after
   content: '\02795'
@@ -28,23 +26,33 @@
 .active:after
   content: "\2796"
 
+.searchBar
+  width: 100%
+  margin: 0 0 3% 0
+  position: relative
+  font-family: "FontAwesome"
+
+form
+  margin-bottom: 0
 ul.filters
-  padding: 0 1rem
+  padding: 0
   li
     list-style: none
     color: $darkgrey
     font-weight: bold
     padding-bottom: 1em
+div.tabcontent
+  padding: 7% 5%
 
 input[type=submit]
-  margin-left: 1em
-  margin-bottom: 2em
+  margin-bottom: 1em
   background: $darkgrey
   border: none
   padding: .5em
   color: white
   font-size: 1.05em
   font-weight: bold
+  cursor: pointer
   &.delete
     color: $red
     background: none
@@ -67,3 +75,4 @@ input[type=range]::-moz-range-thumb
   border: none
   background: $darkgrey
   cursor: pointer
+
