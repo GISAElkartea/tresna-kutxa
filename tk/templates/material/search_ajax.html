@@ -9,7 +9,7 @@
     <dl>
       <dt>{% trans 'Subjects' %}:
         {% for subject in obj.subjects.all %}
-        <a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a>
+        <a href="{{ search_url }}?material-subjects={{ subject.pk }}">{{ subject }}</a>
         {% endfor %}
       </dt>
     </dl>
