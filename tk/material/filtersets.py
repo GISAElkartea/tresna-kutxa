@@ -65,6 +65,7 @@ class ActivityFilterSet(FilterSet):
 
 class ReadingFilterSet(FilterSet):
     languages = ArrayMultipleChoiceFilter(
+            widget=CheckboxSelectMultiple(),
             choices=get_languages(limit_to=COMMON_LANGUAGES),
             lookup_expr='overlap')
 
@@ -83,10 +84,12 @@ class ReadingFilterSet(FilterSet):
 
 class VideoFilterSet(FilterSet):
     audios = ArrayMultipleChoiceFilter(
+            widget=CheckboxSelectMultiple(),
             choices=get_languages(prioritize=COMMON_LANGUAGES),
             lookup_expr='overlap')
 
     subtitles = ArrayMultipleChoiceFilter(
+            widget=CheckboxSelectMultiple(),
             choices=get_languages(limit_to=COMMON_LANGUAGES),
             lookup_expr='overlap')
 
