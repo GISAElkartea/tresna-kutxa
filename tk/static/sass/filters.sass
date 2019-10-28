@@ -34,6 +34,7 @@
   padding: 1em
   border: #f1f1f1 solid .15em
   border-radius: .2em
+
 input[type=text]:focus
   border: $activity solid .15em
   padding: 1em
@@ -41,13 +42,6 @@ input[type=text]:focus
 
 form
   margin-bottom: 0
-ul.filters
-  padding: 0
-  li
-    list-style: none
-    color: $darkgrey
-    font-weight: bold
-    padding-bottom: 1em
 div.tabcontent
   padding: 7% 5%
 
@@ -83,7 +77,22 @@ input[type=range]::-moz-range-thumb
   background: $darkgrey
   cursor: pointer
 
+select
+  border: none
+  padding: .5em
+  outline: none
+  width: 100%
+
 ul.filters
+  padding: 0
+  li
+    list-style: none
+    color: $darkgrey
+    font-weight: bold
+    padding-bottom: 1em
+  label
+    display: block
+    margin: .5em 0 .2em 0
   ul
     max-height: 10rem
     overflow-y: scroll
@@ -95,5 +104,8 @@ ul.filters
       label
         font-weight: normal
         font-size: .9em
+        vertical-align: middle
+        display: block
+        margin: .1em 0
         input
           border: none !important
