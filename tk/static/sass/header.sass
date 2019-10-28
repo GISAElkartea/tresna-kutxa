@@ -29,15 +29,20 @@ nav
       font-size: 1.1em
       color: white
 
-  @media all and (min-width: 728px)
+@media all and (min-width: 728px)
+  nav
     text-align: right
     position: absolute
-    right: 1em
-    top: 1em
-    width: 10%
+    right: 0
+    top: 0
+    width: 40%
     background: none
-    li
-      margin: 5% 10%
-      a
-        color: $darkgrey
-
+    font-size: 1.1rem
+    padding: .5em
+    color: $link
+    a
+      color: $link
+      display: inline-block
+      font-weight: bold
+      text-decoration: none
+      padding: 0 .5em
