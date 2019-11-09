@@ -2,5 +2,9 @@
 {% load i18n static %}
 
 {% block content %}
+{% if show_welcome %}
+{% include 'material/welcome.html' %}
+{% endif %}
+
 {% include 'material/search_ajax.html' %}
 {% endblock content %}
