@@ -28,7 +28,7 @@
     {% endfor %}
 
     {% if object.url %}
-    <dt>{% trans 'Link' %}:</dt>
+    <dt><i class="fa fa-link" aria-hidden="true"></i>{% trans 'Link' %}:</dt>
     <dd><a href="{{ object.url }}">{{ object.url }}</a></dd>
     {% endif %}
   </dl>
