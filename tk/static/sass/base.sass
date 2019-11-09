@@ -50,3 +50,16 @@ $link: #37ae78
     position: relative
     border-left: #ececec 2px solid
     border-bottom: #ececec 2px solid
+
+
+@page
+  size: A4
+
+@media print
+  sidebar
+    display: none
+  nav
+    display: none !important
+  main
+    border: none !important
+    width: 100%
