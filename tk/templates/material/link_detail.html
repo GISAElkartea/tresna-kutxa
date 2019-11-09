@@ -12,7 +12,7 @@
 
     {% if object.url %}
     <dt>{% trans 'Link' %}</dt>
-    <dd>{{ object.url }}</dd>
+    <dd><a href="{{ object.url }}">{{ object.url}}</a></dd>
     {% endif %}
   </dl>
   {{ object.brief }}
