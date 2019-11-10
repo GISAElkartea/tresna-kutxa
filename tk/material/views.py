@@ -143,7 +143,7 @@ class SingleModelSearch(SearchFiltersMixin, ListView):
 
     def get_context_data(self, *args, **kwargs):
         kwargs['form'] = self.filterset_class(self.request.GET).form
-        kwargs['show_welcome'] = not ('q' in self.request.GET)
+        kwargs['show_welcome'] = not self.request.GET
         return super().get_context_data(*args, **kwargs)
 
     def get_queryset(self):
