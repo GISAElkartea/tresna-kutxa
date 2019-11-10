@@ -90,6 +90,9 @@ input#id_activity-num_people_0, input#id_activity-duration_0,
 input#id_reading-pages_0, input#id_video-duration_0
   z-index: 1
 
+output
+  color: $reading !important
+
 select
   border: none
   padding: .5em
@@ -122,3 +125,15 @@ ul.filters
         margin: .1em 0
         input
           border: none !important
+
+input[type="checkbox"]
+  background: $grey
+  -moz-appearance: none
+  height: 1.2rem
+  width: 1.2rem
+  vertical-align: middle
+  &:hover
+    background: #bbb
+  &.checked
+    background: $video
+
