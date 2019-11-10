@@ -38,7 +38,10 @@
     <dt>{% trans 'Author' %}</dt>
     <dd>{{ object.author }}</dd>
   </dl>
-    {{ object.brief }}
+  {{ object.brief }}
+  <a class="printButton" title="Print Screen" alt="Print Screen" onclick="window.print();"
+  target="_blank" style="cursor:pointer;">
+    <i class="fa fa-print" aria-hidden="true"></i>{% trans 'Print document' %}</a>
 </div>
 
 {% endblock content %}

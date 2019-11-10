@@ -18,10 +18,6 @@
   font-style: italic
   src: url(../fonts/Exo2/Exo2-BoldItalic.ttf)
 
-@font-face
-  font-family: "FontAwesome"
-  src: url(../fonts/FontAwesome.otf)
-
 body
   font-family: "Exo 2"
   margin: 0
@@ -30,6 +26,7 @@ body
   main
     font-size: 1rem
     padding: 5%
+
 
 $red: #f03943
 $darkgrey: #1a181a
@@ -40,6 +37,8 @@ $reading: #f470a0
 $video: #75d1d8
 $link: #37ae78
 
+p
+  line-height: 1.5em
 
 @media all and (min-width: 728px)
   sidebar, main
@@ -55,3 +54,18 @@ $link: #37ae78
     position: relative
     border-left: #ececec 2px solid
     border-bottom: #ececec 2px solid
+
+
+@page
+  size: A4
+
+@media print
+  sidebar
+    display: none
+  nav
+    display: none !important
+  main
+    border: none !important
+    width: 100%
+  .printButton
+    display: none !important

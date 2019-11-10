@@ -17,17 +17,17 @@ nav
   text-align: center
   width: 100%
   z-index: 1
-  background: $grey
   padding: 0
-  li
-    display: inline-block
-    font-size: 1rem
-    margin: 0 5%
-    a
-      text-decoration: none
-      text-align: center
-      font-size: 1.1em
-      color: white
+  display: block
+  font-size: 1.1rem
+  color: $link
+  font-weight: bold
+  a
+    text-decoration: none
+    text-align: center
+    color: $link
+    padding: 0 .5em
+    text-decoration: none
 
 @media all and (min-width: 728px)
   nav
@@ -36,13 +36,6 @@ nav
     right: 0
     top: 0
     width: 40%
-    background: none
-    font-size: 1.1rem
     padding: .5em
-    color: $link
     a
-      color: $link
       display: inline-block
-      font-weight: bold
-      text-decoration: none
-      padding: 0 .5em

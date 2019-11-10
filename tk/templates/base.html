@@ -4,6 +4,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="{% sass_src 'sass/main.sass' %}"/>
     <script type="text/javascript" src="{% static 'js/tabs.js' %}"></script>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   </head>
   <body>
     <nav>
@@ -14,7 +16,7 @@
       <a href="{% translate_url lang_code %}">{{ lang_code }}</a>|
       {% endif %}
       {% endfor %}
-      <a>by-sa</a>|
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.eu" target="_blank">by-sa</a>|
       <a href="{% url 'material:submit-material' %}">{% trans 'Submit' %}</a>
     </nav>
 
@@ -39,7 +41,7 @@
           </ul>
           {% endif %}
           <input type="submit" value="{% trans 'Search' %}" />
-          <input class="delete" type="submit" value="{% trans 'Delete' %}" />
+          <input class="delete" type="submit" value="{% trans 'Clean' %}" />
         </form>
       </div>
       {% endfor %}
