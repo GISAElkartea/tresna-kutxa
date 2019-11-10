@@ -98,6 +98,18 @@ select
   padding: .5em
   outline: none
   width: 100%
+  -moz-appearance: none
+  position: relative
+  &:after
+    content: '\f078'
+    position: absolute
+    top: 0
+    right: 0
+    height: 1.2rem
+    width: 1.2rem
+    font-family: "ForkAwesome"
+    font-size: 1.2rem
+    color: red
 
 ul.filters
   padding: 0
@@ -149,3 +161,8 @@ input[type="checkbox"]
     font-size: .7rem
     text-align: center
     vertical-align: middle
+
+*:-moz-focusring
+  border: none
+  color: transparent
+  text-shadow: 0 0 0 #000
