@@ -10,15 +10,25 @@ from .models import Subject, Material, Activity, Reading, Video, Link, COMMON_LA
 from .widgets import RangeWidget
 
 
-class MaterialFilterSet(FilterSet):
+class SubjectFilterSet(FilterSet):
+    def __init__(self, data=None, *args, **kwargs):
+        prefix = kwargs.get('prefix')
+        field = 'subjects'
+        if prefix:
+            field = "{}-{}".format(prefix, field)
+        if data is not None and field not in data:
+            data = data.copy()
+            data.setlist(field, Subject.objects.values_list('pk', flat=True))
+        super(SubjectFilterSet, self).__init__(data, *args, **kwargs)
+
+    subjects = ModelMultipleChoiceFilter(queryset=Subject.objects.all(), widget=CheckboxSelectMultiple())
+    subjects.always_filter = False
+
+
+class MaterialFilterSet(SubjectFilterSet):
     class Meta:
         model = Material
         fields = ['subjects']
-
-    subjects = ModelMultipleChoiceFilter(
-            queryset=Subject.objects.all(),
-            widget=CheckboxSelectMultiple())
-
 
 class IncludeNullMixin:
     def filter(self, qs, value):
@@ -45,7 +55,7 @@ class ArrayMultipleChoiceFilter(ArrayChoiceMixin, MultipleChoiceFilter):
     pass
 
 
-class ActivityFilterSet(FilterSet):
+class ActivityFilterSet(SubjectFilterSet):
     num_people = NumericRangeFilter(
             widget=RangeWidget(attrs={'min': 0, 'max': 40}),
             lookup_expr='overlap')
@@ -54,16 +64,12 @@ class ActivityFilterSet(FilterSet):
             widget=RangeWidget(attrs={'min': 0, 'max': 360}),
             lookup_expr='range')
 
-    subjects = ModelMultipleChoiceFilter(
-            queryset=Subject.objects.all(),
-            widget=CheckboxSelectMultiple())
-
     class Meta:
         model = Activity
         fields = ['subjects', 'location', 'group_feature', 'num_people', 'duration']
 
 
-class ReadingFilterSet(FilterSet):
+class ReadingFilterSet(SubjectFilterSet):
     languages = ArrayMultipleChoiceFilter(
             widget=CheckboxSelectMultiple(),
             choices=get_languages(limit_to=COMMON_LANGUAGES),
@@ -73,16 +79,12 @@ class ReadingFilterSet(FilterSet):
             widget=RangeWidget(attrs={'min': 0, 'max': 3000}),
             lookup_expr='range')
 
-    subjects = ModelMultipleChoiceFilter(
-            queryset=Subject.objects.all(),
-            widget=CheckboxSelectMultiple())
-
     class Meta:
         model = Reading
         fields = ['subjects', 'pages', 'year', 'languages']
 
 
-class VideoFilterSet(FilterSet):
+class VideoFilterSet(SubjectFilterSet):
     audios = ArrayMultipleChoiceFilter(
             widget=CheckboxSelectMultiple(),
             choices=get_languages(prioritize=COMMON_LANGUAGES),
@@ -97,20 +99,12 @@ class VideoFilterSet(FilterSet):
             widget=RangeWidget(attrs={'min': 0, 'max': 360}),
             lookup_expr='range')
 
-    subjects = ModelMultipleChoiceFilter(
-            queryset=Subject.objects.all(),
-            widget=CheckboxSelectMultiple())
-
     class Meta:
         model = Video
         fields = ['subjects', 'duration', 'year', 'audios', 'subtitles']
 
 
-class LinkFilterSet(FilterSet):
+class LinkFilterSet(SubjectFilterSet):
     class Meta:
         model = Link
         fields = ['subjects']
-
-    subjects = ModelMultipleChoiceFilter(
-            queryset=Subject.objects.all(),
-            widget=CheckboxSelectMultiple())

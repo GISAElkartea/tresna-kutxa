@@ -128,7 +128,7 @@ class DetailLink(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, D
     model = Link
 
 
-class SingleModelSearch(SearchFiltersMixin, ListView):
+class SingleModelSearch(TabbedMixin, ListView):
     prefix = None
     filterset_class = None
 
@@ -146,11 +146,30 @@ class SingleModelSearch(SearchFiltersMixin, ListView):
         kwargs['show_welcome'] = not self.request.GET
         return super().get_context_data(*args, **kwargs)
 
-    def get_queryset(self):
-        filterset = self.filterset_class(
+    def get_tabs(self):
+        material_filter = MaterialFilterSet(self.request.GET, prefix='material')
+        activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
+        reading_filter = ReadingFilterSet(self.request.GET, prefix='reading')
+        video_filter = VideoFilterSet(self.request.GET, prefix='video')
+        link_filter = LinkFilterSet(self.request.GET, prefix='link')
+        tabs = {
+                'material': (_('All material'), reverse('material:search-material'), material_filter.form),
+                'activity': (_('Activities'), reverse('material:search-activity'), activity_filter.form),
+                'reading': (_('Readings'), reverse('material:search-reading'), reading_filter.form),
+                'video': (_('Videos'), reverse('material:search-video'), video_filter.form),
+                'link': (_('Links'), reverse('material:search-link'), link_filter.form),
+            }
+        tabs[self.prefix] = tabs[self.prefix][0], tabs[self.prefix][1], self.get_filterset().form
+        return tabs.values()
+
+    def get_filterset(self):
+        return self.filterset_class(
                 self.request.GET,
                 queryset=self.queryset,
                 prefix=self.prefix)
+
+    def get_queryset(self):
+        filterset = self.get_filterset()
         query = self.request.GET.get('q')
         if not query:
             return filterset.qs
