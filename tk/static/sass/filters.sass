@@ -66,7 +66,7 @@ input[type=range]::-webkit-slider-thumb
   height: 1.2rem
   border-radius: 100%
   border: none
-  background: $darkgrey
+  background: $reading
   cursor: pointer
 
 input[type=range]::-moz-range-thumb
@@ -74,8 +74,21 @@ input[type=range]::-moz-range-thumb
   height: 1.2rem
   border-radius: 100%
   border: none
-  background: $darkgrey
+  background: $reading
   cursor: pointer
+  border: .15rem solid #eee
+
+input[type="range"]::-moz-range-progress
+  background: $reading
+  height: .2rem
+
+input[type="range"]::-moz-range-track
+  background: $reading
+  height: .2rem
+
+input#id_activity-num_people_0, input#id_activity-duration_0,
+input#id_reading-pages_0, input#id_video-duration_0
+  z-index: 1
 
 select
   border: none
