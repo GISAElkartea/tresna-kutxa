@@ -2,7 +2,7 @@
 # See more at: https://github.com/nix-community/pypi2nix
 #
 # COMMAND:
-#   pypi2nix -v -r ../requirements.txt -V python37 -E 'postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses'
+#   pypi2nix -v -r ../requirements.txt -V python37 -E 'postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses libsass' -N SYSTEM_SASS=1
 #
 
 { pkgs ? import <nixpkgs> {},
@@ -21,7 +21,7 @@ let
     python = pkgs.python37;
   };
 
-  commonBuildInputs = with pkgs; [ postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses ];
+  commonBuildInputs = with pkgs; [ postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses libsass ];
   commonDoCheck = false;
 
   withPackages = pkgs':
@@ -95,10 +95,10 @@ let
     };
 
     "django" = python.mkDerivation {
-      name = "django-2.2.6";
+      name = "django-2.2.7";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/c7/2c/bbd0fddf6a08456c3100b8e8b230f3288d4511985aa4e2368b0d115b5aae/Django-2.2.6.tar.gz";
-        sha256 = "a8ca1033acac9f33995eb2209a6bf18a4681c3e5269a878e9a7e0b7384ed1ca3";
+        url = "https://files.pythonhosted.org/packages/0d/05/5de305261e0a6bcd5701e2bfb5237e76303fde36f1f7c5a40ff86480ab5a/Django-2.2.7.tar.gz";
+        sha256 = "16040e1288c6c9f68c6da2fe75ebde83c0a158f6f5d54f4c5177b0c1478c5b86";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -202,6 +202,7 @@ let
         self."django"
         self."markdown"
         self."pillow"
+        self."pip"
       ];
       meta = with pkgs.stdenv.lib; {
         homepage = "https://github.com/neutronX/django-markdownx";
@@ -245,10 +246,10 @@ let
     };
 
     "django-sass-processor" = python.mkDerivation {
-      name = "django-sass-processor-0.7.3";
+      name = "django-sass-processor-0.7.4";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/b7/ec/ba3dbb86590b6a9e140008da5aa1bfcbb0401ef49bf41ca02dff9c36a272/django-sass-processor-0.7.3.tar.gz";
-        sha256 = "5ba3568e53caf1d59573afa75d71e42c23bddbd5b48cbea831816cd72ed242f9";
+        url = "https://files.pythonhosted.org/packages/6d/38/4d607938386244bc755dafa37e5dac6a222f6c3f1985d77b80c3e3712321/django-sass-processor-0.7.4.tar.gz";
+        sha256 = "c1b56e76ce2b57382d26328ecdc204d3f65412d5da35df8a6b7bce6e7f754882";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -282,10 +283,10 @@ let
     };
 
     "libsass" = python.mkDerivation {
-      name = "libsass-0.19.3";
+      name = "libsass-0.19.4";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/1b/d6/4b2b8c789420c1040a4a597825c82722acb790c9f717ea7d8f6062adb6d9/libsass-0.19.3.tar.gz";
-        sha256 = "b15a0e61bd54764e658bc6931015453fa34d954f87c3b6fd35624e13bcacf69d";
+        url = "https://files.pythonhosted.org/packages/bb/46/1fcb3086f43ab1793fbd53966d092c1fb3dade8780ce15a96ad520bce4c6/libsass-0.19.4.tar.gz";
+        sha256 = "8b5b6d1a7c4ea1d954e0982b04474cc076286493f6af2d0a13c2e950fbe0be95";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -300,14 +301,16 @@ let
     };
 
     "markdown" = python.mkDerivation {
-      name = "markdown-3.1.1";
+      name = "markdown-2.6.11";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/ac/df/0ae25a9fd5bb528fe3c65af7143708160aa3b47970d5272003a1ad5c03c6/Markdown-3.1.1.tar.gz";
-        sha256 = "2e50876bcdd74517e7b71f3e7a76102050edec255b3983403f1a63e7c8a41e7a";
+        url = "https://files.pythonhosted.org/packages/b3/73/fc5c850f44af5889192dff783b7b0d8f3fe8d30b65c8e3f78f8f0265fecf/Markdown-2.6.11.tar.gz";
+        sha256 = "108g80ryzykh8bj0i7jfp71510wrcixdi771lf2asyghgyf8cmm8";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
-      propagatedBuildInputs = [ ];
+      propagatedBuildInputs = [
+        self."setuptools"
+      ];
       meta = with pkgs.stdenv.lib; {
         homepage = "https://Python-Markdown.github.io/";
         license = licenses.bsdOriginal;
@@ -329,16 +332,16 @@ let
       ];
       meta = with pkgs.stdenv.lib; {
         homepage = "https://github.com/pypa/packaging";
-        license = licenses.bsdOriginal;
+        license = licenses.asl20;
         description = "Core utilities for Python packages";
       };
     };
 
     "pillow" = python.mkDerivation {
-      name = "pillow-6.2.0";
+      name = "pillow-6.2.1";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/87/dc/7597336c48796d4a836007460148b7baf7f278ad42b73d49047eb0e8194c/Pillow-6.2.0.tar.gz";
-        sha256 = "4548236844327a718ce3bb182ab32a16fa2050c61e334e959f554cac052fb0df";
+        url = "https://files.pythonhosted.org/packages/5b/bb/cdc8086db1f15d0664dd22a62c69613cdc00f1dd430b5b19df1bea83f2a3/Pillow-6.2.1.tar.gz";
+        sha256 = "bf4e972a88f8841d8fdc6db1a75e0f8d763e66e3754b03006cbc3854d89f1cb1";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -350,27 +353,46 @@ let
       };
     };
 
-    "psycopg2" = python.mkDerivation {
-      name = "psycopg2-2.8.3";
+    "pip" = python.mkDerivation {
+      name = "pip-19.3.1";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/5c/1c/6997288da181277a0c29bc39a5f9143ff20b8c99f2a7d059cfb55163e165/psycopg2-2.8.3.tar.gz";
-        sha256 = "897a6e838319b4bf648a574afb6cabcb17d0488f8c7195100d48d872419f4457";
+        url = "https://files.pythonhosted.org/packages/ce/ea/9b445176a65ae4ba22dce1d93e4b5fe182f953df71a145f557cffaffc1bf/pip-19.3.1.tar.gz";
+        sha256 = "21207d76c1031e517668898a6b46a9fb1501c7a4710ef5dfd6a40ad9e6757ea7";
+};
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs ++ [
+        self."setuptools"
+        self."wheel"
+      ];
+      propagatedBuildInputs = [ ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "https://pip.pypa.io/";
+        license = licenses.mit;
+        description = "The PyPA recommended tool for installing Python packages.";
+      };
+    };
+
+    "psycopg2" = python.mkDerivation {
+      name = "psycopg2-2.8.4";
+      src = pkgs.fetchurl {
+        url = "https://files.pythonhosted.org/packages/84/d7/6a93c99b5ba4d4d22daa3928b983cec66df4536ca50b22ce5dcac65e4e71/psycopg2-2.8.4.tar.gz";
+        sha256 = "f898e5cc0a662a9e12bde6f931263a1bbd350cfb18e1d5336a12927851825bb6";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
       propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
         homepage = "http://initd.org/psycopg/";
-        license = licenses.zpl21;
+        license = licenses.lgpl2;
         description = "psycopg2 - Python-PostgreSQL Database Adapter";
       };
     };
 
     "pyparsing" = python.mkDerivation {
-      name = "pyparsing-2.4.2";
+      name = "pyparsing-2.4.5";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/7e/24/eaa8d7003aee23eda270099eeec754d7bf4399f75c6a011ef948304f66a2/pyparsing-2.4.2.tar.gz";
-        sha256 = "6f98a7b9397e206d78cc01df10131398f1c8b8510a2f4d97d9abd82e1aacdd80";
+        url = "https://files.pythonhosted.org/packages/00/32/8076fa13e832bb4dcff379f18f228e5a53412be0631808b9ca2610c0f566/pyparsing-2.4.5.tar.gz";
+        sha256 = "4ca62001be367f01bd3e92ecbb79070272a9d4964dce6a48a82ff0b8bc7e683a";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -383,10 +405,10 @@ let
     };
 
     "pytz" = python.mkDerivation {
-      name = "pytz-2019.2";
+      name = "pytz-2019.3";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/27/c0/fbd352ca76050952a03db776d241959d5a2ee1abddfeb9e2a53fdb489be4/pytz-2019.2.tar.gz";
-        sha256 = "26c0b32e437e54a18161324a2fca3c4b9846b74a8dccddd843113109e1116b32";
+        url = "https://files.pythonhosted.org/packages/82/c3/534ddba230bd4fbbd3b7a3d35f3341d014cca213f369a9940925e7e5f691/pytz-2019.3.tar.gz";
+        sha256 = "b02c06db6cf09c12dd25137e563b31700d3b80fcc4ad23abb7a315f2789819be";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -432,11 +454,27 @@ let
       };
     };
 
-    "six" = python.mkDerivation {
-      name = "six-1.12.0";
+    "setuptools" = python.mkDerivation {
+      name = "setuptools-41.6.0";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/dd/bf/4138e7bfb757de47d1f4b6994648ec67a51efe58fa907c1e11e350cddfca/six-1.12.0.tar.gz";
-        sha256 = "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73";
+        url = "https://files.pythonhosted.org/packages/11/0a/7f13ef5cd932a107cd4c0f3ebc9d831d9b78e1a0e8c98a098ca17b1d7d97/setuptools-41.6.0.zip";
+        sha256 = "6afa61b391dcd16cb8890ec9f66cc4015a8a31a6e1c2b4e0c464514be1a3d722";
+};
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs ++ [ ];
+      propagatedBuildInputs = [ ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "https://github.com/pypa/setuptools";
+        license = licenses.mit;
+        description = "Easily download, build, install, upgrade, and uninstall Python packages";
+      };
+    };
+
+    "six" = python.mkDerivation {
+      name = "six-1.13.0";
+      src = pkgs.fetchurl {
+        url = "https://files.pythonhosted.org/packages/94/3e/edcf6fef41d89187df7e38e868b2dd2182677922b600e880baad7749c865/six-1.13.0.tar.gz";
+        sha256 = "30f610279e8b2578cab6db20741130331735c781b56053c59c4076da27f06b66";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -475,15 +513,31 @@ let
       propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
         homepage = "https://uwsgi-docs.readthedocs.io/en/latest/";
-        license = "GPLv2+";
+        license = licenses.gpl2Plus;
         description = "The uWSGI server";
+      };
+    };
+
+    "wheel" = python.mkDerivation {
+      name = "wheel-0.33.6";
+      src = pkgs.fetchurl {
+        url = "https://files.pythonhosted.org/packages/59/b0/11710a598e1e148fb7cbf9220fd2a0b82c98e94efbdecb299cb25e7f0b39/wheel-0.33.6.tar.gz";
+        sha256 = "10c9da68765315ed98850f8e048347c3eb06dd81822dc2ab1d4fde9dc9702646";
+};
+      doCheck = commonDoCheck;
+      buildInputs = commonBuildInputs ++ [ ];
+      propagatedBuildInputs = [ ];
+      meta = with pkgs.stdenv.lib; {
+        homepage = "https://github.com/pypa/wheel";
+        license = licenses.mit;
+        description = "A built-package format for Python.";
       };
     };
   };
   localOverridesFile = ./requirements_override.nix;
   localOverrides = import localOverridesFile { inherit pkgs python; };
   commonOverrides = [
-    
+        (let src = pkgs.fetchFromGitHub { owner = "nix-community"; repo = "pypi2nix-overrides"; rev = "6220f85d58a4ecbba24dce363007096e1240618a"; sha256 = "00nr5cwpdl52z44w1hsxsaisvwx1vhfpgl3xj758mg0rq4ifirk4"; } ; in import "${src}/overrides.nix" { inherit pkgs python; })
   ];
   paramOverrides = [
     (overrides { inherit pkgs python; })

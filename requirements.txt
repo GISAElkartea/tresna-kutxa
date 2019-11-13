@@ -7,9 +7,13 @@ django-filter
 libsass
 django-sass-processor
 django-compressor
-markdown
 pillow
 
 # updates the deprecation package, which loses its unnecessary dependency on
 # unittest2, which breaks
 https://github.com/umazalakain/django-localized-fields/archive/bump-deprecation.zip#egg=django-localized-fields
+
+# Markdown 3 and later import pkg_resources
+# This works fine in the interpreter
+# For some reason it breaks when done from UWSGI
+markdown == 2.6.11
