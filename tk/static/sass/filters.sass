@@ -66,7 +66,7 @@ input[type=range]::-webkit-slider-thumb
   height: 1.2rem
   border-radius: 100%
   border: none
-  background: $darkgrey
+  background: $reading
   cursor: pointer
 
 input[type=range]::-moz-range-thumb
@@ -74,14 +74,42 @@ input[type=range]::-moz-range-thumb
   height: 1.2rem
   border-radius: 100%
   border: none
-  background: $darkgrey
+  background: $reading
   cursor: pointer
+  border: .15rem solid #eee
+
+input[type="range"]::-moz-range-progress
+  background: $reading
+  height: .2rem
+
+input[type="range"]::-moz-range-track
+  background: $reading
+  height: .2rem
+
+input#id_activity-num_people_0, input#id_activity-duration_0,
+input#id_reading-pages_0, input#id_video-duration_0
+  z-index: 1
+
+output
+  color: $reading !important
 
 select
   border: none
   padding: .5em
   outline: none
   width: 100%
+  -moz-appearance: none
+  position: relative
+  &:after
+    content: '\f078'
+    position: absolute
+    top: 0
+    right: 0
+    height: 1.2rem
+    width: 1.2rem
+    font-family: "ForkAwesome"
+    font-size: 1.2rem
+    color: red
 
 ul.filters
   padding: 0
@@ -109,3 +137,37 @@ ul.filters
         margin: .1em 0
         input
           border: none !important
+
+input[type="checkbox"]
+  background: $grey
+  -moz-appearance: none
+  height: 1.2rem
+  width: 1.2rem
+  vertical-align: middle
+  position: relative
+  &:hover
+    background: #bbb
+  &:checked
+    background: $video
+  &:checked:before
+    position: absolute
+    top: .3rem
+    left: 0
+    height: 1.2rem
+    width: 1.2rem
+    content: '\f00c'
+    color: white
+    font-family: "ForkAwesome"
+    font-size: .7rem
+    text-align: center
+    vertical-align: middle
+
+*:-moz-focusring
+  border: none
+  color: transparent
+  text-shadow: 0 0 0 #000
+
+*::-moz-focus-outer
+  border: none
+  color: transparent
+  text-shadow: 0 0 0 #000
