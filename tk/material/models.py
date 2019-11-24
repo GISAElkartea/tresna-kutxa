@@ -94,7 +94,7 @@ class MaterialQuerySet(models.QuerySet):
         return self\
             .approved()\
             .annotate(rank=SearchRank(MaterialQuerySet.SEARCH_VECTOR, query))\
-            .order_by('-rank')\
+            .order_by('-highlight', '-rank', '-timestamp')\
             .filter(rank__gte=0.2)
 
     def approved(self):
@@ -110,7 +110,7 @@ class Material(LocalizedModel):
     objects = MaterialQuerySet.as_manager()
 
     class Meta:
-        ordering = ['-timestamp']
+        ordering = ['-highlight', '-timestamp']
         verbose_name = _("Material")
         verbose_name_plural = _("Materials")
 
@@ -119,6 +119,8 @@ class Material(LocalizedModel):
     slug = LocalizedUniqueSlugField(populate_from='title')
     timestamp = models.DateTimeField(auto_now_add=True,
             verbose_name=_("creation timestamp"))
+    highlight = models.BooleanField(default=False,
+            verbose_name=_("highlighted on search"))
 
     subjects = models.ManyToManyField(Subject, verbose_name=_("subject"))
     goal = LocalizedTextField(blank=True, null=True, required=False,
