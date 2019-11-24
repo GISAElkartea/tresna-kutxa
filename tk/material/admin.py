@@ -92,7 +92,7 @@ class ReadingAdmin(MaterialAdmin):
                            'languages',
                            'subjects']}),
             (_("Content"), {
-                'fields': ['author', 'title', 'goal', 'url', 'brief']})
+                'fields': ['author', 'title', 'goal', 'url', 'attachment', 'brief']})
             ]
     readonly_fields = ['approval_link']
     list_filter = ['highlight', 'pages', 'year', 'languages', 'subjects']

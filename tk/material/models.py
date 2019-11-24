@@ -200,6 +200,8 @@ class Reading(Material):
     year = models.PositiveIntegerField(blank=True, null=True,
             validators=[validate_year], verbose_name=_("year"))
     languages = LanguageField(limit_to=COMMON_LANGUAGES, verbose_name=_("languages"))
+    attachment = models.FileField(upload_to='material/activities/', blank=True,
+            verbose_name=_("attachment"))
     url = models.URLField(blank=True, verbose_name=_("URL"),
             help_text=_("Link to the reading."))
 
