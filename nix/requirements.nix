@@ -1,8 +1,8 @@
-# generated using pypi2nix tool (version: 2.0.0)
+# generated using pypi2nix tool (version: 1.8.2.dev166+g0afc9c3)
 # See more at: https://github.com/nix-community/pypi2nix
 #
 # COMMAND:
-#   pypi2nix -v -r ../requirements.txt -V python37 -E 'postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses libsass' -N SYSTEM_SASS=1
+#   pypi2nix -v -r ../requirements.txt -V python37 -E 'postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses'
 #
 
 { pkgs ? import <nixpkgs> {},
@@ -21,7 +21,7 @@ let
     python = pkgs.python37;
   };
 
-  commonBuildInputs = with pkgs; [ postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses libsass ];
+  commonBuildInputs = with pkgs; [ postgresql pkgconfig zlib libjpeg openjpeg libtiff freetype lcms2 libwebp tcl ncurses ];
   commonDoCheck = false;
 
   withPackages = pkgs':
@@ -304,13 +304,11 @@ let
       name = "markdown-2.6.11";
       src = pkgs.fetchurl {
         url = "https://files.pythonhosted.org/packages/b3/73/fc5c850f44af5889192dff783b7b0d8f3fe8d30b65c8e3f78f8f0265fecf/Markdown-2.6.11.tar.gz";
-        sha256 = "108g80ryzykh8bj0i7jfp71510wrcixdi771lf2asyghgyf8cmm8";
+        sha256 = "a856869c7ff079ad84a3e19cd87a64998350c2b94e9e08e44270faef33400f81";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
-      propagatedBuildInputs = [
-        self."setuptools"
-      ];
+      propagatedBuildInputs = [ ];
       meta = with pkgs.stdenv.lib; {
         homepage = "https://Python-Markdown.github.io/";
         license = licenses.bsdOriginal;
@@ -455,10 +453,10 @@ let
     };
 
     "setuptools" = python.mkDerivation {
-      name = "setuptools-41.6.0";
+      name = "setuptools-42.0.0";
       src = pkgs.fetchurl {
-        url = "https://files.pythonhosted.org/packages/11/0a/7f13ef5cd932a107cd4c0f3ebc9d831d9b78e1a0e8c98a098ca17b1d7d97/setuptools-41.6.0.zip";
-        sha256 = "6afa61b391dcd16cb8890ec9f66cc4015a8a31a6e1c2b4e0c464514be1a3d722";
+        url = "https://files.pythonhosted.org/packages/ab/41/ab6ae1937191de0c9cbc115d0e91e335f268aa1cd85524c86e5970fdb68a/setuptools-42.0.0.zip";
+        sha256 = "1d44e0b7c64da900a9164e9344f647204a05b32d6c68ce785b6cfad8a2d81646";
 };
       doCheck = commonDoCheck;
       buildInputs = commonBuildInputs ++ [ ];
@@ -537,7 +535,7 @@ let
   localOverridesFile = ./requirements_override.nix;
   localOverrides = import localOverridesFile { inherit pkgs python; };
   commonOverrides = [
-        (let src = pkgs.fetchFromGitHub { owner = "nix-community"; repo = "pypi2nix-overrides"; rev = "6220f85d58a4ecbba24dce363007096e1240618a"; sha256 = "00nr5cwpdl52z44w1hsxsaisvwx1vhfpgl3xj758mg0rq4ifirk4"; } ; in import "${src}/overrides.nix" { inherit pkgs python; })
+        (let src = pkgs.fetchFromGitHub { owner = "nix-community"; repo = "pypi2nix-overrides"; rev = "db87933d87d9b3943cf636a49f16b76c9ea66db7"; sha256 = "1phiqh72dyg7qhkv15kdg4gjkx8rkywvs41j7liz5faj66ijlpv6"; } ; in import "${src}/overrides.nix" { inherit pkgs python; })
   ];
   paramOverrides = [
     (overrides { inherit pkgs python; })
