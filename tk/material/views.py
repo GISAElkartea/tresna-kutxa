@@ -131,6 +131,7 @@ class DetailLink(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, D
 class SingleModelSearch(TabbedMixin, ListView):
     prefix = None
     filterset_class = None
+    paginate_by = 20
 
     @method_decorator(vary_on_headers('X-Requested-With'))
     def __call__(self, request, **kwargs):
@@ -174,7 +175,6 @@ class SingleModelSearch(TabbedMixin, ListView):
         if not query:
             return filterset.qs
         return filterset.qs.search(query)
-
 
 class SearchMaterial(SingleModelSearch):
     queryset = Material.objects.approved()

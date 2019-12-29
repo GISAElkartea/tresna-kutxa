@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <ul id="search_results">
-  {% for obj in object_list %}
+  {% for obj in page_obj.object_list %}
   <li class="{{obj.get_model_name}}">
     <a class="resultImage" href="{{ obj.get_absolute_url }}"></a>
     <a class="result" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
@@ -16,3 +16,17 @@
   </li>
   {% endfor %}
 </ul>
+
+<div class="pagination">
+  {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; {% trans "first" %}</a>
+    <a href="?page={{ page_obj.previous_page_number }}">{% trans "previous" %}</a>
+  {% endif %}
+
+  <span class="current">{{ page_obj.number }} / {{ paginator.num_pages }}</span>
+
+  {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">{% trans "next" %}</a>
+    <a href="?page={{ paginator.num_pages }}">{% trans "last" %} &raquo;</a>
+  {% endif %}
+</div>
