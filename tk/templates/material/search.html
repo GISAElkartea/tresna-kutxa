@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% load i18n static %}
+{% load i18n static chunks %}
 
 {% block content %}
 {% if show_welcome %}
-{% include 'material/welcome.html' %}
+{% chunk "welcome" %}
 {% endif %}
 
 {% include 'material/search_ajax.html' %}

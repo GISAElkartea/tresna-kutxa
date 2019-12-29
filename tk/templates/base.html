@@ -13,7 +13,7 @@
       {% get_current_language as current %}
       {% for lang_code, lang_name in languages %}
       {% if current != lang_code %}
-      <a href="{% translate_url lang_code %}">{{ lang_code }}</a>|
+        <a href="{% translate_url lang_code %}">{{ lang_code }}</a>|
       {% endif %}
       {% endfor %}
       <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.eu" target="_blank">by-sa</a>|

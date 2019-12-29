@@ -7,6 +7,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from tk.chunks import admin as ca
+from tk.chunks import models as co
 from tk.material import admin as ma
 from tk.material import models as mo
 
@@ -28,8 +30,9 @@ class TKAdmin(AdminSite):
             'material.GroupFeature',
             'material.Location',
             ]}, {
-        'name': _("Auth"),
+        'name': _("Others"),
         'models': [
+            'chunks.Chunk',
             'auth.User',
             'auth.Group',
             ]}
@@ -80,5 +83,6 @@ tkadmin.register(mo.Activity, ma.ActivityAdmin)
 tkadmin.register(mo.Reading, ma.ReadingAdmin)
 tkadmin.register(mo.Video, ma.VideoAdmin)
 tkadmin.register(mo.Link, ma.LinkAdmin)
+tkadmin.register(co.Chunk, ca.ChunkAdmin)
 tkadmin.register(User)
 tkadmin.register(Group)

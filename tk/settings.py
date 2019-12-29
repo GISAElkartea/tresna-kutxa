@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'sass_processor',
 
     'tk.material.apps.MaterialConfig',
+    'tk.chunks.apps.ChunksConfig',
 ]
 
 MIDDLEWARE = [
