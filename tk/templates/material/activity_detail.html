@@ -17,14 +17,20 @@
     <dd><a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a></dd>
     {% endfor %}
 
+    {% if object.goal %}
     <dt>{% trans 'Goal' %}</dt>
     <dd>{{ object.goal }}</dd>
+    {% endif %}
 
+    {% if object.location %}
     <dt>{% trans 'Location' %}</dt>
     <dd><a href="{{ search_url }}?activity-location={{ object.location.pk }}">{{ object.location }}</a></dd>
+    {% endif %}
 
+    {% if object.duration %}
     <dt>{% trans 'Duration (in minutes)' %}</dt>
     <dd><a href="{{ search_url }}?activity-duration={{ object.duration }}">{{ object.duration }}</a></dd>
+    {% endif %}
 
     <dt>{% trans 'Minimum number of people' %}</dt>
     <dd><a href="{{ search_url }}?activity-num_people__contains_min={{ object.num_people.lower }}">{{ object.num_people.lower }}</a></dd>
@@ -32,11 +38,20 @@
     <dt>{% trans 'Maximum number of people' %}</dt>
     <dd><a href="{{ search_url }}?activity-num_people__contains_max={{ object.num_people.upper }}">{{ object.num_people.upper }}</a></dd>
 
+    {% if object.group_feature %}
     <dt>{% trans 'Group feature' %}</dt>
     <dd><a href="{{ search_url }}?activity-group_feature={{ object.group_feature.pk }}">{{ object.group_feature }}</a></dd>
+    {% endif %}
 
+    {% if object.url %}
+    <dt>{% trans 'Link' %}</dt>
+    <dd>{{ object.url }}</dd>
+    {% endif %}
+
+    {% if object.author %}
     <dt>{% trans 'Author' %}</dt>
     <dd>{{ object.author }}</dd>
+    {% endif %}
   </dl>
   {{ object.brief }}
   <a class="printButton" title="Print Screen" alt="Print Screen" onclick="window.print();"
