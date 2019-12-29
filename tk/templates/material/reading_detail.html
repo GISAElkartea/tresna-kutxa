@@ -27,6 +27,11 @@
     <dd><a href="{{ search_url }}?reading-languages=[{{ lang }}]">{{ lang }}</a></dd>
     {% endfor %}
 
+    {% if object.attachment %}
+    <dt>{% trans 'Attachment' %}</dt>
+    <dd><a href="{{ object.attachment.url }}">{% trans 'Download' %}</a></dd>
+    {% endif %}
+
     {% if object.url %}
     <dt><i class="fa fa-link" aria-hidden="true"></i>{% trans 'Link' %}:</dt>
     <dd><a href="{{ object.url }}">{{ object.url }}</a></dd>

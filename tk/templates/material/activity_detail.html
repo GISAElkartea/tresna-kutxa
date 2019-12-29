@@ -43,9 +43,14 @@
     <dd><a href="{{ search_url }}?activity-group_feature={{ object.group_feature.pk }}">{{ object.group_feature }}</a></dd>
     {% endif %}
 
+    {% if object.attachment %}
+    <dt>{% trans 'Attachment' %}</dt>
+    <dd><a href="{{ object.attachment.url }}">{% trans 'Download' %}</a></dd>
+    {% endif %}
+
     {% if object.url %}
-    <dt>{% trans 'Link' %}</dt>
-    <dd>{{ object.url }}</dd>
+    <dt><i class="fa fa-link" aria-hidden="true"></i>{% trans 'Link' %}:</dt>
+    <dd><a href="{{ object.url }}">{{ object.url }}</a></dd>
     {% endif %}
 
     {% if object.author %}
