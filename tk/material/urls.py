@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^reading/$', SearchReading.as_view(), name='search-reading'),
     url(r'^link/$', SearchLink.as_view(), name='search-link'),
 
-    url(r'^submit/material/$', SubmitActivity.as_view(), name='submit-material'),
+    url(r'^submit/material/$', SubmitMaterial.as_view(), name='submit-material'),
     url(r'^submit/activity/$', SubmitActivity.as_view(), name='submit-activity'),
     url(r'^submit/video/$', SubmitVideo.as_view(), name='submit-video'),
     url(r'^submit/reading/$', SubmitReading.as_view(), name='submit-reading'),

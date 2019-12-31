@@ -17,7 +17,7 @@
       {% endif %}
       {% endfor %}
       <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.eu" target="_blank">by-sa</a>|
-      <a href="{% url 'material:submit-material' %}">{% trans 'Submit' %}</a>
+      <a href="{% url 'material:submit-material' %}">{% trans 'submit' %}</a>
     </nav>
 
     <sidebar>
@@ -28,13 +28,12 @@
         </a>
       </header>
 
-      {% block searchbar %}
-      {% for tab, endpoint, form in tabs %}
+      {% for tab, endpoint, form in search_tabs.tabs %}
       <button
         class="accordion tablinks {% if forloop.first %}active{% endif %}"
-        onclick="openTab(event, '{{ tab }}')">{{ tab }}</button>
+        onclick="openTab(event, document.getElementsByTagName('sidebar')[0], 'search-{{ tab }}')">{{ tab }}</button>
 
-      <div id="{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
+      <div id="search-{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
         <form method="get" action="{{ endpoint }}">
           <input class="searchBar" name="q" type="text" placeholder="&#xF002;  {% trans 'Search' %}" />
           {% if form %}
@@ -47,8 +46,7 @@
         </form>
       </div>
       {% endfor %}
-      {{ tab_media }}
-      {% endblock searchbar %}
+      {{ search_tabs.media }}
     </sidebar>
 
     <main>

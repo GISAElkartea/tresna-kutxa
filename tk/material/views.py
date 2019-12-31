@@ -15,23 +15,36 @@ from .forms import ActivityForm, VideoForm, ReadingForm, LinkForm
 from .models import Material, Activity, Video, Reading, Link
 
 
-class TabbedMixin:
-    def get_tabs(self):
-        return []
+def tab_context(tabs):
+    return {
+        'tabs' : tabs,
+        'media': reduce(add, [ form.media for name, url, form in tabs if form is not None ])
+    }
 
-    def get_context_data(self, **kwargs):
-        tabs = self.get_tabs()
-        kwargs['tabs'] = tabs
-        # Union of all media files
-        kwargs['tab_media'] = reduce(add, [ form.media
-                                            for name, url, form in tabs
-                                            if form is not None ])
-        return super().get_context_data(**kwargs)
 
-class BaseSubmitMaterial(TabbedMixin, CreateView):
+def update_form(tabs, updated_form):
+    return [(name, url, updated_form if updated_form.prefix == form.prefix else form)
+            for (name, url, form) in tabs]
+
+def search_tabs(request):
+    material_filter = MaterialFilterSet(request.GET, prefix='material')
+    activity_filter = ActivityFilterSet(request.GET, prefix='activity')
+    reading_filter = ReadingFilterSet(request.GET, prefix='reading')
+    video_filter = VideoFilterSet(request.GET, prefix='video')
+    link_filter = LinkFilterSet(request.GET, prefix='link')
+    return [
+        (_('All material'), reverse('material:search-material'), material_filter.form),
+        (_('Activities'), reverse('material:search-activity'), activity_filter.form),
+        (_('Readings'), reverse('material:search-reading'), reading_filter.form),
+        (_('Videos'), reverse('material:search-video'), video_filter.form),
+        (_('Links'), reverse('material:search-link'), link_filter.form),
+    ]
+
+
+class BaseSubmitMaterial(CreateView):
     template_name = 'material/submit.html'
 
-    def get_base_tabs(self):
+    def get_tabs(self):
         return [
             (_('Activity'), reverse('material:submit-activity'),
                 ActivityForm(prefix='activity')),
@@ -41,15 +54,18 @@ class BaseSubmitMaterial(TabbedMixin, CreateView):
                 VideoForm(prefix='video')),
             (_('Link'), reverse('material:submit-link'),
                 LinkForm(prefix='link')),
-        ]
+         ]
 
-    def get_tabs(self):
-        current = self.get_form()
-        return [ (name, url, current if current.prefix == form.prefix else form)
-                 for name, url, form in self.get_base_tabs() ]
+    def get_context_data(self, *args, **kwargs):
+        kwargs['submit_tabs'] = tab_context(update_form(self.get_tabs(), self.get_form()))
+        kwargs['search_tabs'] = tab_context(search_tabs(self.request))
+        return super().get_context_data(*args, **kwargs)
 
 
 class SubmitMaterial(BaseSubmitMaterial):
+    model = Material
+    fields = []
+
     def post(self, *args, **kwargs):
         return HttpResponseNotAllowed(['GET'])
 
@@ -87,7 +103,11 @@ class LocalizedSlugMixin(SingleObjectMixin):
         return slug_field
 
 
-class PendingApprovalMixin():
+class BaseDetail(LocalizedSlugMixin, DetailView):
+    def get_context_data(self, *args, **kwargs):
+        kwargs['search_tabs'] = tab_context(search_tabs(self.request))
+        return super().get_context_data(*args, **kwargs)
+
     def get_template_names(self):
         try:
             if not self.object.approval.approved:
@@ -97,38 +117,23 @@ class PendingApprovalMixin():
         return super().get_template_names()
 
 
-class SearchFiltersMixin(TabbedMixin):
-    def get_tabs(self):
-        material_filter = MaterialFilterSet(self.request.GET, prefix='material')
-        activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
-        reading_filter = ReadingFilterSet(self.request.GET, prefix='reading')
-        video_filter = VideoFilterSet(self.request.GET, prefix='video')
-        link_filter = LinkFilterSet(self.request.GET, prefix='link')
-        return [
-            (_('All material'), reverse('material:search-material'), material_filter.form),
-            (_('Activities'), reverse('material:search-activity'), activity_filter.form),
-            (_('Readings'), reverse('material:search-reading'), reading_filter.form),
-            (_('Videos'), reverse('material:search-video'), video_filter.form),
-            (_('Links'), reverse('material:search-link'), link_filter.form),
-        ]
-
-class DetailActivity(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+class DetailActivity(BaseDetail):
     model = Activity
 
 
-class DetailVideo(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+class DetailVideo(BaseDetail):
     model = Video
 
 
-class DetailReading(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+class DetailReading(BaseDetail):
     model = Reading
 
 
-class DetailLink(SearchFiltersMixin, LocalizedSlugMixin, PendingApprovalMixin, DetailView):
+class DetailLink(BaseDetail):
     model = Link
 
 
-class SingleModelSearch(TabbedMixin, ListView):
+class SingleModelSearch(ListView):
     prefix = None
     filterset_class = None
     paginate_by = 20
@@ -142,26 +147,24 @@ class SingleModelSearch(TabbedMixin, ListView):
             return ['material/search_ajax.html']
         return ['material/search.html']
 
-    def get_context_data(self, *args, **kwargs):
-        kwargs['form'] = self.filterset_class(self.request.GET).form
-        kwargs['show_welcome'] = not self.request.GET
-        return super().get_context_data(*args, **kwargs)
-
     def get_tabs(self):
         material_filter = MaterialFilterSet(self.request.GET, prefix='material')
         activity_filter = ActivityFilterSet(self.request.GET, prefix='activity')
         reading_filter = ReadingFilterSet(self.request.GET, prefix='reading')
         video_filter = VideoFilterSet(self.request.GET, prefix='video')
         link_filter = LinkFilterSet(self.request.GET, prefix='link')
-        tabs = {
-                'material': (_('All material'), reverse('material:search-material'), material_filter.form),
-                'activity': (_('Activities'), reverse('material:search-activity'), activity_filter.form),
-                'reading': (_('Readings'), reverse('material:search-reading'), reading_filter.form),
-                'video': (_('Videos'), reverse('material:search-video'), video_filter.form),
-                'link': (_('Links'), reverse('material:search-link'), link_filter.form),
-            }
-        tabs[self.prefix] = tabs[self.prefix][0], tabs[self.prefix][1], self.get_filterset().form
-        return tabs.values()
+        return [
+            (_('All material'), reverse('material:search-material'), material_filter.form),
+            (_('Activities'), reverse('material:search-activity'), activity_filter.form),
+            (_('Readings'), reverse('material:search-reading'), reading_filter.form),
+            (_('Videos'), reverse('material:search-video'), video_filter.form),
+            (_('Links'), reverse('material:search-link'), link_filter.form),
+            ]
+
+    def get_context_data(self, *args, **kwargs):
+        kwargs['show_welcome'] = not self.request.GET
+        kwargs['search_tabs'] = tab_context(update_form(self.get_tabs(), self.get_filterset().form))
+        return super().get_context_data(*args, **kwargs)
 
     def get_filterset(self):
         return self.filterset_class(

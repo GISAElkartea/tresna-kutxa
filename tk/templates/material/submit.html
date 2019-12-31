@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block searchbar %}
-{% endblock searchbar %}
-
 {% block content %}
 <img class="help" src="{% static 'images/lagundu.svg'%}" alt="Lagundu gaitzazu biltokia betetzen"/>
 <div class="tab">
-  {% for tab, endpoint, form in tabs %}
-  <button class="tablinks" onclick="openTab(event, '{{ tab }}')">{{ tab }}</button>
+  {% for tab, endpoint, form in submit_tabs.tabs %}
+  <button
+      class="tablinks"
+      onclick="openTab(event, document.getElementsByTagName('main')[0], 'submit-{{ tab }}')"
+  >{{ tab }}</button>
   {% endfor %}
 </div>
-{% for tab, endpoint, form in tabs %}
-<div id="{{ tab }}" class="tabcontent">
+{% for tab, endpoint, form in submit_tabs.tabs %}
+<div id="submit-{{ tab }}" class="tabcontent">
   <form action="{{ endpoint }}" method="post">
     {% csrf_token %}
     <table>
@@ -23,5 +23,5 @@
 </div>
 {% endfor %}
 
-{{ tab_media }}
+{{ submit_tabs.media }}
 {% endblock content %}
