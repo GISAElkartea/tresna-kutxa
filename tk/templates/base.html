@@ -34,7 +34,7 @@
         onclick="openTab(event, document.getElementsByTagName('sidebar')[0], 'search-{{ tab }}')">{{ tab }}</button>
 
       <div id="search-{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
-        <form method="get" action="{{ endpoint }}">
+        <form method="get" action="{{ endpoint }}#search-{{ tab }}">
           <input class="searchBar" name="q" type="text" placeholder="&#xF002;  {% trans 'Search' %}" />
           {% if form %}
           <ul class="filters">
@@ -47,6 +47,7 @@
       </div>
       {% endfor %}
       {{ search_tabs.media }}
+      <script>restoreOpenTab(document.getElementsByTagName('sidebar')[0]);</script>
     </sidebar>
 
     <main>
