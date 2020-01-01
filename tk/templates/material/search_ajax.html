@@ -1,5 +1,7 @@
 {% load i18n %}
 
+{% if page_obj.object_list %}
+
 <ul id="search_results">
   {% for obj in page_obj.object_list %}
   <li class="{{obj.get_model_name}}">
@@ -30,3 +32,9 @@
     <a href="?page={{ paginator.num_pages }}">{% trans "last" %} &raquo;</a>
   {% endif %}
 </div>
+
+{% else %}
+
+<p class="no-results">{% trans 'Your search produced no results.' %}</p>
+
+{% endif %}
