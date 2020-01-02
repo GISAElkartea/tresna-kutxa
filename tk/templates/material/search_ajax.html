@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load static i18n %}
 
 {% if page_obj.object_list %}
 
@@ -35,6 +35,6 @@
 
 {% else %}
 
-<p class="no-results">{% trans 'Your search produced no results.' %}</p>
+<p class="no-results"><img src="{% static 'images/oops.svg' %}"/>{% trans 'Your search produced no results.' %}</p>
 
 {% endif %}
