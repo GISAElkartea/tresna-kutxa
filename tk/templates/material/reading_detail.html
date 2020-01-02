@@ -28,7 +28,7 @@
     {% endfor %}
 
     {% if object.attachment %}
-    <dt>{% trans 'Attachment' %}</dt>
+    <dt><i class="fa fa-download" aria-hidden="true"></i>{% trans 'Attachment' %}</dt>
     <dd><a href="{{ object.attachment.url }}">{% trans 'Download' %}</a></dd>
     {% endif %}
 

@@ -44,7 +44,7 @@
     {% endif %}
 
     {% if object.attachment %}
-    <dt>{% trans 'Attachment' %}</dt>
+    <dt><i class="fa fa-download" aria-hidden="true"></i>{% trans 'Attachment' %}</dt>
     <dd><a href="{{ object.attachment.url }}">{% trans 'Download' %}</a></dd>
     {% endif %}
 
@@ -59,6 +59,9 @@
     {% endif %}
   </dl>
   {{ object.brief }}
+  {% if object.notes %}
+  <p class="notes">{{ object.notes }}</p>
+  {% endif %}
   <a class="printButton" title="Print Screen" alt="Print Screen" onclick="window.print();"
   target="_blank" style="cursor:pointer;">
     <i class="fa fa-print" aria-hidden="true"></i>{% trans 'Print document' %}</a>
