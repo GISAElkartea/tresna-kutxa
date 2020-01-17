@@ -36,8 +36,19 @@
     <dt><i class="fa fa-link" aria-hidden="true"></i>{% trans 'Link' %}:</dt>
     <dd><a href="{{ object.url }}">{{ object.url }}</a></dd>
     {% endif %}
+
+    {% if object.goal %}
+    <dt>{% trans 'Goal' %}</dt>
+    <dd>{{ object.goal_rendered | safe }}</dd>
+    {% endif %}
   </dl>
-  {{ object.brief }}
+
+  {{ object.brief_rendered | safe }}
+
+  {% if object.notes %}
+  <p class="notes">{{ object.notes }}</p>
+  {% endif %}
+
   <a class="printButton" title="Print Screen" alt="Print Screen" onclick="window.print();"
   target="_blank" style="cursor:pointer;">
     <i class="fa fa-print" aria-hidden="true"></i>{% trans 'Print document' %}</a>

@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.postgres.search import SearchVector, SearchRank
 from django.contrib.postgres.fields import IntegerRangeField
 
+from markdownx.utils import markdownify
 from localized_fields.models import LocalizedModel
 from localized_fields.fields import (
         LocalizedCharField, LocalizedTextField, LocalizedUniqueSlugField)
@@ -131,6 +132,14 @@ class Material(LocalizedModel):
 
     def __str__(self):
         return str(self.title)
+
+    @property
+    def brief_rendered(self):
+        return markdownify(str(self.brief))
+
+    @property
+    def goal_rendered(self):
+        return markdownify(str(self.goal))
 
     def get_related(self):
         for related in ['activity', 'reading', 'video', 'link']:
