@@ -1,9 +1,13 @@
 from django.conf import settings
-from django.forms.widgets import NumberInput, MultiWidget
+from django.forms.widgets import NumberInput, MultiWidget, CheckboxSelectMultiple
 
 from localized_fields.widgets import LocalizedFieldWidget, AdminLocalizedFieldWidget
 from markdownx.widgets import MarkdownxWidget, AdminMarkdownxWidget
 from sass_processor.processor import sass_processor
+
+
+class ToggleAllCheckboxSelectMultiple(CheckboxSelectMultiple):
+    template_name = 'toggle_all_checkbox_select_multiple.html'
 
 
 class LocalizedMarkdownxWidget(LocalizedFieldWidget):

@@ -1,4 +1,3 @@
-from django.forms import CheckboxSelectMultiple
 from django.contrib.postgres.fields import IntegerRangeField
 from django.db import models
 
@@ -7,7 +6,7 @@ from django_filters.filters import ModelMultipleChoiceFilter, MultipleChoiceFilt
 
 from .fields import get_languages
 from .models import Subject, Material, Activity, Reading, Video, Link, COMMON_LANGUAGES
-from .widgets import RangeWidget
+from .widgets import RangeWidget, ToggleAllCheckboxSelectMultiple
 
 
 class SubjectFilterSet(FilterSet):
@@ -21,7 +20,8 @@ class SubjectFilterSet(FilterSet):
             data.setlist(field, Subject.objects.values_list('pk', flat=True))
         super(SubjectFilterSet, self).__init__(data, *args, **kwargs)
 
-    subjects = ModelMultipleChoiceFilter(queryset=Subject.objects.all(), widget=CheckboxSelectMultiple())
+    subjects = ModelMultipleChoiceFilter(queryset=Subject.objects.all(),
+                                         widget=ToggleAllCheckboxSelectMultiple())
     subjects.always_filter = False
 
 
@@ -71,7 +71,7 @@ class ActivityFilterSet(SubjectFilterSet):
 
 class ReadingFilterSet(SubjectFilterSet):
     languages = ArrayMultipleChoiceFilter(
-            widget=CheckboxSelectMultiple(),
+            widget=ToggleAllCheckboxSelectMultiple(),
             choices=get_languages(limit_to=COMMON_LANGUAGES),
             lookup_expr='overlap')
 
@@ -86,12 +86,12 @@ class ReadingFilterSet(SubjectFilterSet):
 
 class VideoFilterSet(SubjectFilterSet):
     audios = ArrayMultipleChoiceFilter(
-            widget=CheckboxSelectMultiple(),
+            widget=ToggleAllCheckboxSelectMultiple(),
             choices=get_languages(prioritize=COMMON_LANGUAGES),
             lookup_expr='overlap')
 
     subtitles = ArrayMultipleChoiceFilter(
-            widget=CheckboxSelectMultiple(),
+            widget=ToggleAllCheckboxSelectMultiple(),
             choices=get_languages(limit_to=COMMON_LANGUAGES),
             lookup_expr='overlap')
 
