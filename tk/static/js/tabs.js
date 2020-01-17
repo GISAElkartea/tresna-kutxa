@@ -23,7 +23,7 @@ function openTab(evt, container, tabName) {
 
 function restoreOpenTab(container) {
     if (window.location.hash) {
-        openTab(null, container, window.location.hash.substring(1));
-        console.log(window.location.hash);
+        const tab = decodeURI(window.location.hash.substring(1));
+        openTab(null, container, tab);
     }
 }
