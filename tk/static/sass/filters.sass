@@ -108,13 +108,13 @@ ul.filters
     padding-bottom: 1em
   label
     display: block
-    margin: .5em 0 .2em 0
+    margin: .5em 0 1em 0
   ul
     max-height: 10rem
     overflow-y: scroll
     padding: .5rem 0 .5rem 1rem
     background: #f1f1f1
-    margin: 1em 0
+    margin: .5em 0 1em 0
     li
       padding-bottom: 0.5rem
       label
@@ -125,6 +125,16 @@ ul.filters
         margin: .1em 0
         input
           border: none !important
+
+.select
+  cursor: pointer
+  font-weight: normal
+.select-all
+  padding: 0 .5em 0 0
+  color: $video
+  border-right: .15em $video solid
+.select-none
+  padding: 0 0 0 .5em
 
 input[type="checkbox"]
   background: $grey
