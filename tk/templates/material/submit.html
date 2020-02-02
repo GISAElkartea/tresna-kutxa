@@ -2,32 +2,34 @@
 {% load i18n static %}
 
 {% block content %}
-<img class="help" src="{% static 'images/lagundu.svg'%}" alt="Lagundu gaitzazu biltokia betetzen"/>
-<div class="tab">
+<div id="submit">
+  <img class="help" src="{% static 'images/lagundu.svg'%}" alt="Lagundu gaitzazu biltokia betetzen"/>
+  <div  class="tab">
+    {% for tab, endpoint, form in submit_tabs.tabs %}
+    <button
+        class="tablinks {% if forloop.first %}active{% endif %}"
+        onclick="openTab(event, document.getElementsByTagName('main')[0], 'submit-{{ tab }}')"
+    >{{ tab }}</button>
+    {% endfor %}
+  </div>
   {% for tab, endpoint, form in submit_tabs.tabs %}
-  <button
-      class="tablinks {% if forloop.first %}active{% endif %}"
-      onclick="openTab(event, document.getElementsByTagName('main')[0], 'submit-{{ tab }}')"
-  >{{ tab }}</button>
+  <div id="submit-{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
+      {% if form.errors %}
+      <div class="errors">
+          <p>{% trans 'Please correct the errors below.' %}</p>
+          <p>TODO: This should be in a red box or something. Delete this paragraph once done.</p>
+      </div>
+      {% endif %}
+      <form action="{{ endpoint }}#submit-{{ tab }}" method="post">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <input type="submit" value="{% trans 'Submit' %}" />
+    </form>
+  </div>
   {% endfor %}
 </div>
-{% for tab, endpoint, form in submit_tabs.tabs %}
-<div id="submit-{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
-    {% if form.errors %}
-    <div class="errors">
-        <p>{% trans 'Please correct the errors below.' %}</p>
-        <p>TODO: This should be in a red box or something. Delete this paragraph once done.</p>
-    </div>
-    {% endif %}
-    <form action="{{ endpoint }}#submit-{{ tab }}" method="post">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="{% trans 'Submit' %}" />
-  </form>
-</div>
-{% endfor %}
 
 {{ submit_tabs.media }}
 <script>restoreOpenTab(document.getElementsByTagName('main')[0]);</script>
