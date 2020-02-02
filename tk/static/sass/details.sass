@@ -25,33 +25,39 @@
   dd
     display: inline
     margin: .5em
+    p:first-child
+      display: inline
+    p:last-child
+      margin-bottom: 0
   a
     text-decoration: none
     color: #666
+  img
+    max-width: 100%
 
   &.reading
     dl
       border-top: $reading .1em solid
       border-bottom: $reading .1em solid
-    dt
+    dt, h1, h2, a
       color: $reading
   &.activity
     dl
       border-top: $activity .1em solid
       border-bottom: $activity .1em solid
-    dt
+    dt, h1, h2, a
       color: $activity
   &.video
     dl
       border-top: $video .1em solid
       border-bottom: $video .1em solid
-    dt
+    dt, h1, h2, a
       color: $video
   &.link
     dl
       border-top: $link .1em solid
       border-bottom: $link .1em solid
-    dt
+    dt, h1, h2, a
       color: $link
 
 i.fa
