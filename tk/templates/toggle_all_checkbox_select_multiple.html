@@ -17,4 +17,11 @@
     <li>{% include option.template_name with widget=option %}</li>{% endfor %}{% if group %}
   </ul></li>
   {% endif %}{% endfor %}
-</ul>{% endwith %}
+</ul>
+
+<script>
+ if (document.querySelectorAll('#{{ id }} input:checked').length === 0) {
+     document.querySelectorAll('#{{ id }} input').forEach((x) => {x.checked = true});
+ }
+</script>
+{% endwith %}

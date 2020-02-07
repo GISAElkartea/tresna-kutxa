@@ -9,26 +9,24 @@ from .models import Subject, Material, Activity, Reading, Video, Link, COMMON_LA
 from .widgets import RangeWidget, ToggleAllCheckboxSelectMultiple
 
 
-class SubjectFilterSet(FilterSet):
-    def __init__(self, data=None, *args, **kwargs):
-        prefix = kwargs.get('prefix')
-        field = 'subjects'
-        if prefix:
-            field = "{}-{}".format(prefix, field)
-        if data is not None and field not in data:
-            data = data.copy()
-            data.setlist(field, Subject.objects.values_list('pk', flat=True))
-        super(SubjectFilterSet, self).__init__(data, *args, **kwargs)
-
-    subjects = ModelMultipleChoiceFilter(queryset=Subject.objects.all(),
-                                         widget=ToggleAllCheckboxSelectMultiple())
-    subjects.always_filter = False
+class SubjectFilter(ModelMultipleChoiceFilter):
+    def __init__(self, *args, **kwargs):
+        if 'queryset' not in kwargs:
+            kwargs['queryset'] = Subject.objects.all()
+        if 'widget' not in kwargs:
+            kwargs['widget'] = ToggleAllCheckboxSelectMultiple()
+        kwargs['initial'] = lambda: kwargs['queryset'].values_list('pk', flat=True)
+        super().__init__(*args, **kwargs)
+        self.always_filter = False
 
 
-class MaterialFilterSet(SubjectFilterSet):
+class MaterialFilterSet(FilterSet):
+    subjects = SubjectFilter()
+
     class Meta:
         model = Material
         fields = ['subjects']
+
 
 class IncludeNullMixin:
     def filter(self, qs, value):
@@ -55,7 +53,9 @@ class ArrayMultipleChoiceFilter(ArrayChoiceMixin, MultipleChoiceFilter):
     pass
 
 
-class ActivityFilterSet(SubjectFilterSet):
+class ActivityFilterSet(FilterSet):
+    subjects = SubjectFilter()
+
     num_people = NumericRangeFilter(
             widget=RangeWidget(attrs={'min': 0, 'max': 40}),
             lookup_expr='overlap')
@@ -69,7 +69,9 @@ class ActivityFilterSet(SubjectFilterSet):
         fields = ['subjects', 'location', 'group_feature', 'num_people', 'duration']
 
 
-class ReadingFilterSet(SubjectFilterSet):
+class ReadingFilterSet(FilterSet):
+    subjects = SubjectFilter()
+
     languages = ArrayMultipleChoiceFilter(
             widget=ToggleAllCheckboxSelectMultiple(),
             choices=get_languages(limit_to=COMMON_LANGUAGES),
@@ -84,7 +86,9 @@ class ReadingFilterSet(SubjectFilterSet):
         fields = ['subjects', 'pages', 'year', 'languages']
 
 
-class VideoFilterSet(SubjectFilterSet):
+class VideoFilterSet(FilterSet):
+    subjects = SubjectFilter()
+
     audios = ArrayMultipleChoiceFilter(
             widget=ToggleAllCheckboxSelectMultiple(),
             choices=get_languages(prioritize=COMMON_LANGUAGES),
@@ -104,7 +108,9 @@ class VideoFilterSet(SubjectFilterSet):
         fields = ['subjects', 'duration', 'year', 'audios', 'subtitles']
 
 
-class LinkFilterSet(SubjectFilterSet):
+class LinkFilterSet(FilterSet):
     class Meta:
         model = Link
         fields = ['subjects']
+
+    subjects = SubjectFilter()
