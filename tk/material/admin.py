@@ -73,8 +73,9 @@ class ActivityAdmin(MaterialAdmin):
             (_("Content"), {
                 'fields': ['author', 'title', 'goal', 'url', 'brief', 'notes', 'attachment']})
             ]
-    list_filter = ['highlight', 'num_people', 'location', 'duration', 'group_feature', 'subjects']
-    list_display = ['__str__', 'timestamp', 'approval_link']
+    list_filter = ['highlight', 'location', 'group_feature', 'subjects']
+    list_display = ['__str__', 'timestamp', 'approval_link', 'highlight', 'location', 'group_feature']
+    list_editable = ['highlight', 'location', 'group_feature']
     readonly_fields = ['approval_link']
     search_fields = ['title', 'brief', 'notes']
 
@@ -96,7 +97,8 @@ class ReadingAdmin(MaterialAdmin):
             ]
     readonly_fields = ['approval_link']
     list_filter = ['highlight', 'pages', 'year', 'languages', 'subjects']
-    list_display = ['__str__', 'timestamp', 'approval_link']
+    list_display = ['__str__', 'timestamp', 'approval_link', 'highlight', 'pages', 'year']
+    list_editable = ['highlight', 'pages', 'year']
     search_fields = ['title', 'brief']
 
 
@@ -117,8 +119,9 @@ class VideoAdmin(MaterialAdmin):
                 'fields': ['author', 'title', 'goal', 'url', 'brief']})
             ]
     readonly_fields = ['approval_link']
-    list_filter = ['highlight', 'duration', 'year', 'audios', 'subtitles', 'subjects']
-    list_display = ['__str__', 'timestamp', 'approval_link']
+    list_filter = ['highlight', 'year', 'audios', 'subtitles', 'subjects']
+    list_display = ['__str__', 'timestamp', 'approval_link', 'highlight', 'year', ]
+    list_editable = ['highlight', 'year']
     search_fields = ['title', 'brief']
 
 
@@ -135,5 +138,6 @@ class LinkAdmin(MaterialAdmin):
             ]
     readonly_fields = ['approval_link']
     list_filter = ['highlight', 'subjects']
-    list_display = ['__str__', 'timestamp', 'approval_link']
+    list_display = ['__str__', 'timestamp', 'approval_link', 'highlight']
+    list_editable = ['highlight']
     search_fields = ['title', 'brief']
