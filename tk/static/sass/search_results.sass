@@ -33,8 +33,10 @@ ul#search_results
       a
         text-transform: none
         font-size: 1rem
-        border-right: solid .15em $darkgrey
-        padding: 0 .5em
+        line-height: 1.5em
+        border-right: solid .1em
+        padding: 0 .5em 0 0
+        margin-right: .5em
         &:last-child
           border: none
     &.activity
@@ -43,24 +45,28 @@ ul#search_results
       dt
         a
           color: $activity
+          border-color: $activity
     &.reading
       a.resultImage
         background-image: url('../images/reading.png')
       dt
         a
           color: $reading
+          border-color: $reading
     &.video
       a.resultImage
         background-image: url('../images/video.png')
       dt
         a
           color: $video
+          border-color: $video
     &.link
       a.resultImage
         background-image: url('../images/link.png')
       dt
         a
           color: $link
+          border-color: $link
 
 p.no-results
   color: $darkgrey
