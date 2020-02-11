@@ -10,6 +10,11 @@
     <dt>{% trans 'Created' %}</dt>
     <dd>{{ object.timestamp }}</dd>
 
+    <dt>{% trans 'Subjects' %}</dt>
+    {% for subject in object.subjects.all %}
+    <dd class="subjectDetail"><a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a></dd>
+    {% endfor %}
+
     {% if object.url %}
     <dt><i class="fa fa-link" aria-hidden="true"></i>{% trans 'Link' %}</dt>
     <dd><a href="{{ object.url }}">{{ object.url}}</a></dd>

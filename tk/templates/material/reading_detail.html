@@ -17,6 +17,11 @@
     <dd><a href="{{ search_url }}?reading-pages={{ object.pages }}">{{ object.pages }}</a></dd>
     {% endif %}
 
+    <dt>{% trans 'Subjects' %}</dt>
+    {% for subject in object.subjects.all %}
+    <dd class="subjectDetail"><a href="{{ search_url }}?activity-subjects={{ subject.pk }}">{{ subject }}</a></dd>
+    {% endfor %}
+
     {% if object.year %}
     <dt>{% trans 'Year' %}:</dt>
     <dd><a href="{{ search_url }}?reading-year={{ object.year }}">{{ object.year }}</a></dd>
