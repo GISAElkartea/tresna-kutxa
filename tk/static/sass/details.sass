@@ -76,8 +76,21 @@
       border-right: .1em solid $link
       margin: 0
 
-i.fa
+.fa
   padding-right: .3em
+  display: inline-block
+  font-family: ForkAwesome
+  font-size: inherit
+  text-rendering: auto
+.fa-download::before
+  content: "\f019"
+.fa-chain::before
+  content: "\f0c1"
+.fa-print::before
+  content: "\f02f"
+.fa-link::before
+  content: "\f0c1"
+
 a.printButton
   display: block
   margin-top: 3em
