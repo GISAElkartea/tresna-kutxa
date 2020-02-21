@@ -15,3 +15,10 @@ def translate_url(context, language):
     kwargs = {k:v for k,v in view.kwargs.items() if v is not None}
     with translation.override(language):
         return reverse(view.view_name, args=args, kwargs=kwargs)
+
+
+@register.filter
+def paginate_url(page, request):
+    params = request.GET.copy()
+    params.setlist('page', [page])
+    return params.urlencode()
