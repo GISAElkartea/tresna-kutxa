@@ -7,7 +7,7 @@
   <li class="{{obj.get_model_name}}">
     <a class="resultImage" href="{{ obj.get_absolute_url }}"></a>
     <a class="result" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
-    <p>{{ obj.goal }}</p>
+    <p>{{ obj.goal_rendered | safe }}</p>
     <dl>
       <dt>{% trans 'Subjects' %}:
         {% for subject in obj.subjects.all %}
