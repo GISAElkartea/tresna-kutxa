@@ -1,0 +1,18 @@
+{% with widget_id=widget.attrs.id %}
+<div id="{{ widget_id }}" class="localized-fields-widget" role="tabs" data-synctabs="translation">
+    <ul class="localized-fields-widget">
+    {% for widget in widget.subwidgets %}
+        <li class="localized-fields-widget tab">
+            <label class="tablinks" for="{{ widget_id }}_{{ widget.lang_code }}" onclick="openTab(event, document.getElementById('{{ widget_id }}'), '{{ widget_id }}_{{ widget.lang_code }}')">{{ widget.lang_name|capfirst }}</label>
+        </li>
+    {% endfor %}
+    </ul>
+    {% for widget in widget.subwidgets %}
+        <div role="tabpanel" class="tabcontent" id="{{ widget_id }}_{{ widget.lang_code }}"
+             style="{% if forloop.first %}display: block; {% endif %}"
+        >
+            {% include widget.template_name %}
+        </div>
+    {% endfor %}
+</div>
+{% endwith %}

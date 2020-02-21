@@ -6,8 +6,8 @@ from .models import Approval, Activity, Video, Reading, Link
 from .widgets import LocalizedMarkdownxWidget, RangeWidget
 
 
-MATERIAL_WIDGETS = {'goal': LocalizedMarkdownxWidget,
-                    'brief': LocalizedMarkdownxWidget,}
+MATERIAL_WIDGETS = {'goal': LocalizedMarkdownxWidget(),
+                    'brief': LocalizedMarkdownxWidget(),}
 
 MATERIAL_FIELDS = ['title', 'subjects', 'goal', 'brief', 'author']
 
