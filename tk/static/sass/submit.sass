@@ -64,6 +64,21 @@ div.markdownx
   div
     width: 100% !important
 
+ul.localized-fields-widget
+  padding: 0
+  margin: 0
+  li
+    display: inline-block
+    margin: 0
+    label
+      padding: .8em
+      &.active
+        background: $reading
+        color: #f1f1f1
+      &::after
+        display: none
+div[role=tabpanel]
+  padding: 0
 @media all and (max-width: 600px)
   button.tablinks
     width: 100%
