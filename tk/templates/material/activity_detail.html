@@ -58,8 +58,8 @@
     <dd>{{ object.goal_rendered | safe }}</dd>
     {% endif %}
   </dl>
-
-  {{ object.brief_rendered | safe }}
+  <dt>{% trans 'Brief' %}</dt>
+  <dd class="brief">{{ object.brief_rendered | safe }}</dd>
 
   {% if object.notes %}
   <p class="notes">{{ object.notes }}</p>
