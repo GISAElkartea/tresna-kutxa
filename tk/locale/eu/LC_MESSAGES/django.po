@@ -446,15 +446,15 @@ msgstr "Hizkuntzak"
 
 #: tk/templates/material/search_ajax.html:24
 msgid "first"
-msgstr "lehena"
+msgstr "lehengoa"
 
 #: tk/templates/material/search_ajax.html:25
 msgid "previous"
-msgstr "aurrena"
+msgstr "aurrekoa"
 
 #: tk/templates/material/search_ajax.html:31
 msgid "next"
-msgstr "hurrena"
+msgstr "hurrengoa"
 
 #: tk/templates/material/search_ajax.html:32
 msgid "last"
