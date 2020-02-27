@@ -105,6 +105,11 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
+# Do not mention query types in filter descriptions
+def FILTERS_VERBOSE_LOOKUPS():
+    from django_filters.conf import DEFAULTS
+    return dict([ (k, '') for k in DEFAULTS['VERBOSE_LOOKUPS'].keys() ])
+
 LANGUAGE_CODE = 'eu'
 LANGUAGES = [
         ('eu', 'Euskara'),
