@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-08 00:34+0100\n"
+"POT-Creation-Date: 2020-02-27 17:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,10 @@ msgid "Subject"
 msgstr "Gaia"
 
 #: tk/material/models.py:40 tk/templates/material/activity_detail.html:15
+#: tk/templates/material/link_detail.html:13
+#: tk/templates/material/reading_detail.html:20
 #: tk/templates/material/search_ajax.html:12
+#: tk/templates/material/video_detail.html:33
 msgid "Subjects"
 msgstr "Gaiak"
 
@@ -253,9 +256,9 @@ msgstr "Bideora esteka"
 
 #: tk/material/models.py:252 tk/material/views.py:55
 #: tk/templates/material/activity_detail.html:47
-#: tk/templates/material/link_detail.html:14
-#: tk/templates/material/reading_detail.html:36
-#: tk/templates/material/video_detail.html:34
+#: tk/templates/material/link_detail.html:19
+#: tk/templates/material/reading_detail.html:41
+#: tk/templates/material/video_detail.html:39
 msgid "Link"
 msgstr "Esteka"
 
@@ -333,7 +336,7 @@ msgstr "Laguntza"
 msgid "Developer contact"
 msgstr "Garatzaileen kontaktua"
 
-#: tk/templates/base.html:17
+#: tk/templates/base.html:19
 msgid ""
 "This site's interface is partly translated into other languages. The content "
 "may however not always be translated. "
@@ -341,15 +344,15 @@ msgstr ""
 "Gune honen interfazea beste hizkuntzetara itzulia izan da. Edukia bestalde "
 "posible da beti itzulia ez egotea. "
 
-#: tk/templates/base.html:22
+#: tk/templates/base.html:24
 msgid "submit"
 msgstr "bidali"
 
-#: tk/templates/base.html:40 tk/templates/base.html:46
+#: tk/templates/base.html:42 tk/templates/base.html:48
 msgid "Search"
 msgstr "Bilatu"
 
-#: tk/templates/base.html:47
+#: tk/templates/base.html:49
 msgid "Clean"
 msgstr "Garbitu"
 
@@ -384,12 +387,12 @@ msgid "Maximum number of people"
 msgstr "Gehienezko pertsona kopurua"
 
 #: tk/templates/material/activity_detail.html:42
-#: tk/templates/material/reading_detail.html:31
+#: tk/templates/material/reading_detail.html:36
 msgid "Attachment"
 msgstr "Eranspena"
 
 #: tk/templates/material/activity_detail.html:43
-#: tk/templates/material/reading_detail.html:32
+#: tk/templates/material/reading_detail.html:37
 msgid "Download"
 msgstr "Deskargatu"
 
@@ -398,16 +401,23 @@ msgid "Author"
 msgstr "Egilea"
 
 #: tk/templates/material/activity_detail.html:57
-#: tk/templates/material/link_detail.html:19
-#: tk/templates/material/reading_detail.html:41
-#: tk/templates/material/video_detail.html:39
+#: tk/templates/material/link_detail.html:24
+#: tk/templates/material/reading_detail.html:46
+#: tk/templates/material/video_detail.html:44
 msgid "Goal"
 msgstr "Helburua"
 
+#: tk/templates/material/activity_detail.html:61
+#: tk/templates/material/link_detail.html:29
+#: tk/templates/material/reading_detail.html:51
+#: tk/templates/material/video_detail.html:49
+msgid "Brief"
+msgstr "Deskribapena"
+
 #: tk/templates/material/activity_detail.html:70
-#: tk/templates/material/link_detail.html:32
-#: tk/templates/material/reading_detail.html:54
-#: tk/templates/material/video_detail.html:52
+#: tk/templates/material/link_detail.html:38
+#: tk/templates/material/reading_detail.html:60
+#: tk/templates/material/video_detail.html:58
 msgid "Print document"
 msgstr "Dokumentua inprimatu"
 
@@ -435,12 +445,12 @@ msgstr ""
 msgid "Pages"
 msgstr "Orrialdeak"
 
-#: tk/templates/material/reading_detail.html:21
+#: tk/templates/material/reading_detail.html:26
 #: tk/templates/material/video_detail.html:19
 msgid "Year"
 msgstr "Urtea"
 
-#: tk/templates/material/reading_detail.html:25
+#: tk/templates/material/reading_detail.html:30
 msgid "Languages"
 msgstr "Hizkuntzak"
 
