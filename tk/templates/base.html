@@ -35,7 +35,7 @@
       {% for tab, endpoint, form in search_tabs.tabs %}
       <button
         class="accordion tablinks {% if forloop.first %}active{% endif %}"
-        onclick="openTab(event, document.getElementsByTagName('sidebar')[0], 'search-{{ tab }}')">{{ tab }}</button>
+        onclick="openTab(event, 'sidebar .tablinks', 'sidebar .tabcontent', '#search-{{ tab }}')">{{ tab }}</button>
 
       <div id="search-{{ tab }}" class="tabcontent" style="{% if forloop.first %}display: block;{% endif %}">
         <form method="get" action="{{ endpoint }}#search-{{ tab }}">
@@ -51,7 +51,7 @@
       </div>
       {% endfor %}
       {{ search_tabs.media }}
-      <script>restoreOpenTab(document.getElementsByTagName('sidebar')[0]);</script>
+      <script>restoreOpenTab('sidebar .tablinks', 'sidebar .tabcontent');</script>
     </sidebar>
 
     <main>

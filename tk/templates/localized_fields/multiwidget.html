@@ -3,7 +3,7 @@
     <ul class="localized-fields-widget">
     {% for widget in widget.subwidgets %}
         <li class="localized-fields-widget tab">
-            <label class="tablinks" for="{{ widget_id }}_{{ widget.lang_code }}" onclick="openTab(event, document.getElementById('{{ widget_id }}'), '{{ widget_id }}_{{ widget.lang_code }}')">{{ widget.lang_name|capfirst }}</label>
+            <label class="tablinks {% if forloop.first %}active{% endif %}" for="{{ widget_id }}_{{ widget.lang_code }}" onclick="openTab(event, '#{{ widget_id }} .tablinks', '#{{ widget_id }} .tabcontent', '#{{ widget_id }}_{{ widget.lang_code }}')">{{ widget.lang_name|capfirst }}</label>
         </li>
     {% endfor %}
     </ul>
