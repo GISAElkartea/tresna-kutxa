@@ -12,11 +12,13 @@ from .widgets import RangeWidget, ToggleAllCheckboxSelectMultiple
 
 class CommaSeparatedModelMultipleChoiceField(forms.ModelMultipleChoiceField):
     def _check_values(self, value):
-        value = [v.rstrip().lstrip() for vs in value for v in vs.split(',')]
+        if value:
+            value = [v.rstrip().lstrip() for vs in value for v in vs.split(',')]
         return super()._check_values(value)
 
     def clean(self, value):
-        value = [v.rstrip().lstrip() for vs in value for v in vs.split(',')]
+        if value:
+            value = [v.rstrip().lstrip() for vs in value for v in vs.split(',')]
         return super().clean(value)
 
 
