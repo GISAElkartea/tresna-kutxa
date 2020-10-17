@@ -20,7 +20,28 @@ function openTab(evt, links, tabs, tab) {
 
 function restoreOpenTab(links, tabs) {
     if (window.location.hash) {
-        var hash = decodeURI(window.location.hash).substr(1);
-        openTab(null, links, tabs, "[id='" + hash + "']");
+        openTab(null, links, tabs, decodeURI(window.location.hash));
     }
 }
+
+function submitSearch(event) {
+    event.preventDefault();
+
+    fd = new FormData(event.originalTarget);
+    var grouped = {};
+    for (const e of fd) {
+        if (!grouped[e[0]]) {
+            grouped[e[0]] = [];
+        }
+        grouped[e[0]].push(e[1]);
+    }
+
+    var sp = new URLSearchParams();
+    for (let key in grouped) {
+        sp.set(key, grouped[key].join(","));
+    }
+
+    var url = new URL(event.target.action, window.location.href);
+    url.search = "?" + decodeURIComponent(sp.toString());
+    window.location.href = url.href;
+};

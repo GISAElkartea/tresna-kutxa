@@ -51,7 +51,11 @@
       </div>
       {% endfor %}
       {{ search_tabs.media }}
-      <script>restoreOpenTab('sidebar .tablinks', 'sidebar .tabcontent');</script>
+
+      <script>
+        restoreOpenTab('sidebar .tablinks', 'sidebar .tabcontent');
+        document.querySelectorAll('sidebar form').forEach(f => f.addEventListener('submit', submitSearch));
+        </script>
     </sidebar>
 
     <main>

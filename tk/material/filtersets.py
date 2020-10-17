@@ -1,5 +1,6 @@
 from django.contrib.postgres.fields import IntegerRangeField
 from django.db import models
+from django import forms
 
 from django_filters import FilterSet
 from django_filters.filters import ModelMultipleChoiceFilter, MultipleChoiceFilter, NumericRangeFilter
@@ -9,7 +10,20 @@ from .models import Subject, Material, Activity, Reading, Video, Link, COMMON_LA
 from .widgets import RangeWidget, ToggleAllCheckboxSelectMultiple
 
 
+class CommaSeparatedModelMultipleChoiceField(forms.ModelMultipleChoiceField):
+    def _check_values(self, value):
+        value = [v.rstrip().lstrip() for vs in value for v in vs.split(',')]
+        return super()._check_values(value)
+
+    def clean(self, value):
+        value = [v.rstrip().lstrip() for vs in value for v in vs.split(',')]
+        return super().clean(value)
+
+
+
 class SubjectFilter(ModelMultipleChoiceFilter):
+    field_class = CommaSeparatedModelMultipleChoiceField
+
     def __init__(self, *args, **kwargs):
         if 'queryset' not in kwargs:
             kwargs['queryset'] = Subject.objects.all()

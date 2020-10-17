@@ -154,7 +154,7 @@ class SingleModelSearch(ListView):
         video_filter = VideoFilterSet(self.request.GET, prefix='video')
         link_filter = LinkFilterSet(self.request.GET, prefix='link')
         return [
-            (_('All material'), reverse('material:search-material'), material_filter.form),
+            (_('All'), reverse('material:search-material'), material_filter.form),
             (_('Activities'), reverse('material:search-activity'), activity_filter.form),
             (_('Readings'), reverse('material:search-reading'), reading_filter.form),
             (_('Videos'), reverse('material:search-video'), video_filter.form),
