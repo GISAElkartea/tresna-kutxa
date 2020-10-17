@@ -20,6 +20,7 @@ function openTab(evt, links, tabs, tab) {
 
 function restoreOpenTab(links, tabs) {
     if (window.location.hash) {
-        openTab(null, links, tabs, decodeURI(window.location.hash));
+        var hash = decodeURI(window.location.hash).substr(1);
+        openTab(null, links, tabs, "[id='" + hash + "']");
     }
 }
